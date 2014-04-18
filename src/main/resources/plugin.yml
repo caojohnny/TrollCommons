@@ -3,3 +3,8 @@ name: CommonsLib
 version: 1.0
 description: Common library for all utilities
 author: xTrollxDudex or AgentTroll
+
+commands:
+  check:
+    description: Checks location walker
+    usage: /<command>

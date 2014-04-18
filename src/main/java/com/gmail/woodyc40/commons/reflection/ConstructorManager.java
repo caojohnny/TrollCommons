@@ -23,19 +23,31 @@ package com.gmail.woodyc40.commons.reflection;
 
 import java.lang.reflect.Constructor;
 
-public interface ConstructorManager<T> {
+/**
+ * <code>Interface</code> for weak access to constructor invocation methods
+ *
+ * <p>
+ * Used to create new instances of the <code>class</code> representing the constructor
+ *
+ * <p>
+ * Should be faster than conventional Reflection API
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
+public interface ConstructorManager {
     /**
      * Creates a new instance of the <code>class</code> holding this constructor
      *
      * @param param the parameters used in the constructor instantiation
      * @return the instance of the newly instantiated <code>class</code>
      */
-    public T createInstance(Object[] param);
+    public Object createInstance(Object[] param);
 
     /**
      * The wrapped constructor contained by this <code>class</code>
      *
      * @return the constructor that this <code>class</code> represents
      */
-    public Constructor raw();
+    public Constructor<?> raw();
 }

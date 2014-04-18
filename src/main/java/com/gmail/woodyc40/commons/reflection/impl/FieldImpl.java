@@ -27,13 +27,19 @@ import com.gmail.woodyc40.commons.reflection.ReflectionTool;
 
 import java.lang.reflect.Field;
 
+/**
+ * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 class FieldImpl implements FieldManager {
     private Field field;
 
     /**
      * Builds a new instance of this class by shallow field search
      *
-     * @param name the name of the declared field in the holder
+     * @param name   the name of the declared field in the holder
      * @param holder the <code>class</code> that contains the field
      * @see com.gmail.woodyc40.commons.reflection.ReflectionTool#forField(String, Class)
      */

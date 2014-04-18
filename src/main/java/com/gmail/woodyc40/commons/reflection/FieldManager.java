@@ -23,12 +23,21 @@ package com.gmail.woodyc40.commons.reflection;
 
 import java.lang.reflect.Field;
 
+/**
+ * <code>Interface</code> for weak access to field get/set methods
+ *
+ * <p>
+ * Used to access the field that is represented by this <code>class</code>
+ *
+ * <p>
+ * Should be faster than conventional Reflection API
+ */
 public interface FieldManager {
     /**
      * Sets the value of the field
      *
      * @param inst instance of the object to set. <code>null</code> for <code>static</code> fields.
-     * @param val the value to set the field as
+     * @param val  the value to set the field as
      */
     public void set(Object inst, Object val);
 

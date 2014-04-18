@@ -155,8 +155,7 @@ public class UnsafeProvider {
      * The holder parameter may be null for static fields. In fact, it is set null for this purpose in
      * the method itself, so it will not matter nevertheless.
      *
-     *
-     * @param holder    the instance of the object to acquire the value from.
+     * @param holder the instance of the object to acquire the value from.
      * @return the value of the acquired field from the instance of the holder parameter
      * @throws IllegalArgumentException if a nullable parameter is <code>null</code>
      * @throws NoSuchFieldException     if the field could not be acquired from the holder parameter
@@ -179,11 +178,9 @@ public class UnsafeProvider {
      *
      * </ul>
      *
-     * @param field         the field to put the new value in
-     * @param holder    the instance of the object to set the field in
-     * @param value     the new value of the field
-     * @throws IllegalArgumentException if a nullable parameter is <code>null</code>
-     * @throws NoSuchFieldException     if the field could not be found in the holder parameter
+     * @param field  the field to put the new value in
+     * @param holder the instance of the object to set the field in
+     * @param value  the new value of the field
      */
     public static void setField(Field field, Object holder, Object value) {
         long offset = fieldOffset(field);
@@ -286,10 +283,18 @@ public class UnsafeProvider {
         return PROVIDER.getAddress(normalize(PROVIDER.getInt(object, 4L)) + 12L);
     }
 
-    public static <T> T castSuper(Object main, T superclass) {  // TODO
-        long mainClass = normalize(PROVIDER.getInt(main, 4L));
-        long superclazz = normalize(PROVIDER.getInt(superclass, 4L));
-        PROVIDER.putAddress(mainClass + 32, superclazz);
+    /**
+     * Makes an unsafe cast from main to a superclass wihthout {@link java.lang.ClassCastException}.
+     *
+     * @param main       the <code>class</code> to cast
+     * @param superclass the <code>class</code> to cast main to
+     * @param <T>        the type of superclass to cast to
+     * @return the result of casting main to superclass
+     */
+    public static <T> T castSuper(Object main, T superclass) {
+        PROVIDER.putInt(main, 8L, PROVIDER.getInt(superclass, 8L));
+        if (!((T) main).equals(superclass))
+            PROVIDER.putInt(main, 4L, PROVIDER.getInt(superclass, 4L));
 
         return (T) main;
     }

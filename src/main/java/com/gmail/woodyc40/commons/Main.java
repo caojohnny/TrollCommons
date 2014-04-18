@@ -23,6 +23,11 @@ package com.gmail.woodyc40.commons;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * {@link org.bukkit.plugin.java.JavaPlugin} <code>class</code> representing this plugin utility
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 public class Main extends JavaPlugin {
-
 }

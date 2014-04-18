@@ -23,6 +23,15 @@ package com.gmail.woodyc40.commons.reflection;
 
 import java.lang.reflect.Method;
 
+/**
+ * <code>Interface</code> for weak access to method invocation methods
+ *
+ * <p>
+ * Used to invoke and <code>return</code> the result the method represented by this <code>class</code>
+ *
+ * <p>
+ * Should be faster than conventional Reflection API
+ */
 public interface MethodManager {
     /**
      * Calls the method

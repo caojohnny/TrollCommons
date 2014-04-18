@@ -21,6 +21,12 @@
 
 package com.gmail.woodyc40.commons;
 
+/**
+ * Shortcut methods to throw exceptions if condition is not met
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 public class Checks {
     private Checks() {}
 
@@ -39,8 +45,8 @@ public class Checks {
     /**
      * Throws an {@link IllegalArgumentException} objects provided are not equal to eachother.
      *
-     * @param val0  the first object to check against val1
-     * @param val1  the second comparison value to check against
+     * @param val0 the first object to check against val1
+     * @param val1 the second comparison value to check against
      * @throws IllegalArgumentException when the two values do not match
      */
     public static void match(Object val0, Object val1) {

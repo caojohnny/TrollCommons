@@ -10,8 +10,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:bukkit:1.7.8-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:craftbukkit:1.7.8-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:bukkit:1.7.9-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:craftbukkit:1.7.9-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:1.1" level="project" />
   </component>
 </module>
 

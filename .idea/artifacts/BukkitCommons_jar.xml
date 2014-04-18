@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BukkitCommons:jar">
+    <output-path>E:/Server/ten.java/plugins</output-path>
+    <root id="archive" name="BukkitCommons.jar">
+      <element id="module-output" name="BukkitCommons" />
+    </root>
+  </artifact>
+</component>
