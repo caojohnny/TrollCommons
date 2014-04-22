@@ -19,15 +19,17 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
-
-import org.bukkit.plugin.java.JavaPlugin;
+package com.gmail.woodyc40.commons.reflection.asm;
 
 /**
- * {@link org.bukkit.plugin.java.JavaPlugin} <code>class</code> representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
+ * Used for {@link java.lang.ClassLoader} cast to invoke
  */
-public class Main extends JavaPlugin {
+public interface StaticInvoker {
+    /**
+     * Executes method
+     *
+     * @param args parameters to pass to the method invocation
+     * @return the result of method invocation, null for <code>void</code> methods
+     */
+    public Object invoke(Object[] args);
 }

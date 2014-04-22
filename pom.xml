@@ -44,7 +44,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.gmail.woodyc40.commons.UnsafeProviderTest</mainClass>
+                            <mainClass>com.gmail.woodyc40.commons.reflection.asm.ClassByteCodeTest</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

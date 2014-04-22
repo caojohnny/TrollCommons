@@ -5,7 +5,7 @@
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -158,7 +158,6 @@ public class UnsafeProvider {
      * @param holder the instance of the object to acquire the value from.
      * @return the value of the acquired field from the instance of the holder parameter
      * @throws IllegalArgumentException if a nullable parameter is <code>null</code>
-     * @throws NoSuchFieldException     if the field could not be acquired from the holder parameter
      */
     public static Object acquireField(Field field, Object holder) {
         long offset = fieldOffset(field);

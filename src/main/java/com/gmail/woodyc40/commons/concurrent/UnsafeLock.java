@@ -40,9 +40,9 @@ public abstract class UnsafeLock {
      * <p>
      * Sample usage:
      * <code>
-     *     UnsafeLock lock = UnsafeLock.lockFor(UnsafeLock.newBlockingLock());
-     *     // Critical section
-     *     lock.unlock();
+     * UnsafeLock lock = UnsafeLock.lockFor(UnsafeLock.newBlockingLock());
+     * // Critical section
+     * lock.unlock();
      * </code>
      *
      * @param lock the lock to lock for
@@ -84,11 +84,10 @@ public abstract class UnsafeLock {
          */
         private Thread next() {
             try {
-                currents.get(0);
+                return currents.get(0);
             } catch (ArrayIndexOutOfBoundsException x) {
                 return null;
             }
-            return null;
         }
 
         /**
