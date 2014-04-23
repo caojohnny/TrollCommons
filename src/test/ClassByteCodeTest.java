@@ -1,4 +1,4 @@
-package com.gmail.woodyc40.commons.reflection.asm;
+import com.gmail.woodyc40.commons.reflection.asm.ClassBytecode;
 
 import java.lang.reflect.Method;
 
@@ -13,7 +13,9 @@ public class ClassByteCodeTest {
         method.setAccessible(true);
 
         byte[] bytes = bytecode.writeClassCode();
+        bytecode.getConstantPool().debug();
         Class<?> clazz = (Class<?>) method.invoke(loader, bytes, 0, bytes.length);
+
         loader.loadClass(clazz.getName());
     }
 }

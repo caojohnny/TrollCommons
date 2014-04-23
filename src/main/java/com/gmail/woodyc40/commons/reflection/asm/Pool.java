@@ -5,11 +5,11 @@ import com.gmail.woodyc40.commons.reflection.asm.sun.ClassFileAssembler;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pool {
-    private final Set<ConstantImpl<?>> constantList = new HashSet<>();
+    private final List<ConstantImpl<?>> constantList = new ArrayList<>();
 
     private final Constant<String> utfConst = new Constant<String>(1) {
         @Override
@@ -19,7 +19,7 @@ public class Pool {
     };
 
     private final Constant<Integer> classInfoConst = new Constant<Integer>(7) { // Special case: int takes position
-    // on constantpool
+        // on constantpool
         @Override
         void out(final DataOutputStream stream, final Integer integer) throws IOException {
             stream.writeShort(integer.intValue());
@@ -38,6 +38,10 @@ public class Pool {
     public int newClassInfo(String className) {
         int name = newUTF(className.replace(".", "/"));
         return toList(new ConstantImpl<>(classInfoConst, Integer.valueOf(name)));
+    }
+
+    public void debug() {
+        System.out.println(constantList.size());
     }
 
     public void writeData(ClassFileAssembler assembler) throws IOException {

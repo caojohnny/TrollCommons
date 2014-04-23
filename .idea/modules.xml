@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/src/BukkitCommons.iml" filepath="$PROJECT_DIR$/src/BukkitCommons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BukkitCommons.iml" filepath="$PROJECT_DIR$/BukkitCommons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BukkitCommons.iml" filepath="$PROJECT_DIR$/BukkitCommons.iml" />
       <module fileurl="file://$PROJECT_DIR$/BukkitCommons.iml" filepath="$PROJECT_DIR$/BukkitCommons.iml" />
     </modules>
   </component>

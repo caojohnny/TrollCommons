@@ -67,8 +67,8 @@ public class ClassBytecode {
     private boolean  isInterface;
 
     public ClassBytecode(String className, Class<?> superclass, Class[] interfaces,
-                                              boolean isInterface) {
-       asm.emitMagicAndVersion(); // Magic + version header
+                         boolean isInterface) {
+        asm.emitMagicAndVersion(); // Magic + version header
 
         this.className = className;
         this.superclass = superclass;
