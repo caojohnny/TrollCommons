@@ -3,7 +3,7 @@ jdk:
   - oraclejdk7
 script: "mvn clean deploy --settings .utility/settings.xml"
 after_success:
-  - chmod 777 .utility
+  - chmod 777 ".utility/jd.sh"
   - .utility/jd.sh
 notifications:
   email: false
