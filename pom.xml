@@ -38,11 +38,11 @@
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.8</version>
+                <version>0.9</version>
                 <configuration>
                     <message>Added builds for ${project.version}</message>
                     <noJekyll>true</noJekyll>
-                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <outputDirectory>${project.build.directory}/repo</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <includes><include>**/*</include></includes>
                     <repositoryName>BukkitCommonsBuilds</repositoryName>
