@@ -25,6 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git pull origin gh-pages
 
   git add -A *
+  git-ls-files
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
   git push -fq origin HEAD:gh-pages
 
