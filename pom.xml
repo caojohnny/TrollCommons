@@ -41,7 +41,7 @@
                 <version>0.9</version>
                 <configuration>
                     <message>Added builds for ${project.version}</message>
-                    <outputDirectory>${project.build.directory}/repo</outputDirectory>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
                     <branch>refs/heads/master</branch>
                     <includes>
                         <include>**/*</include>
