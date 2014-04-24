@@ -2,7 +2,7 @@ language: java
 jdk:
   - oraclejdk7
 script: "mvn clean deploy --settings .utility/settings.xml"
-after-script: .utility/jd.sh
+after-success: .utility/jd.sh
 notifications:
   email: false
 env:
