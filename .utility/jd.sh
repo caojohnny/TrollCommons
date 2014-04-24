@@ -14,7 +14,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   # We're gonna make this a proper repo
   cd gh-pages
   git init
-  git remote add origin https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/UtilityLib.git
+  git remote add origin https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git
 
   # Lets commit some files
   cd $TRAVIS_BUILD_DIR
