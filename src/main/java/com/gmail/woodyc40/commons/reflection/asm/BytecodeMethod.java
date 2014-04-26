@@ -3,7 +3,7 @@ package com.gmail.woodyc40.commons.reflection.asm;
 import com.gmail.woodyc40.commons.reflection.asm.sun.ClassFileAssembler;
 
 /**
- * The bytecode representation of a method in Java
+ * The bytecode representation of a method in the JVM
  * 
  * @author AgentTroll
  * @version 1.0
