@@ -25,7 +25,7 @@
 
 package com.gmail.woodyc40.commons.reflection.asm.sun;
 
-class ByteVectorFactory {
+public class ByteVectorFactory {
     static ByteVector create() {
         return new ByteVectorImpl();
     }
