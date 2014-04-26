@@ -2,6 +2,12 @@ package com.gmail.woodyc40.commons.reflection.asm;
 
 import com.gmail.woodyc40.commons.reflection.asm.sun.ClassFileAssembler;
 
+/**
+ * The bytecode representation of a field in the JVM
+ * 
+ * @author AgentTroll
+ * @version 1.0
+ */ 
 public class BytecodeField {
     /**
      * The access modifiers of the field, specified by {@link com.gmail.woodyc40.commons.reflection.asm.Modifiers}
