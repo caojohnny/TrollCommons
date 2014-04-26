@@ -17,9 +17,11 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git remote add origin https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git
 
   # Lets commit some files
+  cd $TRAVIS_BUILD_DIR
   mvn clean javadoc:javadoc
 
   # Prepare the push
+  cd gh-pages
   git pull origin gh-pages
 
   git add *
