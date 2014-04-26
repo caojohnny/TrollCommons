@@ -21,8 +21,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   mvn clean javadoc:javadoc
 
   # Prepare the push
-  cd gh-pages
-  echo $TRAVIS_BUILD_DIR/gh-pages
+  cd target/site/apidocs/gh-pages
   git pull origin gh-pages
 
   git add *
