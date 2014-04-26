@@ -39,11 +39,11 @@ public abstract class UnsafeLock {
      *
      * <p>
      * Sample usage:
-     * <code>
+     * <pre>
      * UnsafeLock lock = UnsafeLock.lockFor(UnsafeLock.newBlockingLock());
      * // Critical section
      * lock.unlock();
-     * </code>
+     * </pre>
      *
      * @param lock the lock to lock for
      * @return the lock that was automatically locked
