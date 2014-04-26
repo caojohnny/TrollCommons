@@ -8,9 +8,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a constant pool in a bytecoded <code>class</code>
+ * 
+ * @author AgentTroll
+ * @version 1.0
+ */ 
 public class Pool {
+    /**
+     * {@link java.util.List} of constants held by the pool
+     */ 
     private final List<ConstantImpl<?>> constantList = new ArrayList<>();
 
+    /**
+     * The template for a UTF8 constant
+     */ 
     private final Constant<String> utfConst = new Constant<String>(1) {
         @Override
         void out(DataOutputStream stream, String string) throws IOException {
@@ -18,6 +30,9 @@ public class Pool {
         }
     };
 
+    /**
+     * The template for an int constant
+     */ 
     private final Constant<Integer> classInfoConst = new Constant<Integer>(7) { // Special case: int takes position
         // on constantpool
         @Override
@@ -26,24 +41,39 @@ public class Pool {
         }
     };
 
+    /**
+     * Pushes a constant implementation to the constant pool
+     * 
+     * @param impl the impementation to push
+     * @return the index of the latest push size of the pool
+     */ 
     private int toList(ConstantImpl<?> impl) {
         constantList.add(impl);
         return constantList.size();
     }
 
+    /**
+     * Pushes a new UTF8 string to the constant pool
+     * 
+     * @param utf the string to add to the pool
+     * @return the index of the string in the pool
+     */ 
     public int newUTF(String utf) {
         return toList(new ConstantImpl<>(utfConst, utf));
     }
 
+    /**
+     * Addes <code>class</code> info referenced by the bytecode builder to the pool
+     * 
+     * @param className the fully qualified name of the <code>class</code>
+     * @return the index of the info in the constant pool
+     */ 
     public int newClassInfo(String className) {
         int name = newUTF(className.replace(".", "/"));
         return toList(new ConstantImpl<>(classInfoConst, Integer.valueOf(name)));
     }
-
-    public void debug() {
-        System.out.println(constantList.size());
-    }
-
+    
+    //TODO
     public void writeData(ClassFileAssembler assembler) throws IOException {
         assembler.emitShort((short) constantList.size());
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
