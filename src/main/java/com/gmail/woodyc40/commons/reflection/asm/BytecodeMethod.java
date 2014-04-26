@@ -2,6 +2,12 @@ package com.gmail.woodyc40.commons.reflection.asm;
 
 import com.gmail.woodyc40.commons.reflection.asm.sun.ClassFileAssembler;
 
+/**
+ * The bytecode representation of a method in Java
+ * 
+ * @author AgentTroll
+ * @version 1.0
+ */ 
 public class BytecodeMethod {
     /**
      * Access flags for the method specified by {@link com.gmail.woodyc40.commons.reflection.asm.Modifiers}
