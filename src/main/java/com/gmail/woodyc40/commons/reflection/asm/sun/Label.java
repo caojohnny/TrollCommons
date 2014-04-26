@@ -35,7 +35,7 @@ import java.util.List;
  * one branch site.
  */
 
-class Label {
+public class Label {
     static class PatchInfo {
         PatchInfo(ClassFileAssembler asm,
                   short instrBCI,
