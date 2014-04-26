@@ -93,7 +93,7 @@ public class UnsafeProvider {
      * of Unsafe is stored, throwing an exception when normal acquisition methods are applied.
      *
      * <p>
-     * This is guaranteed to <strong>not</strong> <code>return null</strong> on the HotSpot JVM
+     * This is guaranteed to <strong>not</strong> <code>return null</code> on the HotSpot JVM
      *
      * @return the Unsafe instance received when this <code>class</code> was loaded.
      * @throws IllegalStateException if the Unsafe instance was not acquired already during load
