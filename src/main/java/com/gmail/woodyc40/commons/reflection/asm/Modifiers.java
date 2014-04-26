@@ -23,11 +23,22 @@ package com.gmail.woodyc40.commons.reflection.asm;
 
 /**
  * Modifier flags for fields, methods, and constructors
+ * 
+ * <p>
+ * Names should be self-explanatory
+ * 
+ * <p>
+ * Combining modifiers works like so:
+ * <pre>
+ * int modPubStatic = Modifiers.ACC_PUBLIC | Modifiers.ACC_STATIC;
+ * </pre>
  *
  * @author AgentTroll
  * @version 1.0
  */
 public class Modifiers {
+    private Modifiers() {}
+    
     // Fields
     public static final int ACC_VOLATILE  = 0x0040;
     public static final int ACC_TRANSIENT = 0x0080;
@@ -48,7 +59,6 @@ public class Modifiers {
     public static final int ACC_VARARGS      = 0x0080;
     public static final int ACC_NATIVE       = 0x0100;
     public static final int ACC_STRICT       = 0x0800;
-
 
     // Classes
     public static final int ACC_SUPER      = 0x0020;
