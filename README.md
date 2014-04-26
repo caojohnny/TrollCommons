@@ -8,4 +8,4 @@ Build stats:
 
 Jar builds: https://github.com/AgentTroll/BukkitCommonsBuilds
 
-Javadocs: http://agenttroll.github.io/BukkitCommons/target/site/apidocs/gh-pages/ (temp link until I can get git directories to work :P)
+Javadocs: http://agenttroll.github.io/BukkitCommons/
