@@ -23,6 +23,9 @@ package com.gmail.woodyc40.commons.reflection.asm;
 
 /**
  * Used for {@link java.lang.ClassLoader} cast to invoke
+ * 
+ * @author AgentTroll
+ * @version 1.0
  */
 public interface StaticInvoker {
     /**
