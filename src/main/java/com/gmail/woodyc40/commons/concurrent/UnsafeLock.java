@@ -15,12 +15,14 @@ import java.util.concurrent.locks.LockSupport;
  * @version 1.0
  */
 public abstract class UnsafeLock {
+    private UnsafeLock() {}
+    
     /**
      * Creates a new lock under condition to block
      *
      * @return a blocking lock
      */
-    public static BlockingLock newBlockingLock() {
+    public static final BlockingLock newBlockingLock() {
         return new BlockingLock();
     }
 
@@ -30,7 +32,7 @@ public abstract class UnsafeLock {
      * @param lock the object to lock
      * @return a monitor acquire semantic lock
      */
-    public static MonitorLock newMonitorLock(Object lock) {
+    public static final MonitorLock newMonitorLock(Object lock) {
         return new MonitorLock(lock);
     }
 
@@ -48,7 +50,7 @@ public abstract class UnsafeLock {
      * @param lock the lock to lock for
      * @return the lock that was automatically locked
      */
-    public static UnsafeLock lockFor(UnsafeLock lock) {
+    public static final UnsafeLock lockFor(UnsafeLock lock) {
         lock.lock();
         return lock;
     }
