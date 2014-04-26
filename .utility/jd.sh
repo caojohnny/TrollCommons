@@ -6,7 +6,7 @@
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   # Set it up
-  cd $HOME
+  cd $TRAVIS_BUILD_DIR
   git config --global user.email "woodyc40@gmail.com"
   git config --global user.name "AgentTroll"
   mkdir gh-pages
@@ -17,14 +17,12 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   git remote add origin https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git
 
   # Lets commit some files
-  cd $TRAVIS_BUILD_DIR
   mvn clean javadoc:javadoc
 
   # Prepare the push
-  cd $HOME/gh-pages
   git pull origin gh-pages
 
-  git add ./
+  git add *
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
   git push -fq origin HEAD:gh-pages
 
