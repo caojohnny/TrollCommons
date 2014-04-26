@@ -30,7 +30,7 @@ package com.gmail.woodyc40.commons.reflection.asm.sun;
  * method accessors.
  */
 
-interface ClassFileConstants {
+public interface ClassFileConstants {
     // Constants
     public static final byte opc_aconst_null = (byte) 0x1;
     public static final byte opc_sipush      = (byte) 0x11;
