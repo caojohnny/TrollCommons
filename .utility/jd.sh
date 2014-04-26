@@ -14,7 +14,6 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   # We're gonna make this a proper repo
   cd gh-pages
   git init
-  git remote add origin https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git
 
   # Lets commit some files
   cd $TRAVIS_BUILD_DIR
@@ -25,7 +24,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   git add *
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
-  git push -fq -u origin gh-pages
+  git push -fq -u https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git HEAD:gh-pages
 
   echo -e "Published JavaDoc.\n" # Done!
 
