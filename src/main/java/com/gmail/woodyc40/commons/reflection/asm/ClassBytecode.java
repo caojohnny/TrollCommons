@@ -195,6 +195,7 @@ public class ClassBytecode {
      * of the method have been modified by the builder prior to addition to the method list
      * 
      * @param method the fully built method instance to add to the method listings
+     */ 
     public void addMethod(BytecodeMethod method) {
         methods.add(method);
     }
