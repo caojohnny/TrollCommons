@@ -25,7 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   git add *
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
-  git push -fq origin HEAD:gh-pages
+  git push -quiet -u origin HEAD:gh-pages
 
   echo -e "Published JavaDoc.\n" # Done!
 
