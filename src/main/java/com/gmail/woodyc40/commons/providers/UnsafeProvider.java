@@ -141,7 +141,7 @@ public class UnsafeProvider {
      * Acquires the raw field value of the specified field of a <code>class</code>.
      *
      * <p>
-     * It may <code>return null</code>. This can happen under two circumstances:
+     * It may <code>return null</code>. This can happen under the following circumstances:
      * <ul>
      *
      * <li>If the field value is <code>null</code> for the particular instance (More common).</li>
