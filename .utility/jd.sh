@@ -20,7 +20,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   mvn clean javadoc:javadoc
 
   # Push!
-  git add target/site/apidocs/gh-pages/*
+  cd gh-pages
+  git add .
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
   git push -fq -u https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/AgentTroll/BukkitCommons.git HEAD:gh-pages
 
