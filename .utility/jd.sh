@@ -22,6 +22,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
   # Prepare the push
   cd gh-pages
+  echo $TRAVIS_BUILD_DIR/gh-pages
   git pull origin gh-pages
 
   git add *
