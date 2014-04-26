@@ -1,6 +1,21 @@
 package com.gmail.woodyc40.commons.reflection.asm;
 
+/**
+ * Utility <code>class</code> to assist with building descriptors for methods and fields
+ * 
+ * @author AgentTroll
+ * @version 1.0
+ */ 
 public class Descriptors {
+    private Descriptors() {}
+    
+    /**
+     * Builds a default descriptor appending a <code>class</code> type to the 
+     * {@link java.lang.StringBuilder}
+     * 
+     * @param desc the descriptor builder to append the type to
+     * @param type the <code>class</code> to append to the builder
+     */ 
     private static void toDesc(StringBuilder desc, Class<?> type) {
         if (type.isArray()) { // arrays
             int len = 1 + type.getName().lastIndexOf("[");
@@ -23,6 +38,13 @@ public class Descriptors {
         }
     }
 
+    /**
+     * Creates a descriptor for a method
+     * 
+     * @param returnType the <code>return class</code> the method will exit with
+     * @param paramTypes the parameters of the method
+     * @return the method descriptor for the <code>return</code> and params
+     */ 
     public static String descMethod(Class<?> returnType, Class[] paramTypes) {
         StringBuilder desc = new StringBuilder();
         desc.append('(');
@@ -37,6 +59,13 @@ public class Descriptors {
         return desc.toString();
     }
 
+    /**
+     * Shortcut method to build a field descriptor, creates a StringBuilder and returns the String
+     * representation
+     * 
+     * @param type the type the field represents
+     * @return the descriptor for the declared type
+     */ 
     public static String descField(Class<?> type) {
         StringBuilder builder = new StringBuilder();
         toDesc(builder, type);
