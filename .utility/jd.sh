@@ -20,9 +20,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   cd $TRAVIS_BUILD_DIR
   mvn clean javadoc:javadoc
 
-  # Prepare the push
+  # Push!
   cd target/site/apidocs/gh-pages
-  git pull origin gh-pages
 
   git add *
   git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
