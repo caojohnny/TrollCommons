@@ -25,7 +25,7 @@
 
 package com.gmail.woodyc40.commons.reflection.asm.sun;
 
-class ByteVectorImpl implements ByteVector {
+public class ByteVectorImpl implements ByteVector {
     private byte[] data;
     private int    pos;
 
