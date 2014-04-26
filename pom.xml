@@ -35,9 +35,11 @@
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
                     <destDir>gh-pages</destDir>        
                 </configuration>
-                <execution>
-      				<id>attach-javadocs</id>
-      			</execution>	
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                    </execution>	
+                </executions>
             </plugin> 
         
             <plugin>
