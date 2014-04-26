@@ -42,9 +42,13 @@ public abstract class UnsafeLock {
      * <p>
      * Sample usage:
      * <pre>
+     * 
      * UnsafeLock lock = UnsafeLock.lockFor(UnsafeLock.newBlockingLock());
+     * 
      * // Critical section
+     * 
      * lock.unlock();
+     * 
      * </pre>
      *
      * @param lock the lock to lock for
