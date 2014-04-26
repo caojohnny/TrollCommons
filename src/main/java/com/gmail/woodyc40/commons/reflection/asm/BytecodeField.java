@@ -24,7 +24,7 @@ public class BytecodeField {
     private final String desc;
 
     /**
-     * Creates a new instnance of a field specifier.
+     * Creates a new instance of a field specifier.
      * 
      * @param name the name of the field to be declared by the bytecode dump
      * @param access the access modifiers of the field, specified by 
