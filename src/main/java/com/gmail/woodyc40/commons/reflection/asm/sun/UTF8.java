@@ -31,7 +31,7 @@ package com.gmail.woodyc40.commons.reflection.asm.sun;
  * Class.newInstance().
  */
 
-class UTF8 {
+public class UTF8 {
     // This encoder is not quite correct.  It does not handle surrogate pairs.
     static byte[] encode(String str) {
         int len = str.length();
