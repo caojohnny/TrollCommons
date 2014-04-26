@@ -56,16 +56,50 @@ public class ClassBytecode {
     // Attributes    -            short
     // Atribute val  -            short name, short data amount, byte data array loop
 
+    /**
+     * The assembly utility from the <code>sun.reflect package</code> 
+     */ 
     private final ClassFileAssembler   asm          = new ClassFileAssembler();
+    /**
+     * The bytecoded constant pool used to reference vars from bytecode
+     */ 
     private final Pool                 constantPool = new Pool();
+    /**
+     * The fields of this <code>class</code>
+     */ 
     private final List<BytecodeField>  fields       = new ArrayList<>();
+    /**
+     * The methods of this <code>class</code>
+     */ 
     private final List<BytecodeMethod> methods      = new ArrayList<>();
 
+    /**
+     * The declared name of the <code>class</code>
+     */ 
     private String   className;
+    /**
+     * The superclass of this <code>class</code>
+     */ 
     private Class<?> superclass;
+    /**
+     * The interfaces <code>implemented</code> by this <code>class</code>
+     */ 
     private Class[]  interfaces;
+    /**
+     * Whether or not this <code>class</code> is an <code>interface</code>
+     */ 
     private boolean  isInterface;
 
+    /**
+     * Creates a new instance of the bytecode builder
+     * 
+     * @param className the name of the <code>class</code>
+     * @param superclass the concrete <code>class</code> that will be <code>extend</code>ed
+     *        by this <code>class</code>. {@link java.lang.Object}.<code>class</code> if none
+     * @param interfaces the concrete <code>inteface</code>s that will be <code>implemented</code>
+     *        by this <code>class</code>, an empty <code>class</code> array if none
+     * @param isInterface whether or not this <code>class</code> is an interface
+     */ 
     public ClassBytecode(String className, Class<?> superclass, Class[] interfaces,
                          boolean isInterface) {
         asm.emitMagicAndVersion(); // Magic + version header
@@ -76,14 +110,33 @@ public class ClassBytecode {
         this.isInterface = isInterface;
     }
 
+    /**
+     * Gets the assembler used to emit bytecode to the builder
+     * 
+     * @return the {@link com.gmail.woodyc40.commons.reflection.asm.sun.ClassFileAssembler} 
+     *         associated with this builder
+     */ 
     public ClassFileAssembler getAssembler() {
         return this.asm;
     }
 
+    /**
+     * Gets the constant listings in the pool used to hold local vars
+     * 
+     * @return the constant pool associated with the builder
+     */ 
     public Pool getConstantPool() {
         return this.constantPool;
     }
 
+    /**
+     * Returns a <code>byte</code> array representing the built class
+     * 
+     * <p>
+     * Array based in order to ensure compatibility
+     * 
+     * @return the <code>byte</code>s representing the bytecode of the built <code>class</code>
+     */ 
     public byte[] writeClassCode() {
         try {
             constantPool.writeData(asm);
@@ -123,10 +176,25 @@ public class ClassBytecode {
         return asm.getData().getData();
     }
 
+    /**
+     * Adds a field to the builder, uses params of the constructor of the representing field
+     * 
+     * <p>
+     * See {@link com.gmail.woodyc40.commons.reflection.asm.BytecodeField} for more details
+     * 
+     * @param fieldName the declared name of the field
+     * @param access the access flags to declare the field as
+     * @param type the type of field the declaration will hold
+     */ 
     public void addField(String fieldName, int access, Class<?> type) {
         fields.add(new BytecodeField(fieldName, access, type));
     }
 
+    /**
+     * Adds a method to the builder, uses a built object in order to ensure that all properties
+     * of the method have been modified by the builder prior to addition to the method list
+     * 
+     * @param method the fully built method instance to add to the method listings
     public void addMethod(BytecodeMethod method) {
         methods.add(method);
     }
