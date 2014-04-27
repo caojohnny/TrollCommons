@@ -154,6 +154,10 @@ public class Pool {
         /**
          * Writes the data of implementations to a stream
          * 
+         * <p>
+         * Differs from the out method since this also writes the tag held by the 
+         * constant identifier
+         * 
          * @param stream the writer to use in serialization
          * @param t the object to put to stream
          */ 
@@ -166,19 +170,54 @@ public class Pool {
          * Template override specific method to write data represented by the holder
          * to the stream
          * 
+         * @param stream the writer to use in serialization
+         * @param t the object to put to stream
          */ 
         abstract void out(DataOutputStream stream, T t) throws IOException;
     }
 
+    /**
+     * Weak access to data attribute writers
+     * 
+     * @author AgentTroll
+     * @version 1.0
+     */ 
     public interface Attr {
+        /**
+         * Assemble the data into the bytecode writer
+         * 
+         * @param assembler the data writer held by the bytecode builder
+         */ 
         public void toData(ClassFileAssembler assembler);
     }
 
+    /**
+     * Code attribute used to identify the <code>class</code> source name
+     * 
+     * @author AgentTroll
+     * @version 1.0
+     */ 
     public static class SourceAttr implements Attr {
+        /**
+         * The JVM tag name for this attribute
+         */ 
         private final String tag = "SourceFile";
+        /**
+         * The temporary pool source to write the attribute data to
+         */ 
         private final Pool   def;
+        /**
+         * The data held for the attribute
+         */ 
         private final byte[] data;
 
+        /**
+         * Creates a new source attribution for a <code>class</code> bytecode
+         * 
+         * @param pool the constant pool used by the bytecode builder
+         * @param name the source name of the <code>class</code>, usually
+         *        the unqualified name followed by <code>.java</code>
+         */ 
         public SourceAttr(Pool pool, String name) {
             this.def = pool;
             int index = pool.newUTF(name);
@@ -188,6 +227,9 @@ public class Pool {
             data = bvalue;
         }
 
+        /**
+         * {@inheritDoc}
+         */ 
         public void toData(ClassFileAssembler assembler) {
             assembler.emitShort((short) def.newUTF(tag));
             assembler.emitShort((short) data.length);
@@ -197,13 +239,51 @@ public class Pool {
     }
 
     public static class CodeAttr implements Attr {
+        /**
+         * The JVM tag name for this attribute
+         */ 
         private final String tag = "Code";
+        /**
+         * The temporary pool source to write the attribute data to
+         */ 
         private final Pool   def;
+        /**
+         * The data held for the attribute
+         */ 
         private final byte[] data;
 
+        /**
+         * As found in the JVM spec:
+         * 
+         * " the maximum depth of the operand stack of this method (§2.6.2) 
+         * at any point during execution of the method."
+         */ 
         private final int maxStack;
+        /**
+         * As found in the JVM spec:
+         * 
+         * " the number of local variables in the local variable array allocated 
+         * upon invocation of this method (§2.6.1), including the local variables 
+         * used to pass parameters to the method on its invocation"
+         * 
+         * <p>
+         * The greatest local variable index for a value of type long or double is 
+         * max_locals - 2. The greatest local variable index for a value of any other 
+         * type is max_locals - 1. (JVM spec)
+         */ 
         private final int maxLocals;
 
+        /**
+         * Builds a new code attribution for use with method body call stacks
+         * 
+         * @param pool the constant pool used by the bytecode builder
+         * @param stack refer to max_stack of the 
+         *        <a href=http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.7.3>JVM spec</a>
+         * @param locals refer to max_locals of the 
+         *        <a href=http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.7.3>JVM spec</a>
+         * @param assembler the pre-definded bytecode builder with loaded opcode calls
+         *        to define the method call
+         */ 
         public CodeAttr(Pool pool, int stack, int locals, ClassFileAssembler assembler) {
             this.def = pool;
 
@@ -213,6 +293,9 @@ public class Pool {
             data = assembler.getData().getData();
         }
 
+        /**
+         * {@inheritDoc}
+         */
         public void toData(ClassFileAssembler assembler) {
             assembler.emitShort((short) def.newUTF(tag));
 
