@@ -73,7 +73,11 @@ public class Pool {
         return toList(new ConstantImpl<>(classInfoConst, Integer.valueOf(name)));
     }
     
-    //TODO
+    /**
+     * Writes the constant pool into the bytecode assembler
+     * 
+     * @param assembler the assembler used by the bytecode builder to add code to the file
+     */ 
     public void writeData(ClassFileAssembler assembler) throws IOException {
         assembler.emitShort((short) constantList.size());
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -89,32 +93,80 @@ public class Pool {
         stream.close();
     }
 
+    /**
+     * Value holder for Constant serializer templates
+     * 
+     * @param <T> the type of template value to hold
+     * @author AgentTroll
+     * @version 1.0
+     */ 
     private class ConstantImpl<T> {
+        /**
+         * The value held by the implementation
+         */ 
         private final T           t;
+        /**
+         * The template used to serialize the data held 
+         */
         private final Constant<T> template;
 
+        /**
+         * Creates a new value holder off of a template
+         * 
+         * @param template the serializer reference to assist with sending data
+         * @param t the value to hold
+         */ 
         public ConstantImpl(Constant<T> template, T t) {
             this.t = t;
             this.template = template;
         }
 
+        /**
+         * Writes the data held by this <code>class</code>
+         */ 
         public void write(DataOutputStream output) throws IOException {
             template.write(output, this.t);
         }
     }
 
+    /**
+     * A serializer template used to send data to a <code>byte</code> stream
+     * 
+     * @param <T> the value to hold
+     * @author AgentTroll
+     * @version 1.0
+     */ 
     private abstract class Constant<T> {
+        /**
+         * JVM <code>int</code> that signifies the type of Constant in the pool
+         */ 
         final int tag;
 
+        /**
+         * Builds a new template based off of the JVM tag for a specifed tag
+         * 
+         * @param tag the JVM <code>int</code> used to identify the constant type
+         */ 
         public Constant(int tag) {
             this.tag = tag;
         }
 
+        /**
+         * Writes the data of implementations to a stream
+         * 
+         * @param stream the writer to use in serialization
+         * @param t the object to put to stream
+         */ 
         public void write(DataOutputStream stream, T t) throws IOException {
             stream.writeByte((byte) this.tag);
             out(stream, t);
         }
 
+        /**
+         * Template override specific method to write data represented by the holder
+         * to the stream
+         * 
+         */ 
         abstract void out(DataOutputStream stream, T t) throws IOException;
     }
 
