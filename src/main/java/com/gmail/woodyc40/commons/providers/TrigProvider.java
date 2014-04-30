@@ -31,6 +31,8 @@ import java.util.Map;
  * @version 1.0
  */
 public class TrigProvider {
+    private TrigProvider() {}
+ 
     /**
      * Sin values
      */
