@@ -36,26 +36,21 @@ import sun.reflect.ReflectionFactory;
  * @version 1.0
  */
 public class MethodImpl implements MethodManager { // TODO cache
-    private final Method method = null;
-
-    public MethodImpl(Class<?> c, String name, Object[] Params) {
-        try {
-            this.method = c.getDeclared
-    }
-
-
+    private final Method method;
+    
     /**
-     * Builds a new instance of this class by shallow field search
+     * Builds a new instance of this class by shallow method search
      *
-     * @param name   the name of the declared field in the holder
-     * @param holder the <code>class</code> that contains the field
-     * @see com.gmail.woodyc40.commons.reflection.ReflectionTool#forField(String, Class)
+     * @param name   the name of the declared method in the holder
+     * @param holder the <code>class</code> that contains the method
+     * @param params the parameter list of the method
+     * TODO pull up method to ReflectionTool
      */
-    public FieldImpl(String name, Class<?> holder) {
+    public MethodImpl(String name, Class<?> holder, Object[] params) {
         try {
-            this.field = ReflectionTool.forField(name, holder);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            this.method = holder.getDeclaredMethod(name, params);
+        } catch (NoSuchMethodException x) {
+            x.printStackTrace();
         }
     }
 
@@ -64,7 +59,7 @@ public class MethodImpl implements MethodManager { // TODO cache
      *
      * @param field the Method to wrap
      */
-    public FieldImpl(Method method) {
+    public MethodImpl(Method method) {
         this.method = method;
     }
 
@@ -73,7 +68,7 @@ public class MethodImpl implements MethodManager { // TODO cache
      */
     public Object invoke(Object inst, Object[] args) {
         ReflectionFactory factory = ReflectionFactory.getReflectionFactory();
-        MethodAccessor method = factory.newMethodAccessor(method); // TODO Pull up to constructor!
+        MethodAccessor method = factory.newMethodAccessor(this.method); // TODO Pull up to constructor!
         try {
             method.invoke(inst, args);
         } catch (IllegalArgumentException | InvocationTargetException x) {
@@ -85,6 +80,6 @@ public class MethodImpl implements MethodManager { // TODO cache
      * {@inheritDoc}
      */
     public Method raw() {
-        return method;
+        return this.method;
     }
 }
