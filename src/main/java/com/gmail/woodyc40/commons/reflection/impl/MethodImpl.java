@@ -46,7 +46,7 @@ public class MethodImpl implements MethodManager { // TODO cache
      * @param params the parameter list of the method
      * TODO pull up method to ReflectionTool
      */
-    public MethodImpl(String name, Class<?> holder, Object[] params) {
+    public MethodImpl(String name, Class<?> holder, Class[] params) {
         try {
             this.method = holder.getDeclaredMethod(name, params);
         } catch (NoSuchMethodException x) {
@@ -57,7 +57,7 @@ public class MethodImpl implements MethodManager { // TODO cache
     /**
      * Wraps the Method for management by this implementation
      *
-     * @param field the Method to wrap
+     * @param method the Method to wrap
      */
     public MethodImpl(Method method) {
         this.method = method;
