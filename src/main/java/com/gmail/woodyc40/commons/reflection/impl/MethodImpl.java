@@ -23,8 +23,11 @@ package com.gmail.woodyc40.commons.reflection;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import com.gmail.woodyc40.commons.reflection.MethodManager;
-import sun.reflect.*;
+
+import sun.reflect.MethodAccessor;
+import sun.reflect.ReflectionFactory;
 
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.MethodManager} used for fast reflection
@@ -32,8 +35,38 @@ import sun.reflect.*;
  * @author AgentTroll
  * @version 1.0
  */
-public interface MethodImpl implements MethodManager { // TODO cache
+public class MethodImpl implements MethodManager { // TODO cache
     private final Method method = null;
+
+    public MethodImpl(Class<?> c, String name, Object[] Params) {
+        try {
+            this.method = c.getDeclared
+    }
+
+
+    /**
+     * Builds a new instance of this class by shallow field search
+     *
+     * @param name   the name of the declared field in the holder
+     * @param holder the <code>class</code> that contains the field
+     * @see com.gmail.woodyc40.commons.reflection.ReflectionTool#forField(String, Class)
+     */
+    public FieldImpl(String name, Class<?> holder) {
+        try {
+            this.field = ReflectionTool.forField(name, holder);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Wraps the Method for management by this implementation
+     *
+     * @param field the Method to wrap
+     */
+    public FieldImpl(Method method) {
+        this.method = method;
+    }
 
     /**
      * {@inheritDoc}
