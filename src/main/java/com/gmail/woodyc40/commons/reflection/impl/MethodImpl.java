@@ -36,7 +36,7 @@ import sun.reflect.ReflectionFactory;
  * @version 1.0
  */
 public class MethodImpl implements MethodManager { // TODO cache
-    private final Method method;
+    private Method method;
     
     /**
      * Builds a new instance of this class by shallow method search
@@ -70,10 +70,12 @@ public class MethodImpl implements MethodManager { // TODO cache
         ReflectionFactory factory = ReflectionFactory.getReflectionFactory();
         MethodAccessor method = factory.newMethodAccessor(this.method); // TODO Pull up to constructor!
         try {
-            method.invoke(inst, args);
+            return method.invoke(inst, args);
         } catch (IllegalArgumentException | InvocationTargetException x) {
             x.printStackTrace();
         }
+        
+        return null;
     }
 
     /**
