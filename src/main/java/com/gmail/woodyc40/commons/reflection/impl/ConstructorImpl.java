@@ -24,7 +24,7 @@ package com.gmail.woodyc40.commons.reflection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Constructor;
 
-import com.gmail.woodyc40.commons.reflection.ConstrcutorManager;
+import com.gmail.woodyc40.commons.reflection.ConstructorManager;
 
 import sun.reflect.ConstructorAccessor;
 import sun.reflect.ReflectionFactory;
@@ -35,7 +35,7 @@ import sun.reflect.ReflectionFactory;
  * @author AgentTroll
  * @version 1.0
  */
-public class ConstructorImpl implements CondtructorManager { // TODO cache
+public class ConstructorImpl implements ConstructorManager { // TODO cache
     private Constructor<?> constructor;
     
     /**
@@ -59,7 +59,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
      * @param method the Method to wrap
      */
     public ConstructorImpl(Constructor<?> constructor) {
-        this.constuctor = constructor;
+        this.constructor = constructor;
     }
 
     /**
@@ -67,7 +67,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
      */
     public Object createInstance(Object[] args) {
         ReflectionFactory factory = ReflectionFactory.getReflectionFactory(); // TODO pull up
-        ConstructorAccessor method = factory.newConstructorAccessor(this.method); // TODO Pull up to constructor!
+        ConstructorAccessor method = factory.newConstructorAccessor(this.constructor); // TODO Pull up to constructor!
         try {
             return method.newInstance(args);
         } catch (IllegalArgumentException | InvocationTargetException | InstantiationException x) {
@@ -80,7 +80,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
     /**
      * {@inheritDoc}
      */
-    public Constrcutor<?> raw() {
+    public Constructor<?> raw() {
         return this.constructor;
     }
 }
