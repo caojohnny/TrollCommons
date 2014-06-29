@@ -45,7 +45,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
      * @param params the parameter list of the method
      * TODO pull up method to ReflectionTool
      */
-    public MethodImpl(Class<?> holder, Class[] params) {
+    public ConstructorImpl(Class<?> holder, Class[] params) {
         try {
             this.constructor = holder.getDeclaredConstructor(params);
         } catch (NoSuchMethodException x) {
@@ -58,7 +58,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
      *
      * @param method the Method to wrap
      */
-    public MethodImpl(Constructor<?> constructor) {
+    public ConstructorImpl(Constructor<?> constructor) {
         this.constuctor = constructor;
     }
 
@@ -70,7 +70,7 @@ public class ConstructorImpl implements CondtructorManager { // TODO cache
         ConstructorAccessor method = factory.newConstructorAccessor(this.method); // TODO Pull up to constructor!
         try {
             return method.newInstance(args);
-        } catch (IllegalArgumentException | InvocationTargetException InstantiationException x) {
+        } catch (IllegalArgumentException | InvocationTargetException | InstantiationException x) {
             x.printStackTrace();
         }
         
