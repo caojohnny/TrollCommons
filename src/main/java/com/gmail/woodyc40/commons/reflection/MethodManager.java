@@ -24,28 +24,33 @@ package com.gmail.woodyc40.commons.reflection;
 import java.lang.reflect.Method;
 
 /**
- * <code>Interface</code> for weak access to method invocation methods
- *
- * <p>
- * Used to invoke and <code>return</code> the result the method represented by this <code>class</code>
- *
- * <p>
+ * {@code Interface} for weak access to method invocation methods
+ * <p/>
+ * <p/>
+ * Used to invoke and {@code return} the result the method represented by this {@code class}
+ * <p/>
+ * <p/>
  * Should be faster than conventional Reflection API
+ *
+ * @param <Declaring> the {@code class} type declaring the method
+ * @param <T>         the type the method returns
+ * @author AgentTroll
+ * @version 1.0
  */
-public interface MethodManager {
+public interface MethodManager<Declaring, T> {
     /**
      * Calls the method
      *
-     * @param inst instance of the <code>class</code> containing the method, <code>null</code> for <code>static</code>s
+     * @param inst instance of the {@code class} containing the method, {@code null} for {@code static}s
      * @param args arguments the pass to the method invocation
      * @return the result of the method call
      */
-    public Object invoke(Object inst, Object[] args);
+    T invoke(Declaring inst, Object... args);
 
     /**
-     * The wrapped method contained by this <code>class</code>
+     * The wrapped method contained by this {@code class}
      *
-     * @return the method that this <code>class</code> represents
+     * @return the method that this {@code class} represents
      */
-    public Method raw();
+    Method raw();
 }

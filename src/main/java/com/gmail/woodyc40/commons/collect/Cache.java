@@ -19,15 +19,11 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.collect;
 
-import org.bukkit.plugin.java.JavaPlugin;
+public interface Cache<K, V> {
+    //TODO doc
+    V lookup(K k);
 
-/**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
- */
-public class Main extends JavaPlugin {
+    V insert(K k, V v);
 }

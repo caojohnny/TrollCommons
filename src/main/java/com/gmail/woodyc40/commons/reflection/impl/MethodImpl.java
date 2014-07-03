@@ -19,40 +19,25 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons.reflection;
+package com.gmail.woodyc40.commons.reflection.impl;
+
+import com.gmail.woodyc40.commons.reflection.MethodManager;
+import sun.reflect.MethodAccessor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import com.gmail.woodyc40.commons.reflection.MethodManager;
-
-import sun.reflect.MethodAccessor;
-import sun.reflect.ReflectionFactory;
-
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.MethodManager} used for fast reflection
  *
+ * @param <D> the {@code class} type declaring the method
+ * @param <T> the type the method returns
  * @author AgentTroll
  * @version 1.0
  */
-public class MethodImpl implements MethodManager { // TODO cache
-    private Method method;
-    
-    /**
-     * Builds a new instance of this class by shallow method search
-     *
-     * @param name   the name of the declared method in the holder
-     * @param holder the <code>class</code> that contains the method
-     * @param params the parameter list of the method
-     * TODO pull up method to ReflectionTool
-     */
-    public MethodImpl(String name, Class<?> holder, Class[] params) {
-        try {
-            this.method = holder.getDeclaredMethod(name, params);
-        } catch (NoSuchMethodException x) {
-            x.printStackTrace();
-        }
-    }
+class MethodImpl<D, T> implements MethodManager<D, T> {
+    private final Method         method;
+    private final MethodAccessor accessor;
 
     /**
      * Wraps the Method for management by this implementation
@@ -61,27 +46,26 @@ public class MethodImpl implements MethodManager { // TODO cache
      */
     public MethodImpl(Method method) {
         this.method = method;
+        this.accessor = ReflectAccess.sunReflectImpl().newMethodAccessor(this.method);
     }
 
     /**
      * {@inheritDoc}
      */
-    public Object invoke(Object inst, Object[] args) {
-        ReflectionFactory factory = ReflectionFactory.getReflectionFactory();
-        MethodAccessor method = factory.newMethodAccessor(this.method); // TODO Pull up to constructor!
+    @Override public T invoke(D inst, Object... args) {
         try {
-            return method.invoke(inst, args);
+            return (T) this.accessor.invoke(inst, args);
         } catch (IllegalArgumentException | InvocationTargetException x) {
             x.printStackTrace();
         }
-        
+
         return null;
     }
 
     /**
      * {@inheritDoc}
      */
-    public Method raw() {
+    @Override public Method raw() {
         return this.method;
     }
 }

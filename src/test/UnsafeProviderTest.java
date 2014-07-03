@@ -1,8 +1,10 @@
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import com.gmail.woodyc40.commons.reflection.ReflectionTool;
 
-public class UnsafeProviderTest {
-    public static void main(String[] args) throws NoSuchFieldException {
+public final class UnsafeProviderTest {
+    private UnsafeProviderTest() {}
+
+    public static void main(String... args) {
         // Reflection - Prints
         // sun.misc.Unsafe
         System.out.println(UnsafeProvider.acquireField(ReflectionTool.forField("PROVIDER", UnsafeProvider.class), null)

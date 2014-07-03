@@ -18,14 +18,12 @@
  *
  * Contact: woodyc40 (at) gmail (dot) com
  */
- 
+
 package com.gmail.woodyc40.commons.concurrent;
 
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.LockSupport;
 
@@ -37,14 +35,14 @@ import java.util.concurrent.locks.LockSupport;
  */
 public abstract class UnsafeLock {
     private UnsafeLock() {}
-    
+
     /**
      * Creates a new lock under condition to block
      *
      * @return a blocking lock
      */
-    public static final BlockingLock newBlockingLock() {
-        return new BlockingLock();
+    public static UnsafeLock.BlockingLock newBlockingLock() {
+        return new UnsafeLock.BlockingLock();
     }
 
     /**
@@ -53,32 +51,42 @@ public abstract class UnsafeLock {
      * @param lock the object to lock
      * @return a monitor acquire semantic lock
      */
-    public static final MonitorLock newMonitorLock(Object lock) {
-        return new MonitorLock(lock);
+    public static UnsafeLock.MonitorLock newMonitorLock(Object lock) {
+        return new UnsafeLock.MonitorLock(lock);
     }
 
     /**
      * Returns a locked lock, useful for one-line create and lock
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * Sample usage:
      * <pre>
-     * 
+     *
      * UnsafeLock lock = UnsafeLock.lockFor(UnsafeLock.newBlockingLock());
-     * 
+     *
      * // Critical section
-     * 
+     *
      * lock.unlock();
-     * 
+     *
      * </pre>
      *
      * @param lock the lock to lock for
      * @return the lock that was automatically locked
      */
-    public static final UnsafeLock lockFor(UnsafeLock lock) {
+    public static UnsafeLock lockFor(UnsafeLock lock) {
         lock.lock();
         return lock;
     }
+
+    /**
+     * Acquires the monitor for the current lock
+     */
+    public abstract void lock();
+
+    /**
+     * Releases the lock or unblocks the critical section
+     */
+    public abstract void unlock();
 
     /**
      * Lock that will block for other entry threads in the critical section
@@ -86,7 +94,7 @@ public abstract class UnsafeLock {
      * @author AgentTroll
      * @version 1.0
      */
-    private final static class BlockingLock extends UnsafeLock {
+    private static final class BlockingLock extends UnsafeLock {
         /**
          * Whether or not this lock has blocked the critical section
          */
@@ -95,13 +103,13 @@ public abstract class UnsafeLock {
          * The thread that is currently holding the monitor
          */
         private final List<Thread>  currents = Collections.
-                synchronizedList(new ArrayList<Thread>());
+                                                                  synchronizedList(new ArrayList<>());
 
         /**
          * Builds lock for current thread
          */
         public BlockingLock() {
-            currents.add(Thread.currentThread());
+            this.currents.add(Thread.currentThread());
         }
 
         /**
@@ -111,7 +119,7 @@ public abstract class UnsafeLock {
          */
         private Thread next() {
             try {
-                return currents.get(0);
+                return this.currents.get(0);
             } catch (ArrayIndexOutOfBoundsException x) {
                 return null;
             }
@@ -122,14 +130,14 @@ public abstract class UnsafeLock {
          */
         @Override
         public void lock() {
-            if (locked.get()) return;
-            locked.set(true);
+            if (this.locked.get()) return;
+            this.locked.set(true);
 
             Thread t = Thread.currentThread();
             Thread block;
 
-            while ((block = next()) != null &&
-                    block != t)
+            while ((block = this.next()) != null &&
+                   !block.equals(t))
                 LockSupport.park(this);
         }
 
@@ -138,13 +146,13 @@ public abstract class UnsafeLock {
          */
         @Override
         public void unlock() {
-            if (!locked.get()) return;
+            if (!this.locked.get()) return;
 
-            LockSupport.unpark(next());
-            currents.remove(next());
+            LockSupport.unpark(this.next());
+            this.currents.remove(this.next());
 
-            if (next() == null)
-                locked.set(false);
+            if (this.next() == null)
+                this.locked.set(false);
         }
     }
 
@@ -178,10 +186,10 @@ public abstract class UnsafeLock {
          */
         @Override
         public void lock() {
-            if (locked.get()) return;
-            locked.set(true);
+            if (this.locked.get()) return;
+            this.locked.set(true);
 
-            UnsafeProvider.monitor(true, lock);
+            UnsafeProvider.monitor(true, this.lock);
         }
 
         /**
@@ -189,20 +197,10 @@ public abstract class UnsafeLock {
          */
         @Override
         public void unlock() {
-            if (!locked.get()) return;
-            locked.set(false);
+            if (!this.locked.get()) return;
+            this.locked.set(false);
 
-            UnsafeProvider.monitor(false, lock);
+            UnsafeProvider.monitor(false, this.lock);
         }
     }
-
-    /**
-     * Acquires the monitor for the current lock
-     */
-    public abstract void lock();
-
-    /**
-     * Releases the lock or unblocks the critical section
-     */
-    public abstract void unlock();
 }

@@ -19,15 +19,20 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.misc;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
- */
-public class Main extends JavaPlugin {
+public class ComparisonUnit {
+    private final List<BenchmarkUnit> unitList = new ArrayList<>();
+
+    public ComparisonUnit append(BenchmarkUnit unit) {
+        this.unitList.add(unit);
+        return this;
+    }
+
+    public List<BenchmarkUnit> getUnitList() {
+        return this.unitList;
+    }
 }

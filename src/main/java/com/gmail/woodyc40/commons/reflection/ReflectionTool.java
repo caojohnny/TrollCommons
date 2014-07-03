@@ -21,9 +21,9 @@
 
 package com.gmail.woodyc40.commons.reflection;
 
-import com.gmail.woodyc40.commons.Checks;
+import com.gmail.woodyc40.commons.misc.Checks;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.*;
 
 /**
  * Utility methods to fetch fields and checked Reflection using {@link com.gmail.woodyc40.commons.reflection} package
@@ -34,16 +34,17 @@ import java.lang.reflect.Field;
  * @see com.gmail.woodyc40.commons.reflection.FieldManager
  * @see com.gmail.woodyc40.commons.reflection.MethodManager
  */
-public class ReflectionTool {
+public final class ReflectionTool {
+    private ReflectionTool() {}
+
     /**
-     * Makes a <code>class</code> search for a field by name
+     * Makes a {@code class} search for a field by name
      *
-     * @param name   name of the field declared by the <code>class</code>
-     * @param holder the <code>class</code> containing the field
+     * @param name   name of the field declared by the {@code class}
+     * @param holder the {@code class} containing the field
      * @return the {@link java.lang.reflect.Field} object held by name
-     * @throws NoSuchFieldException if the field is not found in the <code>class</code>
      */
-    public static Field forField(String name, Class<?> holder) throws NoSuchFieldException {
+    public static Field forField(String name, Class<?> holder) {
         Checks.notNull(name, "Cannot find null field");
         Checks.notNull(holder, "Cannot find " + name + " in class null");
 
@@ -53,24 +54,23 @@ public class ReflectionTool {
             e.printStackTrace();
         }
 
-        throw new NoSuchFieldException("Could not find " + name + " in class " + holder.getName());
+        return null;
     }
 
     /**
-     * Makes a <code>class</code> and all of its superclass BUT {@link java.lang.Object}.class search for a
-     * field by name
+     * Makes a {@code class} and all of its superclass BUT {@link java.lang.Object}.class search for a field by name
      *
-     * @param name   name of the field declared by the <code>class</code>
-     * @param holder the <code>class</code> containing the field
+     * @param name   name of the field declared by the {@code class}
+     * @param holder the {@code class} containing the field
      * @return the {@link java.lang.reflect.Field} object held by name
-     * @throws NoSuchFieldException if the field is not found in the <code>class</code>
      */
-    public static Field forFieldDeep(String name, Class<?> holder) throws NoSuchFieldException {
+    public static Field forFieldDeep(String name, Class<?> holder) {
         Checks.notNull(name, "Cannot find null field");
         Checks.notNull(holder, "Cannot find " + name + " in class null");
 
-        for (Class<?> current = holder; holder.getSuperclass()
-                != Object.class; holder = holder.getSuperclass()) {
+        for (Class<?> current = holder;
+             !current.getSuperclass().equals(Object.class);
+             current = current.getSuperclass()) {
             try {
                 return current.getDeclaredField(name);
             } catch (NoSuchFieldException e) {
@@ -78,6 +78,97 @@ public class ReflectionTool {
             }
         }
 
-        throw new NoSuchFieldException("Could not find " + name + " in class " + holder.getName());
+        return null;
+    }
+
+    /**
+     * Makes a {@code class} search for a method by name
+     *
+     * @param name   name of the method declared by the {@code class}
+     * @param holder the {@code class} containing the method
+     * @param params the parameters of the method
+     * @return the {@link java.lang.reflect.Method} object held by name
+     */
+    public static Method forMethod(String name, Class<?> holder, Class<?>... params) {
+        Checks.notNull(name, "Cannot find null field");
+        Checks.notNull(holder, "Cannot find " + name + " in class null");
+        Checks.notNull(params, "Params cannot be null, try an empty array instead");
+
+        try {
+            return holder.getDeclaredMethod(name, params);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Makes a {@code class} search AND all superclasses until the loop reaches {@link java.lang.Object} for a method by
+     * name
+     *
+     * @param name   name of the method declared by the {@code class}
+     * @param holder the {@code class} containing the method
+     * @param params the parameters of the method
+     * @return the {@link java.lang.reflect.Method} object held by name
+     */
+    public static Method forMethodDeep(String name, Class<?> holder, Class<?>... params) {
+        Checks.notNull(name, "Cannot find null field");
+        Checks.notNull(holder, "Cannot find " + name + " in class null");
+        Checks.notNull(params, "Params cannot be null, try an empty array instead");
+
+        for (Class<?> current = holder;
+             !current.getSuperclass().equals(Object.class);
+             current = current.getSuperclass()) {
+            try {
+                return current.getDeclaredMethod(name, params);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Makes a {@code class} search for a constructor by name
+     *
+     * @param holder the {@code class} containing the constructor
+     * @return the {@link java.lang.reflect.Constructor} object held by holder
+     */
+    public static <T> Constructor<T> forConstruct(Class<T> holder, Class<?>... params) {
+        Checks.notNull(holder, "Cannot find constructor in class null");
+        Checks.notNull(params, "Params cannot be null, try an empty array instead");
+
+        try {
+            return holder.getDeclaredConstructor(params);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Makes a {@code class} search AND all superclasses excluding {@link java.lang.Object} for a constructor by name
+     *
+     * @param holder the {@code class} containing the constructor
+     * @return the {@link java.lang.reflect.Constructor} object held by holder
+     */
+    public static Constructor<?> forConstructDeep(Class<?> holder, Class<?>... params) {
+        Checks.notNull(holder, "Cannot find constructor in class null");
+        Checks.notNull(params, "Params cannot be null, try an empty array instead");
+
+        for (Class<?> current = holder;
+             !current.getSuperclass().equals(Object.class);
+             current = current.getSuperclass()) {
+            try {
+                return current.getDeclaredConstructor(params);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
     }
 }

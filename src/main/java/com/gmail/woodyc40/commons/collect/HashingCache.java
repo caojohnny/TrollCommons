@@ -19,15 +19,20 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.collect;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
- */
-public class Main extends JavaPlugin {
+// TODO doc
+public class HashingCache<K, V> implements Cache<K, V> {
+    private final Map<K, V> mapping = new HashMap<>();
+
+    @Override public V lookup(K k) {
+        return this.mapping.get(k);
+    }
+
+    @Override public V insert(K k, V v) {
+        return this.mapping.put(k, v);
+    }
 }

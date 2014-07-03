@@ -24,22 +24,27 @@ package com.gmail.woodyc40.commons.reflection;
 import java.lang.reflect.Field;
 
 /**
- * <code>Interface</code> for weak access to field get/set methods
- *
- * <p>
- * Used to access the field that is represented by this <code>class</code>
- *
- * <p>
+ * {@code Interface} for weak access to field get/set methods
+ * <p/>
+ * <p/>
+ * Used to access the field that is represented by this {@code class}
+ * <p/>
+ * <p/>
  * Should be faster than conventional Reflection API
+ *
+ * @param <Declaring> the {@code class} type declaring the field
+ * @param <T>         the type the field represents
+ * @author AgentTroll
+ * @version 1.0
  */
-public interface FieldManager {
+public interface FieldManager<Declaring, T> {
     /**
      * Sets the value of the field
      *
-     * @param inst instance of the object to set. <code>null</code> for <code>static</code> fields.
+     * @param inst instance of the object to set. {@code null} for {@code static} fields.
      * @param val  the value to set the field as
      */
-    public void set(Object inst, Object val);
+    void set(Declaring inst, T val);
 
     /**
      * Gets the value of the field
@@ -47,12 +52,12 @@ public interface FieldManager {
      * @param inst instance of the object to get the field from
      * @return the value of the field set by the current instance of the holding object
      */
-    public Object get(Object inst);
+    Object get(Declaring inst);
 
     /**
-     * The actual {@link java.lang.reflect.Field} represented by this <code>class</code>
+     * The actual {@link java.lang.reflect.Field} represented by this {@code class}
      *
      * @return the Field object
      */
-    public Field raw();
+    Field raw();
 }

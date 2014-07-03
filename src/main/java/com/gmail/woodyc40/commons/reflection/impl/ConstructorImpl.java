@@ -19,68 +19,52 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons.reflection;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Constructor;
+package com.gmail.woodyc40.commons.reflection.impl;
 
 import com.gmail.woodyc40.commons.reflection.ConstructorManager;
-
 import sun.reflect.ConstructorAccessor;
-import sun.reflect.ReflectionFactory;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.ConstructorManager} used for fast reflection
  *
+ * @param <T> the type the constructor creates an instance of
  * @author AgentTroll
  * @version 1.0
  */
-public class ConstructorImpl implements ConstructorManager { // TODO cache
-    private Constructor<?> constructor;
-    
-    /**
-     * Builds a new instance of this class by shallow constructor search
-     *
-     * @param holder the <code>class</code> that contains the method
-     * @param params the parameter list of the method
-     * TODO pull up method to ReflectionTool
-     */
-    public ConstructorImpl(Class<?> holder, Class[] params) {
-        try {
-            this.constructor = holder.getDeclaredConstructor(params);
-        } catch (NoSuchMethodException x) {
-            x.printStackTrace();
-        }
-    }
+class ConstructorImpl<T> implements ConstructorManager<T> {
+    private final Constructor<T>      constructor;
+    private final ConstructorAccessor accessor;
 
     /**
      * Wraps the Consrructor for management by this implementation
      *
-     * @param method the Method to wrap
+     * @param constructor the Constructor to wrap
      */
-    public ConstructorImpl(Constructor<?> constructor) {
+    public ConstructorImpl(Constructor<T> constructor) {
         this.constructor = constructor;
+        this.accessor = ReflectAccess.sunReflectImpl().newConstructorAccessor(this.constructor);
     }
 
     /**
      * {@inheritDoc}
      */
-    public Object createInstance(Object[] args) {
-        ReflectionFactory factory = ReflectionFactory.getReflectionFactory(); // TODO pull up
-        ConstructorAccessor method = factory.newConstructorAccessor(this.constructor); // TODO Pull up to constructor!
+    @Override public T createInstance(Object... args) {
         try {
-            return method.newInstance(args);
+            return (T) this.accessor.newInstance(args);
         } catch (IllegalArgumentException | InvocationTargetException | InstantiationException x) {
             x.printStackTrace();
         }
-        
+
         return null;
     }
 
     /**
      * {@inheritDoc}
      */
-    public Constructor<?> raw() {
+    @Override public Constructor<T> raw() {
         return this.constructor;
     }
 }

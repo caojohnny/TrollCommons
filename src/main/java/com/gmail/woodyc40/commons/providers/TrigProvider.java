@@ -18,7 +18,7 @@
  *
  * Contact: woodyc40 (at) gmail (dot) com
  */
- 
+
 package com.gmail.woodyc40.commons.providers;
 
 import java.util.HashMap;
@@ -30,9 +30,7 @@ import java.util.Map;
  * @author AgentTroll
  * @version 1.0
  */
-public class TrigProvider {
-    private TrigProvider() {}
- 
+public final class TrigProvider {
     /**
      * Sin values
      */
@@ -48,12 +46,14 @@ public class TrigProvider {
 
     static {
         for (int temp = 0; temp <= 36000; temp++) {
-            double d = temp / 100;
-            sin.put(Double.valueOf(d), Double.valueOf(Math.sin(d)));
-            cos.put(Double.valueOf(d), Double.valueOf(Math.cos(d)));
-            tan.put(Double.valueOf(d), Double.valueOf(Math.tan(d)));
+            double d = (double) (temp / 100);
+            TrigProvider.sin.put(Double.valueOf(d), Double.valueOf(StrictMath.sin(d)));
+            TrigProvider.cos.put(Double.valueOf(d), Double.valueOf(StrictMath.cos(d)));
+            TrigProvider.tan.put(Double.valueOf(d), Double.valueOf(StrictMath.tan(d)));
         }
     }
+
+    private TrigProvider() {}
 
     /**
      * Executes lookup for sine of value
@@ -62,9 +62,7 @@ public class TrigProvider {
      * @return the sine of val
      */
     public static double sin(double val) {
-        double ret = 0.0;
-        ret = sin.get(Double.valueOf(val));
-        return ret;
+        return TrigProvider.sin.get(Double.valueOf(val));
     }
 
     /**
@@ -74,9 +72,7 @@ public class TrigProvider {
      * @return the tangent of val
      */
     public static double cos(double val) {
-        double ret = 0.0;
-        ret = cos.get(Double.valueOf(val));
-        return ret;
+        return TrigProvider.cos.get(Double.valueOf(val));
     }
 
     /**
@@ -86,8 +82,6 @@ public class TrigProvider {
      * @return the cosine of val
      */
     public static double tan(double val) {
-        double ret = 0.0;
-        ret = tan.get(Double.valueOf(val));
-        return ret;
+        return TrigProvider.tan.get(Double.valueOf(val));
     }
 }

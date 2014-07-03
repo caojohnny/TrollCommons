@@ -19,15 +19,15 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.misc;
 
-import org.bukkit.plugin.java.JavaPlugin;
+class Line implements Row {
+    @Override public Row setColumn(int column, String entry) {
+        return null;
+    }
 
-/**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
- */
-public class Main extends JavaPlugin {
+    @Override public String[] getEntries() {
+        return new String[0];
+    }
 }
+

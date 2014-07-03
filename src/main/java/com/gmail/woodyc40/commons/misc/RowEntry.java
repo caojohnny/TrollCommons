@@ -19,15 +19,27 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.misc;
 
-import org.bukkit.plugin.java.JavaPlugin;
+public class RowEntry implements Row {
+    private final String[] entries;
+    private final Table    table;
 
-/**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
- */
-public class Main extends JavaPlugin {
+    public RowEntry(Table table) {
+        this.table = table;
+        this.entries = new String[table.columns];
+    }
+
+    @Override public Row setColumn(int column, String entry) {
+        this.entries[column] = entry;
+
+        int max = this.table.max[column];
+        if (entry.length() > max)
+            this.table.max[column] = entry.length();
+        return this;
+    }
+
+    @Override public String[] getEntries() {
+        return this.entries;
+    }
 }

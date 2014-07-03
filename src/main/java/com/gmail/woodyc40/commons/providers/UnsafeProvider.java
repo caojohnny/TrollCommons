@@ -23,29 +23,26 @@ package com.gmail.woodyc40.commons.providers;
 
 import sun.misc.Unsafe;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 
 /**
- * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations
- * unsafely.
- *
- * <p>
- * Note that the starting method used to acquire the instance of Unsafe may throw two
- * reflective exceptions caused by access restrictions to the instance field of Unsafe.
- * The deeper cause of that may be the JVM used to run this. This is a HotSpot directed
- * program.
+ * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely.
+ * <p/>
+ * <p/>
+ * Note that the starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by
+ * access restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This
+ * is a HotSpot directed program.
  *
  * @author AgentTroll
  * @version 1.0
  * @see #provide()
  * @see Unsafe#getUnsafe()
  */
-public class UnsafeProvider {
+public final class UnsafeProvider {
     /**
      * The Unsafe instance.
      */
-    private static final Unsafe PROVIDER = initUnsafe();
+    private static final Unsafe PROVIDER = UnsafeProvider.initUnsafe();
 
     /**
      * Should not be instantiated, hence the private constructor.
@@ -54,24 +51,20 @@ public class UnsafeProvider {
 
     /**
      * Used to acquire the instance of {@link Unsafe}.
+     * <p/>
+     * <p/>
+     * This is more of a "hack" than a direct method, as it uses reflection in order to obtain the stored instance of
+     * the Unsafe singleton. Unsafe cannot be accessed through its singleton {@link Unsafe#getUnsafe()} method, as it
+     * checks the calling {@code class} to make sure that the {@link ClassLoader} is {@code null}. Java {@code class}es
+     * don't use a {@link ClassLoader}, hence the reason why they can call {@link Unsafe#getUnsafe()} without {@link
+     * SecurityException}.
+     * <p/>
+     * <p/>
+     * Being a "hack", this method will never be guaranteed to actually get an instance of Unsafe, the field that stores
+     * the instance of Unsafe <strong>is named differently on different implementations of the JVM</strong>. This
+     * specific method is designed to get Unsafe from the Java HotSpot JVM.
      *
-     * <p>
-     * This is more of a "hack" than a direct method, as it uses reflection in order to obtain the
-     * stored instance of the Unsafe singleton. Unsafe cannot be accessed through its singleton
-     * {@link Unsafe#getUnsafe()} method, as it checks the calling <code>class</code> to make sure
-     * that the {@link ClassLoader} is <code>null</code>. Java <code>class</code>es don't use a
-     * {@link ClassLoader}, hence the reason why they can call {@link Unsafe#getUnsafe()} without
-     * {@link SecurityException}.
-     *
-     * <p>
-     * Being a "hack", this method will never be guaranteed to actually get an instance of Unsafe,
-     * the field that stores the instance of Unsafe <strong>is named differently on different
-     * implementations of the JVM</strong>. This specific method is designed to get Unsafe from
-     * the Java HotSpot JVM.
-     *
-     * @return the Unsafe instance acquired from the HotSpot JVM Unsafe <code>class</code>
-     * @throws IllegalAccessException if the instance field could not be accessed
-     * @throws NoSuchFieldException   if the instance field could not be acquired from Unsafe
+     * @return the Unsafe instance acquired from the HotSpot JVM Unsafe {@code class}
      */
     private static Unsafe initUnsafe() {
         try {
@@ -86,20 +79,20 @@ public class UnsafeProvider {
 
     /**
      * Acquires the raw instance Unsafe "hacked" from the source.
+     * <p/>
+     * <p/>
+     * If an exception was thrown when this class was loaded, this method will most likely {@code return null}. JVM
+     * implementations may modify the field in which the instance of Unsafe is stored, throwing an exception when normal
+     * acquisition methods are applied.
+     * <p/>
+     * <p/>
+     * This is guaranteed to <strong>not</strong> {@code return null} on the HotSpot JVM
      *
-     * <p>
-     * If an exception was thrown when this class was loaded, this method will most likely
-     * <code>return null</code>. JVM implementations may modify the field in which the instance
-     * of Unsafe is stored, throwing an exception when normal acquisition methods are applied.
-     *
-     * <p>
-     * This is guaranteed to <strong>not</strong> <code>return null</code> on the HotSpot JVM
-     *
-     * @return the Unsafe instance received when this <code>class</code> was loaded.
+     * @return the Unsafe instance received when this {@code class} was loaded.
      * @throws IllegalStateException if the Unsafe instance was not acquired already during load
      */
     public static Unsafe provide() {
-        if (PROVIDER == null)
+        if (UnsafeProvider.PROVIDER == null)
             throw new IllegalStateException("Cannot be used, Unsafe is null");
 
         return UnsafeProvider.PROVIDER;
@@ -108,73 +101,67 @@ public class UnsafeProvider {
     // Reflection area
 
     /**
-     * Util method to get whether or not a field is <code>static</code>.
+     * Util method to get whether or not a field is {@code static}.
      *
-     * @param field the field to check for a <code>static</code> modifier
-     * @return <code>true</code> to indicate that a field is <code>static</code>,
-     * <code>false</code> if the field does not have a <code>static</code>
-     * modifier
+     * @param field the field to check for a {@code static} modifier
+     * @return {@code true} to indicate that a field is {@code static}, {@code false} if the field does not have a
+     * {@code static} modifier
      */
-    private static boolean fieldStatic(Field field) {
+    private static boolean fieldStatic(Member field) {
         return Modifier.isStatic(field.getModifiers());
     }
 
     /**
-     * Provides field offset calculations of a field in order to find its location in a
-     * <code>class</code>.
+     * Provides field offset calculations of a field in order to find its location in a {@code class}.
+     * <p/>
+     * <p/>
+     * The field parameter should never be {@code null}. An exception will be thrown if it is.
      *
-     * <p>
-     * The field parameter should never be <code>null</code>. An exception will be thrown if it
-     * is.
-     *
-     * @param field the field to <code>return</code> the offset of
-     * @return the relative <code>class</code> location offset of the field
-     * @throws IllegalArgumentException if the field parameter is <code>null</code>
+     * @param field the field to {@code return} the offset of
+     * @return the relative {@code class} location offset of the field
+     * @throws IllegalArgumentException if the field parameter is {@code null}
      */
     private static long fieldOffset(Field field) {
-        if (fieldStatic(field))
-            return PROVIDER.staticFieldOffset(field);
-        return PROVIDER.objectFieldOffset(field);
+        if (UnsafeProvider.fieldStatic(field))
+            return UnsafeProvider.PROVIDER.staticFieldOffset(field);
+        return UnsafeProvider.PROVIDER.objectFieldOffset(field);
     }
 
     /**
-     * Acquires the raw field value of the specified field of a <code>class</code>.
-     *
-     * <p>
-     * It may <code>return null</code>. This can happen under the following circumstances:
-     * <ul>
-     *
-     * <li>If the field value is <code>null</code> for the particular instance (More common).</li>
-     * <li>If one of the parameters required to be non-<code>null</code> is <code>null</code></li>
-     * <li>Or if the field is not found or not able to be accessed. Check method call, spelling, and
-     * class source. Indicated by a thrown exception.</li>
-     *
+     * Acquires the raw field value of the specified field of a {@code class}.
+     * <p/>
+     * <p/>
+     * It may {@code return null}. This can happen under the following circumstances: <ul>
+     * <p/>
+     * <li>If the field value is {@code null} for the particular instance (More common).</li> <li>If one of the
+     * parameters required to be non-{@code null} is {@code null}</li> <li>Or if the field is not found or not able to
+     * be accessed. Check method call, spelling, and class source. Indicated by a thrown exception.</li>
+     * <p/>
      * </ul>
-     *
-     * <p>
-     * The holder parameter may be null for static fields. In fact, it is set null for this purpose in
-     * the method itself, so it will not matter nevertheless.
+     * <p/>
+     * <p/>
+     * The holder parameter may be null for static fields. In fact, it is set null for this purpose in the method
+     * itself, so it will not matter nevertheless.
      *
      * @param holder the instance of the object to acquire the value from.
      * @return the value of the acquired field from the instance of the holder parameter
-     * @throws IllegalArgumentException if a nullable parameter is <code>null</code>
+     * @throws IllegalArgumentException if a nullable parameter is {@code null}
      */
     public static Object acquireField(Field field, Object holder) {
-        long offset = fieldOffset(field);
-        if (fieldStatic(field))
-            return PROVIDER.getObject(field.getDeclaringClass(), offset);
+        long offset = UnsafeProvider.fieldOffset(field);
+        if (UnsafeProvider.fieldStatic(field))
+            return UnsafeProvider.PROVIDER.getObject(field.getDeclaringClass(), offset);
 
-        return PROVIDER.getObject(holder, offset);
+        return UnsafeProvider.PROVIDER.getObject(holder, offset);
     }
 
     /**
-     * <p>
-     * This method will fail under the following circumstances:
-     * <ul>
-     *
-     * <li>If one of the parameters required to be non-<code>null</code> is <code>null</code></li>
-     * <li>Or the field could not be found. Indicated by a thrown exception</li>
-     *
+     * <p/>
+     * This method will fail under the following circumstances: <ul>
+     * <p/>
+     * <li>If one of the parameters required to be non-{@code null} is {@code null}</li> <li>Or the field could not be
+     * found. Indicated by a thrown exception</li>
+     * <p/>
      * </ul>
      *
      * @param field  the field to put the new value in
@@ -182,31 +169,29 @@ public class UnsafeProvider {
      * @param value  the new value of the field
      */
     public static void setField(Field field, Object holder, Object value) {
-        long offset = fieldOffset(field);
+        long offset = UnsafeProvider.fieldOffset(field);
 
-        if (fieldStatic(field)) {
-            PROVIDER.putObject(field.getDeclaringClass(), offset, value);
+        if (UnsafeProvider.fieldStatic(field)) {
+            UnsafeProvider.PROVIDER.putObject(field.getDeclaringClass(), offset, value);
             return;
         }
 
-        PROVIDER.putObject(holder, offset, value);
+        UnsafeProvider.PROVIDER.putObject(holder, offset, value);
     }
 
     /**
-     * Instantiates a <code>class</code> without calling the constructor of the
-     * <code>class</code>
+     * Instantiates a {@code class} without calling the constructor of the {@code class}
+     * <p/>
+     * <p/>
+     * <strong>This is EXTREMELY IMPORTANT - THIS METHOD WILL <u>NOT</u> CALL THE {@code CLASS} CONSTRUCTOR!</strong>
      *
-     * <p>
-     * <strong>This is EXTREMELY IMPORTANT - THIS METHOD WILL <u>NOT</u> CALL THE
-     * <code>CLASS</code> CONSTRUCTOR!</strong>
-     *
-     * @param <T> the type of <code>class</code> instantiated, the type returned
-     * @param c   the <code>class</code> to make a new instance of
-     * @return the new instance of the <code>class</code> passed in
+     * @param <T> the type of {@code class} instantiated, the type returned
+     * @param c   the {@code class} to make a new instance of
+     * @return the new instance of the {@code class} passed in
      */
     public static <T> T initClass(Class<T> c) {
         try {
-            return (T) PROVIDER.allocateInstance(c);
+            return (T) UnsafeProvider.PROVIDER.allocateInstance(c);
         } catch (InstantiationException x) {
             x.printStackTrace();
         }
@@ -217,36 +202,32 @@ public class UnsafeProvider {
 
     /**
      * Forces current thread to acquire or release the monitor of an object.
+     * <p/>
+     * <p/>
+     * This is a very low level implementation, no checks will be performed to whether the monitor is already held by
+     * the current thread before execution.
+     * <p/>
+     * <p/>
+     * It is <strong>crucial</strong> to use this as an implementation or entry point to synchronization instead of a
+     * careless direct call. A monitor acquired with this method can only be released using: {@code
+     * UnsafeProvider.monitor(false, object);} where {@code object} is the object with its monitor held by the current
+     * thread.
      *
-     * <p>
-     * This is a very low level implementation, no checks will be performed to
-     * whether the monitor is already held by the current thread before
-     * execution.
-     *
-     * <p>
-     * It is <strong>crucial</strong> to use this as an implementation or entry
-     * point to synchronization instead of a careless direct call. A monitor
-     * acquired with this method can only be released using:
-     * <code>UnsafeProvider.monitor(false, object);</code>
-     * where <code>object</code> is the object with its monitor held by the
-     * current thread.
-     *
-     * @param entry <code>true</code> to acquire the monitor, <code>false</code>
-     *              to release.
+     * @param entry {@code true} to acquire the monitor, {@code false} to release.
      * @param o     The object to acquire to release the monitor of.
      */
     public static void monitor(boolean entry, Object o) {
         if (entry) {
-            PROVIDER.monitorEnter(o);
+            UnsafeProvider.PROVIDER.monitorEnter(o);
             return;
         }
-        PROVIDER.monitorExit(o);
+        UnsafeProvider.PROVIDER.monitorExit(o);
     }
 
     /**
      * CAS operation, sets the field in an object to nw if expect is the current value.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * Note that this method performs a deep search for the field to swap.
      *
      * @param instance the object instance to acquire the field in
@@ -255,22 +236,22 @@ public class UnsafeProvider {
      * @param nw       the value to set if expect is the current field value
      */
     public static void compareAndSwap(Object instance, Field field, Object expect, Object nw) {
-        while (!PROVIDER.compareAndSwapObject(instance, fieldOffset(field), expect, nw))
-            setField(field, instance, nw);
+        while (!UnsafeProvider.PROVIDER.compareAndSwapObject(instance, UnsafeProvider.fieldOffset(field), expect, nw))
+            UnsafeProvider.setField(field, instance, nw);
     }
 
     // Misc area
 
     /**
      * Takes the shallow size of the object.
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * Equivalent Java implementation of C sizeOf
-     *
-     * <p>
-     * Is not an alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will
-     * not be as accurate as that method, this should only be used for programs
-     * where the EXACT size of an object in heap can have small inaccuracies.
+     * <p/>
+     * <p/>
+     * Is not an alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will not be as
+     * accurate as that method, this should only be used for programs where the EXACT size of an object in heap can have
+     * small inaccuracies.
      *
      * @param object the object to find the size of. Cannot be an array.
      * @return the size of the object stored in its header in the JVM
@@ -279,34 +260,35 @@ public class UnsafeProvider {
         if (object.getClass().isArray())
             throw new IllegalArgumentException("Cannot find sizeOf for array");
 
-        return PROVIDER.getAddress(normalize(PROVIDER.getInt(object, 4L)) + 12L);
+        return UnsafeProvider.PROVIDER.getAddress(
+                UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(object, 4L)) + 12L);
     }
 
     /**
      * Makes an unsafe cast from main to a superclass wihthout {@link java.lang.ClassCastException}.
      *
-     * @param main       the <code>class</code> to cast
-     * @param superclass the <code>class</code> to cast main to
+     * @param main       the {@code class} to cast
+     * @param superclass the {@code class} to cast main to
      * @param <T>        the type of superclass to cast to
      * @return the result of casting main to superclass
      */
     public static <T> T castSuper(Object main, T superclass) {
-        PROVIDER.putInt(main, 8L, PROVIDER.getInt(superclass, 8L));
-        if (!((T) main).equals(superclass))
-            PROVIDER.putInt(main, 4L, PROVIDER.getInt(superclass, 4L));
+        UnsafeProvider.PROVIDER.putInt(main, 8L, UnsafeProvider.PROVIDER.getInt(superclass, 8L));
+        if (!main.equals(superclass))
+            UnsafeProvider.PROVIDER.putInt(main, 4L, UnsafeProvider.PROVIDER.getInt(superclass, 4L));
 
         return (T) main;
     }
 
     /**
-     * Converts a signed <code>int</code> to an unsigned <code>long</code>.
+     * Converts a signed {@code int} to an unsigned {@code long}.
      *
-     * @param value the <code>int</code> to convert
-     * @return the derived unsigned <code>long</code> associated with the value
+     * @param value the {@code int} to convert
+     * @return the derived unsigned {@code long} associated with the value
      */
     private static long normalize(int value) {
         if (value >= 0)
-            return value;
-        return (~0L >>> 32) & value;
+            return (long) value;
+        return ~0L >>> 32 & (long) value;
     }
 }

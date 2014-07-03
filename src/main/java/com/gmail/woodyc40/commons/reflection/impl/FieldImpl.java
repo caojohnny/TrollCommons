@@ -23,33 +23,20 @@ package com.gmail.woodyc40.commons.reflection.impl;
 
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import com.gmail.woodyc40.commons.reflection.FieldManager;
-import com.gmail.woodyc40.commons.reflection.ReflectionTool;
 
 import java.lang.reflect.Field;
 
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection
+ * <p/>
+ * param <D> the {@code class} type declaring the field
  *
+ * @param <T> the type the field represents
  * @author AgentTroll
  * @version 1.0
  */
-class FieldImpl implements FieldManager {
-    private Field field;
-
-    /**
-     * Builds a new instance of this class by shallow field search
-     *
-     * @param name   the name of the declared field in the holder
-     * @param holder the <code>class</code> that contains the field
-     * @see com.gmail.woodyc40.commons.reflection.ReflectionTool#forField(String, Class)
-     */
-    public FieldImpl(String name, Class<?> holder) {
-        try {
-            this.field = ReflectionTool.forField(name, holder);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-    }
+class FieldImpl<D, T> implements FieldManager<D, T> {
+    private final Field field;
 
     /**
      * Wraps the field for management by this implementation
@@ -64,7 +51,7 @@ class FieldImpl implements FieldManager {
      * {@inheritDoc}
      */
     @Override
-    public void set(final Object inst, final Object val) {
+    public void set(D inst, T val) {
         UnsafeProvider.setField(this.field, inst, val);
     }
 
@@ -72,8 +59,8 @@ class FieldImpl implements FieldManager {
      * {@inheritDoc}
      */
     @Override
-    public Object get(final Object inst) {
-        return UnsafeProvider.acquireField(this.field, inst);
+    public T get(D inst) {
+        return (T) UnsafeProvider.acquireField(this.field, inst);
     }
 
     /**

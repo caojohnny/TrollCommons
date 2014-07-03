@@ -19,7 +19,7 @@
  * Contact: woodyc40 (at) gmail (dot) com
  */
 
-package com.gmail.woodyc40.commons;
+package com.gmail.woodyc40.commons.misc;
 
 /**
  * Shortcut methods to throw exceptions if condition is not met
@@ -27,15 +27,15 @@ package com.gmail.woodyc40.commons;
  * @author AgentTroll
  * @version 1.0
  */
-public class Checks {
+public final class Checks {
     private Checks() {}
 
     /**
-     * Throws an {@link IllegalArgumentException} if the field provided is <code>null</code>.
+     * Throws an {@link IllegalArgumentException} if the field provided is {@code null}.
      *
-     * @param nullable the object to check not <code>null</code>
+     * @param nullable the object to check not {@code null}
      * @param message  the message to send for the cause of the exception
-     * @throws IllegalArgumentException when a nullable value is <code>null</code>
+     * @throws IllegalArgumentException when a nullable value is {@code null}
      */
     public static void notNull(Object nullable, String message) {
         if (nullable == null)
@@ -50,7 +50,7 @@ public class Checks {
      * @throws IllegalArgumentException when the two values do not match
      */
     public static void match(Object val0, Object val1) {
-        if (val0 != val1)
+        if (!val0.equals(val1))
             throw new IllegalArgumentException("The first value does not match the second");
     }
 }
