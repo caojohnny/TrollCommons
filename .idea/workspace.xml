@@ -10,21 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashFunctionMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/MultiParamRunnable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0.java" afterPath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/package-info.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -101,11 +87,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HashStructTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HashStructTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09382151" vertical-offset="62" max-vertical-offset="1368">
-              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+              <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractHashStruct.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.1930926" vertical-offset="1246" max-vertical-offset="4482">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HashStructMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -170,12 +178,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/package-info.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/MultiParamRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
         <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashFunctionMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
+        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" />
       </list>
     </option>
   </component>
@@ -822,14 +830,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20891514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3281768" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596686" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596686" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866596" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20170757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26187846" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26187846" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22151224" sideWeight="0.50054055" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Byte Code Viewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="95" y="58" width="1736" height="856" />
@@ -889,7 +897,8 @@
     <MESSAGE value="Travis" />
     <MESSAGE value="Yay&#10;" />
     <MESSAGE value="Ugh work pls" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ugh work pls" />
+    <MESSAGE value="Hashing - done? Test set impl tomorrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hashing - done? Test set impl tomorrow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,18 +1242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31088084" vertical-offset="378" max-vertical-offset="1404">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1132#1133#0" expanded="false" />
-            <element signature="e#1179#1180#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4715026" vertical-offset="411" max-vertical-offset="1638">
@@ -1287,31 +1284,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
+    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08237986" vertical-offset="0" max-vertical-offset="4662">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#2872#2873#0" expanded="true" />
-            <element signature="e#7250#7952#0" expanded="true" />
-            <element signature="e#7941#7942#0" expanded="true" />
-            <element signature="e#7969#8285#0" expanded="true" />
-            <element signature="e#8274#8275#0" expanded="true" />
-            <element signature="e#8305#8690#0" expanded="true" />
-            <element signature="e#8679#8680#0" expanded="true" />
-            <element signature="e#8877#8878#0" expanded="true" />
-            <element signature="e#8935#8936#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+          <caret line="27" column="41" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09382151" vertical-offset="62" max-vertical-offset="1368">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1930926" vertical-offset="1246" max-vertical-offset="4482">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

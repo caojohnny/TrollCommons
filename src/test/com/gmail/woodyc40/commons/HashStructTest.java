@@ -85,8 +85,6 @@ public class HashStructTest {
                .measurementIterations(5)
                .build();
 
-        System.out.println(HashStructTest.map0.get(69));
-
         new Runner(opt).run();
     }
 }

@@ -22,6 +22,7 @@ dontinline,com/gmail/woodyc40/commons/HashStructTest.testRBemoval_avgt_jmhLoop
 dontinline,com/gmail/woodyc40/commons/HashStructTest.testRBemoval_sample_jmhLoop
 dontinline,com/gmail/woodyc40/commons/HashStructTest.testRBemoval_ss_jmhStub
 dontinline,com/gmail/woodyc40/commons/HashStructTest.testRBemoval_thrpt_jmhLoop
+inline,com/gmail/woodyc40/commons/HashStructTest.setUp
 inline,com/gmail/woodyc40/commons/HashStructTest.testInsertion
 inline,com/gmail/woodyc40/commons/HashStructTest.testInsertion0
 inline,com/gmail/woodyc40/commons/HashStructTest.testRAetrieval
