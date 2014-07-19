@@ -1,9 +1,11 @@
 package com.gmail.woodyc40.commons.collect;
 
+import lombok.Getter;
+
 import java.util.*;
 
 public class HashStructMap<K, V> implements Map<K, V> {
-    private final AbstractHashStruct<K, V> delegate;
+    @Getter private final AbstractHashStruct<K, V> delegate;
 
     public HashStructMap() {
         this(16);

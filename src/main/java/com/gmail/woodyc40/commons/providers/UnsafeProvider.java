@@ -286,4 +286,16 @@ public final class UnsafeProvider {
             return (long) value;
         return ~0L >>> 32 & (long) value;
     }
+
+    /**
+     * Converts a signed {@code long} to unsigned {@code long}.
+     *
+     * @param value the {@code long} to convert
+     * @return the derived unsigned {@code long} associated with the value
+     */
+    public static long normalize(long value) {
+        if (value >= 0)
+            return (long) value;
+        return ~0L >>> 32 & (long) value;
+    }
 }

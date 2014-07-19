@@ -84,6 +84,16 @@ public final class HashStructTest_testRAetrieval {
             }
 
             if (control.isLastIteration()) {
+                while(!HashStructTest_1_jmh.tearTrialMutexUpdater.compareAndSet(l_hashstructtest0_G, 0, 1)) {
+                    if (Thread.interrupted()) throw new InterruptedException();
+                }
+                try {
+                    if (l_hashstructtest0_G.readyTrial) {
+                        l_hashstructtest0_G.readyTrial = false;
+                    }
+                } finally {
+                    HashStructTest_1_jmh.tearTrialMutexUpdater.set(l_hashstructtest0_G, 0);
+                }
                 synchronized(this.getClass()) {
                     f_hashstructtest0_G = null;
                 }
@@ -142,6 +152,16 @@ public final class HashStructTest_testRAetrieval {
             }
 
             if (control.isLastIteration()) {
+                while(!HashStructTest_1_jmh.tearTrialMutexUpdater.compareAndSet(l_hashstructtest0_G, 0, 1)) {
+                    if (Thread.interrupted()) throw new InterruptedException();
+                }
+                try {
+                    if (l_hashstructtest0_G.readyTrial) {
+                        l_hashstructtest0_G.readyTrial = false;
+                    }
+                } finally {
+                    HashStructTest_1_jmh.tearTrialMutexUpdater.set(l_hashstructtest0_G, 0);
+                }
                 synchronized(this.getClass()) {
                     f_hashstructtest0_G = null;
                 }
@@ -201,6 +221,16 @@ public final class HashStructTest_testRAetrieval {
             }
 
             if (control.isLastIteration()) {
+                while(!HashStructTest_1_jmh.tearTrialMutexUpdater.compareAndSet(l_hashstructtest0_G, 0, 1)) {
+                    if (Thread.interrupted()) throw new InterruptedException();
+                }
+                try {
+                    if (l_hashstructtest0_G.readyTrial) {
+                        l_hashstructtest0_G.readyTrial = false;
+                    }
+                } finally {
+                    HashStructTest_1_jmh.tearTrialMutexUpdater.set(l_hashstructtest0_G, 0);
+                }
                 synchronized(this.getClass()) {
                     f_hashstructtest0_G = null;
                 }
@@ -258,6 +288,16 @@ public final class HashStructTest_testRAetrieval {
             }
 
             if (control.isLastIteration()) {
+                while(!HashStructTest_1_jmh.tearTrialMutexUpdater.compareAndSet(l_hashstructtest0_G, 0, 1)) {
+                    if (Thread.interrupted()) throw new InterruptedException();
+                }
+                try {
+                    if (l_hashstructtest0_G.readyTrial) {
+                        l_hashstructtest0_G.readyTrial = false;
+                    }
+                } finally {
+                    HashStructTest_1_jmh.tearTrialMutexUpdater.set(l_hashstructtest0_G, 0);
+                }
                 synchronized(this.getClass()) {
                     f_hashstructtest0_G = null;
                 }
@@ -291,6 +331,11 @@ public final class HashStructTest_testRAetrieval {
                 f_hashstructtest0_G = new HashStructTest_1_jmh();
             }
             if (!f_hashstructtest0_G.readyTrial) {
+                Field f;
+                f = com.gmail.woodyc40.commons.HashStructTest.class.getDeclaredField("entries");
+                f.setAccessible(true);
+                f.set(f_hashstructtest0_G, Integer.valueOf(control.getParam("entries")));
+                f_hashstructtest0_G.setUp();
                 f_hashstructtest0_G.readyTrial = true;
             }
         }

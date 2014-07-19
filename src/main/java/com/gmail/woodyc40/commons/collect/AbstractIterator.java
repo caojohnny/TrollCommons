@@ -1,10 +1,10 @@
 package com.gmail.woodyc40.commons.collect;
 
-import lombok.AccessLevel;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.Iterator;
 
+@ToString @EqualsAndHashCode
 public abstract class AbstractIterator<E> implements Iterator<E> {
     @Getter(AccessLevel.PROTECTED) private final Object[] values = this.allVals();
     @Getter(AccessLevel.PROTECTED) private final int max = this.allVals().length - 1;
