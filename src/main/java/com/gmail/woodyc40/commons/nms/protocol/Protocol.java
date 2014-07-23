@@ -14,31 +14,13 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.nms.protocol;
 
 /**
- * A simplified unique key mapping used to store values
+ * The main accessor to the {@link com.gmail.woodyc40.commons.nms.protocol.ProtocolHandler} package
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
-    /**
-     * Finds the cached value stored by key
-     *
-     * @param k the key for the requested value
-     * @return the value associated with the key
-     */
-    V lookup(K k);
-
-    /**
-     * Associates a value with the key
-     *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
-     */
-    V insert(K k, V v);
+public class Protocol {
 }

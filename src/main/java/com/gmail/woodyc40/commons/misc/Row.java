@@ -16,8 +16,26 @@
 
 package com.gmail.woodyc40.commons.misc;
 
+/**
+ * The {@code interface} that represents a horizontal row on the ASCII table
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 public interface Row {
+    /**
+     * Adds the data onto the row
+     *
+     * @param column the column, starting from 0, to put the data in
+     * @param entry  the data
+     * @return the row the data was added to
+     */
     Row setColumn(int column, String entry);
 
+    /**
+     * The entries of data this row holds
+     *
+     * @return the entries of the row
+     */
     String[] getEntries();
 }

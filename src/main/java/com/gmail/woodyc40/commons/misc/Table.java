@@ -22,28 +22,59 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * ASCII table wrapper that can be formatted and printed out to the console
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 public class Table {
+    /** Table data rows */
     private final Collection<Row> rowEntries = new ArrayList<>();
+    /** Represents the maximum lines to append in ASCII */
     int[] max = new int[0];
+    /** Columns of data to support */
     @Getter int columns;
+    /** The titles of the table */
     private String[] names = { };
 
+    /**
+     * Makes a new row and appends it to the row collection
+     *
+     * @return the new row created
+     */
     public Row createRow() {
         Row row = new RowEntry(this);
         this.rowEntries.add(row);
         return row;
     }
 
+    /**
+     * Appends a line to the table
+     */
     public void appendSeperator() {
         this.rowEntries.add(new Line());
     }
 
+    /**
+     * The titles of each column on the table
+     * <p/>
+     * <p/>
+     * Unlimited slots are available, in fact, the amount of columns are set by this method.
+     *
+     * @param names the titles
+     */
     public void setNames(String... names) {
         this.names = names.clone();
 
         this.max = new int[this.columns = names.length];
     }
 
+    /**
+     * Prints out the formatted table to the stream
+     *
+     * @param stream the stream to print out to
+     */
     public void print(PrintStream stream) {
         StringBuilder format = new StringBuilder();
         format.append('|');

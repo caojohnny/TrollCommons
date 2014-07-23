@@ -14,31 +14,24 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.event;
+
+import java.lang.annotation.*;
 
 /**
- * A simplified unique key mapping used to store values
+ * The type of event the {@link com.gmail.woodyc40.commons.event.EventHandler} handles
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Handler {
     /**
-     * Finds the cached value stored by key
+     * The event type to handle. This ensures the safe cast to the type handling the event
      *
-     * @param k the key for the requested value
-     * @return the value associated with the key
+     * @return the event type that the handler handles
      */
-    V lookup(K k);
-
-    /**
-     * Associates a value with the key
-     *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
-     */
-    V insert(K k, V v);
+    EventType value();
 }

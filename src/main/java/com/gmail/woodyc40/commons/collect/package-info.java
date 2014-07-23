@@ -6,7 +6,10 @@
  *
  * <p>
  * There are a few helper classes that may come in handy however, and a few classes with a better hash distribution
- * implementing the Murmur3 32bit used in Google Guava.
+ * implementing the Murmur3 32bit used in Google Guava, or switchable.
+ *
+ * <p>
+ * No class in this package are thread safe.
  */
 
 package com.gmail.woodyc40.commons.collect;

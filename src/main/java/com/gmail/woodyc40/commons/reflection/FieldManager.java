@@ -47,7 +47,7 @@ public interface FieldManager<Declaring, T> {
      * @param inst instance of the object to get the field from
      * @return the value of the field set by the current instance of the holding object
      */
-    Object get(Declaring inst);
+    T get(Declaring inst);
 
     /**
      * The actual {@link java.lang.reflect.Field} represented by this {@code class}

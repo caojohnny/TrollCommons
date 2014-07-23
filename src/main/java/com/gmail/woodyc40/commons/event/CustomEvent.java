@@ -14,31 +14,26 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.event;
 
 /**
- * A simplified unique key mapping used to store values
+ * The standard type used to represent an Event called in the framework
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
+public interface CustomEvent {
     /**
-     * Finds the cached value stored by key
+     * If the event is cancelled
      *
-     * @param k the key for the requested value
-     * @return the value associated with the key
+     * @return {@code true} if the envent is cancelled, {@code false} if it isn't.
      */
-    V lookup(K k);
+    boolean getCancelled();
 
     /**
-     * Associates a value with the key
+     * Sets the event cancel state
      *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
+     * @param cancelled {@code true} to cancel the event, {@code false} to continue it
      */
-    V insert(K k, V v);
+    void setCancelled(boolean cancelled);
 }

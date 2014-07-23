@@ -18,10 +18,23 @@ package com.gmail.woodyc40.commons.misc;
 
 import lombok.Getter;
 
+/**
+ * Represents a row of data on the ASCII table
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 public class RowEntry implements Row {
+    /** The data */
     @Getter private final String[] entries;
+    /** The table this row is contained in */
     private final         Table    table;
 
+    /**
+     * Constructs a new row
+     *
+     * @param table the table that holds this row
+     */
     public RowEntry(Table table) {
         this.table = table;
         this.entries = new String[table.columns];

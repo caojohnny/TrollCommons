@@ -16,6 +16,7 @@
 
 package com.gmail.woodyc40.commons;
 
+import com.gmail.woodyc40.commons.nms.protocol.ProtocolHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -25,4 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @version 1.0
  */
 public class Main extends JavaPlugin {
+    @Override public void onEnable() {
+        new ProtocolHandler(this);
+    }
 }

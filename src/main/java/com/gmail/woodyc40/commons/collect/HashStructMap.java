@@ -1,11 +1,34 @@
-package com.gmail.woodyc40.commons.collect;
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import lombok.Getter;
+package com.gmail.woodyc40.commons.collect;
 
 import java.util.*;
 
+/**
+ * Implementation of {@link java.util.Map} using {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct}
+ *
+ * @param <K> the type of key to use
+ * @param <V> the type of value to use
+ * @author AgentTroll
+ * @version 1.0
+ * @see java.util.Map
+ */
 public class HashStructMap<K, V> implements Map<K, V> {
-    @Getter private final AbstractHashStruct<K, V> delegate;
+    private final AbstractHashStruct<K, V> delegate;
 
     public HashStructMap() {
         this(16);
@@ -16,14 +39,14 @@ public class HashStructMap<K, V> implements Map<K, V> {
             @Override protected AbstractHashStruct.Node[] buckets() {
                 return new AbstractHashStruct.Node[size];
             }
-        };    
+        };
     }
-    
+
     public HashStructMap(Map<? extends K, ? extends V> master) {
         this(master.size());
         this.putAll(master);
     }
-    
+
     @Override public int size() {
         return this.delegate.getSize();
     }

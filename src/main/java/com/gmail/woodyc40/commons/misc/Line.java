@@ -16,11 +16,29 @@
 
 package com.gmail.woodyc40.commons.misc;
 
+/**
+ * Represents an ASCII horizontal line that matches up with the table columns with '+' and '-'
+ *
+ * @author AgentTroll
+ * @version 1.0
+ */
 class Line implements Row {
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * <p/>
+     * Returns null - do not use
+     */
     @Override public Row setColumn(int column, String entry) {
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     * <p/>
+     * <p/>
+     * Returns null - do not use
+     */
     @Override public String[] getEntries() {
         return new String[0];
     }

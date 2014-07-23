@@ -14,31 +14,25 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.event;
 
 /**
- * A simplified unique key mapping used to store values
+ * Thrown when an {@link com.gmail.woodyc40.commons.event.EventHandler} is not annotated with a {@link
+ * com.gmail.woodyc40.commons.event.Handler} annotation
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
-    /**
-     * Finds the cached value stored by key
-     *
-     * @param k the key for the requested value
-     * @return the value associated with the key
-     */
-    V lookup(K k);
+public class NoEventAnnotationException extends Exception {
+    /** Used for serialization */
+    private static final long serialVersionUID = 5608015041206270547L;
 
     /**
-     * Associates a value with the key
+     * Constructs a new error for no annotation
      *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
+     * @param holder the handler with no annotation
      */
-    V insert(K k, V v);
+    public NoEventAnnotationException(Class<?> holder) {
+        super("EventHandler " + holder.getName() + " attempted registry without Handler annotation");
+    }
 }

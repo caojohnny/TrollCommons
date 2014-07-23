@@ -1,9 +1,36 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gmail.woodyc40.commons.collect;
 
 import java.util.*;
 
+/**
+ * Implementation of {@link java.util.Set} using {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct}
+ *
+ * @param <E> the type of item to store
+ * @author AgentTroll
+ * @version 1.0
+ * @see java.util.Set
+ * @see java.util.Collection
+ */
 public class HashStructSet<E> implements Set<E> {
+    /** The delegate to perform actions on */
     private final AbstractHashStruct<E, Object> delegate;
+    /** The value stored in the struct, just a placeholder */
     private final Object value = new Object();
 
     public HashStructSet() {

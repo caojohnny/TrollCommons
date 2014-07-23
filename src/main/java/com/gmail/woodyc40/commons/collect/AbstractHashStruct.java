@@ -16,7 +16,6 @@
 
 package com.gmail.woodyc40.commons.collect;
 
-import com.gmail.woodyc40.commons.misc.MultiParamRunnable;
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -25,20 +24,52 @@ import lombok.*;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * This is a base utility used to build hashing data structures similar to that of {@link java.util.HashMap} and {@link
+ * java.util.HashSet}.
+ * <p/>
+ * <p/>
+ * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
+ * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
+ * .HashStrategy#A_TROLL} that can be changed using {@link #setStategy(com.gmail.woodyc40.commons.collect
+ * .AbstractHashStruct.HashStrategy)}.
+ * <p/>
+ * <p/>
+ * Benchmarks for all 3 hash strategies can be found here: https://github
+ * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java
+ *
+ * @param <K> the key type
+ * @param <V> the value type
+ * @author AgentTroll
+ * @version 1.0
+ */
+@Getter
 public abstract class AbstractHashStruct<K, V> {
-    @Getter private AbstractHashStruct<K, V>.Node[] buckets = this.buckets();
+    /** The entry storage */
+    private AbstractHashStruct<K, V>.Node[] buckets = this.buckets();
 
-    @Getter private int size;
-    private int resizeThresh = 14;
+    /** Amount of entries inserted */
+    private int size;
+    /** The threshold until the map resizes */
+    @Setter private int resizeThresh = 14;
 
-    @Getter @Setter private HashStrategy stategy = HashStrategy.A_TROLL;
+    /** The strategy employed to hash the keys on insertion */
+    @Setter private AbstractHashStruct.HashStrategy stategy = AbstractHashStruct.HashStrategy.A_TROLL;
 
-    //===============[ Hooks ] ===============//
+    //===============[ Hook ] ===============//
 
+    /** Provider of the bucket array of nodes */
     protected abstract AbstractHashStruct.Node[] buckets();
 
-    //===============[ Map methods ]===============//
+    //===============[ Structure methods ]===============//
 
+    /**
+     * Insertion operation on the structure
+     *
+     * @param k the key
+     * @param v the value
+     * @return the old value, or null if there is none
+     */
     public V put(K k, V v) {
         int hash = this.posOf(k);
         AbstractHashStruct<K, V>.Node toSet = this.search(k, hash);
@@ -49,6 +80,13 @@ public abstract class AbstractHashStruct<K, V> {
         return old;
     }
 
+    /**
+     * Retrieves the value associated with the key provided
+     *
+     * @param k the key to get the value from
+     * @return the value associated with the key upon insertion, null if the key is not found, or the key is associated
+     * with a null value
+     */
     public V get(K k) {
         int hash = this.posOf(k);
         AbstractHashStruct<K, V>.Node node = this.loop(k, this.buckets[hash]);
@@ -56,6 +94,13 @@ public abstract class AbstractHashStruct<K, V> {
         else return node.getValue();
     }
 
+    /**
+     * Removes an entry from the bucket array
+     *
+     * @param k the key which a value is associated to that will be removed from the map
+     * @return the old value associated with the key removed, null if it is not actually removed, the key is not found,
+     * or the value associated with the key is null
+     */
     public V remove(K k) {
         AbstractHashStruct<K, V>.Node head = this.buckets[this.posOf(k)];
         if (head == null) return null;
@@ -65,38 +110,75 @@ public abstract class AbstractHashStruct<K, V> {
         return old;
     }
 
+    /**
+     * Removes all entries from the bucket array, setting the size to zero, along with the resizing threshold to 14.
+     */
     public void clear() {
         this.buckets = new AbstractHashStruct.Node[16];
         this.size = 0;
         this.resizeThresh = 14;
     }
 
+    /**
+     * Asks the bucket array if one of the entries has a key provided
+     *
+     * @param ky the key to check for in the bucket array
+     * @return {@code false} if the key is not found in the buckets, {@code true} if found
+     */
     public boolean containsKey(K ky) {
         K k;
         return (k = this.loop(ky, this.buckets[this.posOf(ky)]).getKey()) != null && k.equals(ky);
     }
 
+    /**
+     * Asks the bucket array if one of the entries holds the value provided
+     * <p/>
+     * <p/>
+     * Note that this is an O(n) operation
+     *
+     * @param v the value to check for in the bucket array
+     * @return {@code false} if the value is not found in the buckets, {@code true} if found
+     */
     public boolean containsValue(V v) {
         for (AbstractHashStruct<K, V>.Node node : this.buckets)
             if (node.getValue().equals(v))
                 return true;
         return false;
     }
-    
+
+    /**
+     * The iterator over all of the keys in this structure
+     *
+     * @return the iteration structure that provides access to all keys
+     */
     public Iterator<K> keyIterator() {
         return new KeyIterator();
     }
 
+    /**
+     * The iterator over all of the values in this structure
+     *
+     * @return the iteration structure that provides access to all values
+     */
     public Iterator<V> valueIterator() {
         return new ValueIterator();
     }
 
     //===============[ Util methods ]===============//
 
+    /**
+     * Returns the position of the key via hashing and finding the hashed bucket
+     *
+     * @param key the key to use in hashing
+     * @return the position in the bucket array
+     */
     private int posOf(K key) {
         return this.stategy.hash(key, this.buckets.length);
     }
 
+    /**
+     * Resizes the bucket array if neccessary
+     */
     private void checkSize() {
         if (this.size == this.resizeThresh) {
             int newLen = this.resizeThresh *= 2;
@@ -107,6 +189,13 @@ public abstract class AbstractHashStruct<K, V> {
         }
     }
 
+    /**
+     * Iterates through the linked list bucket index for the node containing the key
+     *
+     * @param k    the key to get the node from
+     * @param head the first node in the bucket
+     * @return the node that holds the key, null if not found
+     */
     private AbstractHashStruct<K, V>.Node loop(K k, AbstractHashStruct<K, V>.Node head) {
         AbstractHashStruct<K, V>.Node tail = head;
         while (tail != null) {
@@ -118,6 +207,14 @@ public abstract class AbstractHashStruct<K, V> {
         return null;
     }
 
+    /**
+     * Performs a {@link #loop(Object, com.gmail.woodyc40.commons.collect.AbstractHashStruct.Node)}, returning the node
+     * if non-{@code null}, or creating a key if {@code null}
+     *
+     * @param k    the key to get the node from
+     * @param hash the position of the key
+     * @return the node associated with the key in the bucket array
+     */
     private AbstractHashStruct<K, V>.Node search(K k, int hash) {
         // Implementation:
         // 4 Step process
@@ -132,6 +229,15 @@ public abstract class AbstractHashStruct<K, V> {
         else return this.create(k, null, hash);
     }
 
+    /**
+     * Creates a node and links it with the previous, or sets the bucket position to the node if the first in the
+     * particular bucket
+     *
+     * @param k        the key to create the node with
+     * @param previous the previous node, can be {@code null}
+     * @param hash     the position to place the node in the bucket array
+     * @return the node created
+     */
     private AbstractHashStruct<K, V>.Node create(K k, AbstractHashStruct<K, V>.Node previous, int hash) {
         AbstractHashStruct<K, V>.Node node = new AbstractHashStruct<K, V>.Node(k, null, 0, null);
         if (previous == null) {
@@ -148,6 +254,12 @@ public abstract class AbstractHashStruct<K, V> {
         return node;
     }
 
+    /**
+     * Removes a key from a bucket
+     *
+     * @param k    the key in the entry which will be removed
+     * @param head the first node in the bucket of the to-be removed entry
+     */
     private void remove(K k, AbstractHashStruct<K, V>.Node head) {
         AbstractHashStruct<K, V>.Node leading = head;
         AbstractHashStruct<K, V>.Node tail = leading == null ? null : leading.getNext();
@@ -175,11 +287,89 @@ public abstract class AbstractHashStruct<K, V> {
 
     //===============[ Sub-classes ] ===============//
 
+    /**
+     * An enumeration of strategies for finding the position of an object key on a hashtable
+     *
+     * @author AgentTroll
+     * @version 1.0
+     * @see com.google.common.hash.Murmur3_32HashFunction
+     */
+    public enum HashStrategy {
+        /**
+         * Uses {@link com.google.common.hash.Murmur3_32HashFunction} to hash the values, and mod the length of buckets
+         */
+        MURMUR {
+            public int hash(Object o, int i) {
+                // Implementation:
+                // 3 step process -
+                // Step 1: Hash the current hashCode of the key
+                // Step 2: The value may be negative, convert to unsigned long
+                // Step 3: Find the remainder by dividing by the amount of buckets
+                // The value of Step 3 is returned as the bucket index
+
+                int hash = AbstractHashStruct.HashStrategy.hasher.hashInt(o.hashCode()).asInt();
+                long convert = UnsafeProvider.normalize(hash);
+
+                return (int) (convert % (long) i);
+            }
+        },
+
+        /**
+         * The default {@link java.util.HashMap} hashing strategy, from OpenJDK
+         */
+        JAVA {
+            public int hash(Object o, int i) {
+                int h = o.hashCode();
+                h ^= (h >>> 20) ^ (h >>> 12);
+                int bit = h ^ (h >>> 7) ^ (h >>> 4);
+
+                return bit & (i - 1);
+            }
+        },
+
+        /**
+         * Custom hashing function that is faster than MURMUR and better distribution than JAVA
+         */
+        A_TROLL {
+            public int hash(Object o, int i) {
+                long h = UnsafeProvider.normalize(o.hashCode());
+                h = ((h >> 16) ^ h) * 0x301L;
+                h = ((h >> 16) ^ h) * 0x301L;
+                h = ((h >> 16) ^ h);
+
+                return (int) (h % (long) i);
+            }
+        };
+
+        /** The hasher to use in {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy#MURMUR} */
+        private static final HashFunction hasher = Hashing.murmur3_32();
+
+        /**
+         * Hash the key for the length of the bucket array
+         *
+         * @param key the key to find the position of
+         * @param len the number of bucket positions available
+         * @return the index to put the key
+         */
+        public abstract int hash(Object key, int len);
+    }
+
+    /**
+     * The linked list structure that holds a key, value, position, and next key in the list
+     *
+     * @author AgentTroll
+     * @version 1.0
+     * @see java.util.Map.Entry
+     */
     @Getter @AllArgsConstructor @ToString @EqualsAndHashCode
     public class Node implements Map.Entry<K, V> {
+        /** The key */
         private final   K                             key;
+        /** The value */
         private         V                             value;
+        /** The position in the bucket array */
         @Setter private int                           bucket;
+        /** The next node in the linked-list */
         @Setter private AbstractHashStruct<K, V>.Node next;
 
         @Override public V setValue(V value) {
@@ -189,6 +379,14 @@ public abstract class AbstractHashStruct<K, V> {
         }
     }
 
+    /**
+     * The iterator which goes over all the keys represented by this structure
+     *
+     * @author AgentTroll
+     * @version 1.0
+     * @see java.util.Iterator
+     * @see com.gmail.woodyc40.commons.collect.AbstractIterator
+     */
     public class KeyIterator extends AbstractIterator<K> {
         @Override protected Object[] allVals() {
             int index = 0;
@@ -206,6 +404,14 @@ public abstract class AbstractHashStruct<K, V> {
         }
     }
 
+    /**
+     * The iterator that goes over all of the values in this structure
+     *
+     * @author AgentTroll
+     * @version 1.0
+     * @see java.util.Iterator
+     * @see com.gmail.woodyc40.commons.collect.AbstractIterator
+     */
     public class ValueIterator extends AbstractIterator<V> {
         @Override protected Object[] allVals() {
             int index = 0;
@@ -218,56 +424,14 @@ public abstract class AbstractHashStruct<K, V> {
             return vals;
         }
 
+        /**
+         * {@inheritDoc}
+         * <p/>
+         * <p/>
+         * DOES NOT SUPPORT REMOVAL
+         */
         @Override protected void removeValue(V val) {
-        }
-    }
-
-    @AllArgsConstructor
-    public enum HashStrategy {
-        MURMUR(new MultiParamRunnable<Integer, Object, Integer>() {
-            @Override public Integer run(Object o, Integer i) {
-                // Implementation:
-                // 3 step process -
-                // Step 1: Hash the current hashCode of the key
-                // Step 2: The value may be negative, convert to unsigned long
-                // Step 3: Find the remainder by dividing by the amount of buckets
-                // The value of Step 3 is returned as the bucket index
-
-                int hash = HashStrategy.hasher.hashInt(o.hashCode()).asInt();
-                long convert = UnsafeProvider.normalize(hash);
-
-                return (int) (convert % (long) i);
-            }
-        }),
-
-        JAVA(new MultiParamRunnable<Integer, Object, Integer>() {
-            @Override public Integer run(Object o, Integer i) {
-                int h = o.hashCode();
-                h ^= (h >>> 20) ^ (h >>> 12);
-                int bit = h ^ (h >>> 7) ^ (h >>> 4);
-
-                return bit & (i - 1);
-            }
-        }),
-
-        A_TROLL(new MultiParamRunnable<Integer, Object, Integer>() {
-            @Override public Integer run(Object o, Integer i) {
-                int h = o.hashCode();
-                h |= 769 ^ h ^ (20 >> 3 << h);
-                h ^= 6151 ^ (h >>> 4) ^ (h ^ 4);
-
-                long unsign = UnsafeProvider.normalize(h);
-
-                return (int) (unsign % (long) i);
-            }
-        });
-
-        private static final HashFunction hasher = Hashing.murmur3_32();
-
-        MultiParamRunnable<Integer, Object, Integer> hashFunc;
-
-        public int hash(Object key, int len) {
-            return this.hashFunc.run(key, len);
+            throw new UnsupportedOperationException("You should remove with a key iterator instead");
         }
     }
 }

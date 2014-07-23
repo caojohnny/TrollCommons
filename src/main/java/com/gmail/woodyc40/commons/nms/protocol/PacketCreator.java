@@ -14,31 +14,15 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.nms.protocol;
 
 /**
- * A simplified unique key mapping used to store values
+ * A builder utility that can map out the packets within NMS package to reference object building that represents {@link
+ * net.minecraft.server.v1_7_R4.Packet}.
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
-    /**
-     * Finds the cached value stored by key
-     *
-     * @param k the key for the requested value
-     * @return the value associated with the key
-     */
-    V lookup(K k);
+public class PacketCreator {
 
-    /**
-     * Associates a value with the key
-     *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
-     */
-    V insert(K k, V v);
 }

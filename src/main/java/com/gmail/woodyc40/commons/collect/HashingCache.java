@@ -18,6 +18,7 @@ package com.gmail.woodyc40.commons.collect;
 
 // TODO doc
 public class HashingCache<K, V> implements Cache<K, V> {
+    /** The delegate */
     private final HashingCache<K, V>.Struct struct =
             new HashingCache<K, V>.Struct();
 
@@ -30,7 +31,18 @@ public class HashingCache<K, V> implements Cache<K, V> {
         return v;
     }
 
+    /**
+     * Internal implementation of a hashing struct using JAVA hash strategy for cache storage
+     *
+     * @author AgentTroll
+     * @version 1.0
+     * @see com.gmail.woodyc40.commons.collect.AbstractHashStruct
+     */
     private class Struct extends AbstractHashStruct<K, V> {
+        {
+            this.setStategy(AbstractHashStruct.HashStrategy.JAVA);
+        }
+
         @Override protected AbstractHashStruct.Node[] buckets() {
             return new AbstractHashStruct.Node[16];
         }

@@ -41,7 +41,7 @@ class MethodImpl<D, T> implements MethodManager<D, T> {
      */
     public MethodImpl(Method method) {
         this.method = method;
-        this.accessor = ReflectAccess.sunReflectImpl().newMethodAccessor(this.method);
+        this.accessor = ReflectAccess.getREFLECTION_FACTORY().newMethodAccessor(this.method);
     }
 
     /**

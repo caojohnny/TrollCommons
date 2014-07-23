@@ -19,8 +19,8 @@ Word count: 7999
 Starting hash process
 Finished hashing
 Mapping...
-Collisions: 49.86873359169896%
-Average hash time: 9512ns
+Collisions: 50.31878984873109%
+Average hash time: 7208ns
 Done
 
 JAVA implementation:
@@ -146,9 +146,9 @@ public class HashFunctionMapper {
     }
 
     public long hash(String string) {
-        //return (long) AbstractHashStruct.HashStrategy.A_TROLL.hash(string, map.size() + 1);
+        return (long) AbstractHashStruct.HashStrategy.A_TROLL.hash(string, map.size() + 1);
         //return (long) AbstractHashStruct.HashStrategy.JAVA.hash(string, this.map.size() + 1);
-        return (long) AbstractHashStruct.HashStrategy.MURMUR.hash(string, this.map.size() + 1);
+        //return (long) AbstractHashStruct.HashStrategy.MURMUR.hash(string, this.map.size() + 1);
     }
 
     @Data

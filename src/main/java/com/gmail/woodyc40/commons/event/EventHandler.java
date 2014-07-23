@@ -14,31 +14,22 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.event;
 
 /**
- * A simplified unique key mapping used to store values
+ * Handles events called by the framework
+ * <p/>
+ * <p/>
+ * MUST BE ANNOTATED WITH {@link com.gmail.woodyc40.commons.event.Handler}!
  *
- * @param <K> the key type
- * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
  */
-public interface Cache<K, V> {
+public interface EventHandler {
     /**
-     * Finds the cached value stored by key
+     * Override this method and perform x action on event when it is called
      *
-     * @param k the key for the requested value
-     * @return the value associated with the key
+     * @param event the called event, casted.
      */
-    V lookup(K k);
-
-    /**
-     * Associates a value with the key
-     *
-     * @param k the key to associate with the value
-     * @param v the value associated with the key
-     * @return the value inserted
-     */
-    V insert(K k, V v);
+    void handle(CustomEvent event);
 }
