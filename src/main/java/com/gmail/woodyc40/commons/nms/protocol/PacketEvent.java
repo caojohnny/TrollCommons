@@ -21,18 +21,38 @@ import lombok.*;
 import net.minecraft.server.v1_7_R4.Packet;
 import org.bukkit.entity.Player;
 
+/**
+ * Represents a packet that was sent or recieved by the server
+ * 
+ * @author AgentTroll
+ * @version 1.0
+ */ 
 @Getter @RequiredArgsConstructor @Handler(EventType.PACKET)
 public class PacketEvent implements CustomEvent {
+    /** The sent or recieved packet */
     private final            Packet            packet;
+    /** The player that sent or recieved the packet */
     private final            Player            player;
+    /** The intended direction of the packet */
     private final            PacketEvent.Bound bound;
+    /** Whether or not this event is cancelled */
     @Setter private volatile boolean           cancelled;
 
     @Override public boolean getCancelled() {
         return this.cancelled;
     }
 
+    /**
+     * Represents the direction the packet is going toawads
+     * 
+     * @author AgentTroll
+     * @version 1.0
+     */ 
     public enum Bound {
-        CLIENT_BOUND, SERVER_BOUND
+        /** Means the packet is sent to the client */
+        CLIENT_BOUND, 
+        
+        /** Means the packet is sent to the server */
+        SERVER_BOUND
     }
 }
