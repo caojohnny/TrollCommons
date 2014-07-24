@@ -143,7 +143,7 @@ public final class ProtocolHandler {
             if (ProtocolHandler.this.plugin == null) return; // Whoopsie, plugin disabled.
 
             EntityPlayer player = ((CraftPlayer) event.getPlayer()).getHandle();
-            Channel conn = this.CHANNEL.get(player.playerConnection.networkManager);
+            Channel conn = (Channel) this.CHANNEL.get(player.playerConnection.networkManager);
 
             conn.pipeline().addFirst(new ProtocolHandler.PlayerAdapter(event.getPlayer()));
             ProtocolHandler.getCache().put(event.getPlayer(), conn);
