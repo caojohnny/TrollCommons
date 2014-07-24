@@ -78,9 +78,9 @@ public class HashStructSet<E> implements Set<E> {
     }
 
     @Override public <T> T[] toArray(T[] ts) {
-        T[] ts1 = Arrays.copyOf(ts, ts.length + this.size());
+        Object[] ts1 = Arrays.copyOf(ts, ts.length + this.size());
         System.arraycopy(this.toArray(), 0, ts1, ts1.length, ts.length - 1);
-        return ts1;
+        return (T[]) ts1;
     }
 
     @Override public boolean add(E e) {

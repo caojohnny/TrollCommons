@@ -16,7 +16,6 @@
 
 package com.gmail.woodyc40.commons.collect;
 
-// TODO doc
 public class HashingCache<K, V> implements Cache<K, V> {
     /** The delegate */
     private final HashingCache<K, V>.Struct struct =

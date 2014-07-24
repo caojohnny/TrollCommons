@@ -16,12 +16,21 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class HashStructTest {
-    @Param({ "10", "1000" }) private int entries;
     private static final Object o     = new Object();
     private static final Object dummy = new Object();
+    private static                   Map<Integer, Object> map0;
+    @Param({ "10", "1000" }) private int                  entries;
+    private                          Map<Integer, Object> map;
 
-    private        Map<Integer, Object> map;
-    private static Map<Integer, Object> map0;
+    public static void main(String... args) throws RunnerException {
+        Options opt = new OptionsBuilder()
+                .include(".*" + HashStructTest.class.getSimpleName() + ".*")
+                .warmupIterations(5)
+                .measurementIterations(5)
+                .build();
+
+        new Runner(opt).run();
+    }
 
     @Setup public void setUp() {
         this.map = new HashMap<>(this.entries);
@@ -76,15 +85,5 @@ public class HashStructTest {
     @Test public void testRemove() {
         this.testRBemoval();
         this.testRBemoval0();
-    }
-
-    public static void main(String[] args) throws RunnerException {
-        Options opt = new OptionsBuilder()
-               .include(".*" + HashStructTest.class.getSimpleName() + ".*")
-               .warmupIterations(5)
-               .measurementIterations(5)
-               .build();
-
-        new Runner(opt).run();
     }
 }

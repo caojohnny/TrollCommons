@@ -31,8 +31,7 @@ import java.util.Map;
  * <p/>
  * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
  * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL} that can be changed using {@link #setStategy(com.gmail.woodyc40.commons.collect
- * .AbstractHashStruct.HashStrategy)}.
+ * .HashStrategy#A_TROLL} that can be changed using {@link #setStategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}.
  * <p/>
  * <p/>
  * Benchmarks for all 3 hash strategies can be found here: https://github
@@ -299,7 +298,7 @@ public abstract class AbstractHashStruct<K, V> {
          * Uses {@link com.google.common.hash.Murmur3_32HashFunction} to hash the values, and mod the length of buckets
          */
         MURMUR {
-            public int hash(Object o, int i) {
+            @Override public int hash(Object o, int i) {
                 // Implementation:
                 // 3 step process -
                 // Step 1: Hash the current hashCode of the key
@@ -318,12 +317,12 @@ public abstract class AbstractHashStruct<K, V> {
          * The default {@link java.util.HashMap} hashing strategy, from OpenJDK
          */
         JAVA {
-            public int hash(Object o, int i) {
+            @Override public int hash(Object o, int i) {
                 int h = o.hashCode();
-                h ^= (h >>> 20) ^ (h >>> 12);
-                int bit = h ^ (h >>> 7) ^ (h >>> 4);
+                h ^= h >>> 20 ^ h >>> 12;
+                int bit = h ^ h >>> 7 ^ h >>> 4;
 
-                return bit & (i - 1);
+                return bit & i - 1;
             }
         },
 
@@ -331,11 +330,11 @@ public abstract class AbstractHashStruct<K, V> {
          * Custom hashing function that is faster than MURMUR and better distribution than JAVA
          */
         A_TROLL {
-            public int hash(Object o, int i) {
+            @Override public int hash(Object o, int i) {
                 long h = UnsafeProvider.normalize(o.hashCode());
-                h = ((h >> 16) ^ h) * 0x301L;
-                h = ((h >> 16) ^ h) * 0x301L;
-                h = ((h >> 16) ^ h);
+                h = (h >> 16 ^ h) * 0x301L;
+                h = (h >> 16 ^ h) * 0x301L;
+                h = h >> 16 ^ h;
 
                 return (int) (h % (long) i);
             }

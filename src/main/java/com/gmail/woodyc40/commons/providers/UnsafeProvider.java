@@ -294,8 +294,8 @@ public final class UnsafeProvider {
      * @return the derived unsigned {@code long} associated with the value
      */
     public static long normalize(long value) {
-        if (value >= 0)
-            return (long) value;
-        return ~0L >>> 32 & (long) value;
+        if (value >= 0L)
+            return value;
+        return ~0L >>> 32 & value;
     }
 }

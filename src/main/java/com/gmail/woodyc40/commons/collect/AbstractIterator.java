@@ -19,6 +19,7 @@ package com.gmail.woodyc40.commons.collect;
 import lombok.*;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Base structure for building iterators on
@@ -56,6 +57,8 @@ public abstract class AbstractIterator<E> implements Iterator<E> {
     }
 
     @Override public E next() {
+        if (this.index + 1 > this.max)
+            throw new NoSuchElementException();
         return (E) this.values[this.index++];
     }
 

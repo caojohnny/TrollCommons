@@ -40,7 +40,7 @@ class ConstructorImpl<T> implements ConstructorManager<T> {
      */
     public ConstructorImpl(Constructor<T> constructor) {
         this.constructor = constructor;
-        this.accessor = ReflectAccess.sunReflectImpl().newConstructorAccessor(this.constructor);
+        this.accessor = ReflectAccess.getREFLECTION_FACTORY().newConstructorAccessor(this.constructor);
     }
 
     /**

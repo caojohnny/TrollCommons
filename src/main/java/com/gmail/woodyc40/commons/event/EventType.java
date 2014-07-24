@@ -33,7 +33,7 @@ public enum EventType {
     PACKET(PacketEvent.class);
 
     /** The {@code class} that the event is represented by */
-    @Getter Class<? extends CustomEvent> eventClass;
+    @Getter private final Class<? extends CustomEvent> eventClass;
 
     /**
      * Constructs a new entry for the event type specified

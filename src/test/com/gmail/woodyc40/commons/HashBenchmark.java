@@ -201,7 +201,7 @@ public class HashBenchmark {
 
     @Param({ "6999", "16" }) private int size;
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + HashBenchmark.class.getSimpleName() + ".*")
                 .warmupIterations(5)

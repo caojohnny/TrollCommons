@@ -2,7 +2,6 @@ package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
 import com.gmail.woodyc40.commons.misc.Table;
-import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import lombok.*;
 
 import java.io.*;
@@ -51,7 +50,7 @@ public class HashFunctionMapper {
     @Getter private final Map<HashFunctionMapper.Coords, Long> map  = new HashMap<>();
     @Getter private final Collection<String>                   list = new ArrayList<>();
 
-    @Getter private final List<Long> averageTimes = new ArrayList<>();
+    @Getter private final Collection<Long> averageTimes = new ArrayList<>();
 
     public static void main(String... args) throws IOException {
         HashFunctionMapper mapper = new HashFunctionMapper();
@@ -106,7 +105,7 @@ public class HashFunctionMapper {
 
     public void printResults() {
         int collisions = 0;
-        for (Coords coords : this.map.keySet())
+        for (HashFunctionMapper.Coords coords : this.map.keySet())
             if (coords.getY() > 1)
                 collisions++;
 
@@ -135,18 +134,8 @@ public class HashFunctionMapper {
         table.print(System.out);
     }
 
-    long fnv_hash(Object o, Integer i) {
-        long h = 2166136261L;
-
-        for (int j = 0; j < i; j++) {
-            h = (h * 16777619) ^ o.hashCode();
-        }
-
-        return UnsafeProvider.normalize(h) % i;
-    }
-
     public long hash(String string) {
-        return (long) AbstractHashStruct.HashStrategy.A_TROLL.hash(string, map.size() + 1);
+        return (long) AbstractHashStruct.HashStrategy.A_TROLL.hash(string, this.map.size() + 1);
         //return (long) AbstractHashStruct.HashStrategy.JAVA.hash(string, this.map.size() + 1);
         //return (long) AbstractHashStruct.HashStrategy.MURMUR.hash(string, this.map.size() + 1);
     }

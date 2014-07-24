@@ -33,6 +33,6 @@ public class PacketEvent implements CustomEvent {
     }
 
     public enum Bound {
-        CLIENT_BOUND, SERVER_BOUND;
+        CLIENT_BOUND, SERVER_BOUND
     }
 }
