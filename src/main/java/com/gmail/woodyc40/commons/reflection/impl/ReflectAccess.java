@@ -59,8 +59,10 @@ public final class ReflectAccess {
      */
     public static <D, T> MethodManager<D, T> accessMethod(Method method) {
         MethodManager<D, T> cached = (MethodManager<D, T>) ReflectAccess.METHOD.lookup(method);
-        if (cached == null)
-            cached = (MethodManager<D, T>) ReflectAccess.METHOD.insert(method, new MethodImpl<D, T>(method));
+        if (cached == null) {
+            cached = new MethodImpl<D, T>(method);
+            ReflectAccess.METHOD.insert(method, cached);
+        }
 
         return cached;
     }
@@ -75,8 +77,10 @@ public final class ReflectAccess {
      */
     public static <D, T> FieldManager<D, T> accessField(Field field) {
         FieldManager<D, T> cached = (FieldManager<D, T>) ReflectAccess.FIELD.lookup(field);
-        if (cached == null)
-            cached = (FieldManager<D, T>) ReflectAccess.FIELD.insert(field, new FieldImpl<D, T>(field));
+        if (cached == null) {
+            cached = new FieldImpl<D, T>(field)
+            ReflectAccess.FIELD.insert(field, cached);
+        }
 
         return cached;
     }
@@ -90,9 +94,11 @@ public final class ReflectAccess {
      */
     public static <T> ConstructorManager<T> accessConstructor(Constructor<T> constructor) {
         ConstructorManager<T> cached = (ConstructorManager<T>) ReflectAccess.CONSTRUCT.lookup(constructor);
-        if (cached == null)
-            cached = (ConstructorManager<T>) ReflectAccess.CONSTRUCT.insert(constructor,
-                                                                            new ConstructorImpl<>(constructor));
+        if (cached == null) {
+            cached = new ConstructorImpl<>(constructor);
+            ReflectAccess.CONSTRUCT.insert(constructor, cached);
+        }
+
         return cached;
     }
 
