@@ -78,7 +78,7 @@ public final class ReflectAccess {
     public static <D, T> FieldManager<D, T> accessField(Field field) {
         FieldManager<D, T> cached = (FieldManager<D, T>) ReflectAccess.FIELD.lookup(field);
         if (cached == null) {
-            cached = new FieldImpl<D, T>(field)
+            cached = new FieldImpl<D, T>(field);
             ReflectAccess.FIELD.insert(field, cached);
         }
 
