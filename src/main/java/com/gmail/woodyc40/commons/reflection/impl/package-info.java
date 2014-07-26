@@ -7,8 +7,7 @@
  * {@link com.gmail.woodyc40.commons.reflection.impl.FieldImpl} uses only Unsafe to get/set fields.
  *
  * <p>
- * Methods and constructors use ASM methods to add bytecode to class and unsafe cast in order to invoke or
- * instantiate.
+ * Methods and constructors use {@link sun.reflect} to access the Java low level reflect API.
  */
 
 package com.gmail.woodyc40.commons.reflection.impl;
