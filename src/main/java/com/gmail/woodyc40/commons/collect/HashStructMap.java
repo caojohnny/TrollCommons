@@ -28,12 +28,21 @@ import java.util.*;
  * @see java.util.Map
  */
 public class HashStructMap<K, V> implements Map<K, V> {
+    /** The delegating hash structure to perform base ops on */
     private final AbstractHashStruct<K, V> delegate;
 
+    /**
+     * Create a new map based on {@link com.gmail.woodyc40.commons.collect.HashStructMap} with starting size of 16
+     */
     public HashStructMap() {
         this(16);
     }
 
+    /**
+     * Create a map based on {@link com.gmail.woodyc40.commons.collect.HashStructMap} with specified size
+     *
+     * @param size initial map size to use
+     */
     public HashStructMap(final int size) {
         this.delegate = new AbstractHashStruct<K, V>() {
             @Override protected AbstractHashStruct.Node[] buckets() {
@@ -42,6 +51,11 @@ public class HashStructMap<K, V> implements Map<K, V> {
         };
     }
 
+    /**
+     * Create a map based on {@link com.gmail.woodyc40.commons.collect.HashStructMap} with initial entries
+     *
+     * @param master the parent map to copy the entries over
+     */
     public HashStructMap(Map<? extends K, ? extends V> master) {
         this(master.size());
         this.putAll(master);

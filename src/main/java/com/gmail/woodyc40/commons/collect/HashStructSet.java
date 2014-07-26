@@ -33,10 +33,18 @@ public class HashStructSet<E> implements Set<E> {
     /** The value stored in the struct, just a placeholder */
     private final Object value = new Object();
 
+    /**
+     * Creates a new set based on {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct} with initial size of 16
+     */
     public HashStructSet() {
         this(16);
     }
 
+    /**
+     * Creates a new set based on {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct} with specified size
+     *
+     * @param size the initial size
+     */
     public HashStructSet(final int size) {
         this.delegate = new AbstractHashStruct<E, Object>() {
             @Override protected AbstractHashStruct.Node[] buckets() {
@@ -45,6 +53,11 @@ public class HashStructSet<E> implements Set<E> {
         };
     }
 
+    /**
+     * Creates a new set based on {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct} with initial values
+     *
+     * @param master the collection to copy over the values from
+     */
     public HashStructSet(Collection<? extends E> master) {
         this(master.size());
         this.addAll(master);

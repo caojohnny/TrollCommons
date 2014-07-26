@@ -120,6 +120,17 @@ public final class ProtocolHandler {
 
             super.write(ctx, msg, promise);
         }
+
+        /**
+         * Handles exceptions occurring in the Channel
+         *
+         * @param ctx the context which the exception occurs in
+         * @param cause the cause of the exception
+         * @throws Exception if yet another exception occurs
+         */
+        @Override public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+            cause.printStackTrace();
+        }
     }
 
     /**
@@ -145,7 +156,8 @@ public final class ProtocolHandler {
             EntityPlayer player = ((CraftPlayer) event.getPlayer()).getHandle();
             Channel conn = (Channel) this.CHANNEL.get(player.playerConnection.networkManager);
 
-            conn.pipeline().addFirst(new ProtocolHandler.PlayerAdapter(event.getPlayer()));
+            conn.pipeline().addLast("PacketListener" + player.getName(),
+                                    new ProtocolHandler.PlayerAdapter(event.getPlayer()));
             ProtocolHandler.getCache().put(event.getPlayer(), conn);
         }
 
@@ -189,7 +201,9 @@ public final class ProtocolHandler {
             Channel conn = ProtocolHandler.getCache().get(player);
             if (conn == null) return;
 
-            conn.pipeline().remove(ProtocolHandler.PlayerAdapter.class);
+            String handler = "PacketListener" + player.getName();
+            if (conn.pipeline().names().contains(handler))
+                conn.pipeline().remove(handler);
             ProtocolHandler.getCache().remove(player);
         }
     }

@@ -16,7 +16,7 @@
 
 package com.gmail.woodyc40.commons;
 
-import com.gmail.woodyc40.commons.nms.protocol.ProtocolHandler;
+import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -27,6 +27,11 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Main extends JavaPlugin {
     @Override public void onEnable() {
-        new ProtocolHandler(this);
     }
+
+    @Override public void onDisable() {
+        new ThreadPoolManager().shutdown();
+    }
+
+    //TODO packet listener
 }

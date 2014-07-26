@@ -18,7 +18,9 @@ package com.gmail.woodyc40.commons.nms;
 
 import com.google.common.reflect.ClassPath;
 import lombok.Getter;
+import net.minecraft.server.v1_7_R4.MinecraftServer;
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_7_R4.CraftServer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,5 +50,27 @@ public class McServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Acquires a cached {@link java.lang.Class} from the net.minecraft.server package
+     *
+     * @param name the SIMPLE name of the class, without qualifiers
+     * @return the class if found, {@code null} if not
+     */
+    public Class<?> getClass(String name) {
+        return McServer.classMap.get(name);
+    }
+
+    /**
+     * Gets the instance of net.minecraft.server.MinecraftServer
+     *
+     * <p>
+     * There are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class
+     *
+     * @return the instance of MinecraftServer
+     */
+    public MinecraftServer getMcServer() {
+        return ((CraftServer) Bukkit.getServer()).getServer();
     }
 }
