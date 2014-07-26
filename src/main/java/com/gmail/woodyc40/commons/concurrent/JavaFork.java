@@ -16,7 +16,7 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
-import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 import java.io.File;
 import java.io.IOException;
@@ -28,8 +28,11 @@ import java.io.IOException;
  * @author AgentTroll
  * @version 1.0
  */
-@Immutable @ThreadSafe
+@ThreadSafe
 public class JavaFork {
+    /** The process started by the fork of the JVM */
+    @GuardedBy("this") private static Process process;
+
     /**
      * Beats at minecraft tick rate (20/sec). The while loop sleeps for 2 milliseconds and wakes to count the current
      * time minus the starting time. If the elapsed time is larger than 50, or the time from the last beat exceeds 50,
@@ -60,10 +63,17 @@ public class JavaFork {
      *
      * @throws IOException when the process cannot be started (for some reason, possibly security restrictions)
      */
-    public void start() throws IOException {
-        new ProcessBuilder("java com.gmail.woodyc40.commons.concurrent.JavaFork")
+    public synchronized void start() throws IOException {
+        JavaFork.process = new ProcessBuilder("java com.gmail.woodyc40.commons.concurrent.JavaFork")
                 .directory(new File(JavaFork.class.getProtectionDomain().getCodeSource().getLocation().getFile()))
                 .inheritIO()
                 .start();
+    }
+
+    /**
+     * Stops the forked JVM upon exit of the main JVM (ie the CraftBukkit server)
+     */
+    public synchronized void shutdown() {
+        JavaFork.process.destroy();
     }
 }
