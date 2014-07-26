@@ -31,6 +31,7 @@ public class Main extends JavaPlugin {
 
     @Override public void onDisable() {
         new ThreadPoolManager().shutdown();
+        new JavaFork().shutdown();
     }
 
     //TODO packet listener
