@@ -30,7 +30,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReflectionChain {
     final List<Object> returned = new ArrayList<>();
-    private final Class<?> base;
+    private final Class<Object> base;
 
     public MethodLink method() {
         return new MethodLinkImpl(base, this);
