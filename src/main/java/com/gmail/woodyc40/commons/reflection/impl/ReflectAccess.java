@@ -78,7 +78,7 @@ public final class ReflectAccess {
     public static <D, T> FieldManager<D, T> accessField(Field field) {
         FieldManager<D, T> cached = (FieldManager<D, T>) ReflectAccess.FIELD.lookup(field);
         if (cached == null) {
-            cached = new FieldImpl<D, T>(field);
+            cached = new FieldImpl<>(field);
             ReflectAccess.FIELD.insert(field, cached);
         }
 
@@ -114,8 +114,9 @@ public final class ReflectAccess {
      * @param <D>        the declaring class type
      * @param <T>        the return type
      * @return the wrapped method
+     * @deprecated this method will be moved elsewhere
      */
-    public static <D, T> MethodManager<D, T> accessMethod(Class<D> holder, Class<T> returnType, int paramCount,
+    @Deprecated public static <D, T> MethodManager<D, T> accessMethod(Class<D> holder, Class<T> returnType, int paramCount,
                                                           int index) {
         return ReflectAccess.accessMethod(ReflectAccess.accessMethod(holder, returnType, paramCount).get(index));
     }
@@ -127,8 +128,9 @@ public final class ReflectAccess {
      * @param returnType the return type
      * @param paramCount the amount of parameters
      * @return the collection of unwrapped methods found matching the types
+     * @deprecated this method will be moved elsewhere
      */
-    public static List<Method> accessMethod(Class<?> holder, Class<?> returnType, int paramCount) {
+    @Deprecated public static List<Method> accessMethod(Class<?> holder, Class<?> returnType, int paramCount) {
         List<Method> methods = new ArrayList<>();
 
         for (Method method : holder.getDeclaredMethods()) {
@@ -159,10 +161,11 @@ public final class ReflectAccess {
      * Finds an unwrapped collection of fields matching the types
      *
      * @param holder the holding class
-     * @param type   the type the fueld represents
+     * @param type   the type the field represents
      * @return the unwrapped list of fields matching the types specified
+     * @deprecated this method will be moved elsewhere
      */
-    public static List<Field> accessField(Class<?> holder, Class<?> type) {
+    @Deprecated public static List<Field> accessField(Class<?> holder, Class<?> type) {
         List<Field> fields = new ArrayList<>();
 
         for (Field field : holder.getDeclaredFields()) {
@@ -181,8 +184,9 @@ public final class ReflectAccess {
      * @param index  the index in the constructor list of the given types
      * @param <T>    the type of construction return
      * @return the wrapped constructor
+     * @deprecated this method will be moved elsewhere
      */
-    public static <T> ConstructorManager<T> accessConstruct(Class<T> holder, int params, int index) {
+    @Deprecated public static <T> ConstructorManager<T> accessConstruct(Class<T> holder, int params, int index) {
         return new ConstructorImpl<>(ReflectAccess.accessConstruct(holder, params).get(index));
     }
 
@@ -193,8 +197,9 @@ public final class ReflectAccess {
      * @param params the parameter count of the constructor
      * @param <T>    the type the constructor creates
      * @return the list of unwrapped constructors matching the types
+     * @deprecated this method will be moved elsewhere
      */
-    public static <T> List<Constructor<T>> accessConstruct(Class<T> holder, int params) {
+    @Deprecated public static <T> List<Constructor<T>> accessConstruct(Class<T> holder, int params) {
         List<Constructor<T>> constructors = new ArrayList<>();
 
         for (Constructor<?> constructor : holder.getDeclaredConstructors()) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nms;
+package com.gmail.woodyc40.commons.nmsobc;
 
 import com.google.common.reflect.ClassPath;
 import lombok.Getter;

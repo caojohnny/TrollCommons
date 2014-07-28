@@ -14,16 +14,8 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.reflection.chain;
-
 /**
- * Argument provider for constructor and method links
- *
- * @author AgentTroll
- * @version 1.0
+ * Access to minecraft server internals
  */
-public interface Link {
-    void last(int index);
 
-    void param(Object... obj);
-}
+package com.gmail.woodyc40.commons.nmsobc;

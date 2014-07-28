@@ -31,7 +31,7 @@ import java.util.Map;
  * <p/>
  * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
  * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL} that can be changed using {@link #setStategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}.
+ * .HashStrategy#A_TROLL} that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}.
  * <p/>
  * <p/>
  * Benchmarks for all 3 hash strategies can be found here: https://github
@@ -53,12 +53,20 @@ public abstract class AbstractHashStruct<K, V> {
     @Setter private int resizeThresh = 14;
 
     /** The strategy employed to hash the keys on insertion */
-    @Setter private AbstractHashStruct.HashStrategy stategy = AbstractHashStruct.HashStrategy.A_TROLL;
+    @Setter private AbstractHashStruct.HashStrategy strategy = this.hashStrategy();
 
     //===============[ Hook ] ===============//
 
-    /** Provider of the bucket array of nodes */
+    /**
+     * Provider of the bucket array of nodes 
+     *
+     * @return the initial value of the node array, including size 
+     */
     protected abstract AbstractHashStruct.Node[] buckets();
+
+    protected AbstractHashStruct.HashStrategy hashStrategy() {
+        return AbstractHashStruct.HashStrategy.A_TROLL;
+    }
 
     //===============[ Structure methods ]===============//
 
@@ -69,7 +77,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @param v the value
      * @return the old value, or null if there is none
      */
-    public V put(K k, V v) {
+    public final V put(K k, V v) {
         int hash = this.posOf(k);
         AbstractHashStruct<K, V>.Node toSet = this.search(k, hash);
         V old = toSet.getValue();
@@ -86,7 +94,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @return the value associated with the key upon insertion, null if the key is not found, or the key is associated
      * with a null value
      */
-    public V get(K k) {
+    public final V get(K k) {
         int hash = this.posOf(k);
         AbstractHashStruct<K, V>.Node node = this.loop(k, this.buckets[hash]);
         if (node == null) return null;
@@ -100,7 +108,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @return the old value associated with the key removed, null if it is not actually removed, the key is not found,
      * or the value associated with the key is null
      */
-    public V remove(K k) {
+    public final V remove(K k) {
         AbstractHashStruct<K, V>.Node head = this.buckets[this.posOf(k)];
         if (head == null) return null;
         V old = head.getValue();
@@ -112,7 +120,7 @@ public abstract class AbstractHashStruct<K, V> {
     /**
      * Removes all entries from the bucket array, setting the size to zero, along with the resizing threshold to 14.
      */
-    public void clear() {
+    public final void clear() {
         this.buckets = new AbstractHashStruct.Node[16];
         this.size = 0;
         this.resizeThresh = 14;
@@ -124,7 +132,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @param ky the key to check for in the bucket array
      * @return {@code false} if the key is not found in the buckets, {@code true} if found
      */
-    public boolean containsKey(K ky) {
+    public final boolean containsKey(K ky) {
         K k;
         return (k = this.loop(ky, this.buckets[this.posOf(ky)]).getKey()) != null && k.equals(ky);
     }
@@ -138,7 +146,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @param v the value to check for in the bucket array
      * @return {@code false} if the value is not found in the buckets, {@code true} if found
      */
-    public boolean containsValue(V v) {
+    public final boolean containsValue(V v) {
         for (AbstractHashStruct<K, V>.Node node : this.buckets)
             if (node.getValue().equals(v))
                 return true;
@@ -150,7 +158,7 @@ public abstract class AbstractHashStruct<K, V> {
      *
      * @return the iteration structure that provides access to all keys
      */
-    public Iterator<K> keyIterator() {
+    public final Iterator<K> keyIterator() {
         return new KeyIterator();
     }
 
@@ -159,7 +167,7 @@ public abstract class AbstractHashStruct<K, V> {
      *
      * @return the iteration structure that provides access to all values
      */
-    public Iterator<V> valueIterator() {
+    public final Iterator<V> valueIterator() {
         return new ValueIterator();
     }
 
@@ -172,7 +180,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @return the position in the bucket array
      */
     private int posOf(K key) {
-        return this.stategy.hash(key, this.buckets.length);
+        return this.strategy.hash(key, this.buckets.length);
     }
 
     /**

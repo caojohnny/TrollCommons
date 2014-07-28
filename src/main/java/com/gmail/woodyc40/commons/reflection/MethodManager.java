@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
  * {@code Interface} for weak access to method invocation methods
  * <p/>
  * <p/>
- * Used to invoke and {@code return} the result the method represented by this {@code class}
+ * Used to method and {@code return} the result the method represented by this {@code class}
  * <p/>
  * <p/>
  * Should be faster than conventional Reflection API

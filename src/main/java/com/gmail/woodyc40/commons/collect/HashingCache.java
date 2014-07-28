@@ -39,7 +39,7 @@ public class HashingCache<K, V> implements Cache<K, V> {
      */
     private class Struct extends AbstractHashStruct<K, V> {
         {
-            this.setStategy(AbstractHashStruct.HashStrategy.JAVA);
+            this.setStrategy(AbstractHashStruct.HashStrategy.JAVA);
         }
 
         @Override protected AbstractHashStruct.Node[] buckets() {

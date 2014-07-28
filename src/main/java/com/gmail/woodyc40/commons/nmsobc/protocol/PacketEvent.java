@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nms.protocol;
+package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 import com.gmail.woodyc40.commons.event.*;
 import lombok.*;

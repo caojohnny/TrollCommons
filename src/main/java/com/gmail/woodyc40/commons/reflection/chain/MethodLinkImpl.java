@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gmail.woodyc40.commons.reflection.chain;
 
 import com.gmail.woodyc40.commons.reflection.MethodManager;
@@ -10,29 +26,31 @@ import java.util.*;
 
 @RequiredArgsConstructor
 public class MethodLinkImpl implements MethodLink {
-    private final Class<Object> holder;
+    private final Class<?>        holder;
     private final ReflectionChain parent;
-    private List<Object> params;
+    private final List<Object> params = new ArrayList<>();
     private MethodManager<Object, Object> method;
 
-    @Override public void last(int index) {
+    @Override public MethodLink last(int index) {
         this.params.add(this.parent.returned.get(index));
+        return this;
     }
 
-    @Override public void param(Object... obj) {
+    @Override public MethodLink param(Object... obj) {
         this.params.addAll(Arrays.asList(obj));
+        return this;
     }
 
-    @Override public Invoker invoker() {
+    @Override public MethodLink.Invoker invoker() {
         return new InvokerImpl();
     }
 
-    @Override public MethodLink invoke(String name, Class[] args) {
+    @Override public MethodLink method(String name, Class... args) {
         this.method = ReflectAccess.accessMethod(ReflectionTool.forMethod(name, this.holder, args));
         return this;
     }
 
-    @Override public MethodLink invokeFuzzy(Class<Object> type, int args, int index) {
+    @Override public MethodLink methodFuzzy(Class<Object> type, int args, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (method.getReturnType().equals(type) && method.getParameterTypes().length == args)
@@ -43,7 +61,7 @@ public class MethodLinkImpl implements MethodLink {
         return this;
     }
 
-    @Override public MethodLink invokeFuzzy(Class<Object> type, int index) {
+    @Override public MethodLink methodFuzzy(Class<Object> type, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (method.getReturnType().equals(type))
@@ -54,7 +72,7 @@ public class MethodLinkImpl implements MethodLink {
         return this;
     }
 
-    @Override public MethodLink invokeFuzzy(Class[] args, int index) {
+    @Override public MethodLink methodFuzzy(Class[] args, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (Arrays.equals(method.getParameterTypes(), args))
@@ -77,17 +95,20 @@ public class MethodLinkImpl implements MethodLink {
     }
     
     private class InvokerImpl implements MethodLink.Invoker {
-        @Override public ReflectionChain invoke(Object instance) {
-            MethodLinkImpl.this.parent.returned.add(MethodLinkImpl.this.method.invoke(instance,
-                                                                                      this.processArgs(params)));
+        @Override public ReflectionChain invoke() {
+            MethodLinkImpl.this.parent.returned.add(
+                    MethodLinkImpl.this.method.invoke(MethodLinkImpl.this.params.get(0),
+                                                      this.processArgs(MethodLinkImpl.this.params)));
             return MethodLinkImpl.this.parent;
         }
 
         private Object[] processArgs(Object... args) {
-            Collection<Object> list = new ArrayList<>();
-            Collections.addAll(list, args);
+            Object[] objects = new Object[MethodLinkImpl.this.params.size() - 1];
+            for (int i = 1; i < MethodLinkImpl.this.params.size(); i++) {
+                objects[i - 1] = MethodLinkImpl.this.params.get(i);
+            }
 
-            return list.toArray();
+            return objects;
         }
     }
 }

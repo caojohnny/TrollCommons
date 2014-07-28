@@ -19,17 +19,32 @@ package com.gmail.woodyc40.commons.reflection.chain;
 /**
  *
  */
-public interface MethodLink extends Link {
-    @Override void last(int index);
+public interface MethodLink {
+    /**
+     * Uses the value of a previous reflective operation to use as an instance OR params to method invocation.
+     * 
+     * <p>
+     * The first call to this ALWAYS sets the instance
+     * 
+     * @param index the index of the object representing the instance to use or one of the parameters
+     * @return the instance of MethodLink this was added to
+     */
+    MethodLink last(int index);
 
-    @Override void param(Object... obj);
+    /**
+     * Appends the provided parameters, the first invocation always adding 0 index as the instance.
+     * 
+     * @param obj the objects to use as method parameters
+     * @return the instance of MethodLink this was added to
+     */
+    MethodLink param(Object... obj);
 
     /**
      * The invocation handler
      *
-     * @return the means to invoke the method
+     * @return the means to method the method
      */
-    Invoker invoker();
+    MethodLink.Invoker invoker();
 
     /**
      * Adds a method to the chain
@@ -38,7 +53,7 @@ public interface MethodLink extends Link {
      * @param args the method parameters
      * @return the invoker
      */
-    MethodLink invoke(String name, Class[] args);
+    MethodLink method(String name, Class... args);
 
     /**
      * Adds a method to the chain
@@ -48,7 +63,7 @@ public interface MethodLink extends Link {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink invokeFuzzy(Class<Object> type, int args, int index);
+    MethodLink methodFuzzy(Class<Object> type, int args, int index);
 
     /**
      * Adds a method to the chain
@@ -57,7 +72,7 @@ public interface MethodLink extends Link {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink invokeFuzzy(Class<Object> type, int index);
+    MethodLink methodFuzzy(Class<Object> type, int index);
 
     /**
      * Adds a method to the chain
@@ -66,7 +81,7 @@ public interface MethodLink extends Link {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink invokeFuzzy(Class[] args, int index);
+    MethodLink methodFuzzy(Class[] args, int index);
 
     /**
      * Adds a method to the chain
@@ -87,9 +102,8 @@ public interface MethodLink extends Link {
         /**
          * Invokes the method
          *
-         * @param params the instance to invoke with
          * @return the next link
          */
-        ReflectionChain invoke(Object instance);
+        ReflectionChain invoke();
     }
 }

@@ -29,10 +29,64 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public class ReflectionChain {
+    /** The values found via reflection in the chain */
     final List<Object> returned = new ArrayList<>();
-    private final Class<Object> base;
+    /**  The starting class value */
+    private final Class<?> base;
 
+    /**
+     * Gets the last reflected object
+     *
+     * @return the last object to be found via reflection
+     */
+    public Object reflect() { return this.returned.get(this.returned.size() - 1); }
+
+    /**
+     * Generates a new method link that provides access to method reflection for this chain
+     *
+     * @return the new method link associated to this chain
+     */
     public MethodLink method() {
+        return new MethodLinkImpl(this.base, this);
+    }
+
+    /**
+     * Custom method accessor that doesn't depend on the base class from the chain constructor
+     *
+     * @param base the class to use instead
+     * @return the new method link associated with this chain
+     */
+    public MethodLink method(Class<?> base) {
         return new MethodLinkImpl(base, this);
     }
+
+    /**
+     * The field accessor that provides access for field reflection in this chain
+     *
+     * @return the new field link associated with the chain
+     */
+    public FieldLink field() { return new FieldLinkImpl(this.base, this); }
+
+    /**
+     * Custom field accessor that doesn't depend on the base class from the chain constructor
+     *
+     * @param base the class to use instead
+     * @return the new field link associated with the chain
+     */
+    public FieldLink field(Class<?> base) { return new FieldLinkImpl(base, this); }
+
+    /**
+     * Generates a new constructor accessor that provides access for construction for reflection based on this chain
+     *
+     * @return the new constructor link associated with this chain
+     */
+    public ConstructLink contruct() { return new ConstructLinkImpl(this.base, this); }
+
+    /**
+     * Custom constructor accessor that doesn't depend on the base class from the chain constructor
+     *
+     * @param base the class to use instead
+     * @return the new constructor link associated with this chain
+     */
+    public ConstructLink contruct(Class<?> base) { return new ConstructLinkImpl(base, this); }
 }

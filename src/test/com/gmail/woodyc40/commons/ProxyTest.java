@@ -1,7 +1,23 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gmail.woodyc40.commons;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Fork;
+import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -11,28 +27,151 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
+/*
+Output:
+
+# Run progress: 0.00% complete, ETA 00:01:20
+# Warmup: 20 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.gmail.woodyc40.commons.ProxyTest.proxy
+# VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# Fork: 1 of 1
+# Warmup Iteration   1: 110648.653 ns/op
+# Warmup Iteration   2: 20679.375 ns/op
+# Warmup Iteration   3: 3936.388 ns/op
+# Warmup Iteration   4: 4132.863 ns/op
+# Warmup Iteration   5: 3440.347 ns/op
+# Warmup Iteration   6: 3863.376 ns/op
+# Warmup Iteration   7: 3242.136 ns/op
+# Warmup Iteration   8: 3713.203 ns/op
+# Warmup Iteration   9: 3075.057 ns/op
+# Warmup Iteration  10: 3089.637 ns/op
+# Warmup Iteration  11: 3248.121 ns/op
+# Warmup Iteration  12: 2997.042 ns/op
+# Warmup Iteration  13: 3198.538 ns/op
+# Warmup Iteration  14: 2933.097 ns/op
+# Warmup Iteration  15: 3174.051 ns/op
+# Warmup Iteration  16: 3009.374 ns/op
+# Warmup Iteration  17: 3365.965 ns/op
+# Warmup Iteration  18: 2850.859 ns/op
+# Warmup Iteration  19: 2978.739 ns/op
+# Warmup Iteration  20: 3080.304 ns/op
+Iteration   1: 3253.654 ns/op
+Iteration   2: 2849.816 ns/op
+Iteration   3: 3001.184 ns/op
+Iteration   4: 2907.092 ns/op
+Iteration   5: 3154.357 ns/op
+Iteration   6: 2839.017 ns/op
+Iteration   7: 3033.112 ns/op
+Iteration   8: 3126.797 ns/op
+Iteration   9: 2799.763 ns/op
+Iteration  10: 2930.188 ns/op
+Iteration  11: 2867.551 ns/op
+Iteration  12: 2925.172 ns/op
+Iteration  13: 2752.858 ns/op
+Iteration  14: 2845.958 ns/op
+Iteration  15: 2901.328 ns/op
+Iteration  16: 2836.870 ns/op
+Iteration  17: 3081.830 ns/op
+Iteration  18: 3211.137 ns/op
+Iteration  19: 2840.829 ns/op
+Iteration  20: 2965.784 ns/op
+
+Result: 2956.215 ±(99.9%) 124.593 ns/op [Average]
+  Statistics: (min, avg, max) = (2752.858, 2956.215, 3253.654), stdev = 143.481
+  Confidence interval (99.9%): [2831.622, 3080.808]
+
+
+# Run progress: 50.00% complete, ETA 00:00:50
+# Warmup: 20 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: com.gmail.woodyc40.commons.ProxyTest.proxy0
+# VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# Fork: 1 of 1
+# Warmup Iteration   1: 6807.585 ns/op
+# Warmup Iteration   2: 2292.427 ns/op
+# Warmup Iteration   3: 1989.160 ns/op
+# Warmup Iteration   4: 1979.639 ns/op
+# Warmup Iteration   5: 2129.825 ns/op
+# Warmup Iteration   6: 1969.237 ns/op
+# Warmup Iteration   7: 2050.130 ns/op
+# Warmup Iteration   8: 1748.542 ns/op
+# Warmup Iteration   9: 1832.324 ns/op
+# Warmup Iteration  10: 1795.307 ns/op
+# Warmup Iteration  11: 1887.331 ns/op
+# Warmup Iteration  12: 1738.311 ns/op
+# Warmup Iteration  13: 1828.610 ns/op
+# Warmup Iteration  14: 1753.556 ns/op
+# Warmup Iteration  15: 1780.476 ns/op
+# Warmup Iteration  16: 1772.864 ns/op
+# Warmup Iteration  17: 1815.042 ns/op
+# Warmup Iteration  18: 1755.947 ns/op
+# Warmup Iteration  19: 1712.652 ns/op
+# Warmup Iteration  20: 1710.547 ns/op
+Iteration   1: 1666.563 ns/op
+Iteration   2: 1697.078 ns/op
+Iteration   3: 1670.897 ns/op
+Iteration   4: 1691.851 ns/op
+Iteration   5: 1782.780 ns/op
+Iteration   6: 1723.458 ns/op
+Iteration   7: 1771.169 ns/op
+Iteration   8: 1703.087 ns/op
+Iteration   9: 1713.236 ns/op
+Iteration  10: 1704.708 ns/op
+Iteration  11: 1727.206 ns/op
+Iteration  12: 1689.021 ns/op
+Iteration  13: 1671.933 ns/op
+Iteration  14: 1758.227 ns/op
+Iteration  15: 1743.968 ns/op
+Iteration  16: 1759.284 ns/op
+Iteration  17: 1812.998 ns/op
+Iteration  18: 1873.521 ns/op
+Iteration  19: 1712.522 ns/op
+Iteration  20: 1686.957 ns/op
+
+Result: 1728.023 ±(99.9%) 45.733 ns/op [Average]
+  Statistics: (min, avg, max) = (1666.563, 1728.023, 1873.521), stdev = 52.666
+  Confidence interval (99.9%): [1682.290, 1773.756]
+
+
+# Run complete. Total time: 00:01:39
+
+Benchmark                    Mode   Samples        Score  Score error    Units
+c.g.w.c.ProxyTest.proxy      avgt        20     2956.215      124.593    ns/op
+c.g.w.c.ProxyTest.proxy0     avgt        20     1728.023       45.733    ns/op
+ */
 public class ProxyTest {
     private static final Map<Object, Object> lol = new HashMap<>();
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(".*" + HashBenchmark.class.getSimpleName() + ".*")
-                .warmupIterations(5)
-                .measurementIterations(5)
+                .include(".*" + ProxyTest.class.getSimpleName() + ".*")
+                .timeUnit(TimeUnit.NANOSECONDS)
+                .mode(Mode.AverageTime)
+                .warmupIterations(20)
+                .measurementIterations(20)
                 .build();
 
         new Runner(opt).run();
     }
 
     @Benchmark @Fork(1) public Object proxy() {
-        ProxyProxy proxy = Trap.create(ProxyProxy.class, new ProxyTest());
+        ProxyTest.ProxyProxy proxy = Trap.create(ProxyTest.ProxyProxy.class, new ProxyTest());
         return proxy.getLolMap();
     }
 
     @Benchmark @Fork(1) public Object proxy0() {
-        ProxyProxy proxy = Trap.create(ProxyProxy.class, new ProxyTest());
-        return proxy.getLolMap();
+        return new ReflectionChain(ProxyTest.class)
+                .field().field("lol").instance(new ProxyTest())
+                .getter().get().reflect();
     }
 
     public enum TrapTagType {

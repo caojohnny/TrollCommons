@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nms.protocol;
+package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nms.protocol.ProtocolHandler} package
+ * A builder utility that can map out the packets within NMS package to reference object building that represents {@link
+ * net.minecraft.server.v1_7_R4.Packet}.
  *
  * @author AgentTroll
  * @version 1.0
  */
-public class Protocol {
+public class PacketCreator {
+
 }

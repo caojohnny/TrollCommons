@@ -16,7 +16,7 @@
 
 package com.gmail.woodyc40.commons.event;
 
-import com.gmail.woodyc40.commons.nms.protocol.PacketEvent;
+import com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent;
 import lombok.Getter;
 
 /**
@@ -29,7 +29,7 @@ import lombok.Getter;
  * @version 1.0
  */
 public enum EventType {
-    /** Represents {@link com.gmail.woodyc40.commons.nms.protocol.PacketEvent} */
+    /** Represents {@link com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent} */
     PACKET(PacketEvent.class);
 
     /** The {@code class} that the event is represented by */
