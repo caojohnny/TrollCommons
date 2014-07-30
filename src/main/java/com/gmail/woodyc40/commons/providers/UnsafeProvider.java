@@ -260,7 +260,7 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Makes an unsafe cast from main to a superclass wihthout {@link java.lang.ClassCastException}.
+     * Makes an unsafe cast from main to a superclass without {@link java.lang.ClassCastException}.
      *
      * @param main       the {@code class} to cast
      * @param superclass the {@code class} to cast main to

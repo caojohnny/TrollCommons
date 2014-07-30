@@ -17,7 +17,6 @@
 package com.gmail.woodyc40.commons.concurrent;
 
 import javax.annotation.concurrent.ThreadSafe;
-import java.io.IOException;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,25 +26,16 @@ public class ThreadPoolManager {
     private static final AtomicInteger beats = new AtomicInteger(0);
 
     /** The first consumer executor */
-    private static final CountingExecutor LOAD     =
+    private static final CountingExecutor LOAD  =
             CountingExecutor.newCountingExecutor();
     /** The second consumer executor */
-    private static final CountingExecutor LOAD0    =
+    private static final CountingExecutor LOAD0 =
             CountingExecutor.newCountingExecutor();
 
     /** Balancing executor */
-    private static final ExecutorService BALANCER = Executors.newCachedThreadPool();
+    private static final ExecutorService  BALANCER = Executors.newCachedThreadPool();
     /** The fallback (last ditch) consumer executor */
     private static final CountingExecutor FALLBACK = CountingExecutor.newCountingExecutor();
-
-    // Start the heartbeat regulator
-    static {
-        try {
-            new JavaFork().start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Checks the beat and recalculates on the 1000th beat from {@link com.gmail.woodyc40.commons.concurrent.JavaFork}
@@ -56,17 +46,19 @@ public class ThreadPoolManager {
             ThreadPoolManager.LOAD0.recalc();
             ThreadPoolManager.beats.set(0);
         }
+
+        System.out.println("BEAT");
     }
 
     /**
      * Submits a task for balancing on one of the thread pools
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * The task MUST be designed asynchronously - there are no guarantees for thread safety, so synchronize,
      * synchronize, synchronize!
      *
      * @param task the task to execute concurrently
-     * @param <V> the return type of the task
+     * @param <V>  the return type of the task
      */
     public <V> void submit(Callable<V> task) {
         Distributor<V> dist = new Distributor<>(task)

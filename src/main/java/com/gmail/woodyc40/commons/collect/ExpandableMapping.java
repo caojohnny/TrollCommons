@@ -54,7 +54,7 @@ public class ExpandableMapping<Key, VK> {
      * @param vk  the value key to use
      * @return the value associated with the two keys
      */
-    public Object get(Key key, VK vk) {
+    public VK get(Key key, Object vk) {
         return this.mapping.get(key).get(vk);
     }
 

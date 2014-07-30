@@ -14,28 +14,8 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nmsobc.protocol;
-
-import org.bukkit.plugin.Plugin;
-
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nmsobc.protocol.ProtocolHandler} package
- *
- * @author AgentTroll
- * @version 1.0
+ * Instrumentation utilities using the javassist library
  */
-public class Protocol {
-    private static ProtocolHandler protocol;
 
-    public void initiate(Plugin plugin) {
-        Protocol.protocol = new ProtocolHandler(plugin);
-    }
-
-    public PacketCreator createPacket() {
-        return new PacketCreator();
-    }
-
-    public ProtocolHandler getProtocol() {
-        return Protocol.protocol;
-    }
-}
+package com.gmail.woodyc40.commons.instrument.asm;

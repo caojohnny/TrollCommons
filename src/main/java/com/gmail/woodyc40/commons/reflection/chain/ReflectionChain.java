@@ -31,7 +31,7 @@ import java.util.List;
 public class ReflectionChain {
     /** The values found via reflection in the chain */
     final List<Object> returned = new ArrayList<>();
-    /**  The starting class value */
+    /** The starting class value */
     private final Class<?> base;
 
     /**

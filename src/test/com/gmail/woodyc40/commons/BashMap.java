@@ -21,16 +21,18 @@ import sun.misc.Unsafe;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class BashMap {
-    private static final AbstractHashStruct hashStruct = new AbstractHashStruct() {
-        @Override protected Node[] buckets() {
-            return new Node[16];
+public final class BashMap {
+    private static final BashMap.AbstractHashStruct hashStruct = new BashMap.AbstractHashStruct() {
+        @Override protected BashMap.AbstractHashStruct.Node[] buckets() {
+            return new BashMap.AbstractHashStruct.Node[16];
         }
     };
 
-    public static void main(String[] args) {
+    private BashMap() {}
+
+    public static void main(String... args) {
         while (true) {
-            hashStruct.put(new Object(), new Object());
+            BashMap.hashStruct.put(new Object(), new Object());
         }
     }
 
@@ -306,12 +308,12 @@ public class BashMap {
 
     public static class HashStructSet<E> implements Set<E> {
         /** The delegate to perform actions on */
-        private final AbstractHashStruct<E, Object> delegate;
+        private final BashMap.AbstractHashStruct<E, Object> delegate;
         /** The value stored in the struct, just a placeholder */
         private final Object value = new Object();
 
         /**
-         * Creates a new set based on {@link AbstractHashStruct} with initial size
+         * Creates a new set based on {@link BashMap.AbstractHashStruct} with initial size
          * of 16
          */
         public HashStructSet() {
@@ -324,9 +326,9 @@ public class BashMap {
          * @param size the initial size
          */
         public HashStructSet(final int size) {
-            this.delegate = new AbstractHashStruct<E, Object>() {
-                @Override protected AbstractHashStruct.Node[] buckets() {
-                    return new AbstractHashStruct.Node[size];
+            this.delegate = new BashMap.AbstractHashStruct<E, Object>() {
+                @Override protected BashMap.AbstractHashStruct.Node[] buckets() {
+                    return new BashMap.AbstractHashStruct.Node[size];
                 }
             };
         }
@@ -361,8 +363,8 @@ public class BashMap {
             Object[] objects = new Object[this.size()];
             int index = 0;
 
-            for (AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
-                for (AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
+            for (BashMap.AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
+                for (BashMap.AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
                     objects[index] = last.getKey();
             }
             return objects;
@@ -398,8 +400,8 @@ public class BashMap {
         }
 
         @Override public boolean retainAll(Collection<?> objects) {
-            for (AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
-                for (AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
+            for (BashMap.AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
+                for (BashMap.AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
                     if (!objects.contains(last.getKey()))
                         if (!this.remove(last.getKey())) return false;
             }
@@ -408,8 +410,8 @@ public class BashMap {
         }
 
         @Override public boolean removeAll(Collection<?> objects) {
-            for (AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
-                for (AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
+            for (BashMap.AbstractHashStruct<E, Object>.Node bucket : this.delegate.getBuckets()) {
+                for (BashMap.AbstractHashStruct<E, Object>.Node last = bucket; last != null; last = last.getNext())
                     if (objects.contains(last.getKey()))
                         if (!this.remove(last.getKey())) return false;
             }
@@ -424,17 +426,15 @@ public class BashMap {
 
 
     public abstract static class AbstractHashStruct<K, V> {
+        /** The strategy employed to hash the keys on insertion */
+        private final BashMap.AbstractHashStruct.HashStrategy stategy =
+                BashMap.AbstractHashStruct.HashStrategy.A_TROLL;
         /** The entry storage */
         private BashMap.AbstractHashStruct<K, V>.Node[] buckets = this.buckets();
-
         /** Amount of entries inserted */
         private int size;
         /** The threshold until the map resizes */
         private int resizeThresh = 14;
-
-        /** The strategy employed to hash the keys on insertion */
-        private BashMap.AbstractHashStruct.HashStrategy stategy =
-                BashMap.AbstractHashStruct.HashStrategy.A_TROLL;
 
         //===============[ Hook ] ===============//
 
@@ -634,11 +634,11 @@ public class BashMap {
         }
 
         public int getSize() {
-            return size;
+            return this.size;
         }
 
-        public Node[] getBuckets() {
-            return buckets;
+        public BashMap.AbstractHashStruct.Node[] getBuckets() {
+            return this.buckets;
         }
 
         //===============[ Sub-classes ] ===============//
@@ -697,22 +697,27 @@ public class BashMap {
          */
         public class Node implements Map.Entry<K, V> {
             /** The key */
-            private final   K                                     key;
+            private final K                                     key;
             /** The value */
-            private         V                                     value;
+            private       V                                     value;
             /** The position in the bucket array */
-            private int                                   bucket;
+            private       int                                   bucket;
             /** The next node in the linked-list */
-            private BashMap.AbstractHashStruct<K, V>.Node next;
+            private       BashMap.AbstractHashStruct<K, V>.Node next;
 
-            public Node(K k, V v, int i, Node n) {key = k; value = v; bucket = i; next = n;}
+            public Node(K k, V v, int i, BashMap.AbstractHashStruct.Node n) {
+                this.key = k;
+                this.value = v;
+                this.bucket = i;
+                this.next = n;
+            }
 
             @Override public K getKey() {
-                return key;
+                return this.key;
             }
 
             @Override public V getValue() {
-                return value;
+                return this.value;
             }
 
             @Override public V setValue(V value) {
@@ -722,18 +727,18 @@ public class BashMap {
             }
 
             public int getBucket() {
-                return bucket;
+                return this.bucket;
             }
 
             public void setBucket(int bucket) {
                 this.bucket = bucket;
             }
 
-            public Node getNext() {
-                return next;
+            public BashMap.AbstractHashStruct.Node getNext() {
+                return this.next;
             }
 
-            public void setNext(Node next) {
+            public void setNext(BashMap.AbstractHashStruct.Node next) {
                 this.next = next;
             }
         }

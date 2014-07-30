@@ -17,7 +17,6 @@
 package com.gmail.woodyc40.commons.reflection.impl;
 
 import com.gmail.woodyc40.commons.reflection.ConstructorManager;
-import sun.reflect.ConstructorAccessor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -29,18 +28,16 @@ import java.lang.reflect.InvocationTargetException;
  * @author AgentTroll
  * @version 1.0
  */
-class ConstructorImpl<T> implements ConstructorManager<T> {
-    private final Constructor<T>      constructor;
-    private final ConstructorAccessor accessor;
+class SafeConstructor<T> implements ConstructorManager<T> {
+    private final Constructor<T> constructor;
 
     /**
      * Wraps the Constructor for management by this implementation
      *
      * @param constructor the Constructor to wrap
      */
-    public ConstructorImpl(Constructor<T> constructor) {
+    public SafeConstructor(Constructor<T> constructor) {
         this.constructor = constructor;
-        this.accessor = ReflectAccess.getREFLECTION_FACTORY().newConstructorAccessor(this.constructor);
     }
 
     /**
@@ -48,8 +45,9 @@ class ConstructorImpl<T> implements ConstructorManager<T> {
      */
     @Override public T createInstance(Object... args) {
         try {
-            return (T) this.accessor.newInstance(args);
-        } catch (IllegalArgumentException | InvocationTargetException | InstantiationException x) {
+            return this.constructor.newInstance(args);
+        } catch (IllegalArgumentException | InvocationTargetException | InstantiationException |
+                IllegalAccessException x) {
             x.printStackTrace();
         }
 

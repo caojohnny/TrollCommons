@@ -25,7 +25,6 @@ import javax.annotation.concurrent.ThreadSafe;
  * thread safety.
  *
  * @param <T> the type represented by the field protected
- *
  * @author AgentTroll
  * @version 1.0
  */

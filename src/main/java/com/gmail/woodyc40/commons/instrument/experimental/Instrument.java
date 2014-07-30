@@ -14,28 +14,13 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nmsobc.protocol;
-
-import org.bukkit.plugin.Plugin;
+package com.gmail.woodyc40.commons.instrument.experimental;
 
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nmsobc.protocol.ProtocolHandler} package
+ * Base accessor for experimental assembly instrumentation
  *
  * @author AgentTroll
  * @version 1.0
  */
-public class Protocol {
-    private static ProtocolHandler protocol;
-
-    public void initiate(Plugin plugin) {
-        Protocol.protocol = new ProtocolHandler(plugin);
-    }
-
-    public PacketCreator createPacket() {
-        return new PacketCreator();
-    }
-
-    public ProtocolHandler getProtocol() {
-        return Protocol.protocol;
-    }
+public class Instrument {
 }

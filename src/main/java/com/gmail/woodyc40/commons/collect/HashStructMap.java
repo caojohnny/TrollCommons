@@ -16,6 +16,8 @@
 
 package com.gmail.woodyc40.commons.collect;
 
+import lombok.Getter;
+
 import java.util.*;
 
 /**
@@ -29,7 +31,7 @@ import java.util.*;
  */
 public class HashStructMap<K, V> implements Map<K, V> {
     /** The delegating hash structure to perform base ops on */
-    private final AbstractHashStruct<K, V> delegate;
+    @Getter private final AbstractHashStruct<K, V> delegate;
 
     /**
      * Create a new map based on {@link com.gmail.woodyc40.commons.collect.HashStructMap} with starting size of 16

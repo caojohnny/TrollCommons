@@ -64,8 +64,8 @@ public class McServer {
 
     /**
      * Gets the instance of net.minecraft.server.MinecraftServer
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * There are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class
      *
      * @return the instance of MinecraftServer

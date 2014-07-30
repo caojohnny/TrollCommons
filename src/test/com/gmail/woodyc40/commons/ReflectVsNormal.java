@@ -60,7 +60,8 @@ public class ReflectVsNormal {
     }
 
     private static class Dummy {
-        int i = 0;
+        int i;
+
         public int doWork() {
             return this.i++;
         }

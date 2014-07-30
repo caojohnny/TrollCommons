@@ -38,12 +38,12 @@ public class HashingCache<K, V> implements Cache<K, V> {
      * @see com.gmail.woodyc40.commons.collect.AbstractHashStruct
      */
     private class Struct extends AbstractHashStruct<K, V> {
-        {
-            this.setStrategy(AbstractHashStruct.HashStrategy.JAVA);
-        }
-
         @Override protected AbstractHashStruct.Node[] buckets() {
             return new AbstractHashStruct.Node[16];
+        }
+
+        @Override protected AbstractHashStruct.HashStrategy hashStrategy() {
+            return AbstractHashStruct.HashStrategy.JAVA;
         }
     }
 }

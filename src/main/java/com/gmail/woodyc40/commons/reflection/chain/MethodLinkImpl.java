@@ -55,7 +55,7 @@ public class MethodLinkImpl implements MethodLink {
         for (Method method : this.holder.getDeclaredMethods())
             if (method.getReturnType().equals(type) && method.getParameterTypes().length == args)
                 methods.add(method);
-        
+
         this.method = ReflectAccess.accessMethod(methods.get(index));
 
         return this;
@@ -93,16 +93,16 @@ public class MethodLinkImpl implements MethodLink {
 
         return this;
     }
-    
+
     private class InvokerImpl implements MethodLink.Invoker {
         @Override public ReflectionChain invoke() {
             MethodLinkImpl.this.parent.returned.add(
                     MethodLinkImpl.this.method.invoke(MethodLinkImpl.this.params.get(0),
-                                                      this.processArgs(MethodLinkImpl.this.params)));
+                                                      this.processArgs()));
             return MethodLinkImpl.this.parent;
         }
 
-        private Object[] processArgs(Object... args) {
+        private Object[] processArgs() {
             Object[] objects = new Object[MethodLinkImpl.this.params.size() - 1];
             for (int i = 1; i < MethodLinkImpl.this.params.size(); i++) {
                 objects[i - 1] = MethodLinkImpl.this.params.get(i);

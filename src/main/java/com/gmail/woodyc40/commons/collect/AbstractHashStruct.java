@@ -31,7 +31,8 @@ import java.util.Map;
  * <p/>
  * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
  * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL} that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}.
+ * .HashStrategy#A_TROLL} that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect
+ * .AbstractHashStruct.HashStrategy)}.
  * <p/>
  * <p/>
  * Benchmarks for all 3 hash strategies can be found here: https://github
@@ -58,9 +59,9 @@ public abstract class AbstractHashStruct<K, V> {
     //===============[ Hook ] ===============//
 
     /**
-     * Provider of the bucket array of nodes 
+     * Provider of the bucket array of nodes
      *
-     * @return the initial value of the node array, including size 
+     * @return the initial value of the node array, including size
      */
     protected abstract AbstractHashStruct.Node[] buckets();
 
@@ -184,7 +185,7 @@ public abstract class AbstractHashStruct<K, V> {
     }
 
     /**
-     * Resizes the bucket array if neccessary
+     * Resizes the bucket array if necessary
      */
     private void checkSize() {
         if (this.size == this.resizeThresh) {

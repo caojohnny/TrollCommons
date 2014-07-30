@@ -16,8 +16,7 @@
 
 package com.gmail.woodyc40.commons.reflection.impl;
 
-import com.gmail.woodyc40.commons.collect.Cache;
-import com.gmail.woodyc40.commons.collect.HashingCache;
+import com.gmail.woodyc40.commons.Settings;
 import com.gmail.woodyc40.commons.reflection.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -35,22 +34,16 @@ import java.util.List;
  */
 public final class ReflectAccess {
     /** The sun accessor used in construction of _accessors */
-    @Getter(AccessLevel.PACKAGE) private static final ReflectionFactory                            REFLECTION_FACTORY =
+    @Getter(AccessLevel.PACKAGE) private static final ReflectionFactory REFLECTION_FACTORY =
             ReflectionFactory.getReflectionFactory();
-    /** The cache for methods */
-    private static final                              Cache<Method, MethodManager<?, ?>>           METHOD             =
-            new HashingCache<>();
-    /** The cache for fields */
-    private static final                              Cache<Field, FieldManager<?, ?>>             FIELD              =
-            new HashingCache<>();
-    /** The cache for constructors */
-    private static final                              Cache<Constructor<?>, ConstructorManager<?>> CONSTRUCT          =
-            new HashingCache<>();
 
-    private ReflectAccess() {} // No instatiation for you, mister
+    private ReflectAccess() {} // No instantiation for you, mister
 
     /**
      * Wraps a Method with the method manager with caching properties
+     * <p/>
+     * <p/>
+     * This performs the check for reflection safety settings
      *
      * @param method the method to wrap
      * @param <D>    the declaring class type
@@ -58,17 +51,17 @@ public final class ReflectAccess {
      * @return the wrapped method
      */
     public static <D, T> MethodManager<D, T> accessMethod(Method method) {
-        MethodManager<D, T> cached = (MethodManager<D, T>) ReflectAccess.METHOD.lookup(method);
-        if (cached == null) {
-            cached = new MethodImpl<D, T>(method);
-            ReflectAccess.METHOD.insert(method, cached);
-        }
+        if (new Settings().isSafeReflection())
+            return ReflectionCache.methodSafe(method);
 
-        return cached;
+        return ReflectionCache.method(method);
     }
 
     /**
      * Wraps a field with the field manager with caching properties
+     * <p/>
+     * <p/>
+     * This performs the check for reflection safety settings
      *
      * @param field the field to wrap
      * @param <D>   the declaring class type
@@ -76,33 +69,30 @@ public final class ReflectAccess {
      * @return the wrapped field
      */
     public static <D, T> FieldManager<D, T> accessField(Field field) {
-        FieldManager<D, T> cached = (FieldManager<D, T>) ReflectAccess.FIELD.lookup(field);
-        if (cached == null) {
-            cached = new FieldImpl<>(field);
-            ReflectAccess.FIELD.insert(field, cached);
-        }
+        if (new Settings().isSafeReflection())
+            return ReflectionCache.fieldSafe(field);
 
-        return cached;
+        return ReflectionCache.field(field);
     }
 
     /**
-     * Wraps a constructor using constructor mananger with caching properties
+     * Wraps a constructor using constructor manager with caching properties
+     * <p/>
+     * <p/>
+     * This performs the check for reflection safety settings
      *
      * @param constructor the constructor to wrap
      * @param <T>         the declaring class type
      * @return the wrapped constructor
      */
     public static <T> ConstructorManager<T> accessConstructor(Constructor<T> constructor) {
-        ConstructorManager<T> cached = (ConstructorManager<T>) ReflectAccess.CONSTRUCT.lookup(constructor);
-        if (cached == null) {
-            cached = new ConstructorImpl<>(constructor);
-            ReflectAccess.CONSTRUCT.insert(constructor, cached);
-        }
+        if (new Settings().isSafeReflection())
+            return ReflectionCache.constructorSafe(constructor);
 
-        return cached;
+        return ReflectionCache.constructor(constructor);
     }
 
-    // Fuzzy reflection (Credit to Comphenix, check him out) implementations
+    // Fuzzy reflection (Credit to Comphenix, check him out) implementations (deprecated)
 
     /**
      * Wraps a method found using the types provided using {@link #accessMethod(java.lang.reflect.Method)} at the index
@@ -116,7 +106,8 @@ public final class ReflectAccess {
      * @return the wrapped method
      * @deprecated this method will be moved elsewhere
      */
-    @Deprecated public static <D, T> MethodManager<D, T> accessMethod(Class<D> holder, Class<T> returnType, int paramCount,
+    @Deprecated
+    public static <D, T> MethodManager<D, T> accessMethod(Class<D> holder, Class<T> returnType, int paramCount,
                                                           int index) {
         return ReflectAccess.accessMethod(ReflectAccess.accessMethod(holder, returnType, paramCount).get(index));
     }
@@ -152,8 +143,9 @@ public final class ReflectAccess {
      * @param <D>    the declaring class
      * @param <T>    the type of field
      * @return the wrapped field
+     * @deprecated this method will be moved elsewhere
      */
-    public static <D, T> FieldManager<D, T> accessField(Class<D> holder, Class<T> type, int index) {
+    @Deprecated public static <D, T> FieldManager<D, T> accessField(Class<D> holder, Class<T> type, int index) {
         return new FieldImpl<>(ReflectAccess.accessField(holder, type).get(index));
     }
 

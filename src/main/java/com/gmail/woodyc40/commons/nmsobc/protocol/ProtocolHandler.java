@@ -124,7 +124,7 @@ public final class ProtocolHandler {
         /**
          * Handles exceptions occurring in the Channel
          *
-         * @param ctx the context which the exception occurs in
+         * @param ctx   the context which the exception occurs in
          * @param cause the cause of the exception
          * @throws Exception if yet another exception occurs
          */

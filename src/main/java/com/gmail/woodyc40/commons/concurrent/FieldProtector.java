@@ -28,11 +28,10 @@ import javax.annotation.concurrent.ThreadSafe;
 @Immutable @ThreadSafe
 public class FieldProtector {
     /**
-     * Creates a new {@link com.gmail.woodyc40.commons.concurrent.ReentrantLockProtected} locking field
-     * protector
+     * Creates a new {@link com.gmail.woodyc40.commons.concurrent.ReentrantLockProtected} locking field protector
      *
      * @param value the initial value. Can be {@code null}.
-     * @param <T> the type of the field that is protected
+     * @param <T>   the type of the field that is protected
      * @return the new field protector
      */
     public <T> ProtectedField<T> usingReentrantLock(T value) {

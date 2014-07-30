@@ -22,8 +22,7 @@ import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-@ThreadSafe
-class ReentrantLockProtected<T> implements ProtectedField<T> {
+@ThreadSafe class ReentrantLockProtected<T> implements ProtectedField<T> {
     /** The lock used ot guard the field */
     private final Lock lock = new ReentrantLock();
     /** The value of the field */

@@ -27,11 +27,11 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class FieldLinkImpl implements FieldLink {
-    private final Class<?> base;
-    private final ReflectionChain parent;
-    private FieldManager<Object, Object> field;
-    private Object instance;
-    
+    private final Class<?>                     base;
+    private final ReflectionChain              parent;
+    private       FieldManager<Object, Object> field;
+    private       Object                       instance;
+
     @Override public FieldLink last(int index) {
         this.instance = this.parent.returned.get(index);
         return this;
@@ -61,7 +61,7 @@ public class FieldLinkImpl implements FieldLink {
             if (field.getType().equals(type))
                 list.add(field);
         this.field = ReflectAccess.accessField(list.get(index));
-        
+
         return this;
     }
 

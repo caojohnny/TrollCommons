@@ -49,7 +49,7 @@ public interface FieldLink {
 
     /**
      * Acquires the mananger to push the value of the field to
-     * 
+     *
      * @return the setter of the field
      */
     FieldLink.Setter setter();
@@ -65,7 +65,7 @@ public interface FieldLink {
     /**
      * Sets the field accessor using "fuzzy" search
      *
-     * @param type the type the field represents
+     * @param type  the type the field represents
      * @param index the index to use from a List of fields following the criteria
      * @return the instance it was set to
      */
@@ -94,8 +94,8 @@ public interface FieldLink {
      */
     interface Setter {
         /**
-         * Sets the value of the field. This technically doesn't return anything, and does not push a new value
-         * to the returned value list in ReflectionChain, only setting the field.
+         * Sets the value of the field. This technically doesn't return anything, and does not push a new value to the
+         * returned value list in ReflectionChain, only setting the field.
          *
          * @param value the value to set the field
          * @return the instance of the ReflectionChain parenting the wrapping FieldLink

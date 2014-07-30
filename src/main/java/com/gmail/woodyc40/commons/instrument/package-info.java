@@ -14,28 +14,13 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nmsobc.protocol;
-
-import org.bukkit.plugin.Plugin;
-
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nmsobc.protocol.ProtocolHandler} package
+ * Provides utilities for adding, removing, and modifying members such as fields, methods, and constructors, and even
+ * classes themselves. This makes use of javassist.
  *
- * @author AgentTroll
- * @version 1.0
+ * <p>
+ * An experimental version will be based off of non-asm libs I have made
+ * personally, and may become production ready if I decide so.
  */
-public class Protocol {
-    private static ProtocolHandler protocol;
 
-    public void initiate(Plugin plugin) {
-        Protocol.protocol = new ProtocolHandler(plugin);
-    }
-
-    public PacketCreator createPacket() {
-        return new PacketCreator();
-    }
-
-    public ProtocolHandler getProtocol() {
-        return Protocol.protocol;
-    }
-}
+package com.gmail.woodyc40.commons.instrument;

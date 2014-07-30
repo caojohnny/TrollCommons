@@ -14,28 +14,24 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nmsobc.protocol;
-
-import org.bukkit.plugin.Plugin;
+package com.gmail.woodyc40.commons.instrument;
 
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nmsobc.protocol.ProtocolHandler} package
+ * Instrumentation access that forms the framework layer for instrumentation utilities
  *
  * @author AgentTroll
  * @version 1.0
  */
-public class Protocol {
-    private static ProtocolHandler protocol;
+public interface Instrument {
+    /**
+     * Adds a constant pool iteration check transformer
+     *
+     * @param transformer the transformer to add
+     */
+    void acceptTransformer(CpTransformer transformer);
 
-    public void initiate(Plugin plugin) {
-        Protocol.protocol = new ProtocolHandler(plugin);
-    }
-
-    public PacketCreator createPacket() {
-        return new PacketCreator();
-    }
-
-    public ProtocolHandler getProtocol() {
-        return Protocol.protocol;
-    }
+    /**
+     * Finish transforming the class and reload it, saving the changes.
+     */
+    void finish();
 }

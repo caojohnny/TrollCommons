@@ -14,26 +14,8 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons;
-
-import com.gmail.woodyc40.commons.concurrent.JavaFork;
-import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
-import org.bukkit.plugin.java.JavaPlugin;
-
 /**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
- *
- * @author AgentTroll
- * @version 1.0
+ * IO utilities... That's it.
  */
-public class Main extends JavaPlugin {
-    @Override public void onEnable() {
-    }
 
-    @Override public void onDisable() {
-        new ThreadPoolManager().shutdown();
-        new JavaFork().shutdown();
-    }
-
-    //TODO packet listener
-}
+package com.gmail.woodyc40.commons.io;

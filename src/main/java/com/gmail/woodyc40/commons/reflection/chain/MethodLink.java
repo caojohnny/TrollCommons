@@ -22,10 +22,10 @@ package com.gmail.woodyc40.commons.reflection.chain;
 public interface MethodLink {
     /**
      * Uses the value of a previous reflective operation to use as an instance OR params to method invocation.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * The first call to this ALWAYS sets the instance
-     * 
+     *
      * @param index the index of the object representing the instance to use or one of the parameters
      * @return the instance of MethodLink this was added to
      */
@@ -33,7 +33,7 @@ public interface MethodLink {
 
     /**
      * Appends the provided parameters, the first invocation always adding 0 index as the instance.
-     * 
+     *
      * @param obj the objects to use as method parameters
      * @return the instance of MethodLink this was added to
      */
@@ -58,8 +58,8 @@ public interface MethodLink {
     /**
      * Adds a method to the chain
      *
-     * @param type the return type of the method
-     * @param args the method parameter count
+     * @param type  the return type of the method
+     * @param args  the method parameter count
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
@@ -68,7 +68,7 @@ public interface MethodLink {
     /**
      * Adds a method to the chain
      *
-     * @param type the return type of the method
+     * @param type  the return type of the method
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
@@ -77,7 +77,7 @@ public interface MethodLink {
     /**
      * Adds a method to the chain
      *
-     * @param args the method parameters
+     * @param args  the method parameters
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
@@ -86,7 +86,7 @@ public interface MethodLink {
     /**
      * Adds a method to the chain
      *
-     * @param args the method parameter count
+     * @param args  the method parameter count
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */

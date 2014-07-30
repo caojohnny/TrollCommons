@@ -16,22 +16,29 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
-import javax.annotation.concurrent.GuardedBy;
-import javax.annotation.concurrent.ThreadSafe;
-import java.io.File;
+import com.gmail.woodyc40.commons.io.Files;
+import lombok.Getter;
+
+import javax.annotation.concurrent.NotThreadSafe;
 import java.io.IOException;
+import java.lang.instrument.Instrumentation;
 
 /**
- * Forks the JVM into a separate {@link java.lang.Process}, which runs the heartbeat for
- * {@link com.gmail.woodyc40.commons.concurrent.ThreadPoolManager}
+ * Forks the JVM into a separate {@link java.lang.Process}, which runs the heartbeat for {@link
+ * com.gmail.woodyc40.commons.concurrent.ThreadPoolManager}
+ * <p/>
+ * <p/>
+ * NOT THREAD SAFE.
  *
  * @author AgentTroll
  * @version 1.0
  */
-@ThreadSafe
+@NotThreadSafe
 public class JavaFork {
     /** The process started by the fork of the JVM */
-    @GuardedBy("this") private static Process process;
+    private static         Process         process;
+    /** The instrument */
+    @Getter private static Instrumentation instrument;
 
     /**
      * Beats at minecraft tick rate (20/sec). The while loop sleeps for 2 milliseconds and wakes to count the current
@@ -46,7 +53,7 @@ public class JavaFork {
 
         while (true) {
             try {
-                Thread.sleep(2);
+                Thread.sleep(2L);
                 long elapsed = System.currentTimeMillis() - current;
                 if (elapsed >= 50L || msec >= 50L) {
                     ThreadPoolManager.beat();
@@ -59,13 +66,26 @@ public class JavaFork {
     }
 
     /**
+     * Acquires the instance of {@link java.lang.instrument.Instrumentation}
+     *
+     * @param args       the arguments passed (none)
+     * @param instrument the instance of the instrument
+     * @throws Exception well... Let's hope this doesn't happen
+     */
+    public static void premain(String args, Instrumentation instrument) throws Exception {
+        JavaFork.instrument = instrument;
+    }
+
+    /**
      * Forks the JVM and starts a new task on this class
      *
      * @throws IOException when the process cannot be started (for some reason, possibly security restrictions)
      */
-    public synchronized void start() throws IOException {
-        JavaFork.process = new ProcessBuilder("java com.gmail.woodyc40.commons.concurrent.JavaFork")
-                .directory(new File(JavaFork.class.getProtectionDomain().getCodeSource().getLocation().getFile()))
+    public void start() throws IOException {
+
+        System.out.println("Starting fork");
+        JavaFork.process = new ProcessBuilder("java", "-jar", Files.jarFile().getName())
+                .directory(Files.pluginDir())
                 .inheritIO()
                 .start();
     }
@@ -73,7 +93,8 @@ public class JavaFork {
     /**
      * Stops the forked JVM upon exit of the main JVM (ie the CraftBukkit server)
      */
-    public synchronized void shutdown() {
-        JavaFork.process.destroy();
+    public void shutdown() {
+        if (JavaFork.process != null)
+            JavaFork.process.destroy();
     }
 }

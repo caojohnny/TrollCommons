@@ -23,10 +23,10 @@ import org.bukkit.entity.Player;
 
 /**
  * Represents a packet that was sent or recieved by the server
- * 
+ *
  * @author AgentTroll
  * @version 1.0
- */ 
+ */
 @Getter @RequiredArgsConstructor @Handler(EventType.PACKET)
 public class PacketEvent implements CustomEvent {
     /** The sent or recieved packet */
@@ -44,14 +44,14 @@ public class PacketEvent implements CustomEvent {
 
     /**
      * Represents the direction the packet is going toawads
-     * 
+     *
      * @author AgentTroll
      * @version 1.0
-     */ 
+     */
     public enum Bound {
         /** Means the packet is sent to the client */
-        CLIENT_BOUND, 
-        
+        CLIENT_BOUND,
+
         /** Means the packet is sent to the server */
         SERVER_BOUND
     }

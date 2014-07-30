@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.nmsobc.protocol;
+package com.gmail.woodyc40.commons.instrument;
 
-import org.bukkit.plugin.Plugin;
+import java.io.InputStream;
 
 /**
- * The main accessor to the {@link com.gmail.woodyc40.commons.nmsobc.protocol.ProtocolHandler} package
+ * Utilities for instrumentation
  *
  * @author AgentTroll
  * @version 1.0
  */
-public class Protocol {
-    private static ProtocolHandler protocol;
+public final class Assembly {
+    private Assembly() {} // No instantiation
 
-    public void initiate(Plugin plugin) {
-        Protocol.protocol = new ProtocolHandler(plugin);
-    }
-
-    public PacketCreator createPacket() {
-        return new PacketCreator();
-    }
-
-    public ProtocolHandler getProtocol() {
-        return Protocol.protocol;
+    /**
+     * Converts a class file to an input stream that represents its bytecode
+     *
+     * @param cls the class to convert
+     * @return the inputstream of bytes
+     */
+    public static InputStream toStream(Class<?> cls) {
+        String className = cls.getName();
+        String classAsPath = className.replace('.', '/') + ".class";
+        return cls.getClassLoader().getResourceAsStream(classAsPath);
     }
 }

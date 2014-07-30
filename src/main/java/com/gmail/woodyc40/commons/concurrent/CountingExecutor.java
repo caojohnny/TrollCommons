@@ -21,8 +21,8 @@ import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.*;
 
 /**
- * An executor that counts the tasks being executed and able to resize with the workload, along with block tasks
- * that are out of the bound of the execution range.
+ * An executor that counts the tasks being executed and able to resize with the workload, along with block tasks that
+ * are out of the bound of the execution range.
  *
  * @author AgentTroll
  * @version 1.0
@@ -32,21 +32,21 @@ import java.util.concurrent.*;
 @ThreadSafe
 public class CountingExecutor extends ThreadPoolExecutor {
     /** The enforced amount of tasks to be executed */
-    @GuardedBy("this") private          Semaphore semaphore;
+    @GuardedBy("this") private Semaphore semaphore;
     /** The maximum tasks that can be handled */
-    private volatile                    int       max;
+    private volatile           int       max;
 
     /**
      * Constructs a new ExecutorService that keeps track of the tasks to be executed
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * This is useful for load balancing and statistics
      *
-     * @param corePoolSize the amount of threads to create for each task
+     * @param corePoolSize    the amount of threads to create for each task
      * @param maximumPoolSize the max amount of threads to create
-     * @param keepAliveTime time for idle threads to be disposed
-     * @param unit the unit {@code keepAliveTime} is expressed in
-     * @param workQueue the queue of tasks to execute
+     * @param keepAliveTime   time for idle threads to be disposed
+     * @param unit            the unit {@code keepAliveTime} is expressed in
+     * @param workQueue       the queue of tasks to execute
      */
     private CountingExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit,
                              BlockingQueue<Runnable> workQueue) {
@@ -60,13 +60,13 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * Constructs a new ExecutorService that keeps track of the tasks to be executed
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * This is useful for load balancing and statistics
-     *
-     * <p>
-     * This constructs a thread pool with the size if the available processors multiplied by {@code 1.5}, and casted
-     * to an {@code int}
+     * <p/>
+     * <p/>
+     * This constructs a thread pool with the size if the available processors multiplied by {@code 1.5}, and casted to
+     * an {@code int}
      */
     public static CountingExecutor newCountingExecutor() {
         int threads = (int) ((double) Runtime.getRuntime().availableProcessors() * 1.5);
@@ -75,8 +75,8 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * The amount of space left before the thread pool runs out of space
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * The fallback executor should be used when the {@code int} returned is larger than {@code 95}
      *
      * @return the total available task space
@@ -107,8 +107,8 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * Recalculates and resizes the thread pool plus the amount available slots for tasks
-     *
-     * <p>
+     * <p/>
+     * <p/>
      * Should be called every 50,000 milliseconds
      */
     public void recalc() {
