@@ -5,6 +5,7 @@ This library is built upon 2 bundled resources:
 ========================================================================================================================
 
 Javassist is licensed under MPL 1.1 compatible with LGPL 2.1+ and Apache 2.0, the terms for its license are stated here:
+
 Javassist, a Java-bytecode translator toolkit.
 Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
 
@@ -25,6 +26,7 @@ All files under the asm package are subject to the license discussed above.
 ========================================================================================================================
 
 Google Guava is licensed under the Apache License 2.0, as is with this library. The license terms are stated here:
+
 Copyright (C) 2008 The Guava Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
