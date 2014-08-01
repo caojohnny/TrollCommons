@@ -3,9 +3,7 @@ BukkitCommons
 
 Commons library for Bukkit utils
 
-Build stats:
-[![Build Status](https://travis-ci.org/AgentTroll/BukkitCommons.svg?branch=master)](https://travis-ci.org/AgentTroll/BukkitCommons)
-
-Jar builds: https://github.com/AgentTroll/BukkitCommonsBuilds
+Builds:
+http://50.135.125.106:8085/browse/BC-BUK
 
 Javadocs: http://agenttroll.github.io/BukkitCommons/
