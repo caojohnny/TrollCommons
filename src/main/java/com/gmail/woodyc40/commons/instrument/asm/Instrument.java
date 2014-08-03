@@ -19,6 +19,7 @@ package com.gmail.woodyc40.commons.instrument.asm;
 import com.gmail.woodyc40.commons.concurrent.JavaFork;
 import com.gmail.woodyc40.commons.instrument.Assembly;
 import com.gmail.woodyc40.commons.instrument.CpTransformer;
+import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
 import com.google.common.io.ByteStreams;
 import javassist.*;
 import lombok.AccessLevel;
@@ -46,16 +47,18 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
     /** The javassist class wrapper */
     @Getter(AccessLevel.PROTECTED) private final CtClass  ctClass;
     /** The constant pool */
+    @Getter(AccessLevel.PROTECTED) private final PoolRef constantPool;
 
     /**
      * Start modifying the top level member - the {@code class}
      *
      * @param base the starting {@code class}
      */
-    public Instrument(Class<?> base) throws IOException, NotFoundException {
+    public Instrument(Class<?> base) throws NotFoundException {
         this.base = base;
         this.bytes = Assembly.toStream(this.base);
         this.ctClass = Instrument.CLASS_POOL.getCtClass(base.getName());
+        this.constantPool = new PoolRef();
     }
 
     @Override public void acceptTransformer(CpTransformer transformer) {
@@ -68,7 +71,13 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
             public byte[] transform(ClassLoader classLoader, String s, Class<?> aClass, ProtectionDomain
                     protectionDomain, byte[] bytes)
                     throws IllegalClassFormatException {
-                return null; // (
+                try {
+                    return Instrument.this.ctClass.toBytecode();
+                } catch (IOException | CannotCompileException e) {
+                    e.printStackTrace();
+                }
+
+                return new byte[0];
             }
         };
 

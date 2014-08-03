@@ -16,6 +16,9 @@
 
 package com.gmail.woodyc40.commons.instrument;
 
+import com.gmail.woodyc40.commons.instrument.refs.ConstantRef;
+import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
+
 /**
  * Transformer access for entries in the constant pool
  *
@@ -23,5 +26,20 @@ package com.gmail.woodyc40.commons.instrument;
  * @version 1.0
  */
 public interface CpTransformer {
-    void transform();
+    /**
+     * Allows the constant pool entry to be modified
+     *
+     * @param ref the current reference of the constant the iteration is on - this will be called for each entry in the
+     *            constant pool
+     * @return the transformed constant, or the same constant if not changed. {@code null} to remove.
+     */
+    ConstantRef transform(ConstantRef ref);
+
+    /**
+     * Allows the constant pool as a whole to be modified
+     *
+     * @param ref the reference to the constant pool
+     * @return the transformed constant pool
+     */
+    PoolRef transform(PoolRef ref);
 }

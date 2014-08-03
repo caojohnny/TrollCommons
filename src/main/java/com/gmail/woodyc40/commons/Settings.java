@@ -31,7 +31,7 @@ public class Settings {
     /** The map of users */
     private static final Map<Package, Settings> SETTINGS_MAP = new HashStructMap() {
         {
-            getDelegate().setStrategy(AbstractHashStruct.HashStrategy.JAVA);
+            this.getDelegate().setStrategy(AbstractHashStruct.HashStrategy.JAVA);
         }
     };
 
@@ -57,6 +57,13 @@ public class Settings {
     }
 
     public Settings forPackage() {
-        return Settings.SETTINGS_MAP.get(Commons.getCaller(false));
+        Package pack = Commons.getCaller(false);
+        Settings settings = Settings.SETTINGS_MAP.get(pack);
+        if (settings == null) {
+            settings = new Settings();
+            Settings.SETTINGS_MAP.put(pack, settings);
+        }
+
+        return settings;
     }
 }
