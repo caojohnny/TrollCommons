@@ -1,45 +1,32 @@
 This library is built upon 2 bundled resources:
-- ASM
+- javassist
 - Google Guava
 
 ========================================================================================================================
 
-As per the license of ASM, the terms for its license are stated here:
-Copyright (c) 2000-2011 INRIA, France Telecom
-All rights reserved.
+Javassist is licensed under MPL 1.1 compatible with LGPL 2.1+ and Apache 2.0, the terms for its license are stated here:
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
+Javassist, a Java-bytecode translator toolkit.
+Copyright (C) 1999- Shigeru Chiba. All Rights Reserved.
 
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
+The contents of this file are subject to the Mozilla Public License Version
+1.1 (the "License"); you may not use this file except in compliance with
+the License.  Alternatively, the contents of this file may be used under
+the terms of the GNU Lesser General Public License Version 2.1 or later,
+or the Apache License Version 2.0.
 
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
+Software distributed under the License is distributed on an "AS IS" basis,
+WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+for the specific language governing rights and limitations under the
+License.
 
-3. Neither the name of the copyright holders nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
-THE POSSIBILITY OF SUCH DAMAGE.
 
 All files under the asm package are subject to the license discussed above.
 
 ========================================================================================================================
 
 Google Guava is licensed under the Apache License 2.0, as is with this library. The license terms are stated here:
+
 Copyright (C) 2008 The Guava Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
