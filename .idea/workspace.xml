@@ -9,159 +9,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Lol">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Pair.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/package-info.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/generated-test-sources/test-annotations/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/ClassByteCodeTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/META-INF/BenchmarkList" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/META-INF/CompilerHints" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/UnsafeProviderTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/HashBenchmark.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/HashFunctionMapper$Coords.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/HashFunctionMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/HashStructTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/UnsafeProviderTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$HashBenchmark_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$HashBenchmark_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$HashBenchmark_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash$HashBenchmark_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$HashBenchmark_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$HashBenchmark_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$HashBenchmark_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0$HashBenchmark_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashBenchmark_hash0.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_hash.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testInsertion0.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRAetrieval0.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRBemoval0.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRemoval0.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$Blackhole_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$Blackhole_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$Blackhole_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$Blackhole_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$HashStructTest_1_jmh.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$HashStructTest_1_jmh_B1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$HashStructTest_1_jmh_B2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0$HashStructTest_1_jmh_B3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/gmail/woodyc40/commons/generated/HashStructTest_testRetrieval0.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BukkitCommons.iml" afterPath="$PROJECT_DIR$/BukkitCommons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/asm/Instrument.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/asm/Instrument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/JOHNNY.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/JOHNNY.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Eh">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -241,7 +90,7 @@
       <file leaf-file-name="Instrument.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/asm/Instrument.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="1260">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
               <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
               <folding />
             </state>
@@ -251,8 +100,8 @@
       <file leaf-file-name="InstrumentTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.588098" vertical-offset="0" max-vertical-offset="972">
-              <caret line="42" column="77" selection-start-line="42" selection-start-column="77" selection-end-line="42" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.4410735" vertical-offset="0" max-vertical-offset="1098">
+              <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -263,35 +112,12 @@
       <file leaf-file-name="ConstantRef.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1944">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1062" max-vertical-offset="4068">
               <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
               <folding>
-                <element signature="docComment;class#ConstantRef#0" expanded="false" />
-                <element signature="e#1608#1609#0" expanded="true" />
-                <element signature="e#1669#1670#0" expanded="true" />
-                <element signature="docComment;field#PADDING#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#write#0;class#1793:1899" expanded="false" />
-                <element signature="docComment;field#UTF8#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#INTEGER#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#FLOAT#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#LONG#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#DOUBLE#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#CLASS#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#STRING#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;field#FIELD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#write#0;class#3892:4223" expanded="false" />
-                <element signature="docComment;field#METHOD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#write#0;class#4466:4797" expanded="false" />
-                <element signature="docComment;field#INTERFACE_METHOD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#write#0;class#5060:5391" expanded="false" />
-                <element signature="docComment;field#NAME_AND_TYPE#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#write#0;class#5648:5979" expanded="false" />
-                <element signature="docComment;field#tag#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;method#Type#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;method#writeData#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="method#writeData#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <element signature="docComment;method#write#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-                <marker date="1407103810000" expanded="true" signature="1380:1541" placeholder="/**...*/" />
+                <marker date="1407104107000" expanded="true" signature="939:950" placeholder="/**...*/" />
+                <marker date="1407104107000" expanded="true" signature="990:1077" placeholder="/**...*/" />
+                <marker date="1407104107000" expanded="true" signature="1380:1541" placeholder="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -300,7 +126,7 @@
       <file leaf-file-name="PoolRef.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="594">
               <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -310,7 +136,7 @@
       <file leaf-file-name="Instrument.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
+            <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="774">
               <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
               <folding />
             </state>
@@ -320,7 +146,7 @@
       <file leaf-file-name="JavaFork.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1368" max-vertical-offset="1908">
               <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
               <folding />
             </state>
@@ -330,7 +156,7 @@
       <file leaf-file-name="FieldProtector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/FieldProtector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
+            <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="828">
               <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
               <folding />
             </state>
@@ -868,7 +694,7 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="copyright" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -1331,16 +1157,18 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32741398" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3247191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596686" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24812834" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26057908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32741398" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="832" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1351,8 +1179,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32516703" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3973363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1414,7 +1240,8 @@
     <MESSAGE value="Fix protocol next, test JavaFork" />
     <MESSAGE value="Finished reflection chain, still on that JavaFork and protocol" />
     <MESSAGE value="Lol" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lol" />
+    <MESSAGE value="Eh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Eh" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1526,7 +1353,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22055428" vertical-offset="1015" max-vertical-offset="3384">
           <caret line="89" column="64" selection-start-line="89" selection-start-column="64" selection-end-line="89" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1597,7 +1423,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16628176" vertical-offset="234" max-vertical-offset="1188">
           <caret line="46" column="27" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1689,9 +1514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.546091" vertical-offset="0" max-vertical-offset="3132">
           <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1699,7 +1521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16802801" vertical-offset="0" max-vertical-offset="857">
           <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1707,7 +1528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21003501" vertical-offset="0" max-vertical-offset="857">
           <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1715,7 +1535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.77712953" vertical-offset="0" max-vertical-offset="972">
           <caret line="58" column="29" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1739,9 +1558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5670945" vertical-offset="0" max-vertical-offset="857">
           <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1779,6 +1595,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1944">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+          <folding>
+            <marker date="1407104107000" expanded="true" signature="939:950" placeholder="/**...*/" />
+            <marker date="1407104107000" expanded="true" signature="990:1077" placeholder="/**...*/" />
+            <marker date="1407104107000" expanded="true" signature="1380:1541" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/asm/Instrument.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="1260">
@@ -1787,45 +1615,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1944">
-          <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
-          <folding>
-            <element signature="docComment;class#ConstantRef#0" expanded="false" />
-            <element signature="e#1608#1609#0" expanded="true" />
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="docComment;field#PADDING#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#write#0;class#1793:1899" expanded="false" />
-            <element signature="docComment;field#UTF8#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#INTEGER#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#FLOAT#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#LONG#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#DOUBLE#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#CLASS#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#STRING#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;field#FIELD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#write#0;class#3892:4223" expanded="false" />
-            <element signature="docComment;field#METHOD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#write#0;class#4466:4797" expanded="false" />
-            <element signature="docComment;field#INTERFACE_METHOD#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#write#0;class#5060:5391" expanded="false" />
-            <element signature="docComment;field#NAME_AND_TYPE#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#write#0;class#5648:5979" expanded="false" />
-            <element signature="docComment;field#tag#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;method#Type#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;method#writeData#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="method#writeData#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <element signature="docComment;method#write#0;class#Type#0;class#ConstantRef#0" expanded="false" />
-            <marker date="1407103810000" expanded="true" signature="1380:1541" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.588098" vertical-offset="0" max-vertical-offset="972">
-          <caret line="42" column="77" selection-start-line="42" selection-start-column="77" selection-end-line="42" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.4410735" vertical-offset="0" max-vertical-offset="1098">
+          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

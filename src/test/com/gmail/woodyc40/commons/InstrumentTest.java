@@ -17,18 +17,27 @@
 package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.instrument.CpTransformer;
+import com.gmail.woodyc40.commons.instrument.Instrument;
 import com.gmail.woodyc40.commons.instrument.refs.ConstantRef;
 import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
 import com.gmail.woodyc40.commons.misc.Pair;
 import javassist.*;
 import javassist.bytecode.Descriptor;
+import org.bukkit.Bukkit;
 
-public class InstrumentTest {
-    public static void main(String[] args) {
+public final class InstrumentTest {
+    private InstrumentTest() {}
 
+    public static void main(String... args) throws NotFoundException {
+        Instrument instrument = new com.gmail.woodyc40.commons.instrument.asm.Instrument(InstrumentTest.class);
+        instrument.acceptTransformer(new InstrumentTest.Transformer());
     }
 
-    private class Transformer implements CpTransformer {
+    public void getOnline() {
+        Bukkit.getServer().getOnlinePlayers();
+    }
+
+    private static class Transformer implements CpTransformer {
         private PoolRef ref;
         private int transformIndex;
 
