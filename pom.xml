@@ -85,7 +85,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>RELEASE</version>
+            <version>LATEST</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
@@ -93,7 +93,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>RELEASE</version>
+            <version>LATEST</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
