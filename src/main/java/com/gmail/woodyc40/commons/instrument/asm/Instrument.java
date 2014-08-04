@@ -58,7 +58,7 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
         this.base = base;
         this.bytes = Assembly.toStream(this.base);
         this.ctClass = Instrument.CLASS_POOL.getCtClass(base.getName());
-        this.constantPool = new PoolRef();
+        this.constantPool = new PoolRef(this.ctClass.getClassFile().getConstPool());
     }
 
     @Override public void acceptTransformer(CpTransformer transformer) {
