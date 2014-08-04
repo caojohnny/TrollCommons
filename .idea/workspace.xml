@@ -10,25 +10,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Eh">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/RemoteTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/RunnableReceiveEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SetStructTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BukkitCommons.iml" afterPath="$PROJECT_DIR$/BukkitCommons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashingCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashingCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/Checks.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$HashStrategy$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$HashStrategy$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$HashStrategy$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$HashStrategy.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$KeyIterator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$Node.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct$ValueIterator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractHashStruct.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/AbstractIterator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/Cache.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/ExpandableMapping.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashStructMap$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashStructMap.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashStructSet$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashStructSet.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashingCache$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashingCache$CacheEntry.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashingCache$Struct.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/collect/HashingCache.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/concurrent/UnsafeLock$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/concurrent/UnsafeLock$BlockingLock.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/concurrent/UnsafeLock$MonitorLock.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/concurrent/UnsafeLock.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/Checks.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/Line.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/MultiParamRunnable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/Row.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/RowEntry.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/misc/Table.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/providers/TrigProvider.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/providers/UnsafeProvider.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/ConstructorManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/FieldManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/MethodManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/ReflectionTool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/BytecodeField.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/BytecodeMethod.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/ClassBytecode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Descriptors.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Invoker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Modifiers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$Attr.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$CodeAttr.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$Constant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$ConstantImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool$SourceAttr.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Pool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/Primitives.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/StaticInvoker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/package-info.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/ByteVector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/ByteVectorFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/ByteVectorImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/ClassFileAssembler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/ClassFileConstants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/Label$PatchInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/Label.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/UTF8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/asm/sun/package-info.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/impl/ConstructorImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/impl/FieldImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/impl/MethodImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/plugin.yml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -1121,7 +1173,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="26" width="1922" height="1029" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3247191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1130,7 +1182,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24812834" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106952" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106952" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1586,8 +1638,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5904" max-vertical-offset="7074">
           <caret line="358" column="0" selection-start-line="358" selection-start-column="0" selection-end-line="360" selection-end-column="37" />
           <folding>
-            <element signature="e#14908#14909#0" expanded="true" />
-            <element signature="e#14944#14945#0" expanded="true" />
+            <element signature="e#14982#14983#0" expanded="true" />
+            <element signature="e#15018#15019#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1621,9 +1673,9 @@
         <state vertical-scroll-proportion="0.33605602" vertical-offset="0" max-vertical-offset="1044">
           <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1338#1339#0" expanded="true" />
-            <element signature="e#1373#1374#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1440#1441#0" expanded="true" />
+            <element signature="e#1475#1476#0" expanded="true" />
           </folding>
         </state>
       </provider>
