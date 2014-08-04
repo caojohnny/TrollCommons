@@ -63,6 +63,15 @@ public class HashStructSet<E> implements Set<E> {
         this.addAll(master);
     }
 
+    /**
+     * Constructs a new set based on a struct template
+     *
+     * @param hashStruct the delegated struct to use
+     */
+    public HashStructSet(AbstractHashStruct<E, Object> hashStruct) {
+        this.delegate = hashStruct;
+    }
+
     @Override public int size() {
         return this.delegate.getSize();
     }

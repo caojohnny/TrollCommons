@@ -18,9 +18,7 @@ package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.concurrent.JavaFork;
 import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
-import com.gmail.woodyc40.commons.event.*;
 import com.gmail.woodyc40.commons.io.Files;
-import com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent;
 import com.gmail.woodyc40.commons.nmsobc.protocol.Protocol;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
 import lombok.Getter;
@@ -62,24 +60,14 @@ public class Commons extends JavaPlugin {
         new Protocol().initiate(this);
         try {
             Files.update();
-            new JavaFork().start();
-            Events.register(new TestListener());
-        } catch (NoEventAnnotationException | IOException e) {
+            JavaFork.start();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override public void onDisable() {
         new ThreadPoolManager().shutdown();
-        new JavaFork().shutdown();
-    }
-
-    //TODO packet listener
-    @Handler(EventType.PACKET)
-    private class TestListener implements EventHandler {
-        @Override public void handle(CustomEvent event) {
-            PacketEvent e = (PacketEvent) event;
-            System.out.print(e.getBound().name());
-        }
+        JavaFork.shutdown();
     }
 }

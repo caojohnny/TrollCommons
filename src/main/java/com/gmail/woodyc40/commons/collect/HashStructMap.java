@@ -63,6 +63,15 @@ public class HashStructMap<K, V> implements Map<K, V> {
         this.putAll(master);
     }
 
+    /**
+     * Create a map from a base struct map
+     *
+     * @param hashStruct the struct to use as a delegate
+     */
+    public HashStructMap(AbstractHashStruct<K, V> hashStruct) {
+        this.delegate = hashStruct;
+    }
+
     @Override public int size() {
         return this.delegate.getSize();
     }

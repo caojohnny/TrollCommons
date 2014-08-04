@@ -31,8 +31,8 @@ import java.util.Map;
  * <p/>
  * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
  * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL} that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect
- * .AbstractHashStruct.HashStrategy)}.
+ * .HashStrategy#A_TROLL}
+ * that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
  * <p/>
  * <p/>
  * Benchmarks for all 3 hash strategies can be found here: https://github

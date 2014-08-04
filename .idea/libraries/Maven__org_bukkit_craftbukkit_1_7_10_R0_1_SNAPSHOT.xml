@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.bukkit:craftbukkit:1.7.10-R0.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140802.211441-6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140804.183445-7.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140802.211441-6-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140804.183445-7-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140802.211441-6-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../maven/repo/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-20140804.183445-7-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

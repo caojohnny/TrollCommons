@@ -14,20 +14,26 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.collect;
+package com.gmail.woodyc40.commons.misc;
 
-import java.util.Map;
+import java.io.Serializable;
 
-public class HashingCache<K, V> implements Cache<K, V> {
-    /** The delegate */
-    private final Map<K, V> struct = new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();
-
-    @Override public V lookup(K k) {
-        return this.struct.get(k);
-    }
-
-    @Override public V insert(K k, V v) {
-        this.struct.put(k, v);
-        return v;
-    }
+/**
+ * A runnable that can be serialized. Useful for RMI or transport of execution sequences.
+ *
+ * <p>
+ * Objects used in the code even of a serializable runnable must be serializable as well
+ *
+ * <p>
+ * Implementing this class requires you to define a serialVersionUID for optimal results
+ *
+ * @param <V> the return type
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @see java.io.Serializable
+ * @see java.lang.Runnable
+ */
+public interface SerializableRunnable<V> extends Serializable {
+    V run();
 }

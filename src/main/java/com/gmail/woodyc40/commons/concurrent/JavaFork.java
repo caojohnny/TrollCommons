@@ -17,6 +17,8 @@
 package com.gmail.woodyc40.commons.concurrent;
 
 import com.gmail.woodyc40.commons.io.Files;
+import com.gmail.woodyc40.commons.misc.SerializableRunnable;
+import lombok.AccessLevel;
 import lombok.Getter;
 
 import javax.annotation.concurrent.NotThreadSafe;
@@ -35,10 +37,18 @@ import java.lang.instrument.Instrumentation;
  */
 @NotThreadSafe
 public class JavaFork {
+    /** The remote caller */
+    @Getter(AccessLevel.PACKAGE) private static final Remotes FROM_FORK = new Remotes("Fork2TPM");
     /** The process started by the fork of the JVM */
     private static         Process         process;
     /** The instrument */
     @Getter private static Instrumentation instrument;
+    /** The remote receiver */
+    @Getter(AccessLevel.PACKAGE) private static Remotes TO_FORK;
+
+    public JavaFork(Remotes toFork) {
+        JavaFork.TO_FORK = toFork;
+    }
 
     /**
      * Beats at minecraft tick rate (20/sec). The while loop sleeps for 2 milliseconds and wakes to count the current
@@ -56,7 +66,14 @@ public class JavaFork {
                 Thread.sleep(2L);
                 long elapsed = System.currentTimeMillis() - current;
                 if (elapsed >= 50L || msec >= 50L) {
-                    ThreadPoolManager.beat();
+                    JavaFork.FROM_FORK.call(new SerializableRunnable<Void>() {
+                        private static final long serialVersionUID = 3355592265139036018L;
+
+                        @Override public Void run() {
+                            ThreadPoolManager.beat();
+                            return null;
+                        }
+                    });
                     msec = 0L;
                 } else msec = elapsed;
             } catch (Exception x) {
@@ -81,8 +98,7 @@ public class JavaFork {
      *
      * @throws IOException when the process cannot be started (for some reason, possibly security restrictions)
      */
-    public void start() throws IOException {
-
+    public static void start() throws IOException {
         System.out.println("Starting fork");
         JavaFork.process = new ProcessBuilder("java", "-jar", Files.jarFile().getName())
                 .directory(Files.pluginDir())
@@ -93,7 +109,7 @@ public class JavaFork {
     /**
      * Stops the forked JVM upon exit of the main JVM (ie the CraftBukkit server)
      */
-    public void shutdown() {
+    public static void shutdown() {
         if (JavaFork.process != null)
             JavaFork.process.destroy();
     }

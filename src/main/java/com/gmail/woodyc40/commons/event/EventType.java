@@ -16,6 +16,7 @@
 
 package com.gmail.woodyc40.commons.event;
 
+import com.gmail.woodyc40.commons.concurrent.RunnableReceiveEvent;
 import com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent;
 import lombok.Getter;
 
@@ -30,7 +31,7 @@ import lombok.Getter;
  */
 public enum EventType {
     /** Represents {@link com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent} */
-    PACKET(PacketEvent.class);
+    PACKET(PacketEvent.class), RUNNABLE_RECEIVE(RunnableReceiveEvent.class);
 
     /** The {@code class} that the event is represented by */
     @Getter private final Class<? extends CustomEvent> eventClass;

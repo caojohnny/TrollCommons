@@ -17,7 +17,7 @@
 package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
-import com.gmail.woodyc40.commons.collect.HashStructMap;
+import com.gmail.woodyc40.commons.collect.StructBuilder;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -383,9 +383,7 @@ public class HashStructTest {
 
     @Setup public void setUp() {
         HashStructTest.map = new HashMap<>(this.entries);
-        HashStructMap<Integer, Object> map1 = new HashStructMap<>();
-        map1.getDelegate().setStrategy(AbstractHashStruct.HashStrategy.JAVA);
-        HashStructTest.map0 = map1;
+        HashStructTest.map0 = new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();
 
         for (int i = 0; i <= this.entries; i++) {
             if (i == 69) {

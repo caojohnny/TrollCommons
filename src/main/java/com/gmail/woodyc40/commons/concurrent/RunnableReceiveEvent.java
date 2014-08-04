@@ -14,26 +14,26 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.instrument.refs;
+package com.gmail.woodyc40.commons.concurrent;
 
-import com.gmail.woodyc40.commons.collect.HashStructSet;
-import javassist.bytecode.ConstPool;
-
-import java.util.Set;
+import com.gmail.woodyc40.commons.event.CustomEvent;
+import com.gmail.woodyc40.commons.misc.SerializableRunnable;
+import lombok.*;
 
 /**
- * The reference to the entire constant pool itself
+ * Called when a runnable is received from {@link com.gmail.woodyc40.commons.concurrent.Remotes}
  *
  * @author AgentTroll
  * @version 1.0
  */
-public class PoolRef {
-    private final Set<ConstantRef> refSet = new HashStructSet<>();
+@RequiredArgsConstructor
+public class RunnableReceiveEvent implements CustomEvent {
+    /** The runnable called */
+    @Getter private final SerializableRunnable<?> runnable;
+    /** Whether or not this is cancelled */
+    @Setter private       boolean                 cancelled;
 
-    public PoolRef(ConstPool pool) { // TODO
-    }
-
-    public void addRef(ConstantRef ref) {
-        this.refSet.add(ref);
+    @Override public boolean getCancelled() {
+        return this.cancelled;
     }
 }

@@ -16,6 +16,15 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
+import com.gmail.woodyc40.commons.event.Events;
+import com.gmail.woodyc40.commons.misc.SerializableRunnable;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
 /**
  * Provides the RMI interface to send the method call from the forked JVM to the parent JVM
  *
@@ -23,11 +32,110 @@ package com.gmail.woodyc40.commons.concurrent;
  * @version 1.0
  */
 public class Remotes {
-    private static class Reciever {
+    /** Remote identifier */
+    private final String name;
 
+    /** The receiver */
+    private final Remotes.Receiver receiver;
+    /** The caller */
+    private final Remotes.Caller caller;
+
+    /**
+     * Builds a new remote starting the server. The server receives items.
+     *
+     * @param name the name to set for the remote. Should be unique.
+     */
+    public Remotes(String name) {
+        this.name = name;
+        this.receiver = new Remotes.Receiver();
+        this.caller = new Remotes.Caller();
+
+        this.receiver.start(this.receiver);
     }
 
-    private static class Caller {
+    /**
+     * Builds a new remote starting the client. The client sends the methods.
+     *
+     * @param server the remote server
+     */
+    public Remotes(Remotes server) {
+        this.name = server.name;
+        this.receiver = new Remotes.Receiver();
+        this.caller = new Remotes.Caller();
 
+        this.receiver.start(server.receiver);
+    }
+
+    /**
+     * Calls a runnable
+     *
+     * @param runnable the task to execute
+     * @param <T> the return type of the runnable
+     */
+    public <T> void call(SerializableRunnable<T> runnable) {
+        this.caller.call(runnable);
+    }
+
+    /**
+     * Receives calls
+     *
+     * @author AgentTroll
+     * @version 1.0
+     */
+    private class Receiver implements Remote {
+        /**
+         * Starts listening for callers
+         *
+         * @param receiver the receiver to use in listening
+         */
+        public void start(Remote receiver) {
+            if (System.getSecurityManager() == null) System.setSecurityManager(new SecurityManager());
+
+            try {
+                Remote stub = UnicastRemoteObject.exportObject(receiver, 0);
+                Registry registry = LocateRegistry.getRegistry();
+                registry.rebind(Remotes.this.name, stub);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        /**
+         * Method to execute the runnables
+         *
+         * @param runnable the runnable to run
+         * @param <T> the return type of the runnable
+         * @throws RemoteException when an exception occurs while passing the remote
+         */
+        private <T> void execute(SerializableRunnable<T> runnable) throws RemoteException {
+            runnable.run();
+            Events.call(new RunnableReceiveEvent(runnable));
+        }
+    }
+
+    /**
+     * The class used to execute methods in the remote JVM
+     *
+     * @author AgentTroll
+     * @version 1.0
+     */
+    private class Caller {
+        /**
+         * Calls a runnable to the remote JVM
+         *
+         * @param task the task to execute
+         * @param <T> the return type of the task
+         */
+        public <T> void call(SerializableRunnable<T> task) {
+            if (System.getSecurityManager() == null) System.setSecurityManager(new SecurityManager());
+
+            try {
+                Registry registry = LocateRegistry.getRegistry();
+                Remotes.Receiver call = (Remotes.Receiver) registry.lookup(Remotes.this.name);
+                call.execute(task);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
