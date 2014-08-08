@@ -3,7 +3,6 @@ BukkitCommons
 
 Commons library for Bukkit utils
 
-Builds:
-http://50.135.125.106:8085/browse/BC-BUK
+Documentation/Bugs: http://bukkitcommons.atlassian.net
 
 Javadocs: http://agenttroll.github.io/BukkitCommons/
