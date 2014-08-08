@@ -16,6 +16,7 @@
 
 package com.gmail.woodyc40.commons.instrument;
 
+import com.gmail.woodyc40.commons.instrument.experimental.Instrument;
 import com.gmail.woodyc40.commons.instrument.refs.ConstantRef;
 import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
 
@@ -26,6 +27,15 @@ import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
  * @version 1.0
  */
 public interface CpTransformer {
+    /**
+     * Allows the constant pool entry to be modified
+     *
+     * @param ref the current reference of the constant the iteration is on - this will be called for each entry in the
+     *            constant pool
+     * @return the transformed constant, or the same constant if not changed. {@code null} to remove.
+     */
+    ConstantRef transform(Instrument instrument, ConstantRef ref);
+
     /**
      * Allows the constant pool entry to be modified
      *

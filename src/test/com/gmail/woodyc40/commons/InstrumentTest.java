@@ -20,46 +20,71 @@ import com.gmail.woodyc40.commons.instrument.CpTransformer;
 import com.gmail.woodyc40.commons.instrument.Instrument;
 import com.gmail.woodyc40.commons.instrument.refs.ConstantRef;
 import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
-import com.gmail.woodyc40.commons.misc.Pair;
-import javassist.*;
-import javassist.bytecode.Descriptor;
-import org.bukkit.Bukkit;
+import com.gmail.woodyc40.commons.reflection.ConstructorManager;
+import com.gmail.woodyc40.commons.reflection.ReflectionTool;
+import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
+
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.Collections;
 
 public final class InstrumentTest {
+    private static final ConstructorManager<Method> method =
+            ReflectAccess.accessConstructor(ReflectionTool.forConstruct(Method.class,
+                                                                        Class.class,
+                                                                        String.class,
+                                                                        Class[].class,
+                                                                        Class.class,
+                                                                        Class[].class,
+                                                                        int.class,
+                                                                        int.class,
+                                                                        String.class,
+                                                                        byte[].class,
+                                                                        byte[].class,
+                                                                        byte[].class));
+
     private InstrumentTest() {}
 
-    public static void main(String... args) throws NotFoundException {
-        Instrument instrument = new com.gmail.woodyc40.commons.instrument.asm.Instrument(InstrumentTest.class);
+    public static void main(String... args) throws NoSuchMethodException {
+        Instrument instrument = new com.gmail.woodyc40.commons.instrument.experimental.Instrument(InstrumentTest.class);
         instrument.acceptTransformer(new InstrumentTest.Transformer());
+        instrument.finish();
+
+        Class<?> returnType = InstrumentTest.class.getDeclaredMethod("getOnline").getReturnType();
+        System.out.println(returnType.getName());
     }
 
-    public static void getOnline() {
-        Bukkit.getServer().getOnlinePlayers();
+    public static Object getOnline() {
+        return Collections.emptySet();
     }
 
     private static class Transformer implements CpTransformer {
         private PoolRef ref;
-        private int transformIndex;
+        private int     transformIndex;
+
+        @Override
+        public ConstantRef transform(com.gmail.woodyc40.commons.instrument.experimental.Instrument instrument,
+                                     ConstantRef ref) {
+            if (ref.getType() != ConstantRef.Type.METHOD)
+                return ref;
+            Method method1 = (Method) ref.getValue();
+            if (!"getOnline".equalsIgnoreCase(method1.getName()))
+                return ref;
+            ref.setValue(InstrumentTest.method.createInstance(method1.getDeclaringClass(),
+                                                              method1.getName(),
+                                                              method1.getParameterTypes(),
+                                                              Collection.class,
+                                                              method1.getExceptionTypes(),
+                                                              method1.getModifiers(),
+                                                              1,
+                                                              "()Ljava/util/Collection;",
+                                                              new byte[0],
+                                                              new byte[0],
+                                                              new byte[0]));
+            return ref;
+        }
 
         @Override public ConstantRef transform(ConstantRef ref) {
-            if (ref.getValue() instanceof Pair && ref.getType().getTag() == ConstantRef.Type.METHOD.getTag()) {
-                // Get ref at transformIndex
-                ConstantRef ref1 = new ConstantRef(ConstantRef.Type.NAME_AND_TYPE, 0);
-                Pair pair = (Pair) ref1.getValue();
-                int desc = (int) pair.getValue();
-
-                // Get another ref at the desc
-                ConstantRef ref2 = new ConstantRef(ConstantRef.Type.UTF8, 1);
-                try {
-                    ref2.setValue(Descriptor.ofMethod(
-                            ClassPool.getDefault().get("java.util.Collection"),
-                            new CtClass[0]
-                    )); // Set the descriptor to return Collection, instead of possibly Player[]
-                } catch (NotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-
             return ref;
         }
 

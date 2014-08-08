@@ -16,7 +16,7 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
-import com.gmail.woodyc40.commons.event.CustomEvent;
+import com.gmail.woodyc40.commons.event.*;
 import com.gmail.woodyc40.commons.misc.SerializableRunnable;
 import lombok.*;
 
@@ -26,10 +26,10 @@ import lombok.*;
  * @author AgentTroll
  * @version 1.0
  */
-@RequiredArgsConstructor
+@Getter @RequiredArgsConstructor @Handler(EventType.RUNNABLE_RECEIVE)
 public class RunnableReceiveEvent implements CustomEvent {
     /** The runnable called */
-    @Getter private final SerializableRunnable<?> runnable;
+    private final SerializableRunnable<?> runnable;
     /** Whether or not this is cancelled */
     @Setter private       boolean                 cancelled;
 

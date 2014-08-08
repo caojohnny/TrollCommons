@@ -19,19 +19,22 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 import com.gmail.woodyc40.commons.event.*;
 import lombok.*;
 import net.minecraft.server.v1_7_R4.Packet;
+import org.bukkit.entity.Player;
 
 /**
- * Represents a packet that was sent or recieved by the server
+ * Represents a packet that was sent or received by the server
  *
  * @author AgentTroll
  * @version 1.0
  */
 @Getter @RequiredArgsConstructor @Handler(EventType.PACKET)
 public class PacketEvent implements CustomEvent {
-    /** The sent or recieved packet */
-    @Getter private final            Packet            packet;
+    /** The sent or received packet */
+    private final            Packet            packet;
+    /** The player the packet was sent/received by. MAY BE NULL */
+    private final Player player;
     /** The intended direction of the packet */
-    @Getter private final            PacketEvent.Bound bound;
+    private final            PacketEvent.Bound bound;
     /** Whether or not this event is cancelled */
     @Setter private volatile boolean           cancelled;
 
@@ -40,7 +43,7 @@ public class PacketEvent implements CustomEvent {
     }
 
     /**
-     * Represents the direction the packet is going toawads
+     * Represents the direction the packet is going towards
      *
      * @author AgentTroll
      * @version 1.0

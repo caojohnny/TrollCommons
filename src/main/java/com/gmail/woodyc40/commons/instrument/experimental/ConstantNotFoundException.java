@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
-/**
- * Instrumentation utilities using the javassist library
- */
+package com.gmail.woodyc40.commons.instrument.experimental;
 
-package com.gmail.woodyc40.commons.instrument.asm;
+public class ConstantNotFoundException extends Exception {
+    private static final long serialVersionUID = 1524021269321344472L;
+
+    public ConstantNotFoundException(Class<?> clazz, int i) {
+        super("Could not find constant at index " + i + " in class " + clazz.getName());
+    }
+}

@@ -16,15 +16,8 @@
 
 package com.gmail.woodyc40.commons.instrument.refs;
 
-import com.gmail.woodyc40.commons.misc.Pair;
-import com.gmail.woodyc40.commons.reflection.MethodManager;
-import com.gmail.woodyc40.commons.reflection.ReflectionTool;
-import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
-import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
-import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
-import lombok.*;
-
-import java.io.*;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The reference to a constant pool entry
@@ -34,10 +27,6 @@ import java.io.*;
  */
 @Getter @Setter
 public class ConstantRef {
-    /** The tag getter of javassist constinfo */
-    private static final MethodManager<Object, Integer> tag = ReflectAccess.accessMethod(
-            ReflectionTool.forMethod("getTag", ReflectionCache.getClass("javassist.bytecode.ConstPool$ConstInfo"))
-    );
     /** The index in the constant pool */
     private final   int              index;
     /** Type */
@@ -47,68 +36,16 @@ public class ConstantRef {
     private         Class<?>         constInfo;
 
     /**
-     * Builds a reference of the javassist constinfo
+     * Builds the ConstantRef for a SharedSecrets constant pool entry reference
      *
-     * @param constInfo the javassist constant pool entry
-     * @param index     the index of the constant pool entry
+     * @param type the type of the reference
+     * @param value the value to write. Check each tag, as the value may vary
+     * @param index the index of the constant pool entry
      */
-    public ConstantRef(Object constInfo, int index) {
-        this.constInfo = constInfo.getClass();
+    public ConstantRef(ConstantRef.Type type, Object value, int index) {
+        this.type = type;
+        this.value = value;
         this.index = index;
-        switch (ConstantRef.tag.invoke(constInfo)) {
-            case 0:
-                this.type = ConstantRef.Type.PADDING;
-                break;
-            case 1:
-                this.type = ConstantRef.Type.UTF8;
-                break;
-            case 3:
-                this.type = ConstantRef.Type.INTEGER;
-                break;
-            case 4:
-                this.type = ConstantRef.Type.FLOAT;
-                break;
-            case 5:
-                this.type = ConstantRef.Type.LONG;
-                break;
-            case 6:
-                this.type = ConstantRef.Type.DOUBLE;
-                break;
-            case 7:
-                this.type = ConstantRef.Type.CLASS;
-                break;
-            case 8:
-                this.type = ConstantRef.Type.STRING;
-                break;
-            case 9:
-                this.type = ConstantRef.Type.FIELD;
-                break;
-            case 10:
-                this.type = ConstantRef.Type.METHOD;
-                break;
-            case 11:
-                this.type = ConstantRef.Type.INTERFACE_METHOD;
-                break;
-            case 12:
-                this.type = ConstantRef.Type.NAME_AND_TYPE;
-                break;
-        }
-    }
-
-    /**
-     * Outputs the data to the stream
-     *
-     * @param stream the stream to write to
-     * @throws IOException if the write to the stream errors
-     */
-    public void write(DataOutputStream stream) throws IOException {
-        stream.write(this.type.writeData(this.value));
-    }
-
-    public Object toConstInfo() {
-        return new ReflectionChain(this.constInfo).contruct().
-                construct(int.class).param(this.index).creator().create()
-                                                  .reflect();
     }
 
     // TODO verifier
@@ -121,62 +58,36 @@ public class ConstantRef {
      */
     public enum Type {
         /** Padding info after long and double */
-        PADDING(0) {
-            @Override public void write(DataOutputStream stream, Object value) {
-            }
-        },
+        PADDING(0)
+        ,
         /** String type in UTF8 */
-        UTF8(1) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeUTF((String) value);
-            }
-        },
+        UTF8(1),
+
         /** Integer type */
-        INTEGER(3) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeInt((int) value);
-            }
-        },
+        INTEGER(3),
+
         /** Float type */
-        FLOAT(4) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeFloat((float) value);
-            }
-        },
+        FLOAT(4),
+
         /** Long type */
-        LONG(5) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeLong((long) value);
-            }
-        },
+        LONG(5),
+
         /** Double type */
-        DOUBLE(6) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeDouble((double) value);
-            }
-        },
+        DOUBLE(6),
         /**
          * Class type
          * <p/>
          * <p/>
          * value is the index of the class name, in short
          */
-        CLASS(7) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeShort((int) (short) value);
-            }
-        },
+        CLASS(7),
         /**
          * String type
          * <p/>
          * <p/>
          * value is the index of the string, in short
          */
-        STRING(8) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                stream.writeShort((int) (short) value);
-            }
-        },
+        STRING(8),
         /**
          * Fieldref type
          * <p/>
@@ -184,13 +95,7 @@ public class ConstantRef {
          * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
          * Name And Type.
          */
-        FIELD(9) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                Pair<Integer, Integer> pair = (Pair<Integer, Integer>) value;
-                stream.writeShort((int) pair.getKey().shortValue());
-                stream.writeShort((int) pair.getValue().shortValue());
-            }
-        },
+        FIELD(9),
         /**
          * Methodref type
          * <p/>
@@ -198,13 +103,7 @@ public class ConstantRef {
          * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
          * Name And Type.
          */
-        METHOD(10) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                Pair<Integer, Integer> pair = (Pair<Integer, Integer>) value;
-                stream.writeShort((int) pair.getKey().shortValue());
-                stream.writeShort((int) pair.getValue().shortValue());
-            }
-        },
+        METHOD(10),
         /**
          * Interface Methodref type
          * <p/>
@@ -212,13 +111,7 @@ public class ConstantRef {
          * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
          * Name And Type.
          */
-        INTERFACE_METHOD(11) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                Pair<Integer, Integer> pair = (Pair<Integer, Integer>) value;
-                stream.writeShort((int) pair.getKey().shortValue());
-                stream.writeShort((int) pair.getValue().shortValue());
-            }
-        },
+        INTERFACE_METHOD(11),
         /**
          * Name and type info
          * <p/>
@@ -226,13 +119,12 @@ public class ConstantRef {
          * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the member name, the value the index
          * of the descriptor.
          */
-        NAME_AND_TYPE(12) {
-            @Override public void write(DataOutputStream stream, Object value) throws IOException {
-                Pair<Integer, Integer> pair = (Pair<Integer, Integer>) value;
-                stream.writeShort((int) pair.getKey().shortValue());
-                stream.writeShort((int) pair.getValue().shortValue());
-            }
-        };
+        NAME_AND_TYPE(12),
+
+        /**
+         * Member reference information. Cannot be
+         */
+        MEMBER_REF(-1);
 
         /** The bytecode ID number for the tag */
         @Getter int tag;
@@ -245,36 +137,5 @@ public class ConstantRef {
         Type(int tag) {
             this.tag = tag;
         }
-
-        /**
-         * Writes the data as a byte array
-         *
-         * @param value the value to write. Check each tag, as the value may vary
-         * @return the bytes of the written data
-         */
-        public byte[] writeData(Object value) {
-            try {
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                @Cleanup DataOutputStream outputStream = new DataOutputStream(stream);
-
-                outputStream.writeByte(this.tag);
-                this.write(outputStream, value);
-
-                return stream.toByteArray();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return new byte[0];
-        }
-
-        /**
-         * Writes data from a type
-         *
-         * @param stream the stream to write to
-         * @param value  the value to write. Check each tag, as the value may vary
-         * @throws IOException thrown if the value could not be written to the stream
-         */
-        abstract void write(DataOutputStream stream, Object value) throws IOException;
     }
 }

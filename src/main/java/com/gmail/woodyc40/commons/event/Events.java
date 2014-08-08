@@ -16,8 +16,6 @@
 
 package com.gmail.woodyc40.commons.event;
 
-import org.bukkit.Bukkit;
-
 import javax.annotation.concurrent.GuardedBy;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,11 +39,6 @@ public final class Events {
         if (handler.getClass().getAnnotation(Handler.class) == null)
             throw new NoEventAnnotationException(handler.getClass());
 
-        if (Bukkit.isPrimaryThread()) {
-            Events.registered.put(handler, handler.getClass().getAnnotation(Handler.class).value());
-            return;
-        }
-
         synchronized (Events.class) {
             Events.registered.put(handler, handler.getClass().getAnnotation(Handler.class).value());
         }
@@ -57,14 +50,6 @@ public final class Events {
      * @param event the event to call
      */
     public static void call(CustomEvent event) {
-        if (Bukkit.isPrimaryThread()) {
-            for (Map.Entry<EventHandler, EventType> entry : Events.registered.entrySet())
-                if (entry.getValue() == event.getClass().getAnnotation(Handler.class).value())
-                    entry.getKey().handle(event);
-
-            return;
-        }
-
         synchronized (Events.class) {
             for (Map.Entry<EventHandler, EventType> entry : Events.registered.entrySet())
                 if (entry.getValue() == event.getClass().getAnnotation(Handler.class).value())

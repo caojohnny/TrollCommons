@@ -34,7 +34,7 @@ import java.util.Map;
  *
  * @author AgentTroll
  * @version 1.0
- * @see #provide()
+ * @see #getProvider()
  * @see Unsafe#getUnsafe()
  */
 public final class UnsafeProvider {
@@ -93,7 +93,7 @@ public final class UnsafeProvider {
      * @return the Unsafe instance received when this {@code class} was loaded.
      * @throws IllegalStateException if the Unsafe instance was not acquired already during load
      */
-    public static Unsafe provide() {
+    public static Unsafe getProvider() {
         if (UnsafeProvider.PROVIDER == null)
             throw new IllegalStateException("Cannot be used, Unsafe is null");
 
@@ -320,5 +320,14 @@ public final class UnsafeProvider {
         if (value >= 0L)
             return value;
         return ~0L >>> 32 & value;
+    }
+
+    /**
+     * Throws an unchecked exception, meaning the exception should not be caught
+     *
+     * @param x the exception to throw unchecked
+     */
+    public static void exception(Exception x) {
+        UnsafeProvider.PROVIDER.throwException(x);
     }
 }

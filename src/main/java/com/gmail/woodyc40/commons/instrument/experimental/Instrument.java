@@ -16,13 +16,15 @@
 
 package com.gmail.woodyc40.commons.instrument.experimental;
 
-import com.gmail.woodyc40.commons.collect.StructBuilder;
 import com.gmail.woodyc40.commons.instrument.CpTransformer;
 import com.gmail.woodyc40.commons.instrument.refs.ConstantRef;
 import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
+import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import sun.misc.SharedSecrets;
 import sun.reflect.ConstantPool;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.*;
 
 /**
@@ -33,13 +35,13 @@ import java.util.*;
  */
 public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrument {
     /** The class to instrument */
-    private final         Class<?>     base;
+    private final Class<?>     base;
     /** The class constant pool */
     private final ConstantPool constantPool;
     /** The references to the constants */
     private final List<ConstantRef>  refs         = new ArrayList<>();
     /** The transformers for the constant pool */
-    private final Set<CpTransformer> transformers = new StructBuilder().buildSet();
+    private final Set<CpTransformer> transformers = new HashSet<>(); // Work on this ! TODO
 
     /**
      * Builds a new instrumentation handler
@@ -67,11 +69,63 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
 
     @Override public void finish() {
         for (int i = 0; i < this.constantPool.getSize(); i++) {
-            for (CpTransformer transformer : this.transformers) {
+            for (CpTransformer trans : this.transformers) {
+                Class<?> cls = null;
+                Double d = null;
+                Field fld = null;
+                Float f = null;
+                Integer in = null;
+                Long l = null;
+                String[] memberRefInfo = new String[0];
+                Method method = null;
+                String s = null;
+                String utf = null;
+
                 try {
-                    transformer.transform(new ConstantRef(new Object(), i));
-                } catch (Exception x) {
-                    //...
+                    cls = this.constantPool.getClassAt(i);
+                    d = this.constantPool.getDoubleAt(i);
+                    fld = this.constantPool.getFieldAt(i);
+                    f = this.constantPool.getFloatAt(i);
+                    in = this.constantPool.getIntAt(i);
+                    l = this.constantPool.getLongAt(i);
+                    memberRefInfo = this.constantPool.getMemberRefInfoAt(i);
+                    method = (Method) this.constantPool.getMethodAt(i);
+                    s = this.constantPool.getStringAt(i);
+                    utf = this.constantPool.getUTF8At(i);
+                } catch (Exception ignored) {}
+
+                if (cls != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.CLASS, cls, i));
+                    UnsafeProvider.getProvider().putObject(cls, 8L, ref.getValue());
+                } else if (d != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.DOUBLE, d, i));
+                    UnsafeProvider.getProvider().putObject(d, 8L, ref.getValue());
+                } else if (fld != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.FIELD, fld, i));
+                    UnsafeProvider.getProvider().putObject(fld, 8L, ref.getValue());
+                } else if (f != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.FLOAT, f, i));
+                    UnsafeProvider.getProvider().putObject(f, 8L, ref.getValue());
+                } else if (in != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.INTEGER, in, i));
+                    UnsafeProvider.getProvider().putObject(i, 8L, ref.getValue());
+                } else if (l != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.LONG, l, i));
+                    UnsafeProvider.getProvider().putObject(l, 8L, ref.getValue());
+                } else if (memberRefInfo != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.MEMBER_REF, memberRefInfo, i));
+                    UnsafeProvider.getProvider().putObject(memberRefInfo, 8L, ref.getValue());
+                } else if (method != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.METHOD, method, i));
+                    UnsafeProvider.getProvider().putObject(method, 8L, ref.getValue());
+                } else if (s != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.STRING, s, i));
+                    UnsafeProvider.getProvider().putObject(s, 8L, ref.getValue());
+                } else if (utf != null) {
+                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.UTF8, utf, i));
+                    UnsafeProvider.getProvider().putObject(utf, 8L, ref.getValue());
+                } else {
+                    UnsafeProvider.exception(new ConstantNotFoundException(this.base, i));
                 }
             }
         }

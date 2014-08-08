@@ -16,8 +16,10 @@
 
 package com.gmail.woodyc40.commons.instrument.refs;
 
-import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
-import javassist.bytecode.ConstPool;
+import sun.reflect.ConstantPool;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The reference to the entire constant pool itself
@@ -25,22 +27,16 @@ import javassist.bytecode.ConstPool;
  * @author AgentTroll
  * @version 1.0
  */
-public class PoolRef {
-    /** The reference to the original constat references */
-    private final LongVectorRef longVectorRef;
-
-    /** The javassist LongVector */
-    private final Object longVector;
+public class PoolRef { // TODO
+    /** The reference to the constant references */
+    private final Set<ConstantRef> refs = new HashSet<>(); // TODO set to struct
 
     /**
      * Builds a new constant pool reference from the javassist constant pool
      *
      * @param pool the javassist constant pool
      */
-    public PoolRef(ConstPool pool) {
-        this.longVector =
-                new ReflectionChain(ConstPool.class).field().field("items").instance(pool).getter().get().reflect();
-        this.longVectorRef = new LongVectorRef(this.longVector);
+    public PoolRef(ConstantPool pool) {
     }
 
     /**
@@ -49,13 +45,13 @@ public class PoolRef {
      * @param ref the reference to the entry to add
      */
     public void addRef(ConstantRef ref) {
-        this.longVectorRef.addElement(ref);
+
     }
 
     /**
      * Complete adding the values to the constant pool and push changes to the javassist long vector
      */
     public void finish() {
-        this.longVectorRef.finish();
+
     }
 }
