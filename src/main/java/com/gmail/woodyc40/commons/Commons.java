@@ -18,8 +18,11 @@ package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.concurrent.JavaFork;
 import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
+import com.gmail.woodyc40.commons.instrument.experimental.Instrument;
 import com.gmail.woodyc40.commons.io.Files;
 import com.gmail.woodyc40.commons.nmsobc.protocol.Protocol;
+import com.gmail.woodyc40.commons.providers.UnsafeProvider;
+import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
 import lombok.Getter;
 import org.bukkit.plugin.Plugin;
@@ -34,6 +37,22 @@ import java.io.IOException;
  * @version 1.0
  */
 public class Commons extends JavaPlugin {
+    /** Classes that may be disabled due to availability */
+    private static final Class<?>[] CLASSES        = {
+            Instrument.class, UnsafeProvider.class, ReflectAccess.class,
+            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.ConstructorImpl"),
+            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.MethodImpl"),
+            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.FieldImpl")
+    };
+    /** Classes that need to be available for specific libraries */
+    private static final Class<?>[] UNSAFE_CLASSES = {
+            ReflectionCache.getClass("sun.misc.Unsafe"),
+            ReflectionCache.getClass("sun.reflect.MethodAccessor"),
+            ReflectionCache.getClass("sun.reflect.ConstantPool"),
+            ReflectionCache.getClass("sun.reflect.ConstructorAccessor"),
+            ReflectionCache.getClass("sun.reflect.ReflectionFactory"),
+            ReflectionCache.getClass("sun.misc.SharedSecrets")
+    };
     /** The plugin instance */
     @Getter private static Plugin plugin;
 
@@ -57,17 +76,22 @@ public class Commons extends JavaPlugin {
     @Override public void onEnable() {
         Commons.plugin = this;
 
-        new Protocol().initiate(this);
+        for (Class<?> c : Commons.UNSAFE_CLASSES) {
+            if (c == null) {}
+                // TODO disable CLASSES
+        }
+
+        Protocol.initiate(this);
         try {
             Files.update();
-            JavaFork.start();
+            // JavaFork.start(); TODO
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override public void onDisable() {
-        new ThreadPoolManager().shutdown();
+        ThreadPoolManager.shutdown();
         JavaFork.shutdown();
     }
 }

@@ -45,16 +45,16 @@ public class ReflectVsNormal {
         new Runner(opt).run();
     }
     
-    @Setup public void setup() throws NoSuchMethodException {
+    @Setup public static void setup() throws NoSuchMethodException {
         ReflectVsNormal.dummy = new ReflectVsNormal.Dummy();
         ReflectVsNormal.method = ReflectVsNormal.dummy.getClass().getDeclaredMethod("doWork");
     }
 
-    @Benchmark public void NormalInvoke(Blackhole blackhole) {
+    @Benchmark public static void NormalInvoke(Blackhole blackhole) {
         blackhole.consume(ReflectVsNormal.dummy.doWork());
     }
 
-    @Benchmark public void ReflectInvoke(Blackhole blackhole)
+    @Benchmark public static void ReflectInvoke(Blackhole blackhole)
             throws InvocationTargetException, IllegalAccessException {
         blackhole.consume(ReflectVsNormal.method.invoke(ReflectVsNormal.dummy));
     }

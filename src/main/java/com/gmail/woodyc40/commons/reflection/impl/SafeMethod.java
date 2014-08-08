@@ -31,6 +31,7 @@ public class SafeMethod<D, T> implements MethodManager<D, T> {
      */
     public SafeMethod(Method method) {
         this.method = method;
+        this.method.setAccessible(true);
     }
 
     /**

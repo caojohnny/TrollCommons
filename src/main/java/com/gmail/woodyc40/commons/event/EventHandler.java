@@ -19,7 +19,6 @@ package com.gmail.woodyc40.commons.event;
 /**
  * Handles events called by the framework
  * <p/>
- * <p/>
  * MUST BE ANNOTATED WITH {@link com.gmail.woodyc40.commons.event.Handler}!
  *
  * @author AgentTroll

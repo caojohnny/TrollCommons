@@ -38,7 +38,7 @@ public final class Checks {
     }
 
     /**
-     * Throws an {@link IllegalArgumentException} objects provided are not equal to eachother.
+     * Throws an {@link IllegalArgumentException} objects provided are not equal to each other.
      *
      * @param val0 the first object to check against val1
      * @param val1 the second comparison value to check against

@@ -18,8 +18,9 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 import com.gmail.woodyc40.commons.event.CustomEvent;
 import com.gmail.woodyc40.commons.event.Events;
+import com.gmail.woodyc40.commons.nmsobc.McServer;
 import com.gmail.woodyc40.commons.reflection.FieldManager;
-import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
+import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
 import lombok.Getter;
 import net.minecraft.server.v1_7_R4.*;
 import net.minecraft.util.io.netty.channel.*;
@@ -45,6 +46,14 @@ import java.util.Map;
 public final class ProtocolHandler {
     /** The connection cache that holds netty channels */
     @Getter private static final Map<Player, Channel> cache = new HashMap<>();
+    private static final FieldManager<MinecraftServer, ServerConnection> serverChannelHandler =
+            (FieldManager<MinecraftServer, ServerConnection>) new ReflectionChain(McServer.getMcServer()
+                                                                                          .getClass()).field()
+                                                                                                      .fieldFuzzy(
+                                                                                                              McServer.getClass(
+                                                                                                                      "ServerConnection"),
+                                                                                                              0)
+                                                                                                      .getManager();
     /** The plugin that is activated by this handler. Will be {@code null} when disabled */
     private volatile Plugin plugin;
 
@@ -57,6 +66,10 @@ public final class ProtocolHandler {
         Bukkit.getServer().getPluginManager()
               .registerEvents(new ProtocolListener(), plugin);
         this.plugin = plugin;
+    }
+
+    public void putProxy(Channel channel) {
+        channel.pipeline().addBefore("packet_handler", "ProtocolHandler - BukkitCommons", new PacketAdapter());
     }
 
     // Private classes are shielded from access.
@@ -73,19 +86,7 @@ public final class ProtocolHandler {
      * @author AgentTroll
      * @version 1.0
      */
-    private class PlayerAdapter extends ChannelDuplexHandler {
-        /** The player that the PlayerConnection is held in */
-        private final Player player;
-
-        /**
-         * Inits a new instance of this channel handler that reads all packets going sent from and to the player
-         *
-         * @param player the player which sent or recieved the packet
-         */
-        public PlayerAdapter(Player player) {
-            this.player = player;
-        }
-
+    private class PacketAdapter extends ChannelDuplexHandler {
         /**
          * Handles incoming packets
          *
@@ -95,9 +96,10 @@ public final class ProtocolHandler {
          */
         @Override public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
             Packet packet = (Packet) msg;
-            CustomEvent event = new PacketEvent(packet, this.player, PacketEvent.Bound.SERVER_BOUND);
+            CustomEvent event = new PacketEvent(packet, PacketEvent.Bound.SERVER_BOUND);
 
             Events.call(event);
+            System.out.println("Incoming packet");
             if (event.getCancelled()) return;
 
             super.channelRead(ctx, msg);
@@ -113,9 +115,10 @@ public final class ProtocolHandler {
          */
         @Override public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
             Packet packet = (Packet) msg;
-            CustomEvent event = new PacketEvent(packet, this.player, PacketEvent.Bound.CLIENT_BOUND);
+            CustomEvent event = new PacketEvent(packet, PacketEvent.Bound.CLIENT_BOUND);
 
             Events.call(event);
+            System.out.println("Outgoing packet");
             if (event.getCancelled()) return;
 
             super.write(ctx, msg, promise);
@@ -141,9 +144,9 @@ public final class ProtocolHandler {
      */
     private class ProtocolListener implements Listener {
         /** Represents the channel ("m" as of 1.7.10 snapshot) field in NetworkManager */
-        private final FieldManager<NetworkManager, Channel>
-                CHANNEL = ReflectAccess.accessField(NetworkManager.class,
-                                                    Channel.class, 0);
+        private final FieldManager<NetworkManager, Channel> CHANNEL =
+                (FieldManager<NetworkManager, Channel>) new ReflectionChain(NetworkManager.class)
+                        .field().fieldFuzzy(Channel.class, 0).getManager();
 
         /**
          * When a player joins
@@ -154,10 +157,10 @@ public final class ProtocolHandler {
             if (ProtocolHandler.this.plugin == null) return; // Whoopsie, plugin disabled.
 
             EntityPlayer player = ((CraftPlayer) event.getPlayer()).getHandle();
-            Channel conn = (Channel) this.CHANNEL.get(player.playerConnection.networkManager);
+            Channel conn = this.CHANNEL.get(player.playerConnection.networkManager);
 
             conn.pipeline().addLast("PacketListener" + player.getName(),
-                                    new ProtocolHandler.PlayerAdapter(event.getPlayer()));
+                                    new PacketAdapter());
             ProtocolHandler.getCache().put(event.getPlayer(), conn);
         }
 

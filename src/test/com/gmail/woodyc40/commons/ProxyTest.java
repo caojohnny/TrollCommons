@@ -163,12 +163,12 @@ public class ProxyTest {
         new Runner(opt).run();
     }
 
-    @Benchmark @Fork(1) public Object proxy() {
+    @Benchmark @Fork(1) public static Object proxy() {
         ProxyTest.ProxyProxy proxy = ProxyTest.Trap.create(ProxyTest.ProxyProxy.class, new ProxyTest());
         return proxy.getLolMap();
     }
 
-    @Benchmark @Fork(1) public Object proxy0() {
+    @Benchmark @Fork(1) public static Object proxy0() {
         return new ReflectionChain(ProxyTest.class)
                 .field().field("lol").instance(new ProxyTest())
                 .getter().get().reflect();
@@ -194,15 +194,15 @@ public class ProxyTest {
         private static final Map<Class, Class> primitiveMap = new HashMap<>();
 
         static {
-            Trap.primitiveMap.put(Boolean.class, boolean.class);
-            Trap.primitiveMap.put(Character.class, char.class);
-            Trap.primitiveMap.put(Byte.class, byte.class);
-            Trap.primitiveMap.put(Short.class, short.class);
-            Trap.primitiveMap.put(Integer.class, int.class);
-            Trap.primitiveMap.put(Long.class, long.class);
-            Trap.primitiveMap.put(Float.class, float.class);
-            Trap.primitiveMap.put(Double.class, double.class);
-            Trap.primitiveMap.put(Void.class, void.class);
+            ProxyTest.Trap.primitiveMap.put(Boolean.class, boolean.class);
+            ProxyTest.Trap.primitiveMap.put(Character.class, char.class);
+            ProxyTest.Trap.primitiveMap.put(Byte.class, byte.class);
+            ProxyTest.Trap.primitiveMap.put(Short.class, short.class);
+            ProxyTest.Trap.primitiveMap.put(Integer.class, int.class);
+            ProxyTest.Trap.primitiveMap.put(Long.class, long.class);
+            ProxyTest.Trap.primitiveMap.put(Float.class, float.class);
+            ProxyTest.Trap.primitiveMap.put(Double.class, double.class);
+            ProxyTest.Trap.primitiveMap.put(Void.class, void.class);
         }
 
         private final Object internal_object;
@@ -218,25 +218,25 @@ public class ProxyTest {
         }
 
         public static <T> T create(Class<T> classInterface, Class objectClass) {
-            return Trap.create(classInterface, objectClass, new Object[0]);
+            return ProxyTest.Trap.create(classInterface, objectClass, new Object[0]);
         }
 
         public static <T> T create(Class<T> classInterface, Class objectClass, Object... constructorParams) {
-            return Trap.create(classInterface, objectClass, Trap.extractClasses(constructorParams), constructorParams);
+            return ProxyTest.Trap.create(classInterface, objectClass, ProxyTest.Trap.extractClasses(constructorParams), constructorParams);
         }
 
         public static <T> T create(Class<T> classInterface, Class objectClass, Class[] constructorClasses,
                                    Object... constructorParams) {
-            return Trap.create(classInterface,
+            return ProxyTest.Trap.create(classInterface,
                                ProxyTest.Trap.createObject(objectClass, constructorClasses, constructorParams));
         }
 
         public static <T> T createObject(Class<T> objectClass) {
-            return Trap.createObject(objectClass, new Class[0], new Object[0]);
+            return ProxyTest.Trap.createObject(objectClass, new Class[0], new Object[0]);
         }
 
         public static <T> T createObject(Class<T> objectClass, Object... constructorParams) {
-            return Trap.createObject(objectClass, Trap.extractClasses(constructorParams), constructorParams);
+            return ProxyTest.Trap.createObject(objectClass, ProxyTest.Trap.extractClasses(constructorParams), constructorParams);
         }
 
         public static <T> T createObject(Class<T> objectClass, Class[] constructorClasses,
@@ -244,7 +244,7 @@ public class ProxyTest {
             try {
                 T object;
                 if (objectClass.getConstructors().length == 0)
-                    object = objectClass.newInstance();
+                    object = objectClass.getConstructor().newInstance();
                 else {
                     Constructor constructor = null;
                     for (Constructor x : objectClass.getDeclaredConstructors()) {
@@ -255,7 +255,7 @@ public class ProxyTest {
                                 if (!c.isAssignableFrom(constructorClasses[count++].getClass()) &&
                                     !c.equals(constructorClasses[count - 1]) &&
 
-                                    Trap.isNotSamePrimitive(c, constructorClasses[count - 1]))
+                                    ProxyTest.Trap.isNotSamePrimitive(c, constructorClasses[count - 1]))
                                     works = false;
                             if (works)
                                 constructor = x;
@@ -280,11 +280,11 @@ public class ProxyTest {
         }
 
         public static boolean isNotSamePrimitive(Class a, Class b) {
-            return !a.equals(b) && !Trap.toPrimitive(a).equals(Trap.toPrimitive(b));
+            return !a.equals(b) && !ProxyTest.Trap.toPrimitive(a).equals(ProxyTest.Trap.toPrimitive(b));
         }
 
         public static Class toPrimitive(Class b) {
-            return Trap.primitiveMap.containsKey(b) ? Trap.primitiveMap.get(b) : b;
+            return ProxyTest.Trap.primitiveMap.containsKey(b) ? ProxyTest.Trap.primitiveMap.get(b) : b;
         }
 
         @Override
@@ -309,7 +309,7 @@ public class ProxyTest {
                             for (Class c : x.getParameterTypes())
                                 if (!c.isAssignableFrom(args[count++].getClass()) && !c.equals(args[count - 1]
                                                                                                        .getClass()) &&
-                                    Trap.isNotSamePrimitive(c, args[count - 1].getClass()))
+                                    ProxyTest.Trap.isNotSamePrimitive(c, args[count - 1].getClass()))
                                     works = false;
                             if (works)
                                 desired = x;
@@ -341,7 +341,7 @@ public class ProxyTest {
             desired.setAccessible(true);
             Object result = desired.invoke(this.internal_object, args);
             if (method.getReturnType() != null && method.getReturnType().getAnnotation(ProxyTest.TrapTag.class) != null)
-                return Trap.create(method.getReturnType(), result);
+                return ProxyTest.Trap.create(method.getReturnType(), result);
             return result;
         }
     }

@@ -265,7 +265,7 @@ public final class BashMap {
         }
 
         /**
-         * Makes an unsafe cast from main to a superclass wihthout {@link java.lang.ClassCastException}.
+         * Makes an unsafe cast from main to a superclass without {@link java.lang.ClassCastException}.
          *
          * @param main       the {@code class} to cast
          * @param superclass the {@code class} to cast main to
@@ -427,10 +427,10 @@ public final class BashMap {
 
     public abstract static class AbstractHashStruct<K, V> {
         /** The strategy employed to hash the keys on insertion */
-        private final BashMap.AbstractHashStruct.HashStrategy stategy =
+        private final BashMap.AbstractHashStruct.HashStrategy strategy =
                 BashMap.AbstractHashStruct.HashStrategy.A_TROLL;
         /** The entry storage */
-        private BashMap.AbstractHashStruct<K, V>.Node[] buckets = this.buckets();
+        private       BashMap.AbstractHashStruct<K, V>.Node[] buckets  = this.buckets();
         /** Amount of entries inserted */
         private int size;
         /** The threshold until the map resizes */
@@ -537,11 +537,11 @@ public final class BashMap {
          * @return the position in the bucket array
          */
         private int posOf(K key) {
-            return this.stategy.hash(key, this.buckets.length);
+            return this.strategy.hash(key, this.buckets.length);
         }
 
         /**
-         * Resizes the bucket array if neccessary
+         * Resizes the bucket array if necessary
          */
         private void checkSize() {
             if (this.size == this.resizeThresh) {

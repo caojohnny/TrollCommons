@@ -38,16 +38,16 @@ import java.security.ProtectionDomain;
  */
 public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrument {
     /** The ClassPool object from javassist - let's just cache it */
-    public static final  ClassPool CLASS_POOL = ClassPool.getDefault();
+    public static final ClassPool CLASS_POOL = ClassPool.getDefault();
 
     /** The class that is being instrumented */
-    @Getter(AccessLevel.PROTECTED) private final Class<?> base;
+    @Getter(AccessLevel.PROTECTED) private final Class<?>    base;
     /** The byte stream for the class */
     @Getter(AccessLevel.PROTECTED) private final InputStream bytes;
     /** The javassist class wrapper */
-    @Getter(AccessLevel.PROTECTED) private final CtClass  ctClass;
+    @Getter(AccessLevel.PROTECTED) private final CtClass     ctClass;
     /** The constant pool */
-    @Getter(AccessLevel.PROTECTED) private final PoolRef constantPool;
+    @Getter private final                        PoolRef     constantPool;
 
     /**
      * Start modifying the top level member - the {@code class}

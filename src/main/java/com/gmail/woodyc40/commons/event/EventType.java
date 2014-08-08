@@ -23,8 +23,7 @@ import lombok.Getter;
 /**
  * Enumeration representing all of the types of event that can be called
  * <p/>
- * <p/>
- * This is needed to seperate different events and make sure the types are the same
+ * This is needed to separate different events and make sure the types are the same
  *
  * @author AgentTroll
  * @version 1.0

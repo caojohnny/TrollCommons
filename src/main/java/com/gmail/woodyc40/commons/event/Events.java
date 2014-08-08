@@ -16,24 +16,59 @@
 
 package com.gmail.woodyc40.commons.event;
 
+import org.bukkit.Bukkit;
+
+import javax.annotation.concurrent.GuardedBy;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public final class Events {
-    private static final Map<EventHandler, EventType> registered = new ConcurrentHashMap<>();
+    /** The registered listeners */
+    @GuardedBy("Events.class") private static final Map<EventHandler, EventType> registered = new HashMap<>();
 
+    /**
+     * No instantiation
+     */
     private Events() {}
 
+    /**
+     * Asynchronously register a handler
+     *
+     * @param handler the listener to register
+     * @throws NoEventAnnotationException when the handler is not annotated with a Handler annotation
+     */
     public static void register(EventHandler handler) throws NoEventAnnotationException {
         if (handler.getClass().getAnnotation(Handler.class) == null)
             throw new NoEventAnnotationException(handler.getClass());
 
-        Events.registered.put(handler, handler.getClass().getAnnotation(Handler.class).value());
+        if (Bukkit.isPrimaryThread()) {
+            Events.registered.put(handler, handler.getClass().getAnnotation(Handler.class).value());
+            return;
+        }
+
+        synchronized (Events.class) {
+            Events.registered.put(handler, handler.getClass().getAnnotation(Handler.class).value());
+        }
     }
 
+    /**
+     * Asynchronously call the event, firing all of the listeners
+     *
+     * @param event the event to call
+     */
     public static void call(CustomEvent event) {
-        for (Map.Entry<EventHandler, EventType> entry : Events.registered.entrySet())
-            if (entry.getValue() == event.getClass().getAnnotation(Handler.class).value())
-                entry.getKey().handle(event);
+        if (Bukkit.isPrimaryThread()) {
+            for (Map.Entry<EventHandler, EventType> entry : Events.registered.entrySet())
+                if (entry.getValue() == event.getClass().getAnnotation(Handler.class).value())
+                    entry.getKey().handle(event);
+
+            return;
+        }
+
+        synchronized (Events.class) {
+            for (Map.Entry<EventHandler, EventType> entry : Events.registered.entrySet())
+                if (entry.getValue() == event.getClass().getAnnotation(Handler.class).value())
+                    entry.getKey().handle(event);
+        }
     }
 }

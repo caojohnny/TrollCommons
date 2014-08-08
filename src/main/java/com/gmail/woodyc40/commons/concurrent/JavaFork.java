@@ -16,19 +16,24 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
-import com.gmail.woodyc40.commons.io.Files;
+import com.gmail.woodyc40.commons.Commons;
+import com.gmail.woodyc40.commons.io.*;
 import com.gmail.woodyc40.commons.misc.SerializableRunnable;
+import com.google.common.io.ByteStreams;
 import lombok.AccessLevel;
 import lombok.Getter;
 
 import javax.annotation.concurrent.NotThreadSafe;
+import java.io.File;
 import java.io.IOException;
 import java.lang.instrument.Instrumentation;
+import java.util.Enumeration;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Forks the JVM into a separate {@link java.lang.Process}, which runs the heartbeat for {@link
  * com.gmail.woodyc40.commons.concurrent.ThreadPoolManager}
- * <p/>
  * <p/>
  * NOT THREAD SAFE.
  *
@@ -36,19 +41,18 @@ import java.lang.instrument.Instrumentation;
  * @version 1.0
  */
 @NotThreadSafe
-public class JavaFork {
+public final class JavaFork {
     /** The remote caller */
-    @Getter(AccessLevel.PACKAGE) private static final Remotes FROM_FORK = new Remotes("Fork2TPM");
+    @Getter(AccessLevel.PACKAGE) private static Remotes         FROM_FORK;
     /** The process started by the fork of the JVM */
-    private static         Process         process;
+    private static                              Process         process;
     /** The instrument */
-    @Getter private static Instrumentation instrument;
+    @Getter private static                      Instrumentation instrument;
     /** The remote receiver */
-    @Getter(AccessLevel.PACKAGE) private static Remotes TO_FORK;
+    @Getter(AccessLevel.PACKAGE) private static Remotes         TO_FORK;
 
-    public JavaFork(Remotes toFork) {
-        JavaFork.TO_FORK = toFork;
-    }
+    /** The security file */
+    private static File security;
 
     /**
      * Beats at minecraft tick rate (20/sec). The while loop sleeps for 2 milliseconds and wakes to count the current
@@ -77,7 +81,6 @@ public class JavaFork {
                     msec = 0L;
                 } else msec = elapsed;
             } catch (Exception x) {
-                continue;
             }
         }
     }
@@ -87,9 +90,8 @@ public class JavaFork {
      *
      * @param args       the arguments passed (none)
      * @param instrument the instance of the instrument
-     * @throws Exception well... Let's hope this doesn't happen
      */
-    public static void premain(String args, Instrumentation instrument) throws Exception {
+    public static void premain(String args, Instrumentation instrument) {
         JavaFork.instrument = instrument;
     }
 
@@ -99,11 +101,61 @@ public class JavaFork {
      * @throws IOException when the process cannot be started (for some reason, possibly security restrictions)
      */
     public static void start() throws IOException {
-        System.out.println("Starting fork");
-        JavaFork.process = new ProcessBuilder("java", "-jar", Files.jarFile().getName())
+        JavaFork.genSecurityFiles();
+
+        JavaFork.process = new ProcessBuilder(Files.executable().getAbsolutePath(),
+                                              "-Djava.rmi.server.codebase=file:/" +
+                                              Files.jarFile().getAbsolutePath().replaceFirst("/", ""),
+                                              "-Djava.security.policy=" + JavaFork.security.getAbsolutePath(),
+                                              "-jar",
+                                              Files.jarFile().getName())
                 .directory(Files.pluginDir())
                 .inheritIO()
                 .start();
+
+        JavaFork.FROM_FORK = new Remotes("Fork2TPM");
+        JavaFork.TO_FORK = new Remotes(JavaFork.FROM_FORK);
+    }
+
+    /**
+     * Generate the security files in the parent folder
+     */
+    private static void genSecurityFiles() throws IOException {
+        File file = FileWrapper.handleFolder(Commons.getPlugin().getDataFolder());
+        final File src = new File(file, "src");
+        if (!src.exists()) {
+            src.mkdirs();
+            File jar = Files.jarFile();
+            JarFile jarFile = new JarFile(jar);
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if (entry.getName().endsWith(".java"))
+                    JavaFork.copy(jarFile, entry);
+            }
+        }
+
+        JavaFork.security = FileWrapper.handle(new File(file, "server.policy"));
+        final StringFileWriter writer = new StringFileWriter(JavaFork.security);
+
+        writer.writeLine("grant codeBase \"file:" + src.getAbsolutePath() + "\" {",
+                         "    permission java.security.AllPermission;",
+                         "};");
+
+        System.setProperty("java.security.policy", JavaFork.security.getAbsolutePath());
+        System.setProperty("java.rmi.server.codebase",
+                           "file:/" + src.getAbsolutePath().replaceFirst("/", ""));
+    }
+
+    /**
+     * Copy source file to data folder
+     *
+     * @param file  the originating jarfile the entry came from
+     * @param entry the entry to copy into the data folder
+     */
+    public static void copy(final JarFile file, final JarEntry entry) throws IOException {
+        final File newFile = new File(Commons.getPlugin().getDataFolder(), entry.getName());
+        com.google.common.io.Files.write(ByteStreams.toByteArray(file.getInputStream(entry)), newFile);
     }
 
     /**

@@ -33,7 +33,7 @@ public final class InstrumentTest {
         instrument.acceptTransformer(new InstrumentTest.Transformer());
     }
 
-    public void getOnline() {
+    public static void getOnline() {
         Bukkit.getServer().getOnlinePlayers();
     }
 

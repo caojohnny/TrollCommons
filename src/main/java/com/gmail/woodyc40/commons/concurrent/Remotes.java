@@ -32,13 +32,12 @@ import java.rmi.server.UnicastRemoteObject;
  * @version 1.0
  */
 public class Remotes {
-    /** Remote identifier */
+    /** The name of the remote */
     private final String name;
 
-    /** The receiver */
     private final Remotes.Receiver receiver;
     /** The caller */
-    private final Remotes.Caller caller;
+    private final Remotes.Caller   caller;
 
     /**
      * Builds a new remote starting the server. The server receives items.
@@ -50,7 +49,7 @@ public class Remotes {
         this.receiver = new Remotes.Receiver();
         this.caller = new Remotes.Caller();
 
-        this.receiver.start(this.receiver);
+        this.getReceiver().start(this.getReceiver());
     }
 
     /**
@@ -59,21 +58,31 @@ public class Remotes {
      * @param server the remote server
      */
     public Remotes(Remotes server) {
-        this.name = server.name;
+        this.name = server.getName();
         this.receiver = new Remotes.Receiver();
         this.caller = new Remotes.Caller();
 
-        this.receiver.start(server.receiver);
+        this.getReceiver().start(server.getReceiver());
     }
 
     /**
      * Calls a runnable
      *
      * @param runnable the task to execute
-     * @param <T> the return type of the runnable
+     * @param <T>      the return type of the runnable
      */
     public <T> void call(SerializableRunnable<T> runnable) {
         this.caller.call(runnable);
+    }
+
+    /** Remote identifier */
+    public String getName() {
+        return this.name;
+    }
+
+    /** The receiver */
+    public Remotes.Receiver getReceiver() {
+        return this.receiver;
     }
 
     /**
@@ -94,7 +103,7 @@ public class Remotes {
             try {
                 Remote stub = UnicastRemoteObject.exportObject(receiver, 0);
                 Registry registry = LocateRegistry.getRegistry();
-                registry.rebind(Remotes.this.name, stub);
+                registry.rebind(Remotes.this.getName(), stub);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -104,7 +113,7 @@ public class Remotes {
          * Method to execute the runnables
          *
          * @param runnable the runnable to run
-         * @param <T> the return type of the runnable
+         * @param <T>      the return type of the runnable
          * @throws RemoteException when an exception occurs while passing the remote
          */
         private <T> void execute(SerializableRunnable<T> runnable) throws RemoteException {
@@ -124,14 +133,14 @@ public class Remotes {
          * Calls a runnable to the remote JVM
          *
          * @param task the task to execute
-         * @param <T> the return type of the task
+         * @param <T>  the return type of the task
          */
         public <T> void call(SerializableRunnable<T> task) {
             if (System.getSecurityManager() == null) System.setSecurityManager(new SecurityManager());
 
             try {
                 Registry registry = LocateRegistry.getRegistry();
-                Remotes.Receiver call = (Remotes.Receiver) registry.lookup(Remotes.this.name);
+                Remotes.Receiver call = (Remotes.Receiver) registry.lookup(Remotes.this.getName());
                 call.execute(task);
             } catch (Exception e) {
                 e.printStackTrace();

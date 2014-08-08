@@ -16,6 +16,8 @@
 
 package com.gmail.woodyc40.commons.reflection.chain;
 
+import com.gmail.woodyc40.commons.reflection.ConstructorManager;
+
 public interface ConstructLink {
     /**
      * Uses the class value of a previous reflective operation to use as params to construction.
@@ -56,6 +58,13 @@ public interface ConstructLink {
      * @return the instance this was added to
      */
     ConstructLink constructFuzzy(int params, int index);
+
+    /**
+     * Gets the manager used to perform the reflective actions
+     *
+     * @return the internal manager
+     */
+    ConstructorManager<?> getManager();
 
     /**
      * The creation access for the constructor

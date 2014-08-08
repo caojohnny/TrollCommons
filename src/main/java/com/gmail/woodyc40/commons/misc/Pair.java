@@ -24,7 +24,6 @@ import lombok.Getter;
  *
  * @param <K> the key type
  * @param <V> the value type
- *
  * @author AgentTroll
  * @version 1.0
  */

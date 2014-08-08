@@ -39,6 +39,7 @@ class SafeField<D, T> implements FieldManager<D, T> {
      */
     public SafeField(Field field) {
         this.field = field;
+        this.field.setAccessible(true);
     }
 
     /**

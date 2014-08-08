@@ -28,12 +28,10 @@ import java.util.Map;
  * This is a base utility used to build hashing data structures similar to that of {@link java.util.HashMap} and {@link
  * java.util.HashSet}.
  * <p/>
- * <p/>
  * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
  * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL}
- * that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
- * <p/>
+ * .HashStrategy#A_TROLL} that can be changed using {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
+ * #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
  * <p/>
  * Benchmarks for all 3 hash strategies can be found here: https://github
  * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java
@@ -395,7 +393,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @see java.util.Iterator
      * @see com.gmail.woodyc40.commons.collect.AbstractIterator
      */
-    public class KeyIterator extends AbstractIterator<K> {
+    protected class KeyIterator extends AbstractIterator<K> {
         @Override protected Object[] allVals() {
             int index = 0;
             Object[] vals = new Object[AbstractHashStruct.this.getSize()];
@@ -420,7 +418,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @see java.util.Iterator
      * @see com.gmail.woodyc40.commons.collect.AbstractIterator
      */
-    public class ValueIterator extends AbstractIterator<V> {
+    protected class ValueIterator extends AbstractIterator<V> {
         @Override protected Object[] allVals() {
             int index = 0;
             Object[] vals = new Object[AbstractHashStruct.this.getSize()];

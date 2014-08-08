@@ -16,6 +16,8 @@
 
 package com.gmail.woodyc40.commons.instrument;
 
+import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
+
 /**
  * Instrumentation access that forms the framework layer for instrumentation utilities
  *
@@ -29,6 +31,13 @@ public interface Instrument {
      * @param transformer the transformer to add
      */
     void acceptTransformer(CpTransformer transformer);
+
+    /**
+     * Acquires the constant pool of the class being isntrumented
+     *
+     * @return the class constant pool
+     */
+    PoolRef getConstantPool();
 
     /**
      * Finish transforming the class and reload it, saving the changes.

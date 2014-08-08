@@ -21,9 +21,7 @@ import java.lang.reflect.Field;
 /**
  * {@code Interface} for weak access to field get/set methods
  * <p/>
- * <p/>
  * Used to access the field that is represented by this {@code class}
- * <p/>
  * <p/>
  * Should be faster than conventional Reflection API
  *

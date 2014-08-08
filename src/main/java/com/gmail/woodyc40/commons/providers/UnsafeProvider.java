@@ -16,17 +16,21 @@
 
 package com.gmail.woodyc40.commons.providers;
 
+import lombok.Getter;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely.
  * <p/>
- * <p/>
  * Note that the starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by
  * access restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This
  * is a HotSpot directed program.
+ * <p/>
+ * This class is not thread safe
  *
  * @author AgentTroll
  * @version 1.0
@@ -38,6 +42,9 @@ public final class UnsafeProvider {
      * The Unsafe instance.
      */
     private static final Unsafe PROVIDER = UnsafeProvider.initUnsafe();
+
+    /** Cached field offsets */
+    @Getter private static final Map<Field, Long> offsets = new HashMap<>();
 
     /**
      * Should not be instantiated, hence the private constructor.
@@ -114,12 +121,28 @@ public final class UnsafeProvider {
      *
      * @param field the field to {@code return} the offset of
      * @return the relative {@code class} location offset of the field
-     * @throws IllegalArgumentException if the field parameter is {@code null}
      */
-    private static long fieldOffset(Field field) {
+    public static long fieldOffset0(Field field) {
         if (UnsafeProvider.fieldStatic(field))
             return UnsafeProvider.PROVIDER.staticFieldOffset(field);
         return UnsafeProvider.PROVIDER.objectFieldOffset(field);
+    }
+
+    /**
+     * Obtains the cached offset for the given field. This is almost 4 times faster than calculating each time at the
+     * cost of memory and thread safety.
+     *
+     * @param field the field to {@code return} the offset of
+     * @return the field offset
+     */
+    public static long fieldOffset(Field field) { // TODO concurrency
+        Long offset = UnsafeProvider.offsets.get(field);
+        if (offset == null) {
+            offset = UnsafeProvider.fieldOffset0(field);
+            UnsafeProvider.offsets.put(field, offset);
+        }
+
+        return offset;
     }
 
     /**

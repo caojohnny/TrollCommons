@@ -21,9 +21,7 @@ import java.lang.reflect.Constructor;
 /**
  * {@code Interface} for weak access to constructor invocation methods
  * <p/>
- * <p/>
  * Used to create new instances of the {@code class} representing the constructor
- * <p/>
  * <p/>
  * Should be faster than conventional Reflection API
  *

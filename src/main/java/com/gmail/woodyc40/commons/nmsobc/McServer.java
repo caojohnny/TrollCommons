@@ -58,7 +58,7 @@ public class McServer {
      * @param name the SIMPLE name of the class, without qualifiers
      * @return the class if found, {@code null} if not
      */
-    public Class<?> getClass(String name) {
+    public static Class<?> getClass(String name) {
         return McServer.classMap.get(name);
     }
 
@@ -70,7 +70,7 @@ public class McServer {
      *
      * @return the instance of MinecraftServer
      */
-    public MinecraftServer getMcServer() {
+    public static MinecraftServer getMcServer() {
         return ((CraftServer) Bukkit.getServer()).getServer();
     }
 }

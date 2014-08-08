@@ -16,6 +16,8 @@
 
 package com.gmail.woodyc40.commons.reflection.chain;
 
+import com.gmail.woodyc40.commons.reflection.MethodManager;
+
 /**
  *
  */
@@ -91,6 +93,13 @@ public interface MethodLink {
      * @return the invoker
      */
     MethodLink invokeFuzzy(int args, int index);
+
+    /**
+     * Gets the manager used to perform the reflective actions
+     *
+     * @return the internal manager
+     */
+    MethodManager<?, ?> getManager();
 
     /**
      * Invokes the method and returns the next link builder

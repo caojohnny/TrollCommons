@@ -55,7 +55,10 @@ public class ExpandableMapping<Key, VK> {
      * @return the value associated with the two keys
      */
     public VK get(Key key, Object vk) {
-        return this.mapping.get(key).get(vk);
+        Map<Object, VK> map = this.mapping.get(key);
+        if (map == null) return null;
+
+        return map.get(vk);
     }
 
     /**

@@ -38,6 +38,7 @@ class SafeConstructor<T> implements ConstructorManager<T> {
      */
     public SafeConstructor(Constructor<T> constructor) {
         this.constructor = constructor;
+        this.constructor.setAccessible(true);
     }
 
     /**

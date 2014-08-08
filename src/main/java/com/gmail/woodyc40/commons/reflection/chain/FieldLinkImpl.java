@@ -65,6 +65,10 @@ public class FieldLinkImpl implements FieldLink {
         return this;
     }
 
+    @Override public FieldManager<?, ?> getManager() {
+        return this.field;
+    }
+
     private class GetterImpl implements FieldLink.Getter {
         @Override public ReflectionChain get() {
             FieldLinkImpl.this.parent.returned.add(FieldLinkImpl.this.field.get(FieldLinkImpl.this.instance));

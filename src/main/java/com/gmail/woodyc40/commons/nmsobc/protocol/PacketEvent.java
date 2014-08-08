@@ -19,7 +19,6 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 import com.gmail.woodyc40.commons.event.*;
 import lombok.*;
 import net.minecraft.server.v1_7_R4.Packet;
-import org.bukkit.entity.Player;
 
 /**
  * Represents a packet that was sent or recieved by the server
@@ -30,11 +29,9 @@ import org.bukkit.entity.Player;
 @Getter @RequiredArgsConstructor @Handler(EventType.PACKET)
 public class PacketEvent implements CustomEvent {
     /** The sent or recieved packet */
-    private final            Packet            packet;
-    /** The player that sent or recieved the packet */
-    private final            Player            player;
+    @Getter private final            Packet            packet;
     /** The intended direction of the packet */
-    private final            PacketEvent.Bound bound;
+    @Getter private final            PacketEvent.Bound bound;
     /** Whether or not this event is cancelled */
     @Setter private volatile boolean           cancelled;
 

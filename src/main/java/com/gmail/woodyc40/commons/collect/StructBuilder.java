@@ -16,20 +16,23 @@
 
 package com.gmail.woodyc40.commons.collect;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
- * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and
- * {@link com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
+ * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and {@link
+ * com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
  *
  * @author AgentTroll
  * @version 1.0
  */
 public class StructBuilder {
     /** The hash strategy */
-    private AbstractHashStruct.HashStrategy hash = AbstractHashStruct.HashStrategy.A_TROLL;
+    private AbstractHashStruct.HashStrategy hash   = AbstractHashStruct.HashStrategy.A_TROLL;
     /** The initial size */
-    private int     size = 16;
+    private int                             size   = 16;
     /** The resizing threshold */
-    private int     resize = 14;
+    private int                             resize = 14;
     /** Whether or not to enable concurrency */
     private boolean concurrent; // TODO
 
@@ -84,17 +87,17 @@ public class StructBuilder {
      * @param <V> the value to use
      * @return the map built with the specified properties
      */
-    public <K, V> HashStructMap<K, V> buildMap() {
+    public <K, V> Map<K, V> buildMap() {
         AbstractHashStruct<K, V> hashStruct = new AbstractHashStruct() {
             {
-                this.setResizeThresh(resize);
+                this.setResizeThresh(StructBuilder.this.resize);
             }
 
-            @Override protected Node[] buckets() {
-                return new Node[StructBuilder.this.size];
+            @Override protected AbstractHashStruct.Node[] buckets() {
+                return new AbstractHashStruct.Node[StructBuilder.this.size];
             }
 
-            @Override protected HashStrategy hashStrategy() {
+            @Override protected AbstractHashStruct.HashStrategy hashStrategy() {
                 return StructBuilder.this.hash;
             }
         };
@@ -108,21 +111,21 @@ public class StructBuilder {
      * @param <E> the element type
      * @return the set built with the specified properties
      */
-    public <E> HashStructSet<E> buildSet() {
+    public <E> Set<E> buildSet() {
         AbstractHashStruct<E, Object> hashStruct = new AbstractHashStruct() {
             {
-                this.setResizeThresh(resize);
+                this.setResizeThresh(StructBuilder.this.resize);
             }
 
-            @Override protected Node[] buckets() {
-                return new Node[StructBuilder.this.size];
+            @Override protected AbstractHashStruct.Node[] buckets() {
+                return new AbstractHashStruct.Node[StructBuilder.this.size];
             }
 
-            @Override protected HashStrategy hashStrategy() {
+            @Override protected AbstractHashStruct.HashStrategy hashStrategy() {
                 return StructBuilder.this.hash;
             }
         };
 
-        return new HashStructSet<E>(hashStruct);
+        return new HashStructSet<>(hashStruct);
     }
 }

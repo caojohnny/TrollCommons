@@ -24,8 +24,8 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ThreadSafe
-public class ThreadPoolManager {
-    /** The beat count. Resets when the worker threads are recalcualted */
+public final class ThreadPoolManager {
+    /** The beat count. Resets when the worker threads are recalculated */
     private static final AtomicInteger beats = new AtomicInteger(0);
 
     /** The first consumer executor */
@@ -41,10 +41,11 @@ public class ThreadPoolManager {
     private static final CountingExecutor FALLBACK = CountingExecutor.newCountingExecutor();
 
     /** The remote caller */
-    @Getter(AccessLevel.PACKAGE) private static final Remotes TO_FORK   = new Remotes("TPM2Fork");
+    @Getter(AccessLevel.PACKAGE) private static final Remotes TO_FORK   = JavaFork.getTO_FORK();
     /** The remote receiver */
-    @Getter(AccessLevel.PACKAGE) private static final Remotes FROM_FORK =
-            new JavaFork(ThreadPoolManager.TO_FORK).getFROM_FORK();
+    @Getter(AccessLevel.PACKAGE) private static final Remotes FROM_FORK = JavaFork.getFROM_FORK();
+
+    private ThreadPoolManager() {}
 
     /**
      * Checks the beat and recalculates on the 1000th beat from {@link com.gmail.woodyc40.commons.concurrent.JavaFork}
@@ -62,14 +63,13 @@ public class ThreadPoolManager {
     /**
      * Submits a task for balancing on one of the thread pools
      * <p/>
-     * <p/>
      * The task MUST be designed asynchronously - there are no guarantees for thread safety, so synchronize,
      * synchronize, synchronize!
      *
      * @param task the task to execute concurrently
      * @param <V>  the return type of the task
      */
-    public <V> void submit(Callable<V> task) {
+    public static <V> void submit(Callable<V> task) {
         Distributor<V> dist = new Distributor<>(task)
                 .addExecutor(ThreadPoolManager.LOAD)
                 .addExecutor(ThreadPoolManager.LOAD0)
@@ -82,7 +82,7 @@ public class ThreadPoolManager {
     /**
      * Ends the thread manager
      */
-    public void shutdown() {
+    public static void shutdown() {
         ThreadPoolManager.LOAD.shutdownNow();
         ThreadPoolManager.LOAD0.shutdownNow();
         ThreadPoolManager.BALANCER.shutdownNow();

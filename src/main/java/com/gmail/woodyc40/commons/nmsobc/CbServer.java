@@ -46,11 +46,11 @@ public class CbServer {
      * @param name the SIMPLE name of the class, without qualifiers
      * @return the class if found, {@code null} if not
      */
-    public Class<?> getClass(String name) {
+    public static Class<?> getClass(String name) {
         return CbServer.classMap.get(name);
     }
 
-    public Class<?> cPlayerClass() { return this.getClass("CraftPlayer"); }
+    public static Class<?> cPlayerClass() { return CbServer.getClass("CraftPlayer"); }
 
-    public Class<?> cServerClass() { return this.getClass("CraftServer"); }
+    public static Class<?> cServerClass() { return CbServer.getClass("CraftServer"); }
 }

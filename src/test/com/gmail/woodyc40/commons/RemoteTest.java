@@ -16,11 +16,14 @@
 
 package com.gmail.woodyc40.commons;
 
-import com.gmail.woodyc40.commons.concurrent.*;
+import com.gmail.woodyc40.commons.concurrent.JavaFork;
 
-public class RemoteTest {
-    public static void main(String[] args) {
-        ThreadPoolManager manager = new ThreadPoolManager();
-        new JavaFork(new Remotes("TPM2Fork"));
+import java.io.IOException;
+
+public final class RemoteTest {
+    private RemoteTest() {}
+
+    public static void main(String... args) throws IOException {
+        JavaFork.start();
     }
 }

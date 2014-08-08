@@ -26,7 +26,7 @@ public interface CustomEvent {
     /**
      * If the event is cancelled
      *
-     * @return {@code true} if the envent is cancelled, {@code false} if it isn't.
+     * @return {@code true} if the event is cancelled, {@code false} if it isn't.
      */
     boolean getCancelled();
 

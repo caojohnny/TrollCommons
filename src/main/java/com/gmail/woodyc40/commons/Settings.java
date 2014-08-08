@@ -35,28 +35,11 @@ public class Settings {
         }
     };
 
-    /** Whether or not to use non sun packages for reflection */
     private boolean safeReflection;
 
-    /**
-     * Determines the usage of sun over langreflect
-     *
-     * @return the setting to use reflection libraries
-     */
-    public boolean isSafeReflection() {
-        return this.forPackage().safeReflection;
-    }
+    /** Whether or not to use non sun packages for reflection */
 
-    /**
-     * Sets whether to use {@link sun.reflect} to perform reflection, or to use {@link java.lang.reflect} instead
-     *
-     * @param safe {@code true} to use {@link java.lang.reflect}, {@code false} to use {@link sun.reflect}
-     */
-    public void setSafeReflection(boolean safe) {
-        this.forPackage().safeReflection = safe;
-    }
-
-    public Settings forPackage() {
+    public static Settings forPackage() {
         Package pack = Commons.getCaller(false);
         Settings settings = Settings.SETTINGS_MAP.get(pack);
         if (settings == null) {
@@ -65,5 +48,23 @@ public class Settings {
         }
 
         return settings;
+    }
+
+    /**
+     * Determines the usage of sun over langreflect
+     *
+     * @return the setting to use reflection libraries
+     */
+    public static boolean isSafeReflection() {
+        return Settings.forPackage().safeReflection;
+    }
+
+    /**
+     * Sets whether to use {@link sun.reflect} to perform reflection, or to use {@link java.lang.reflect} instead
+     *
+     * @param safe {@code true} to use {@link java.lang.reflect}, {@code false} to use {@link sun.reflect}
+     */
+    public static void setSafeReflection(boolean safe) {
+        Settings.forPackage().safeReflection = safe;
     }
 }

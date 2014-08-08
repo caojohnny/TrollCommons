@@ -16,8 +16,6 @@
 
 /**
  * Main {@code package} used for code compat with Bukkit API or smaller utilities that don't go with other packages
- *
- * TODO: ProtocolHandler needs some work | PacketCreator needs some work | JavaFork needs some work
  */
 
 package com.gmail.woodyc40.commons;

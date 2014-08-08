@@ -94,6 +94,10 @@ public class MethodLinkImpl implements MethodLink {
         return this;
     }
 
+    @Override public MethodManager<?, ?> getManager() {
+        return this.method;
+    }
+
     private class InvokerImpl implements MethodLink.Invoker {
         @Override public ReflectionChain invoke() {
             MethodLinkImpl.this.parent.returned.add(

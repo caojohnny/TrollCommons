@@ -26,10 +26,10 @@ import java.util.*;
 
 @RequiredArgsConstructor
 public class ConstructLinkImpl implements ConstructLink {
-    private final Class<?>              base;
-    private final ReflectionChain       parent;
+    private final Class<?>        base;
+    private final ReflectionChain parent;
     private final Collection<Object> params = new ArrayList<>();
-    private       ConstructorManager<?> constructor;
+    private ConstructorManager<?> constructor;
 
     @Override public ConstructLink last(int index) {
         this.params.add(this.parent.returned.get(index).getClass());
@@ -58,6 +58,10 @@ public class ConstructLinkImpl implements ConstructLink {
         this.constructor = ReflectAccess.accessConstructor(list.get(index));
 
         return this;
+    }
+
+    @Override public ConstructorManager<?> getManager() {
+        return this.constructor;
     }
 
     private class CreatorImpl implements ConstructLink.Creator {

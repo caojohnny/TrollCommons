@@ -33,11 +33,15 @@ import java.util.jar.JarFile;
  * @author AgentTroll
  * @version 1.0
  */
-public class Files {
+public final class Files {
     /** Cached plugin directory */
     private static File plugins;
     /** Cached jar file */
     private static File jar;
+    /** Cached java executable */
+    private static File executable;
+
+    private Files() {}
 
     /**
      * Get the cached plugin directory
@@ -58,6 +62,15 @@ public class Files {
     }
 
     /**
+     * Get the cached java executable
+     *
+     * @return the executable currently running the program
+     */
+    public static File executable() {
+        return Files.executable;
+    }
+
+    /**
      * Updates the caches
      *
      * @throws IOException when the jar file cannot be accessed
@@ -71,7 +84,10 @@ public class Files {
         Files.plugins = new File(dir.getParentFile().getPath());
 
         for (File file : Files.plugins.listFiles()) {
-            @Cleanup JarFile jarFile = new JarFile(file.getName());
+            if (file.isDirectory())
+                continue;
+
+            @Cleanup JarFile jarFile = new JarFile(file);
             Enumeration<JarEntry> entries = jarFile.entries();
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
@@ -84,5 +100,10 @@ public class Files {
                     Files.jar = file;
             }
         }
+
+        String executable = "java";
+        if (System.getProperty("os.name").toLowerCase().contains("win"))
+            executable += ".exe";
+        Files.executable = new File(new File(System.getProperty("java.home"), "bin"), executable);
     }
 }

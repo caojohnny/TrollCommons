@@ -381,6 +381,30 @@ public class HashStructTest {
         new Runner(opt).run();
     }
 
+    @Benchmark @Fork(1) public static void testInsertion() {
+        HashStructTest.map.put(101, HashStructTest.o);
+    }
+
+    @Benchmark @Fork(1) public static void testRAetrieval() {
+        HashStructTest.map.get(101);
+    }
+
+    @Benchmark @Fork(1) public static void testRBemoval() {
+        HashStructTest.map.remove(101);
+    }
+
+    @Benchmark @Fork(1) public static void testInsertion0() {
+        HashStructTest.map0.put(101, HashStructTest.o);
+    }
+
+    @Benchmark @Fork(1) public static void testRAetrieval0() {
+        HashStructTest.map0.get(101);
+    }
+
+    @Benchmark @Fork(1) public static void testRBemoval0() {
+        HashStructTest.map0.remove(101);
+    }
+
     @Setup public void setUp() {
         HashStructTest.map = new HashMap<>(this.entries);
         HashStructTest.map0 = new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();
@@ -395,29 +419,5 @@ public class HashStructTest {
             HashStructTest.map.put(i, HashStructTest.o);
             HashStructTest.map0.put(i, HashStructTest.o);
         }
-    }
-
-    @Benchmark @Fork(1) public void testInsertion() {
-        HashStructTest.map.put(101, HashStructTest.o);
-    }
-
-    @Benchmark @Fork(1) public void testRAetrieval() {
-        HashStructTest.map.get(101);
-    }
-
-    @Benchmark @Fork(1) public void testRBemoval() {
-        HashStructTest.map.remove(101);
-    }
-
-    @Benchmark @Fork(1) public void testInsertion0() {
-        HashStructTest.map0.put(101, HashStructTest.o);
-    }
-
-    @Benchmark @Fork(1) public void testRAetrieval0() {
-        HashStructTest.map0.get(101);
-    }
-
-    @Benchmark @Fork(1) public void testRBemoval0() {
-        HashStructTest.map0.remove(101);
     }
 }

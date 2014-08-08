@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
@@ -211,15 +227,15 @@ public class HashBenchmark {
         new Runner(opt).run();
     }
 
-    @Benchmark @Fork(1) public void atroll(Blackhole hole) {
+    @Benchmark @Fork(1) public static void atroll(Blackhole hole) {
         hole.consume(AbstractHashStruct.HashStrategy.A_TROLL.hash(HashBenchmark.OBJECT, HashBenchmark.hash));
     }
 
-    @Benchmark @Fork(1) public void java(Blackhole hole) {
+    @Benchmark @Fork(1) public static void java(Blackhole hole) {
         hole.consume(AbstractHashStruct.HashStrategy.JAVA.hash(HashBenchmark.OBJECT, HashBenchmark.hash));
     }
 
-    @Benchmark @Fork(1) public void murmur(Blackhole hole) {
+    @Benchmark @Fork(1) public static void murmur(Blackhole hole) {
         hole.consume(AbstractHashStruct.HashStrategy.MURMUR.hash(HashBenchmark.OBJECT, HashBenchmark.hash));
     }
 }

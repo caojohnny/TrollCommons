@@ -16,6 +16,8 @@
 
 package com.gmail.woodyc40.commons.reflection.chain;
 
+import com.gmail.woodyc40.commons.reflection.FieldManager;
+
 /**
  * Represents a field link in the ReflectionChain
  *
@@ -70,6 +72,13 @@ public interface FieldLink {
      * @return the instance it was set to
      */
     FieldLink fieldFuzzy(Class<?> type, int index);
+
+    /**
+     * Gets the manager used to perform the reflective actions
+     *
+     * @return the internal manager
+     */
+    FieldManager<?, ?> getManager();
 
     /**
      * The field getter access

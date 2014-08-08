@@ -24,18 +24,36 @@ import org.bukkit.plugin.Plugin;
  * @author AgentTroll
  * @version 1.0
  */
-public class Protocol {
+public final class Protocol {
+    /** The handler that manages the protocol */
     private static ProtocolHandler protocol;
 
-    public void initiate(Plugin plugin) {
+    private Protocol() {}
+
+    /**
+     * Starts the protocol handling managers
+     *
+     * @param plugin the plugin to intiate with
+     */
+    public static void initiate(Plugin plugin) {
         Protocol.protocol = new ProtocolHandler(plugin);
     }
 
-    public PacketCreator createPacket() {
+    /**
+     * Creates a new packet builder
+     *
+     * @return the packet builder
+     */
+    public static PacketCreator createPacket() {
         return new PacketCreator();
     }
 
-    public ProtocolHandler getProtocol() {
+    /**
+     * Gets the protocl manager
+     *
+     * @return the protocol manager, if initialized.
+     */
+    public static ProtocolHandler getProtocol() {
         return Protocol.protocol;
     }
 }
