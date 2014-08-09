@@ -1,13 +1,15 @@
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 script: "mvn clean deploy --settings .utility/settings.xml"
+
 after_success:
-- chmod 777 ".utility/jd.sh"
-- .utility/jd.sh
+  - chmod 777 ".utility/jd.sh"
+  - .utility/jd.sh
+  
 notifications:
-email: false
+  email: false
+  
 env:
-global:
-- secure: "RD2K3Gz7jRk0STYMCPyjqIi0MO35y+y+84RHbhbig2JyO3OcUYTbJERpp6cPFeK4X7OWZns3b1KUQaExOm1uvZlNdzWInT3RrGDhdfKMOQjjDWs7IAxGI0DWV/luxPlVPX6/YAR95jolBbmYMId6Qs25uC1EkDICYvdoTJPUGIw="
-- secure: "TYBYhjPp0KTAU+B8JWu9TIKYEWfM5e71hMfca2nCS6OWj7qomVEvzl5wJ0tem9EktoeF+3bMCaMoVS3aCBhD+Z7X63zO73ohTPspSg6Wn65v2s56bbflseT1IMyFyFN3LnVZ4lJvMomy7tmoBrEqWuiobZiJMyU//u/eWiV/JjE="
+  global:
+    - secure: "nMs5eEZMHcnvEO9wmuAK+67VdRKdhPqPGCG8JdzQ6P6LnEleYfXDLAVNYX95VwIoEhxaiXIvSJQgzbfueSP85Ndv1lbX6M4KGSdJw1h1y8S5bh5LSvV/K/7c2TKj9UeNLUMcc5lg8/y4DiaDggALuZHscCGvBtiCaoA/Bh3JSGfuXM9sXOmgnWjgEPFi0o8pHdmIQKjNncXmdqZL4qGgEeNfF4VGt2t7La3PnGDrhioioBdL2XAl46vha3kWSvBQwxM6ovvhLk7AMCXcSR05bt62xfrlYvgLmK8WhRnP9Q1kk00nTKPL35OHOqRBQSaW0lzKbxMV+Qj/AUzMTEBdmQ=="
