@@ -18,6 +18,6 @@ mvn clean javadoc:javadoc
 # Push!
 cd gh-pages
 git add .
-git commit -m "Auto-publishing on successful travis build $TRAVIS_BUILD_NUMBER"
+git commit -m "Auto-publishing Javadoc from Shippable CI"
 git push -fq https://AgentTroll:${PASS}@github.com/AgentTroll/BukkitCommons.git HEAD:gh-pages
-echo -e "Published JavaDoc.\n" # Done!
+echo "Published JavaDoc.\n" # Done!
