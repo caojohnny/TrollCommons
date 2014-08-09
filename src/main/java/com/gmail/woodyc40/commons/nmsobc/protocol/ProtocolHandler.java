@@ -62,38 +62,6 @@ public final class ProtocolHandler {
         this.plugin = plugin;
     }
 
-    public void proxyServer() {
-        ServerConnection connection = McServer.getMcServer().ai();
-        boolean looking = true;
-        for (int i = 0; looking; i++) {
-            Iterable<Object> list = (List<Object>) new ReflectionChain(connection.getClass())
-                    .field().fieldFuzzy(List.class, i).instance(connection).getter().get().reflect();
-            for (Object item : list) {
-                if (!ChannelFuture.class.isInstance(item))
-                    break;
-
-                Channel serverChannel = ((ChannelFuture)item).channel();
-
-                serverChannel.pipeline().addFirst(new ChannelInboundHandlerAdapter() {
-                    @Override public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-                        ((Channel) msg).pipeline().addFirst(new ChannelInitializer<Channel>() {
-                            @Override protected void initChannel(Channel channel) throws Exception {
-                                channel.pipeline().addLast(new ChannelInitializer<Channel>() {
-                                    @Override protected void initChannel(Channel channel) throws Exception {
-                                        channel.pipeline().addBefore("packet_handler",
-                                                                     ProtocolHandler.this.name,
-                                                                     new PacketAdapter(null));
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-                looking = false;
-            }
-        }
-    }
-
     public void putProxy(Channel channel, Player player) {
         channel.pipeline().addLast(this.name, new ProtocolHandler.PacketAdapter(player));
     }
