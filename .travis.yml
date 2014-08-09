@@ -1,0 +1,13 @@
+language: java
+jdk:
+- oraclejdk8
+script: "mvn clean deploy --settings .utility/settings.xml"
+after_success:
+- chmod 777 ".utility/jd.sh"
+- .utility/jd.sh
+notifications:
+email: false
+env:
+global:
+- secure: "RD2K3Gz7jRk0STYMCPyjqIi0MO35y+y+84RHbhbig2JyO3OcUYTbJERpp6cPFeK4X7OWZns3b1KUQaExOm1uvZlNdzWInT3RrGDhdfKMOQjjDWs7IAxGI0DWV/luxPlVPX6/YAR95jolBbmYMId6Qs25uC1EkDICYvdoTJPUGIw="
+- secure: "TYBYhjPp0KTAU+B8JWu9TIKYEWfM5e71hMfca2nCS6OWj7qomVEvzl5wJ0tem9EktoeF+3bMCaMoVS3aCBhD+Z7X63zO73ohTPspSg6Wn65v2s56bbflseT1IMyFyFN3LnVZ4lJvMomy7tmoBrEqWuiobZiJMyU//u/eWiV/JjE="
