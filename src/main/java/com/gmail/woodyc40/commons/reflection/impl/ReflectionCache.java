@@ -26,6 +26,7 @@ import java.lang.reflect.*;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class ReflectionCache {
     /** The cache for unsafe methods */
@@ -40,10 +41,7 @@ public final class ReflectionCache {
     /** The cache for {@code class}es */
     private static final Cache<String, Class<?>>                                  CLASS     = new HashingCache<>();
 
-    /**
-     * Prevent instantiation
-     */
-    private ReflectionCache() {}
+    private ReflectionCache() {} // Suppress instantiation
 
     /**
      * Caches a lookup for a Class
@@ -120,9 +118,8 @@ public final class ReflectionCache {
 
     /**
      * Wraps a Method with the method manager with caching properties
-     * <p/>
-     * <p/>
-     * Uses the slower {@link java.lang.reflect} classes
+     * <p>
+     * <p>Uses the slower {@link java.lang.reflect} classes</p>
      *
      * @param method the method to wrap
      * @param <D>    the declaring class type
@@ -141,9 +138,8 @@ public final class ReflectionCache {
 
     /**
      * Wraps a field with the field manager with caching properties
-     * <p/>
-     * <p/>
-     * Uses the slower {@link java.lang.reflect} classes
+     * <p>
+     * <p>Uses the slower {@link java.lang.reflect} classes</p>
      *
      * @param field the field to wrap
      * @param <D>   the declaring class type
@@ -162,9 +158,8 @@ public final class ReflectionCache {
 
     /**
      * Wraps a constructor using constructor manager with caching properties
-     * <p/>
-     * <p/>
-     * Uses the slower {@link java.lang.reflect} classes
+     * <p>
+     * <p>Uses the slower {@link java.lang.reflect} classes</p>
      *
      * @param constructor the constructor to wrap
      * @param <T>         the declaring class type

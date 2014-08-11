@@ -20,14 +20,18 @@ import com.gmail.woodyc40.commons.concurrent.RunnableReceiveEvent;
 import com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent;
 import lombok.Getter;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
  * Enumeration representing all of the types of event that can be called
- * <p/>
- * This is needed to separate different events and make sure the types are the same
+ * <p>
+ * <p>This is needed to separate different events and make sure the types are the same</p>
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
+@ThreadSafe // :)
 public enum EventType {
     /** Represents {@link com.gmail.woodyc40.commons.nmsobc.protocol.PacketEvent} */
     PACKET(PacketEvent.class), RUNNABLE_RECEIVE(RunnableReceiveEvent.class);

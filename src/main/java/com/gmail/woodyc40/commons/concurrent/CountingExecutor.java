@@ -38,9 +38,8 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * Constructs a new ExecutorService that keeps track of the tasks to be executed
-     * <p/>
-     * <p/>
-     * This is useful for load balancing and statistics
+     * <p>
+     * <p>This is useful for load balancing and statistics</p>
      *
      * @param corePoolSize    the amount of threads to create for each task
      * @param maximumPoolSize the max amount of threads to create
@@ -60,13 +59,11 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * Constructs a new ExecutorService that keeps track of the tasks to be executed
-     * <p/>
-     * <p/>
-     * This is useful for load balancing and statistics
-     * <p/>
-     * <p/>
-     * This constructs a thread pool with the size if the available processors multiplied by {@code 1.5}, and casted to
-     * an {@code int}
+     * <p>
+     * <p>This is useful for load balancing and statistics</p>
+     * <p>
+     * <p>This constructs a thread pool with the size if the available processors multiplied by {@code 1.5}, and casted
+     * to an {@code int}</p>
      */
     public static CountingExecutor newCountingExecutor() {
         int threads = (int) ((double) Runtime.getRuntime().availableProcessors() * 1.5);
@@ -74,10 +71,8 @@ public class CountingExecutor extends ThreadPoolExecutor {
     }
 
     /**
-     * The amount of space left before the thread pool runs out of space
-     * <p/>
-     * <p/>
-     * The fallback executor should be used when the {@code int} returned is larger than {@code 95}
+     * The amount of space left before the thread pool runs out of space <p>The fallback executor should be used when
+     * the {@code int} returned is larger than {@code 95}</p>
      *
      * @return the total available task space
      */
@@ -107,9 +102,8 @@ public class CountingExecutor extends ThreadPoolExecutor {
 
     /**
      * Recalculates and resizes the thread pool plus the amount available slots for tasks
-     * <p/>
-     * <p/>
-     * Should be called every 50,000 milliseconds
+     * <p>
+     * <p>Should be called every 50,000 milliseconds</p>
      */
     public void recalc() {
         int newSize = (int) ((double) Runtime.getRuntime().availableProcessors() * 1.5);

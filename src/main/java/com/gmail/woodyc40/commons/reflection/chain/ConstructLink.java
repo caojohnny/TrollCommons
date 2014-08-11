@@ -18,6 +18,13 @@ package com.gmail.woodyc40.commons.reflection.chain;
 
 import com.gmail.woodyc40.commons.reflection.ConstructorManager;
 
+/**
+ * Weak access to the reflection link to create objects through the constructor access
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 public interface ConstructLink {
     /**
      * Uses the class value of a previous reflective operation to use as params to construction.

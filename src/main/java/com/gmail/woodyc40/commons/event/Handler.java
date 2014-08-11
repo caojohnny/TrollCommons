@@ -16,6 +16,7 @@
 
 package com.gmail.woodyc40.commons.event;
 
+import javax.annotation.concurrent.ThreadSafe;
 import java.lang.annotation.*;
 
 /**
@@ -23,7 +24,9 @@ import java.lang.annotation.*;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
+@ThreadSafe // :)
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

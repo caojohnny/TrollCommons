@@ -31,6 +31,7 @@ import java.util.Map;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class McServer {
     /** All classes from the NMS package */
@@ -64,9 +65,8 @@ public class McServer {
 
     /**
      * Gets the instance of net.minecraft.server.MinecraftServer
-     * <p/>
-     * <p/>
-     * There are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class
+     * <p>
+     * <p>here are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class</p>
      *
      * @return the instance of MinecraftServer
      */

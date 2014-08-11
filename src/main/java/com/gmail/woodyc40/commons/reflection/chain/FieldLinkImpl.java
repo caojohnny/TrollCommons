@@ -25,6 +25,14 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of {@link com.gmail.woodyc40.commons.reflection.chain.FieldLink}. See description for the implemented
+ * interfaces.
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 @RequiredArgsConstructor
 public class FieldLinkImpl implements FieldLink {
     private final Class<?>                     base;

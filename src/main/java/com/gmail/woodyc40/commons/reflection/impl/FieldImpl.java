@@ -23,14 +23,17 @@ import java.lang.reflect.Field;
 
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection
- * <p/>
+ * <p>
  * param <D> the {@code class} type declaring the field
  *
+ * @param <D> the type of class declaring the field
  * @param <T> the type the field represents
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class FieldImpl<D, T> implements FieldManager<D, T> {
+    /** The langreflect version of the field */
     private final Field field;
 
     /**
@@ -42,27 +45,15 @@ class FieldImpl<D, T> implements FieldManager<D, T> {
         this.field = field;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void set(D inst, T val) {
+    @Override public void set(D inst, T val) {
         UnsafeProvider.setField(this.field, inst, val);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public T get(D inst) {
+    @Override public T get(D inst) {
         return (T) UnsafeProvider.acquireField(this.field, inst);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Field raw() {
+    @Override public Field raw() {
         return this.field;
     }
 }

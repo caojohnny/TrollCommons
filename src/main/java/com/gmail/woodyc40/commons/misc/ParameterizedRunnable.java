@@ -24,6 +24,7 @@ package com.gmail.woodyc40.commons.misc;
  * @author AgentTroll
  * @version 1.0
  * @see java.lang.Runnable
+ * @since 1.0
  */
 public interface ParameterizedRunnable<R, T> {
     R run(T t);

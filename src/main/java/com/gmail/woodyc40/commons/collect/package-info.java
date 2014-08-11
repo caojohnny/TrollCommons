@@ -1,12 +1,26 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /**
  * Collections and custom implementation frameworks using the JCF
  *
- * <p>
- * These are mainly just for play, usually being slower than the collections tuned by Sun engineers.
+ * <p>These are mainly just for play, usually being slower than the collections tuned by Sun engineers.</p>
  *
- * <p>
- * There are a few helper classes that may come in handy however, and a few classes with a better hash distribution
- * implementing the Murmur3 32bit used in Google Guava, or switchable.
+ * <p>There are a few helper classes that may come in handy however, and a few classes with a better hash distribution
+ * implementing the Murmur3 32bit used in Google Guava, or switchable.</p>
  *
  * <p>
  * No class in this package are thread safe.

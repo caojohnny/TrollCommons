@@ -19,6 +19,7 @@ package com.gmail.woodyc40.commons.concurrent;
 import com.gmail.woodyc40.commons.event.Events;
 import com.gmail.woodyc40.commons.misc.SerializableRunnable;
 
+import javax.annotation.concurrent.ThreadSafe;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -30,7 +31,9 @@ import java.rmi.server.UnicastRemoteObject;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
+@ThreadSafe
 public class Remotes {
     /** The name of the remote */
     private final String name;
@@ -90,6 +93,7 @@ public class Remotes {
      *
      * @author AgentTroll
      * @version 1.0
+     * @since 1.0
      */
     private class Receiver implements Remote {
         /**
@@ -127,6 +131,7 @@ public class Remotes {
      *
      * @author AgentTroll
      * @version 1.0
+     * @since 1.0
      */
     private class Caller {
         /**

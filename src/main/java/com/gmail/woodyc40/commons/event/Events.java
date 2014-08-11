@@ -17,17 +17,23 @@
 package com.gmail.woodyc40.commons.event;
 
 import javax.annotation.concurrent.GuardedBy;
+import javax.annotation.concurrent.ThreadSafe;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The events utility for calling and registering their respective events through an asynchronous environment
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
+@ThreadSafe
 public final class Events {
     /** The registered listeners */
     @GuardedBy("Events.class") private static final Map<EventHandler, EventType> registered = new HashMap<>();
 
-    /**
-     * No instantiation
-     */
-    private Events() {}
+    private Events() {} // Suppress instantiation
 
     /**
      * Asynchronously register a handler

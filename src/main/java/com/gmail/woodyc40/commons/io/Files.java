@@ -32,6 +32,7 @@ import java.util.jar.JarFile;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class Files {
     /** Cached plugin directory */

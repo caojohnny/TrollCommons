@@ -29,6 +29,7 @@ import java.lang.reflect.*;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class ReflectAccess {
     /** The sun accessor used in construction of _accessors */
@@ -39,9 +40,8 @@ public final class ReflectAccess {
 
     /**
      * Wraps a Method with the method manager with caching properties
-     * <p/>
-     * <p/>
-     * This performs the check for reflection safety settings
+     * <p>
+     * <p>This performs the check for reflection safety settings</p>
      *
      * @param method the method to wrap
      * @param <D>    the declaring class type
@@ -57,9 +57,8 @@ public final class ReflectAccess {
 
     /**
      * Wraps a field with the field manager with caching properties
-     * <p/>
-     * <p/>
-     * This performs the check for reflection safety settings
+     * <p>
+     * <p>This performs the check for reflection safety settings</p>
      *
      * @param field the field to wrap
      * @param <D>   the declaring class type
@@ -75,9 +74,8 @@ public final class ReflectAccess {
 
     /**
      * Wraps a constructor using constructor manager with caching properties
-     * <p/>
-     * <p/>
-     * This performs the check for reflection safety settings
+     * <p>
+     * <p>This performs the check for reflection safety settings</p>
      *
      * @param constructor the constructor to wrap
      * @param <T>         the declaring class type

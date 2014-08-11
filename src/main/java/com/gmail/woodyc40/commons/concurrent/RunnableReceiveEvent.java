@@ -20,18 +20,21 @@ import com.gmail.woodyc40.commons.event.*;
 import com.gmail.woodyc40.commons.misc.SerializableRunnable;
 import lombok.*;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
  * Called when a runnable is received from {@link com.gmail.woodyc40.commons.concurrent.Remotes}
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
-@Getter @RequiredArgsConstructor @Handler(EventType.RUNNABLE_RECEIVE)
+@ThreadSafe @Getter @RequiredArgsConstructor @Handler(EventType.RUNNABLE_RECEIVE)
 public class RunnableReceiveEvent implements CustomEvent {
     /** The runnable called */
-    private final SerializableRunnable<?> runnable;
+    private final            SerializableRunnable<?> runnable;
     /** Whether or not this is cancelled */
-    @Setter private       boolean                 cancelled;
+    @Setter private volatile boolean                 cancelled;
 
     @Override public boolean getCancelled() {
         return this.cancelled;

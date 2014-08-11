@@ -24,6 +24,14 @@ import lombok.RequiredArgsConstructor;
 import java.lang.reflect.Method;
 import java.util.*;
 
+/**
+ * Implementation of {@link com.gmail.woodyc40.commons.reflection.chain.MethodLink}, see description of the implemented
+ * interfaces.
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 @RequiredArgsConstructor
 public class MethodLinkImpl implements MethodLink {
     private final Class<?>        holder;

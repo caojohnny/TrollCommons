@@ -28,9 +28,12 @@ import java.lang.reflect.InvocationTargetException;
  * @param <T> the type the constructor creates an instance of
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class ConstructorImpl<T> implements ConstructorManager<T> {
+    /** The langreflect version of the constructor */
     private final Constructor<T>      constructor;
+    /** The sun version of the constructor */
     private final ConstructorAccessor accessor;
 
     /**
@@ -43,9 +46,6 @@ class ConstructorImpl<T> implements ConstructorManager<T> {
         this.accessor = ReflectAccess.getREFLECTION_FACTORY().newConstructorAccessor(this.constructor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override public T createInstance(Object... args) {
         try {
             return (T) this.accessor.newInstance(args);
@@ -56,9 +56,6 @@ class ConstructorImpl<T> implements ConstructorManager<T> {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override public Constructor<T> raw() {
         return this.constructor;
     }

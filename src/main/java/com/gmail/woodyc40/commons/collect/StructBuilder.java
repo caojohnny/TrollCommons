@@ -20,11 +20,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and {@link
- * com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
+ * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and
+ * {@link com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class StructBuilder {
     /** The hash strategy */

@@ -26,6 +26,7 @@ import java.util.*;
  * @version 1.0
  * @see java.util.Set
  * @see java.util.Collection
+ * @since 1.0
  */
 public class HashStructSet<E> implements Set<E> {
     /** The delegate to perform actions on */

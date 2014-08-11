@@ -21,13 +21,13 @@ package com.gmail.woodyc40.commons.misc;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class Line implements Row {
     /**
      * {@inheritDoc}
-     * <p/>
-     * <p/>
-     * Returns null - do not use
+     * <p>
+     * <p>Returns null - do not use for result</p>
      */
     @Override public Row setColumn(int column, String entry) {
         return null;
@@ -35,9 +35,8 @@ class Line implements Row {
 
     /**
      * {@inheritDoc}
-     * <p/>
-     * <p/>
-     * Returns null - do not use
+     * <p>
+     * <p>Returns null - do not use for result</p>
      */
     @Override public String[] getEntries() {
         return new String[0];

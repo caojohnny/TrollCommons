@@ -23,6 +23,7 @@ import java.io.InputStream;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class Assembly {
     private Assembly() {} // No instantiation

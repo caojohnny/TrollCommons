@@ -32,6 +32,7 @@ import java.util.*;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrument {
     /** The class to instrument */
@@ -92,7 +93,8 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
                     method = (Method) this.constantPool.getMethodAt(i);
                     s = this.constantPool.getStringAt(i);
                     utf = this.constantPool.getUTF8At(i);
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
 
                 if (cls != null) {
                     ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.CLASS, cls, i));
@@ -113,7 +115,8 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
                     ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.LONG, l, i));
                     UnsafeProvider.getProvider().putObject(l, 8L, ref.getValue());
                 } else if (memberRefInfo != null) {
-                    ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.MEMBER_REF, memberRefInfo, i));
+                    ConstantRef ref =
+                            trans.transform(this, new ConstantRef(ConstantRef.Type.MEMBER_REF, memberRefInfo, i));
                     UnsafeProvider.getProvider().putObject(memberRefInfo, 8L, ref.getValue());
                 } else if (method != null) {
                     ConstantRef ref = trans.transform(this, new ConstantRef(ConstantRef.Type.METHOD, method, i));

@@ -34,11 +34,12 @@ import java.util.jar.JarFile;
 /**
  * Forks the JVM into a separate {@link java.lang.Process}, which runs the heartbeat for {@link
  * com.gmail.woodyc40.commons.concurrent.ThreadPoolManager}
- * <p/>
- * NOT THREAD SAFE.
+ * <p>
+ * <p>NOT THREAD SAFE.</p>
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @NotThreadSafe
 public final class JavaFork {
@@ -53,6 +54,8 @@ public final class JavaFork {
 
     /** The security file */
     private static File security;
+
+    private JavaFork() {} // Suppress instantiation
 
     /**
      * Beats at minecraft tick rate (20/sec). The while loop sleeps for 2 milliseconds and wakes to count the current

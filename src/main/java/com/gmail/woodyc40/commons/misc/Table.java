@@ -27,6 +27,7 @@ import java.util.Collection;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class Table {
     /** Table data rows */
@@ -58,9 +59,8 @@ public class Table {
 
     /**
      * The titles of each column on the table
-     * <p/>
-     * <p/>
-     * Unlimited slots are available, in fact, the amount of columns are set by this method.
+     * <p>
+     * <p>Unlimited slots are available, in fact, the amount of columns are set by this method.</p>
      *
      * @param names the titles
      */

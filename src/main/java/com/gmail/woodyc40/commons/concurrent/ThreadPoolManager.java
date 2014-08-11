@@ -23,6 +23,13 @@ import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Management of thread pooling and providing balancing support between the 2 load fixed length executors
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 @ThreadSafe
 public final class ThreadPoolManager {
     /** The beat count. Resets when the worker threads are recalculated */
@@ -62,7 +69,7 @@ public final class ThreadPoolManager {
 
     /**
      * Submits a task for balancing on one of the thread pools
-     * <p/>
+     * <p>
      * The task MUST be designed asynchronously - there are no guarantees for thread safety, so synchronize,
      * synchronize, synchronize!
      *

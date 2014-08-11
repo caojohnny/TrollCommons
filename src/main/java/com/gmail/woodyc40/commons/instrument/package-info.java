@@ -16,11 +16,10 @@
 
 /**
  * Provides utilities for adding, removing, and modifying members such as fields, methods, and constructors, and even
- * classes themselves. This makes use of javassist.
+ * classes themselves.
  *
- * <p>
- * An experimental version will be based off of non-asm libs I have made
- * personally, and may become production ready if I decide so.
+ * <p>An experimental version will be based off of non-asm libs I have made
+ * personally, and may become production ready if I decide so.</p>
  */
 
 package com.gmail.woodyc40.commons.instrument;

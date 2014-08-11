@@ -21,15 +21,17 @@ import com.gmail.woodyc40.commons.reflection.FieldManager;
 import java.lang.reflect.Field;
 
 /**
- * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection
- * <p/>
- * param <D> the {@code class} type declaring the field
+ * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} wrapping the "safe" and "slow"
+ * langreflect.
  *
+ * @param <D> the {@code class} type declaring the field
  * @param <T> the type the field represents
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class SafeField<D, T> implements FieldManager<D, T> {
+    /** The management class wrapped by this implementation */
     private final Field field;
 
     /**

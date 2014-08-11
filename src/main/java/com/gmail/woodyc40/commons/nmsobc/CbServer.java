@@ -23,6 +23,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Provides access to the CraftBukkit internals
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 public class CbServer {
     /** All classes from the OBC package */
     @Getter private static final Map<String, Class<?>> classMap = new HashMap<>();
@@ -50,7 +57,17 @@ public class CbServer {
         return CbServer.classMap.get(name);
     }
 
+    /**
+     * Gets the class of {@link org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer}
+     *
+     * @return the CraftPlayer class
+     */
     public static Class<?> cPlayerClass() { return CbServer.getClass("CraftPlayer"); }
 
+    /**
+     * Gets the class of the running {@link org.bukkit.craftbukkit.v1_7_R4.CraftServer}
+     *
+     * @return the CraftServer class
+     */
     public static Class<?> cServerClass() { return CbServer.getClass("CraftServer"); }
 }

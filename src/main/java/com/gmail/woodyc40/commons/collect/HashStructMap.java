@@ -28,6 +28,7 @@ import java.util.*;
  * @author AgentTroll
  * @version 1.0
  * @see java.util.Map
+ * @since 1.0
  */
 public class HashStructMap<K, V> implements Map<K, V> {
     /** The delegating hash structure to perform base ops on */

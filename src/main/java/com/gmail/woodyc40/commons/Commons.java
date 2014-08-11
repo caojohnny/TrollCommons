@@ -35,6 +35,7 @@ import java.io.IOException;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class Commons extends JavaPlugin {
     /** Classes that may be disabled due to availability */
@@ -77,8 +78,9 @@ public class Commons extends JavaPlugin {
         Commons.plugin = this;
 
         for (Class<?> c : Commons.UNSAFE_CLASSES) {
-            if (c == null) {}
-                // TODO disable CLASSES
+            if (c == null) {
+            }
+            // TODO disable CLASSES
         }
 
         Protocol.initiate(this);

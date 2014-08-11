@@ -27,19 +27,21 @@ import java.util.Map;
 /**
  * This is a base utility used to build hashing data structures similar to that of {@link java.util.HashMap} and {@link
  * java.util.HashSet}.
- * <p/>
- * By default, this will have a resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)}
- * and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * .HashStrategy#A_TROLL} that can be changed using {@link com.gmail.woodyc40.commons.collect.AbstractHashStruct
- * #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
- * <p/>
- * Benchmarks for all 3 hash strategies can be found here: https://github
- * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java
+ * <p>
+ * <p>By default, this will have a resizing threshold of 14 items, which can be changed using {@link
+ * #setResizeThresh(int)} and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect
+ * .AbstractHashStruct.HashStrategy#A_TROLL}
+ * that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
+ * </p>
+ * <p>
+ * <p>Benchmarks for all 3 hash strategies can be found <a href="https://github
+ * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java>here</a></p>
  *
  * @param <K> the key type
  * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @Getter
 public abstract class AbstractHashStruct<K, V> {
@@ -138,9 +140,8 @@ public abstract class AbstractHashStruct<K, V> {
 
     /**
      * Asks the bucket array if one of the entries holds the value provided
-     * <p/>
-     * <p/>
-     * Note that this is an O(n) operation
+     * <p>
+     * <p>Note that this is an O(n) operation</p>
      *
      * @param v the value to check for in the bucket array
      * @return {@code false} if the value is not found in the buckets, {@code true} if found
@@ -432,9 +433,8 @@ public abstract class AbstractHashStruct<K, V> {
 
         /**
          * {@inheritDoc}
-         * <p/>
-         * <p/>
-         * DOES NOT SUPPORT REMOVAL
+         * <p>
+         * <p>DOES NOT SUPPORT REMOVAL</p>
          */
         @Override protected void removeValue(V val) {
             throw new UnsupportedOperationException("You should remove with a key iterator instead");

@@ -21,7 +21,18 @@ import com.gmail.woodyc40.commons.reflection.MethodManager;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.MethodManager} wrapping the "safe" but "slow"
+ * langreflect API
+ *
+ * @param <D> the declaring class type
+ * @param <T> the type the method returns
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 public class SafeMethod<D, T> implements MethodManager<D, T> {
+    /** The management class wrapped by this implementation */
     private final Method method;
 
     /**

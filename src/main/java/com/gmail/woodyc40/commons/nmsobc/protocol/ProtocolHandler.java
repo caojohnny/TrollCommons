@@ -18,7 +18,6 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 import com.gmail.woodyc40.commons.event.CustomEvent;
 import com.gmail.woodyc40.commons.event.Events;
-import com.gmail.woodyc40.commons.nmsobc.McServer;
 import com.gmail.woodyc40.commons.reflection.FieldManager;
 import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
 import lombok.Getter;
@@ -34,7 +33,8 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The packet handler that will listen for packet writes and reads, as well as listen for player join and leave to cache
@@ -42,12 +42,13 @@ import java.util.*;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
-public final class ProtocolHandler {
+public final class ProtocolHandler { // TODO server channels
     /** The connection cache that holds netty channels */
     @Getter private static final Map<Player, Channel> cache = new HashMap<>();
     /** The name of the handlers */
-    private final String name = "ProtocolHandler - BukkitCommons";
+    private final                String               name  = "ProtocolHandler - BukkitCommons";
     /** The plugin that is activated by this handler. Will be {@code null} when disabled */
     private volatile Plugin plugin;
 
@@ -79,9 +80,11 @@ public final class ProtocolHandler {
      *
      * @author AgentTroll
      * @version 1.0
+     * @since 1.0
      */
     @RequiredArgsConstructor
     private class PacketAdapter extends ChannelDuplexHandler {
+        /** The player that this intercepts. Can be null for server channels */
         private final Player player;
 
         /**
@@ -136,6 +139,7 @@ public final class ProtocolHandler {
      *
      * @author AgentTroll
      * @version 1.0
+     * @since 1.0
      */
     private class ProtocolListener implements Listener {
         /** Represents the channel ("m" as of 1.7.10 snapshot) field in NetworkManager */

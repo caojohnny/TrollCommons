@@ -17,7 +17,7 @@
 package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
-import com.gmail.woodyc40.commons.collect.HashStructMap;
+import com.gmail.woodyc40.commons.collect.StructBuilder;
 
 import java.util.Map;
 
@@ -26,14 +26,12 @@ import java.util.Map;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class Settings {
     /** The map of users */
-    private static final Map<Package, Settings> SETTINGS_MAP = new HashStructMap() {
-        {
-            this.getDelegate().setStrategy(AbstractHashStruct.HashStrategy.JAVA);
-        }
-    };
+    private static final Map<Package, Settings> SETTINGS_MAP =
+            new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();
 
     private boolean safeReflection;
 

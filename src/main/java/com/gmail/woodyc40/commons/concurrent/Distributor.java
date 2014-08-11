@@ -29,6 +29,7 @@ import java.util.concurrent.*;
  * @param <V> the return value of the Future representing the task submitted
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @ThreadSafe
 public class Distributor<V> implements Callable<Future<V>> {
@@ -93,16 +94,12 @@ public class Distributor<V> implements Callable<Future<V>> {
     }
 
     /**
-     * Selects the worker to use
-     * <p/>
-     * <p/>
-     * The first step is to find the worker with the lowest work load
-     * <p/>
-     * <p/>
-     * The second step checks the work load of the lowest worker, if it is within 5% of 100, the fallback is selected
-     * <p/>
-     * <p/>
-     * However, if the fallback happens to be at 100% workload, then the task will be moved over to the balancer
+     * Selects the worker to use <p>The first step is to find the worker with the lowest work load</p>
+     * <p>
+     * <p>The second step checks the work load of the lowest worker, if it is within 5% of 100, the fallback is
+     * selected</p>
+     * <p>
+     * <p>However, if the fallback happens to be at 100% workload, then the task will be moved over to the balancer</p>
      */
     @Override public Future<V> call() throws Exception {
         double usage = 100.0;

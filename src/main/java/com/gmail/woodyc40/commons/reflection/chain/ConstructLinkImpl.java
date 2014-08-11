@@ -24,6 +24,14 @@ import lombok.RequiredArgsConstructor;
 import java.lang.reflect.Constructor;
 import java.util.*;
 
+/**
+ * Implementation for {@link com.gmail.woodyc40.commons.reflection.chain.ConstructLink}. See class description of
+ * implemented interface.
+ *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 @RequiredArgsConstructor
 public class ConstructLinkImpl implements ConstructLink {
     private final Class<?>        base;

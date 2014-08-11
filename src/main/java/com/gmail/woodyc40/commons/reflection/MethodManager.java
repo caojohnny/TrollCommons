@@ -20,15 +20,16 @@ import java.lang.reflect.Method;
 
 /**
  * {@code Interface} for weak access to method invocation methods
- * <p/>
- * Used to method and {@code return} the result the method represented by this {@code class}
- * <p/>
- * Should be faster than conventional Reflection API
+ * <p>
+ * <p>Used to method and {@code return} the result the method represented by this {@code class}</p>
+ * <p>
+ * <p>Should be faster than conventional Reflection API</p>
  *
  * @param <Declaring> the {@code class} type declaring the method
  * @param <T>         the type the method returns
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public interface MethodManager<Declaring, T> {
     /**

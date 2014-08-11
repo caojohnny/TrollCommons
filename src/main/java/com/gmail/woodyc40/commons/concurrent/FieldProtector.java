@@ -21,9 +21,13 @@ import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Factory utility used to facilitate the creation of {@link com.gmail.woodyc40.commons.concurrent.FieldProtector}s
+ * <p>
+ * <p>Note that protecting access to a given instance of a field does not automatically make it thread safe, only the
+ * implementation and design of the underlying class with thread safety in mind will make it fully thread safe.</p>
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @Immutable @ThreadSafe
 public final class FieldProtector {
@@ -34,9 +38,20 @@ public final class FieldProtector {
      *
      * @param value the initial value. Can be {@code null}.
      * @param <T>   the type of the field that is protected
-     * @return the new field protector
+     * @return the new field protector holding the initial value
      */
     public static <T> ProtectedField<T> usingReentrantLock(T value) {
         return new ReentrantLockProtected<>(value);
+    }
+
+    /**
+     * Creates a new {@link com.gmail.woodyc40.commons.concurrent.AtomicRefProtected} atomic reference field protector
+     *
+     * @param value the initial value. Can be {@code null}.
+     * @param <T>   the type of the field that is protected
+     * @return the new field protector holding the initial value
+     */
+    public static <T> ProtectedField<T> usingAtomicRef(T value) {
+        return new AtomicRefProtected<T>(value);
     }
 }

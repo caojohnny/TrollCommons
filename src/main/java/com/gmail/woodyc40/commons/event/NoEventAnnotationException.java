@@ -16,13 +16,17 @@
 
 package com.gmail.woodyc40.commons.event;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
  * Thrown when an {@link com.gmail.woodyc40.commons.event.EventHandler} is not annotated with a {@link
  * com.gmail.woodyc40.commons.event.Handler} annotation
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
+@ThreadSafe
 public class NoEventAnnotationException extends Exception {
     /** Used for serialization */
     private static final long serialVersionUID = 5608015041206270547L;

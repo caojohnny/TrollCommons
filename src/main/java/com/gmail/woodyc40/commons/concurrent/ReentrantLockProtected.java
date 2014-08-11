@@ -22,6 +22,15 @@ import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Field protecting class that depends on {@link java.util.concurrent.locks.ReentrantLock} to help assist thread safety
+ * of field access
+ *
+ * @param <T> the type of the field being held by this protector
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 @ThreadSafe class ReentrantLockProtected<T> implements ProtectedField<T> {
     /** The lock used ot guard the field */
     private final Lock lock = new ReentrantLock();
@@ -33,7 +42,7 @@ import java.util.concurrent.locks.ReentrantLock;
      *
      * @param value the initial value of the field
      */
-    ReentrantLockProtected(T value) {
+    public ReentrantLockProtected(T value) {
         this.set(value);
     }
 

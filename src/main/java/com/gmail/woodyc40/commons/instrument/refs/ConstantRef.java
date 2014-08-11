@@ -24,6 +24,7 @@ import lombok.Setter;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @Getter @Setter
 public class ConstantRef {

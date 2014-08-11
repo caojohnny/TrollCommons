@@ -21,6 +21,7 @@ package com.gmail.woodyc40.commons.misc;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class Checks {
     private Checks() {}

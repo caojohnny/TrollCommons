@@ -22,13 +22,16 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.ConstructorManager} used for fast reflection
+ * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.ConstructorManager} wrapping the "safe" but
+ * "slow" langreflect API
  *
  * @param <T> the type the constructor creates an instance of
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class SafeConstructor<T> implements ConstructorManager<T> {
+    /** The management reflection class wrapped by this implementation */
     private final Constructor<T> constructor;
 
     /**

@@ -29,6 +29,7 @@ import java.lang.reflect.Method;
  * @param <T> the type the method returns
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 class MethodImpl<D, T> implements MethodManager<D, T> {
     private final Method         method;
@@ -44,9 +45,6 @@ class MethodImpl<D, T> implements MethodManager<D, T> {
         this.accessor = ReflectAccess.getREFLECTION_FACTORY().newMethodAccessor(this.method);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override public T invoke(D inst, Object... args) {
         try {
             return (T) this.accessor.invoke(inst, args);
@@ -57,9 +55,6 @@ class MethodImpl<D, T> implements MethodManager<D, T> {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override public Method raw() {
         return this.method;
     }

@@ -26,6 +26,7 @@ import java.util.Map;
  * @param <VK>  the multi value type
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class ExpandableMapping<Key, VK> {
     /** Storage */

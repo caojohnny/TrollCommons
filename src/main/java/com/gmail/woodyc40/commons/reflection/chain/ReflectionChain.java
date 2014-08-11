@@ -26,6 +26,7 @@ import java.util.List;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @RequiredArgsConstructor
 public class ReflectionChain {

@@ -18,6 +18,15 @@ package com.gmail.woodyc40.commons.collect;
 
 import java.util.Map;
 
+/**
+ * Cache implementation that uses hashing to cache values in the underlying bucket array
+ *
+ * @param <K> the key type
+ * @param <V> the value type
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
+ */
 public class HashingCache<K, V> implements Cache<K, V> {
     /** The delegate */
     private final Map<K, V> struct = new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();

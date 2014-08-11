@@ -15,9 +15,7 @@
  */
 
 /**
- * Experimental assembly code modifiers that I have made. Not ready for production.
- *
- * TODO update production status
+ * Experimental assembly modifications library, not production ready.
  */
 
 package com.gmail.woodyc40.commons.instrument.experimental;

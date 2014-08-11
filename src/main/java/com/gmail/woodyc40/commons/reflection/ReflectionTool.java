@@ -28,6 +28,7 @@ import java.lang.reflect.*;
  * @see com.gmail.woodyc40.commons.reflection.ConstructorManager
  * @see com.gmail.woodyc40.commons.reflection.FieldManager
  * @see com.gmail.woodyc40.commons.reflection.MethodManager
+ * @since 1.0
  */
 public final class ReflectionTool {
     private ReflectionTool() {}

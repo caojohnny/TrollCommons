@@ -20,11 +20,12 @@ import java.io.*;
 
 /**
  * Allows for the functionality to write content to a file
- * <p/>
- * Must be closed when finished!
+ * <p>
+ * <p>Must be closed when finished!</p>
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public class StringFileWriter implements Closeable {
     /** The file to write to */

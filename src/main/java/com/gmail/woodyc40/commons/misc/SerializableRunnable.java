@@ -20,16 +20,17 @@ import java.io.Serializable;
 
 /**
  * A runnable that can be serialized. Useful for RMI or transport of execution sequences.
- * <p/>
- * Objects used in the code even of a serializable runnable must be serializable as well
- * <p/>
- * Implementing this class requires you to define a serialVersionUID for optimal results
+ * <p>
+ * <p>Objects used in the code even of a serializable runnable must be serializable as well</p>
+ * <p>
+ * <p>Implementing this class requires you to define a serialVersionUID for optimal results</p>
  *
  * @param <V> the return type
  * @author AgentTroll
  * @version 1.0
  * @see java.io.Serializable
  * @see java.lang.Runnable
+ * @since 1.0
  */
 public interface SerializableRunnable<V> extends Serializable {
     /**

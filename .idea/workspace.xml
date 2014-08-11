@@ -10,7 +10,94 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Protocol DONE">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/AtomicRefProtected.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Assembly.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Assembly.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BukkitCommons.iml" afterPath="$PROJECT_DIR$/BukkitCommons.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/Cache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/Cache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Checks.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Checks.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLink.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLink.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLinkImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLinkImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ConstructorImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ConstructorImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/CountingExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/CountingExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Distributor.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Distributor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/ExpandableMapping.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/ExpandableMapping.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/FieldImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/FieldImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLinkImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLinkImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/FieldProtector.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/FieldProtector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Handler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Handler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashingCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashingCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_7_10_R0_1_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/MethodImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/MethodImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/NoEventAnnotationException.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/NoEventAnnotationException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Pair.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Pair.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ProtectedField.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ProtectedField.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/README.txt" afterPath="$PROJECT_DIR$/src/main/resources/README.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ReentrantLockProtected.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ReentrantLockProtected.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ReflectionTool.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ReflectionTool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Row.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Row.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/RowEntry.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/RowEntry.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/RunnableReceiveEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/RunnableReceiveEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeConstructor.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeConstructor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeField.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeField.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeMethod.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeMethod.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/TrigProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/TrigProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/package-info.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/package-info.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -86,7 +173,58 @@
     <favorites_list name="BukkitCommons" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="AbstractIterator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
+              <caret line="28" column="62" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StructBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
+              <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PoolRef.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConstantRef.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2358">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacketCreator.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29508197" vertical-offset="0" max-vertical-offset="854">
+              <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -100,57 +238,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Assembly.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Checks.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Pair.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Row.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/RowEntry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/TrigProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLink.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLink.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLinkImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLinkImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java" />
-        <option value="$PROJECT_DIR$/atlassian-ide-plugin.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ConstructorImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/FieldImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/MethodImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/ExpandableMapping.java" />
-        <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SetStructTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeConstructor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeMethod.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Checks.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ReflectVsNormal.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/EventTest.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/UnsafeProviderTest.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ProxyTest.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/RemoteTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SynchronizationTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/RunnableReceiveEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/package-info.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ReflectionTool.java" />
       </list>
     </option>
   </component>
@@ -265,7 +403,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -281,6 +419,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -312,14 +451,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -336,10 +467,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,7 +520,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -886,20 +1012,20 @@
     <frame x="0" y="27" width="1920" height="1026" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32468995" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32581738" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24785867" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20074947" sideWeight="0.4977307" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17987151" sideWeight="0.4977307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25479144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="832" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -911,37 +1037,39 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32468995" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39684328" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="832" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20891514" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32741398" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22151224" sideWeight="0.50054055" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596686" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20106952" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32581738" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Issues - JIRA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17987151" sideWeight="0.4977307" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Byte Code Viewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="95" y="58" width="1736" height="856" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25955057" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25479144" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3247191" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946581" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32468995" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24812834" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3973363" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24785867" sideWeight="0.49945945" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39684328" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -1043,438 +1171,417 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/ExpandableMapping.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.1381733" vertical-offset="928" max-vertical-offset="1782">
-          <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1566">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/FieldProtector.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="522">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.2740047" vertical-offset="0" max-vertical-offset="1584">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="882">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31615925" vertical-offset="0" max-vertical-offset="854">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7065421" vertical-offset="0" max-vertical-offset="738">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26915887" vertical-offset="0" max-vertical-offset="864">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16861826" vertical-offset="0" max-vertical-offset="854">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1264637" vertical-offset="0" max-vertical-offset="854">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2740047" vertical-offset="0" max-vertical-offset="854">
+          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/package-info.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
-          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.021077283" vertical-offset="0" max-vertical-offset="854">
+          <caret line="1" column="50" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7798595" vertical-offset="0" max-vertical-offset="882">
-          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-          <folding>
-            <element signature="e#1149#1150#0" expanded="true" />
-            <element signature="e#1212#1213#0" expanded="true" />
-            <element signature="e#1355#1356#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#1596#1597#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1264637" vertical-offset="0" max-vertical-offset="1350">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83138174" vertical-offset="136" max-vertical-offset="990">
-          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.31615925" vertical-offset="0" max-vertical-offset="854">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Checks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39043826" vertical-offset="272" max-vertical-offset="774">
-          <caret line="40" column="84" selection-start-line="40" selection-start-column="84" selection-end-line="40" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33266932" vertical-offset="103" max-vertical-offset="954">
-          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5697211" vertical-offset="236" max-vertical-offset="738">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/atlassian-ide-plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="502">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33266932" vertical-offset="67" max-vertical-offset="2124">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60956174" vertical-offset="0" max-vertical-offset="502">
-          <caret line="17" column="115" selection-start-line="17" selection-start-column="115" selection-end-line="17" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/package-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67729086" vertical-offset="2" max-vertical-offset="504">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ReflectVsNormal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22261484" vertical-offset="0" max-vertical-offset="900">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/EventTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19081272" vertical-offset="0" max-vertical-offset="864">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/UnsafeProviderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33215547" vertical-offset="928" max-vertical-offset="2196">
-          <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ProxyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33215547" vertical-offset="2062" max-vertical-offset="5886">
-          <caret line="150" column="7" selection-start-line="150" selection-start-column="7" selection-end-line="150" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/FileWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.656051" vertical-offset="254" max-vertical-offset="882">
-          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4628975" vertical-offset="54" max-vertical-offset="1566">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Remotes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10777385" vertical-offset="601" max-vertical-offset="2322">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25441697" vertical-offset="0" max-vertical-offset="1404">
-          <caret line="27" column="64" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/RemoteTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38162544" vertical-offset="0" max-vertical-offset="566">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#873#874#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Files.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0954064" vertical-offset="442" max-vertical-offset="1548">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.795053" vertical-offset="1216" max-vertical-offset="2538">
-          <caret line="157" column="82" selection-start-line="157" selection-start-column="82" selection-end-line="157" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2306793" vertical-offset="7131" max-vertical-offset="13716">
-          <caret line="543" column="48" selection-start-line="543" selection-start-column="48" selection-end-line="543" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashBenchmark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55737704" vertical-offset="3196" max-vertical-offset="4050">
-          <caret line="226" column="30" selection-start-line="220" selection-start-column="8" selection-end-line="226" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SynchronizationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9426752" vertical-offset="2072" max-vertical-offset="3348">
-          <caret line="162" column="97" selection-start-line="162" selection-start-column="97" selection-end-line="162" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08430913" vertical-offset="0" max-vertical-offset="854">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/CpTransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42154565" vertical-offset="0" max-vertical-offset="854">
-          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3793911" vertical-offset="0" max-vertical-offset="854">
-          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33280253" vertical-offset="6505" max-vertical-offset="7542">
-          <caret line="401" column="0" selection-start-line="401" selection-start-column="0" selection-end-line="401" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.18969555" vertical-offset="0" max-vertical-offset="854">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5018587" vertical-offset="0" max-vertical-offset="882">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/InstrumentTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9367682" vertical-offset="658" max-vertical-offset="1584">
-          <caret line="95" column="1" selection-start-line="16" selection-start-column="0" selection-end-line="95" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#2851#2852#0" expanded="true" />
-            <element signature="e#4408#4409#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7470726" vertical-offset="4870" max-vertical-offset="5724">
-          <caret line="327" column="48" selection-start-line="327" selection-start-column="48" selection-end-line="327" selection-end-column="48" />
-          <folding>
-            <element signature="e#12800#12801#0" expanded="false" />
-            <element signature="e#12857#12858#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4713376" vertical-offset="1648" max-vertical-offset="2340">
-          <caret line="123" column="11" selection-start-line="0" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33280253" vertical-offset="511" max-vertical-offset="3078">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.23970944" vertical-offset="0" max-vertical-offset="826">
+          <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31528664" vertical-offset="756" max-vertical-offset="2502">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#6036#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2144#2145#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2244#2245#0" expanded="true" />
-            <element signature="e#2279#2280#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.17798595" vertical-offset="496" max-vertical-offset="1728">
+          <caret line="54" column="7" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/RowEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07259953" vertical-offset="154" max-vertical-offset="1008">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="854">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Row.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18969555" vertical-offset="0" max-vertical-offset="854">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/ParameterizedRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21077283" vertical-offset="0" max-vertical-offset="854">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="854">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3180212" vertical-offset="0" max-vertical-offset="566">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="854">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5865724" vertical-offset="298" max-vertical-offset="864">
-          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42756185" vertical-offset="46" max-vertical-offset="612">
-          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/RunnableReceiveEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6360424" vertical-offset="0" max-vertical-offset="566">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-          <folding>
-            <element signature="e#1273#1274#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33215547" vertical-offset="28" max-vertical-offset="810">
-          <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.6533958" vertical-offset="0" max-vertical-offset="854">
+          <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2358">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="854">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3498234" vertical-offset="3178" max-vertical-offset="4230">
-          <caret line="233" column="25" selection-start-line="233" selection-start-column="25" selection-end-line="233" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3012#4011#0" expanded="true" />
-            <element signature="e#3221#3969#0" expanded="true" />
-            <element signature="e#3417#3911#0" expanded="true" />
-            <element signature="e#3876#3877#0" expanded="true" />
-            <element signature="e#3942#3943#0" expanded="true" />
-            <element signature="e#3992#3993#0" expanded="true" />
-            <element signature="e#6567#6568#0" expanded="true" />
-            <element signature="e#6614#6615#0" expanded="true" />
-            <element signature="e#8236#8237#0" expanded="true" />
-            <element signature="e#8291#8292#0" expanded="true" />
-            <element signature="e#9369#9370#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-0.58079624" vertical-offset="2422" max-vertical-offset="3276">
+          <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0117096" vertical-offset="0" max-vertical-offset="1044">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7470726" vertical-offset="154" max-vertical-offset="1008">
+          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="854">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="854">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3911007" vertical-offset="4582" max-vertical-offset="5436">
+          <caret line="257" column="30" selection-start-line="257" selection-start-column="30" selection-end-line="257" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/TrigProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1224">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="854">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22014052" vertical-offset="100" max-vertical-offset="954">
+          <caret line="32" column="86" selection-start-line="32" selection-start-column="86" selection-end-line="32" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6183746" vertical-offset="658" max-vertical-offset="1386">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.41217798" vertical-offset="550" max-vertical-offset="1404">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLinkImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="1188">
+          <caret line="32" column="13" selection-start-line="30" selection-start-column="3" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="e#1755#1756#0" expanded="true" />
+            <element signature="e#1795#1796#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#2483#2484#0" expanded="true" />
+            <element signature="e#2601#2602#0" expanded="true" />
+            <element signature="e#2636#2637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLinkImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="1296">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ConstructLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1476">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="1908">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16861826" vertical-offset="0" max-vertical-offset="2034">
+          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="1944">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08430913" vertical-offset="0" max-vertical-offset="854">
+          <caret line="4" column="90" selection-start-line="4" selection-start-column="90" selection-end-line="4" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1404">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/FieldImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2740047" vertical-offset="0" max-vertical-offset="854">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ConstructorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.81030446" vertical-offset="10" max-vertical-offset="864">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14754099" vertical-offset="0" max-vertical-offset="854">
+          <caret line="7" column="100" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/MethodImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16861826" vertical-offset="0" max-vertical-offset="854">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1368">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="2988">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2740047" vertical-offset="0" max-vertical-offset="1224">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29508197" vertical-offset="0" max-vertical-offset="972">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/SafeConstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16861826" vertical-offset="0" max-vertical-offset="954">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31615925" vertical-offset="0" max-vertical-offset="854">
+          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2529274" vertical-offset="0" max-vertical-offset="854">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33723652" vertical-offset="0" max-vertical-offset="882">
+          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08430913" vertical-offset="0" max-vertical-offset="854">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ReflectionTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0772834" vertical-offset="2026" max-vertical-offset="2880">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34982333" vertical-offset="0" max-vertical-offset="566">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.29508197" vertical-offset="0" max-vertical-offset="854">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
           <folding />
         </state>
       </provider>

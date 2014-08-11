@@ -19,14 +19,17 @@ package com.gmail.woodyc40.commons.reflection.chain;
 import com.gmail.woodyc40.commons.reflection.MethodManager;
 
 /**
+ * Represents the method invocation link in the reflection chain
  *
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.0
  */
 public interface MethodLink {
     /**
      * Uses the value of a previous reflective operation to use as an instance OR params to method invocation.
-     * <p/>
-     * <p/>
-     * The first call to this ALWAYS sets the instance
+     * <p>
+     * <p>The first call to this ALWAYS sets the instance</p>
      *
      * @param index the index of the object representing the instance to use or one of the parameters
      * @return the instance of MethodLink this was added to

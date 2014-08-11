@@ -24,12 +24,13 @@ import java.io.IOException;
  *
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 public final class FileWrapper {
     private FileWrapper() {}
 
     /**
-     * Creates the file if non-existant
+     * Creates the file if non-existent
      *
      * @param file the file to check
      */
@@ -45,7 +46,7 @@ public final class FileWrapper {
     }
 
     /**
-     * Creates the folder if non-existant
+     * Creates the folder if non-existent
      *
      * @param folder the folder to check
      */

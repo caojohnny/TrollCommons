@@ -24,10 +24,11 @@ import java.util.NoSuchElementException;
 /**
  * Base structure for building iterators on
  *
- * @param <E> the element type that the iterator iterates over
  * @author AgentTroll
  * @version 1.0
+ * @param <E> the element type that the iterator iterates over
  * @see java.util.Iterator
+ * @since 1.0
  */
 @ToString @EqualsAndHashCode
 public abstract class AbstractIterator<E> implements Iterator<E> {

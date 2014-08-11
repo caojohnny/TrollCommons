@@ -27,11 +27,14 @@ import javax.annotation.concurrent.ThreadSafe;
  * @param <T> the type represented by the field protected
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @ThreadSafe
 public interface ProtectedField<T> {
     /**
      * Performs a safe action on the field
+     * <p>
+     * <p>This is not truly thread safe unless the code in the ParamaterizedRunnable is thread safe as well.</p>
      *
      * @param runnable {@code return null} at the end, the parameter is the injected value of the field
      */

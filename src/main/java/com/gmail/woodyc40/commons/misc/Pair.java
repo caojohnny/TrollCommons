@@ -26,6 +26,7 @@ import lombok.Getter;
  * @param <V> the value type
  * @author AgentTroll
  * @version 1.0
+ * @since 1.0
  */
 @AllArgsConstructor @Getter
 public class Pair<K, V> {
