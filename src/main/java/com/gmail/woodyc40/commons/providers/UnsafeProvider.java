@@ -80,9 +80,8 @@ public final class UnsafeProvider {
      * <p>
      * <p>If an exception was thrown when this class was loaded, this method will most likely {@code return null}. JVM
      * implementations may modify the field in which the instance of Unsafe is stored, throwing an exception when normal
-     * acquisition methods are applied.</p>
-     * <p>
-     * <p>This is guaranteed to <strong>not</strong> {@code return null} on the HotSpot JVM</p>
+     * acquisition methods are applied.</p> <p> <p>This is guaranteed to <strong>not</strong> {@code return null} on the
+     * HotSpot JVM</p>
      *
      * @return the Unsafe instance received when this {@code class} was loaded.
      * @throws IllegalStateException if the Unsafe instance was not acquired already during load
@@ -256,11 +255,9 @@ public final class UnsafeProvider {
      * @return the size of the object stored in its header in the JVM
      */
     public static long sizeOf(Object object) {
-        if (object.getClass().isArray())
-            throw new IllegalArgumentException("Cannot find sizeOf for array");
-
-        return UnsafeProvider.PROVIDER.getAddress(
-                UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(object, 4L)) + 12L);
+        return UnsafeProvider.PROVIDER.getLong(object,
+                                               UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(object, 4L)) +
+                                               12L);
     }
 
     /**

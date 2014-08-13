@@ -39,7 +39,7 @@ public class ConstantRef {
     /**
      * Builds the ConstantRef for a SharedSecrets constant pool entry reference
      *
-     * @param type the type of the reference
+     * @param type  the type of the reference
      * @param value the value to write. Check each tag, as the value may vary
      * @param index the index of the constant pool entry
      */
@@ -59,8 +59,7 @@ public class ConstantRef {
      */
     public enum Type {
         /** Padding info after long and double */
-        PADDING(0)
-        ,
+        PADDING(0),
         /** String type in UTF8 */
         UTF8(1),
 
@@ -77,53 +76,47 @@ public class ConstantRef {
         DOUBLE(6),
         /**
          * Class type
-         * <p/>
-         * <p/>
-         * value is the index of the class name, in short
+         * <p>
+         * <p>value is the index of the class name, in short</p>
          */
         CLASS(7),
         /**
          * String type
-         * <p/>
-         * <p/>
-         * value is the index of the string, in short
+         * <p>
+         * <p>value is the index of the string, in short</p>
          */
         STRING(8),
         /**
          * Fieldref type
-         * <p/>
-         * <p/>
-         * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
-         * Name And Type.
+         * <p>
+         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
+         * the Name And Type.</p>
          */
         FIELD(9),
         /**
          * Methodref type
-         * <p/>
-         * <p/>
-         * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
-         * Name And Type.
+         * <p>
+         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
+         * the Name And Type.</p>
          */
         METHOD(10),
         /**
          * Interface Methodref type
-         * <p/>
-         * <p/>
-         * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of the
-         * Name And Type.
+         * <p>
+         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
+         * the Name And Type.</p>
          */
         INTERFACE_METHOD(11),
         /**
          * Name and type info
-         * <p/>
-         * <p/>
-         * Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the member name, the value the index
-         * of the descriptor.
+         * <p>
+         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the member name, the value the
+         * index of the descriptor.</p>
          */
         NAME_AND_TYPE(12),
 
         /**
-         * Member reference information. Cannot be
+         * Member reference information. Cannot be used.
          */
         MEMBER_REF(-1);
 

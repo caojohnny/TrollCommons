@@ -16,20 +16,16 @@
 
 package com.gmail.woodyc40.commons;
 
-import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
+import com.gmail.woodyc40.commons.io.Serializer;
 
-public final class BashMap {
-    private static final AbstractHashStruct hashStruct = new AbstractHashStruct() {
-        @Override protected AbstractHashStruct.Node[] buckets() {
-            return new AbstractHashStruct.Node[16];
-        }
-    };
-
-    private BashMap() {}
+public final class SerializerTest {
+    private SerializerTest() {}
 
     public static void main(String... args) {
-        while (true) {
-            BashMap.hashStruct.put(new Object(), new Object());
-        }
+        Object object = new Object();
+        Serializer<Object> serializer = new Serializer<>(object);
+        System.out.println(object.hashCode());
+        byte[] bytes = serializer.serialize();
+        System.out.println(Serializer.deserialize(bytes).hashCode());
     }
 }

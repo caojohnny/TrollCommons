@@ -22,6 +22,8 @@ import com.gmail.woodyc40.commons.instrument.experimental.Instrument;
 import com.gmail.woodyc40.commons.io.Files;
 import com.gmail.woodyc40.commons.nmsobc.protocol.Protocol;
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
+import com.gmail.woodyc40.commons.reflection.FieldManager;
+import com.gmail.woodyc40.commons.reflection.ReflectionTool;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
 import lombok.Getter;
@@ -29,6 +31,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
@@ -74,8 +77,21 @@ public class Commons extends JavaPlugin {
         return null;
     }
 
+    /**
+     * Prevents the class loader from checking the commons jar of Google Guava
+     */
+    private static void disableClassLoaderSealing() {
+        Settings.setSafeReflection(true);
+        FieldManager<Package, URL> sealBase =
+                ReflectAccess.accessField(ReflectionTool.forField("sealBase", Package.class));
+
+        sealBase.set(Package.getPackage("com.google.commons"), null);
+        Settings.setSafeReflection(false);
+    }
+
     @Override public void onEnable() {
         Commons.plugin = this;
+        Commons.disableClassLoaderSealing();
 
         for (Class<?> c : Commons.UNSAFE_CLASSES) {
             if (c == null) {

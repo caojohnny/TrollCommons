@@ -18,14 +18,14 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 import com.gmail.woodyc40.commons.event.CustomEvent;
 import com.gmail.woodyc40.commons.event.Events;
+import com.gmail.woodyc40.commons.nmsobc.CbServer;
+import com.gmail.woodyc40.commons.nmsobc.McServer;
 import com.gmail.woodyc40.commons.reflection.FieldManager;
 import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.minecraft.server.v1_7_R4.*;
 import net.minecraft.util.io.netty.channel.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -95,8 +95,7 @@ public final class ProtocolHandler { // TODO server channels
          * @throws Exception if an error occurs
          */
         @Override public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            Packet packet = (Packet) msg;
-            CustomEvent event = new PacketEvent(packet, this.player, PacketEvent.Bound.SERVER_BOUND);
+            CustomEvent event = new PacketEvent(msg, this.player, PacketEvent.Bound.SERVER_BOUND);
 
             Events.call(event);
             if (event.getCancelled()) return;
@@ -113,8 +112,7 @@ public final class ProtocolHandler { // TODO server channels
          * @throws Exception if an error occurs
          */
         @Override public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-            Packet packet = (Packet) msg;
-            CustomEvent event = new PacketEvent(packet, this.player, PacketEvent.Bound.CLIENT_BOUND);
+            CustomEvent event = new PacketEvent(msg, this.player, PacketEvent.Bound.CLIENT_BOUND);
 
             Events.call(event);
             if (event.getCancelled()) return;
@@ -143,8 +141,8 @@ public final class ProtocolHandler { // TODO server channels
      */
     private class ProtocolListener implements Listener {
         /** Represents the channel ("m" as of 1.7.10 snapshot) field in NetworkManager */
-        private final FieldManager<NetworkManager, Channel> CHANNEL =
-                (FieldManager<NetworkManager, Channel>) new ReflectionChain(NetworkManager.class)
+        private final FieldManager<Object, Channel> CHANNEL =
+                (FieldManager<Object, Channel>) new ReflectionChain(McServer.getClass("NetworkManager"))
                         .field().fieldFuzzy(Channel.class, 0).getManager();
 
         /**
@@ -155,8 +153,12 @@ public final class ProtocolHandler { // TODO server channels
         @EventHandler public void join(PlayerJoinEvent event) {
             if (ProtocolHandler.this.plugin == null) return; // Whoopsie, plugin disabled.
 
-            EntityPlayer player = ((CraftPlayer) event.getPlayer()).getHandle();
-            Channel conn = this.CHANNEL.get(player.playerConnection.networkManager);
+            Channel conn = this.CHANNEL.get(
+                    new ReflectionChain(CbServer.cPlayerClass())
+                            .method().method("getHandle").param(event.getPlayer()).invoker().invoke()      // 0
+                            .field(McServer.getEPlayer()).field("playerConnection").last(0).getter().get() // 1
+                            .field().field("networkManager").getter().get()                                // 2
+                            .reflect());
 
             ProtocolHandler.this.putProxy(conn, event.getPlayer());
             ProtocolHandler.getCache().put(event.getPlayer(), conn);

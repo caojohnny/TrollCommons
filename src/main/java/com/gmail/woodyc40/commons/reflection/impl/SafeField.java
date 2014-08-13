@@ -19,6 +19,7 @@ package com.gmail.woodyc40.commons.reflection.impl;
 import com.gmail.woodyc40.commons.reflection.FieldManager;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 /**
  * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} wrapping the "safe" and "slow"
@@ -42,6 +43,13 @@ class SafeField<D, T> implements FieldManager<D, T> {
     public SafeField(Field field) {
         this.field = field;
         this.field.setAccessible(true);
+        try {
+            Field f = Field.class.getDeclaredField("modifiers");
+            f.setAccessible(true);
+            f.set(this.field, (int) f.get(this.field) & ~Modifier.FINAL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -16,11 +16,10 @@
 
 package com.gmail.woodyc40.commons.nmsobc;
 
+import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;
 import com.google.common.reflect.ClassPath;
 import lombok.Getter;
-import net.minecraft.server.v1_7_R4.MinecraftServer;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_7_R4.CraftServer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -64,13 +63,23 @@ public class McServer {
     }
 
     /**
+     * Gets the class of an EntityPlayer
+     *
+     * @return the class representing an EntityPlayer
+     */
+    public static Class<?> getEPlayer() {
+        return McServer.getClass("EntityPlayer");
+    }
+
+    /**
      * Gets the instance of net.minecraft.server.MinecraftServer
      * <p>
      * <p>here are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class</p>
      *
      * @return the instance of MinecraftServer
      */
-    public static MinecraftServer getMcServer() {
-        return ((CraftServer) Bukkit.getServer()).getServer();
+    public static Object getMcServer() {
+        return new ReflectionChain(CbServer.cServerClass()).method().method("getHandle").param(Bukkit.getServer())
+                                                           .invoker().invoke().reflect();
     }
 }

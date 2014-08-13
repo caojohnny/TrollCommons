@@ -18,7 +18,6 @@ package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 import com.gmail.woodyc40.commons.event.*;
 import lombok.*;
-import net.minecraft.server.v1_7_R4.Packet;
 import org.bukkit.entity.Player;
 
 import javax.annotation.concurrent.ThreadSafe;
@@ -33,7 +32,7 @@ import javax.annotation.concurrent.ThreadSafe;
 @ThreadSafe @Getter @RequiredArgsConstructor @Handler(EventType.PACKET)
 public class PacketEvent implements CustomEvent {
     /** The sent or received packet */
-    private final            Packet            packet;
+    private final            Object            packet;
     /** The player the packet was sent/received by. MAY BE NULL */
     private final            Player            player;
     /** The intended direction of the packet */

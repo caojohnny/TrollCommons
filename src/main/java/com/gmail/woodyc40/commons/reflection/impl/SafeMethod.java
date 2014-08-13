@@ -31,7 +31,7 @@ import java.lang.reflect.Method;
  * @version 1.0
  * @since 1.0
  */
-public class SafeMethod<D, T> implements MethodManager<D, T> {
+class SafeMethod<D, T> implements MethodManager<D, T> {
     /** The management class wrapped by this implementation */
     private final Method method;
 
