@@ -35,7 +35,7 @@ import java.util.Map;
  * </p>
  * 
  * <p>Benchmarks for all 3 hash strategies can be found <a href="https://github
- * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java>here</a></p>
+ * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java">here</a></p>
  *
  * @param <K> the key type
  * @param <V> the value type
