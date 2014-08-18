@@ -33,10 +33,14 @@ public class Settings {
     private static final Map<Package, Settings> SETTINGS_MAP =
             new StructBuilder().hash(AbstractHashStruct.HashStrategy.JAVA).buildMap();
 
+    /** Whether or not to use non sun packages for reflection */
     private boolean safeReflection;
 
-    /** Whether or not to use non sun packages for reflection */
-
+    /**
+     * Gets the specific Settings instance stored for the calling plugin
+     *
+     * @return the Settings for the plugin that calls for a read or write to one of the settings
+     */
     public static Settings forPackage() {
         Package pack = Commons.getCaller(false);
         Settings settings = Settings.SETTINGS_MAP.get(pack);
