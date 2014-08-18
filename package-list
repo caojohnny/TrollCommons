@@ -1,0 +1,15 @@
+com.gmail.woodyc40.commons
+com.gmail.woodyc40.commons.collect
+com.gmail.woodyc40.commons.concurrent
+com.gmail.woodyc40.commons.event
+com.gmail.woodyc40.commons.instrument
+com.gmail.woodyc40.commons.instrument.experimental
+com.gmail.woodyc40.commons.instrument.refs
+com.gmail.woodyc40.commons.io
+com.gmail.woodyc40.commons.misc
+com.gmail.woodyc40.commons.nmsobc
+com.gmail.woodyc40.commons.nmsobc.protocol
+com.gmail.woodyc40.commons.providers
+com.gmail.woodyc40.commons.reflection
+com.gmail.woodyc40.commons.reflection.chain
+com.gmail.woodyc40.commons.reflection.impl

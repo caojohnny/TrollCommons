@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * Copyright 2014 AgentTroll<a name="line.2"></a>
+<span class="sourceLineNo">003</span> *<a name="line.3"></a>
+<span class="sourceLineNo">004</span> * Licensed under the Apache License, Version 2.0 (the "License");<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * you may not use this file except in compliance with the License.<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * You may obtain a copy of the License at<a name="line.6"></a>
+<span class="sourceLineNo">007</span> *<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *     http://www.apache.org/licenses/LICENSE-2.0<a name="line.8"></a>
+<span class="sourceLineNo">009</span> *<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * Unless required by applicable law or agreed to in writing, software<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * distributed under the License is distributed on an "AS IS" BASIS,<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<a name="line.12"></a>
+<span class="sourceLineNo">013</span> * See the License for the specific language governing permissions and<a name="line.13"></a>
+<span class="sourceLineNo">014</span> * limitations under the License.<a name="line.14"></a>
+<span class="sourceLineNo">015</span> */<a name="line.15"></a>
+<span class="sourceLineNo">016</span><a name="line.16"></a>
+<span class="sourceLineNo">017</span>package com.gmail.woodyc40.commons.nmsobc.protocol;<a name="line.17"></a>
+<span class="sourceLineNo">018</span><a name="line.18"></a>
+<span class="sourceLineNo">019</span>import com.gmail.woodyc40.commons.event.CustomEvent;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>import com.gmail.woodyc40.commons.event.Events;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>import com.gmail.woodyc40.commons.nmsobc.CbServer;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>import com.gmail.woodyc40.commons.nmsobc.McServer;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>import com.gmail.woodyc40.commons.reflection.FieldManager;<a name="line.23"></a>
+<span class="sourceLineNo">024</span>import com.gmail.woodyc40.commons.reflection.chain.ReflectionChain;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>import lombok.Getter;<a name="line.25"></a>
+<span class="sourceLineNo">026</span>import lombok.RequiredArgsConstructor;<a name="line.26"></a>
+<span class="sourceLineNo">027</span>import net.minecraft.util.io.netty.channel.*;<a name="line.27"></a>
+<span class="sourceLineNo">028</span>import org.bukkit.Bukkit;<a name="line.28"></a>
+<span class="sourceLineNo">029</span>import org.bukkit.entity.Player;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.bukkit.event.EventHandler;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.bukkit.event.Listener;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.bukkit.event.player.*;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.bukkit.event.server.PluginDisableEvent;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import org.bukkit.plugin.Plugin;<a name="line.34"></a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span>import java.util.HashMap;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import java.util.Map;<a name="line.37"></a>
+<span class="sourceLineNo">038</span><a name="line.38"></a>
+<span class="sourceLineNo">039</span>/**<a name="line.39"></a>
+<span class="sourceLineNo">040</span> * The packet handler that will listen for packet writes and reads, as well as listen for player join and leave to cache<a name="line.40"></a>
+<span class="sourceLineNo">041</span> * their connection to the server on behalf of the protocol package.<a name="line.41"></a>
+<span class="sourceLineNo">042</span> *<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * @author AgentTroll<a name="line.43"></a>
+<span class="sourceLineNo">044</span> * @version 1.0<a name="line.44"></a>
+<span class="sourceLineNo">045</span> * @since 1.0<a name="line.45"></a>
+<span class="sourceLineNo">046</span> */<a name="line.46"></a>
+<span class="sourceLineNo">047</span>public final class ProtocolHandler { // TODO server channels<a name="line.47"></a>
+<span class="sourceLineNo">048</span>    /** The connection cache that holds netty channels */<a name="line.48"></a>
+<span class="sourceLineNo">049</span>    @Getter private static final Map&lt;Player, Channel&gt; cache = new HashMap&lt;&gt;();<a name="line.49"></a>
+<span class="sourceLineNo">050</span>    /** The name of the handlers */<a name="line.50"></a>
+<span class="sourceLineNo">051</span>    private final                String               name  = "ProtocolHandler - BukkitCommons";<a name="line.51"></a>
+<span class="sourceLineNo">052</span>    /** The plugin that is activated by this handler. Will be {@code null} when disabled */<a name="line.52"></a>
+<span class="sourceLineNo">053</span>    private volatile Plugin plugin;<a name="line.53"></a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span>    /**<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * Inits this handler. Registers internal listeners. Sets the plugin flag.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     *<a name="line.57"></a>
+<span class="sourceLineNo">058</span>     * @param plugin the plugin to use in this handler.<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>    public ProtocolHandler(Plugin plugin) {<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        Bukkit.getServer().getPluginManager()<a name="line.61"></a>
+<span class="sourceLineNo">062</span>              .registerEvents(new ProtocolListener(), plugin);<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        this.plugin = plugin;<a name="line.63"></a>
+<span class="sourceLineNo">064</span>    }<a name="line.64"></a>
+<span class="sourceLineNo">065</span><a name="line.65"></a>
+<span class="sourceLineNo">066</span>    public void putProxy(Channel channel, Player player) {<a name="line.66"></a>
+<span class="sourceLineNo">067</span>        channel.pipeline().addLast(this.name, new ProtocolHandler.PacketAdapter(player));<a name="line.67"></a>
+<span class="sourceLineNo">068</span>    }<a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span>    // Private classes are shielded from access.<a name="line.70"></a>
+<span class="sourceLineNo">071</span>    // They are handled correctly internally.<a name="line.71"></a>
+<span class="sourceLineNo">072</span>    // If not really "inaccessible",<a name="line.72"></a>
+<span class="sourceLineNo">073</span>    // At least very difficult to get to,<a name="line.73"></a>
+<span class="sourceLineNo">074</span>    // Slow (or fast) reflect operations must be performed<a name="line.74"></a>
+<span class="sourceLineNo">075</span>    // On classlevel native search using forName(String)<a name="line.75"></a>
+<span class="sourceLineNo">076</span><a name="line.76"></a>
+<span class="sourceLineNo">077</span>    /**<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * Represents the handler inserted first into the minecraft protocol manager to handle incoming and outgoing<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * connection packets, and fire the event in the event framework.<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     *<a name="line.80"></a>
+<span class="sourceLineNo">081</span>     * @author AgentTroll<a name="line.81"></a>
+<span class="sourceLineNo">082</span>     * @version 1.0<a name="line.82"></a>
+<span class="sourceLineNo">083</span>     * @since 1.0<a name="line.83"></a>
+<span class="sourceLineNo">084</span>     */<a name="line.84"></a>
+<span class="sourceLineNo">085</span>    @RequiredArgsConstructor<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    private class PacketAdapter extends ChannelDuplexHandler {<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        /** The player that this intercepts. Can be null for server channels */<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        private final Player player;<a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89"></a>
+<span class="sourceLineNo">090</span>        /**<a name="line.90"></a>
+<span class="sourceLineNo">091</span>         * Handles incoming packets<a name="line.91"></a>
+<span class="sourceLineNo">092</span>         *<a name="line.92"></a>
+<span class="sourceLineNo">093</span>         * @param ctx the context which the packet is received in<a name="line.93"></a>
+<span class="sourceLineNo">094</span>         * @param msg the packet itself<a name="line.94"></a>
+<span class="sourceLineNo">095</span>         * @throws Exception if an error occurs<a name="line.95"></a>
+<span class="sourceLineNo">096</span>         */<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        @Override public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {<a name="line.97"></a>
+<span class="sourceLineNo">098</span>            CustomEvent event = new PacketEvent(msg, this.player, PacketEvent.Bound.SERVER_BOUND);<a name="line.98"></a>
+<span class="sourceLineNo">099</span><a name="line.99"></a>
+<span class="sourceLineNo">100</span>            Events.call(event);<a name="line.100"></a>
+<span class="sourceLineNo">101</span>            if (event.getCancelled()) return;<a name="line.101"></a>
+<span class="sourceLineNo">102</span><a name="line.102"></a>
+<span class="sourceLineNo">103</span>            super.channelRead(ctx, msg);<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        }<a name="line.104"></a>
+<span class="sourceLineNo">105</span><a name="line.105"></a>
+<span class="sourceLineNo">106</span>        /**<a name="line.106"></a>
+<span class="sourceLineNo">107</span>         * Handles outgoing packets<a name="line.107"></a>
+<span class="sourceLineNo">108</span>         *<a name="line.108"></a>
+<span class="sourceLineNo">109</span>         * @param ctx     the context which the packet is sent in<a name="line.109"></a>
+<span class="sourceLineNo">110</span>         * @param msg     the packet itself<a name="line.110"></a>
+<span class="sourceLineNo">111</span>         * @param promise the promise made to the channel<a name="line.111"></a>
+<span class="sourceLineNo">112</span>         * @throws Exception if an error occurs<a name="line.112"></a>
+<span class="sourceLineNo">113</span>         */<a name="line.113"></a>
+<span class="sourceLineNo">114</span>        @Override public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {<a name="line.114"></a>
+<span class="sourceLineNo">115</span>            CustomEvent event = new PacketEvent(msg, this.player, PacketEvent.Bound.CLIENT_BOUND);<a name="line.115"></a>
+<span class="sourceLineNo">116</span><a name="line.116"></a>
+<span class="sourceLineNo">117</span>            Events.call(event);<a name="line.117"></a>
+<span class="sourceLineNo">118</span>            if (event.getCancelled()) return;<a name="line.118"></a>
+<span class="sourceLineNo">119</span><a name="line.119"></a>
+<span class="sourceLineNo">120</span>            super.write(ctx, msg, promise);<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        }<a name="line.121"></a>
+<span class="sourceLineNo">122</span><a name="line.122"></a>
+<span class="sourceLineNo">123</span>        /**<a name="line.123"></a>
+<span class="sourceLineNo">124</span>         * Handles exceptions occurring in the Channel<a name="line.124"></a>
+<span class="sourceLineNo">125</span>         *<a name="line.125"></a>
+<span class="sourceLineNo">126</span>         * @param ctx   the context which the exception occurs in<a name="line.126"></a>
+<span class="sourceLineNo">127</span>         * @param cause the cause of the exception<a name="line.127"></a>
+<span class="sourceLineNo">128</span>         * @throws Exception if yet another exception occurs<a name="line.128"></a>
+<span class="sourceLineNo">129</span>         */<a name="line.129"></a>
+<span class="sourceLineNo">130</span>        @Override public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {<a name="line.130"></a>
+<span class="sourceLineNo">131</span>            cause.printStackTrace();<a name="line.131"></a>
+<span class="sourceLineNo">132</span>        }<a name="line.132"></a>
+<span class="sourceLineNo">133</span>    }<a name="line.133"></a>
+<span class="sourceLineNo">134</span><a name="line.134"></a>
+<span class="sourceLineNo">135</span>    /**<a name="line.135"></a>
+<span class="sourceLineNo">136</span>     * The internal listener that adds the handlers to the player's connection and cleans up after the handler<a name="line.136"></a>
+<span class="sourceLineNo">137</span>     *<a name="line.137"></a>
+<span class="sourceLineNo">138</span>     * @author AgentTroll<a name="line.138"></a>
+<span class="sourceLineNo">139</span>     * @version 1.0<a name="line.139"></a>
+<span class="sourceLineNo">140</span>     * @since 1.0<a name="line.140"></a>
+<span class="sourceLineNo">141</span>     */<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    private class ProtocolListener implements Listener {<a name="line.142"></a>
+<span class="sourceLineNo">143</span>        /** Represents the channel ("m" as of 1.7.10 snapshot) field in NetworkManager */<a name="line.143"></a>
+<span class="sourceLineNo">144</span>        private final FieldManager&lt;Object, Channel&gt; CHANNEL =<a name="line.144"></a>
+<span class="sourceLineNo">145</span>                (FieldManager&lt;Object, Channel&gt;) new ReflectionChain(McServer.getClass("NetworkManager"))<a name="line.145"></a>
+<span class="sourceLineNo">146</span>                        .field().fieldFuzzy(Channel.class, 0).getManager();<a name="line.146"></a>
+<span class="sourceLineNo">147</span><a name="line.147"></a>
+<span class="sourceLineNo">148</span>        /**<a name="line.148"></a>
+<span class="sourceLineNo">149</span>         * When a player joins<a name="line.149"></a>
+<span class="sourceLineNo">150</span>         *<a name="line.150"></a>
+<span class="sourceLineNo">151</span>         * @param event the event called<a name="line.151"></a>
+<span class="sourceLineNo">152</span>         */<a name="line.152"></a>
+<span class="sourceLineNo">153</span>        @EventHandler public void join(PlayerJoinEvent event) {<a name="line.153"></a>
+<span class="sourceLineNo">154</span>            if (ProtocolHandler.this.plugin == null) return; // Whoopsie, plugin disabled.<a name="line.154"></a>
+<span class="sourceLineNo">155</span><a name="line.155"></a>
+<span class="sourceLineNo">156</span>            Channel conn = this.CHANNEL.get(<a name="line.156"></a>
+<span class="sourceLineNo">157</span>                    new ReflectionChain(CbServer.cPlayerClass())<a name="line.157"></a>
+<span class="sourceLineNo">158</span>                            .method().method("getHandle").param(event.getPlayer()).invoker().invoke()      // 0<a name="line.158"></a>
+<span class="sourceLineNo">159</span>                            .field(McServer.getEPlayer()).field("playerConnection").last(0).getter().get() // 1<a name="line.159"></a>
+<span class="sourceLineNo">160</span>                            .field().field("networkManager").getter().get()                                // 2<a name="line.160"></a>
+<span class="sourceLineNo">161</span>                            .reflect());<a name="line.161"></a>
+<span class="sourceLineNo">162</span><a name="line.162"></a>
+<span class="sourceLineNo">163</span>            ProtocolHandler.this.putProxy(conn, event.getPlayer());<a name="line.163"></a>
+<span class="sourceLineNo">164</span>            ProtocolHandler.getCache().put(event.getPlayer(), conn);<a name="line.164"></a>
+<span class="sourceLineNo">165</span>        }<a name="line.165"></a>
+<span class="sourceLineNo">166</span><a name="line.166"></a>
+<span class="sourceLineNo">167</span>        /**<a name="line.167"></a>
+<span class="sourceLineNo">168</span>         * When a player leaves<a name="line.168"></a>
+<span class="sourceLineNo">169</span>         *<a name="line.169"></a>
+<span class="sourceLineNo">170</span>         * @param event the event called<a name="line.170"></a>
+<span class="sourceLineNo">171</span>         */<a name="line.171"></a>
+<span class="sourceLineNo">172</span>        @EventHandler public void leave(PlayerQuitEvent event) {<a name="line.172"></a>
+<span class="sourceLineNo">173</span>            this.extract(event.getPlayer());<a name="line.173"></a>
+<span class="sourceLineNo">174</span>        } // In case some idiot leaves his Player objects lying around<a name="line.174"></a>
+<span class="sourceLineNo">175</span><a name="line.175"></a>
+<span class="sourceLineNo">176</span>        /**<a name="line.176"></a>
+<span class="sourceLineNo">177</span>         * When a player is kicked<a name="line.177"></a>
+<span class="sourceLineNo">178</span>         *<a name="line.178"></a>
+<span class="sourceLineNo">179</span>         * @param event the event called<a name="line.179"></a>
+<span class="sourceLineNo">180</span>         */<a name="line.180"></a>
+<span class="sourceLineNo">181</span>        @EventHandler public void kick(PlayerKickEvent event) {<a name="line.181"></a>
+<span class="sourceLineNo">182</span>            this.extract(event.getPlayer());<a name="line.182"></a>
+<span class="sourceLineNo">183</span>        } // Same with this<a name="line.183"></a>
+<span class="sourceLineNo">184</span><a name="line.184"></a>
+<span class="sourceLineNo">185</span>        /**<a name="line.185"></a>
+<span class="sourceLineNo">186</span>         * When the plugin is disabled<a name="line.186"></a>
+<span class="sourceLineNo">187</span>         *<a name="line.187"></a>
+<span class="sourceLineNo">188</span>         * @param event the event called<a name="line.188"></a>
+<span class="sourceLineNo">189</span>         */<a name="line.189"></a>
+<span class="sourceLineNo">190</span>        @EventHandler public void disable(PluginDisableEvent event) {<a name="line.190"></a>
+<span class="sourceLineNo">191</span>            if (event.getPlugin().equals(ProtocolHandler.this.plugin)) {<a name="line.191"></a>
+<span class="sourceLineNo">192</span>                ProtocolHandler.this.plugin = null; // Marker<a name="line.192"></a>
+<span class="sourceLineNo">193</span>                for (Player player : Bukkit.getServer().getOnlinePlayers())<a name="line.193"></a>
+<span class="sourceLineNo">194</span>                    this.extract(player);<a name="line.194"></a>
+<span class="sourceLineNo">195</span>            }<a name="line.195"></a>
+<span class="sourceLineNo">196</span>        }<a name="line.196"></a>
+<span class="sourceLineNo">197</span><a name="line.197"></a>
+<span class="sourceLineNo">198</span>        /**<a name="line.198"></a>
+<span class="sourceLineNo">199</span>         * Removes the handler from the player<a name="line.199"></a>
+<span class="sourceLineNo">200</span>         *<a name="line.200"></a>
+<span class="sourceLineNo">201</span>         * @param player the player to remove the handler from<a name="line.201"></a>
+<span class="sourceLineNo">202</span>         */<a name="line.202"></a>
+<span class="sourceLineNo">203</span>        public void extract(Player player) {<a name="line.203"></a>
+<span class="sourceLineNo">204</span>            final Channel conn = ProtocolHandler.getCache().get(player);<a name="line.204"></a>
+<span class="sourceLineNo">205</span>            if (conn == null) return;<a name="line.205"></a>
+<span class="sourceLineNo">206</span><a name="line.206"></a>
+<span class="sourceLineNo">207</span>            conn.eventLoop().execute(new Runnable() {<a name="line.207"></a>
+<span class="sourceLineNo">208</span>                @Override<a name="line.208"></a>
+<span class="sourceLineNo">209</span>                public void run() {<a name="line.209"></a>
+<span class="sourceLineNo">210</span>                    if (conn.pipeline().names().contains(ProtocolHandler.this.name))<a name="line.210"></a>
+<span class="sourceLineNo">211</span>                        conn.pipeline().remove(ProtocolHandler.this.name);<a name="line.211"></a>
+<span class="sourceLineNo">212</span>                }<a name="line.212"></a>
+<span class="sourceLineNo">213</span>            });<a name="line.213"></a>
+<span class="sourceLineNo">214</span>            ProtocolHandler.getCache().remove(player);<a name="line.214"></a>
+<span class="sourceLineNo">215</span>        }<a name="line.215"></a>
+<span class="sourceLineNo">216</span>    }<a name="line.216"></a>
+<span class="sourceLineNo">217</span>}<a name="line.217"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

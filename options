@@ -1,0 +1,25 @@
+-classpath
+'/home/minion/projects/53e6844a6167b7740020551f/code/target/classes:/home/minion/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/home/minion/.m2/repository/org/projectlombok/lombok/1.14.4/lombok-1.14.4.jar:/home/minion/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/minion/.m2/repository/org/bukkit/bukkit/1.7.10-R0.1-SNAPSHOT/bukkit-1.7.10-R0.1-SNAPSHOT.jar:/home/minion/.m2/repository/org/bukkit/craftbukkit/1.7.10-R0.1-SNAPSHOT/craftbukkit-1.7.10-R0.1-SNAPSHOT.jar:/home/minion/.m2/repository/org/openjdk/jmh/jmh-core/0.9/jmh-core-0.9.jar:/home/minion/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/0.9/jmh-generator-annprocess-0.9.jar:/home/minion/.m2/repository/com/google/guava/guava/17.0/guava-17.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/minion/projects/53e6844a6167b7740020551f/code/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2014. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/minion/projects/53e6844a6167b7740020551f/code/gh-pages'
+-docencoding
+'UTF-8'
+-doctitle
+'BukkitCommons 1.0 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/home/minion/projects/53e6844a6167b7740020551f/code/target/javadoc-bundle-options'
+-linksource
+-use
+-version
+-windowtitle
+'BukkitCommons 1.0 API'
