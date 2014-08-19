@@ -10,3 +10,6 @@ Latest Build download: https://github.com/AgentTroll/BukkitCommonsBuilds/blob/ma
 Documentation/Bugs: http://bukkitcommons.atlassian.net
 
 Javadocs: http://agenttroll.github.io/BukkitCommons/
+
+This library was profiled with JProfiler. JProfiler can be downloaded at:
+http://www.ej-technologies.com/download/jprofiler/files.html
