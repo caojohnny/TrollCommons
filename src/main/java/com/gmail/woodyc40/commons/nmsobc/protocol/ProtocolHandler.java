@@ -106,7 +106,7 @@ public final class ProtocolHandler { // TODO server channels
         }
     }
 
-    public void putProxy(Channel channel, Player player) {
+    private void putProxy(Channel channel, Player player) {
         channel.pipeline().addLast(this.name, new ProtocolHandler.PacketAdapter(player));
     }
 
