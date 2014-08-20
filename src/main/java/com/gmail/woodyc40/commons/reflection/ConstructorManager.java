@@ -19,11 +19,8 @@ package com.gmail.woodyc40.commons.reflection;
 import java.lang.reflect.Constructor;
 
 /**
- * {@code Interface} for weak access to constructor invocation methods
- * <p>
- * <p>Used to create new instances of the {@code class} representing the constructor</p>
- * <p>
- * <p>Should be faster than conventional Reflection API</p>
+ * {@code Interface} for weak access to constructor invocation methods <p> <p>Used to create new instances of the {@code
+ * class} representing the constructor</p> <p> <p>Should be faster than conventional Reflection API</p>
  *
  * @param <T> the type the constructor creates an instance of
  * @author AgentTroll

@@ -39,9 +39,8 @@ public final class ReflectAccess {
     private ReflectAccess() {} // No instantiation for you, mister
 
     /**
-     * Wraps a Method with the method manager with caching properties
-     * <p>
-     * <p>This performs the check for reflection safety settings</p>
+     * Wraps a Method with the method manager with caching properties <p> <p>This performs the check for reflection
+     * safety settings</p>
      *
      * @param method the method to wrap
      * @param <D>    the declaring class type
@@ -49,16 +48,15 @@ public final class ReflectAccess {
      * @return the wrapped method
      */
     public static <D, T> MethodManager<D, T> accessMethod(Method method) {
-        if (new Settings().isSafeReflection())
+        if (Settings.isSafeReflection())
             return ReflectionCache.methodSafe(method);
 
         return ReflectionCache.method(method);
     }
 
     /**
-     * Wraps a field with the field manager with caching properties
-     * <p>
-     * <p>This performs the check for reflection safety settings</p>
+     * Wraps a field with the field manager with caching properties <p> <p>This performs the check for reflection safety
+     * settings</p>
      *
      * @param field the field to wrap
      * @param <D>   the declaring class type
@@ -66,23 +64,22 @@ public final class ReflectAccess {
      * @return the wrapped field
      */
     public static <D, T> FieldManager<D, T> accessField(Field field) {
-        if (new Settings().isSafeReflection())
+        if (Settings.isSafeReflection())
             return ReflectionCache.fieldSafe(field);
 
         return ReflectionCache.field(field);
     }
 
     /**
-     * Wraps a constructor using constructor manager with caching properties
-     * <p>
-     * <p>This performs the check for reflection safety settings</p>
+     * Wraps a constructor using constructor manager with caching properties <p> <p>This performs the check for
+     * reflection safety settings</p>
      *
      * @param constructor the constructor to wrap
      * @param <T>         the declaring class type
      * @return the wrapped constructor
      */
     public static <T> ConstructorManager<T> accessConstructor(Constructor<T> constructor) {
-        if (new Settings().isSafeReflection())
+        if (Settings.isSafeReflection())
             return ReflectionCache.constructorSafe(constructor);
 
         return ReflectionCache.constructor(constructor);

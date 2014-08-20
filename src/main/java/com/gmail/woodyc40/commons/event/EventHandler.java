@@ -17,11 +17,9 @@
 package com.gmail.woodyc40.commons.event;
 
 /**
- * Handles events called by the framework
- * <p>
- * <p>MUST BE ANNOTATED WITH {@link com.gmail.woodyc40.commons.event.Handler}!</p>
- * <p>
- * <p>This interface is considered to be thread safe, however, implementations of it are not guaranteed to be thread
+ * Handles events called by the framework <p> <p>MUST BE ANNOTATED WITH {@link com.gmail.woodyc40.commons.event
+ * .Handler}!</p>
+ * <p> <p>This interface is considered to be thread safe, however, implementations of it are not guaranteed to be thread
  * safe.</p>
  *
  * @author AgentTroll

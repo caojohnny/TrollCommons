@@ -33,7 +33,8 @@ import java.util.concurrent.TimeUnit;
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.SynchronizationTest.synchSynchedMap
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 35.441 ns/op
 # Warmup Iteration   2: 34.078 ns/op
@@ -98,7 +99,8 @@ Result: 34.477 ±(99.9%) 0.088 ns/op [Average]
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.SynchronizationTest.synchedMap
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 22.228 ns/op
 # Warmup Iteration   2: 22.102 ns/op
@@ -169,7 +171,7 @@ public class SynchronizationTest {
     private static final Object              KEY   = new Object();
     private static final Object              VALUE = new Object();
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .forks(1)
                 .timeUnit(TimeUnit.NANOSECONDS)

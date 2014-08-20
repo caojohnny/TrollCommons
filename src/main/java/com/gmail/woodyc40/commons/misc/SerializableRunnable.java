@@ -19,11 +19,9 @@ package com.gmail.woodyc40.commons.misc;
 import java.io.Serializable;
 
 /**
- * A runnable that can be serialized. Useful for RMI or transport of execution sequences.
- * <p>
- * <p>Objects used in the code even of a serializable runnable must be serializable as well</p>
- * <p>
- * <p>Implementing this class requires you to define a serialVersionUID for optimal results</p>
+ * A runnable that can be serialized. Useful for RMI or transport of execution sequences. <p> <p>Objects used in the
+ * code even of a serializable runnable must be serializable as well</p> <p> <p>Implementing this class requires you to
+ * define a serialVersionUID for optimal results</p>
  *
  * @param <V> the return type
  * @author AgentTroll

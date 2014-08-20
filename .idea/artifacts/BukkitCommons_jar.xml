@@ -4,7 +4,6 @@
     <root id="archive" name="BukkitCommons.jar">
       <element id="module-output" name="BukkitCommons" />
       <element id="dir-copy" path="$PROJECT_DIR$/src/main/java" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../maven/repo/com/google/guava/guava/17.0/guava-17.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

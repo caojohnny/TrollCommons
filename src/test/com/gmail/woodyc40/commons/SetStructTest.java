@@ -36,7 +36,8 @@ import java.util.concurrent.TimeUnit;
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testInsertion
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 7.500 ns/op
 # Warmup Iteration   2: 7.321 ns/op
@@ -62,7 +63,8 @@ Result: 8.647 ±(99.9%) 0.144 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testInsertion
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 7.339 ns/op
 # Warmup Iteration   2: 7.115 ns/op
@@ -88,7 +90,8 @@ Result: 8.676 ±(99.9%) 0.283 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testInsertion0
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 5.636 ns/op
 # Warmup Iteration   2: 5.474 ns/op
@@ -114,7 +117,8 @@ Result: 5.398 ±(99.9%) 0.145 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testInsertion0
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 5.812 ns/op
 # Warmup Iteration   2: 5.400 ns/op
@@ -140,7 +144,8 @@ Result: 5.450 ±(99.9%) 0.241 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testRemoval
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 9.588 ns/op
 # Warmup Iteration   2: 8.857 ns/op
@@ -166,7 +171,8 @@ Result: 6.733 ±(99.9%) 0.209 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testRemoval
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 10.156 ns/op
 # Warmup Iteration   2: 9.004 ns/op
@@ -192,7 +198,8 @@ Result: 6.776 ±(99.9%) 0.147 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testRemoval0
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 5.596 ns/op
 # Warmup Iteration   2: 5.463 ns/op
@@ -218,7 +225,8 @@ Result: 4.735 ±(99.9%) 0.069 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.SetStructTest.testRemoval0
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 5.467 ns/op
 # Warmup Iteration   2: 5.311 ns/op

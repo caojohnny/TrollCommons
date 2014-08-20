@@ -22,8 +22,8 @@ import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import sun.misc.SharedSecrets;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Base accessor for experimental assembly instrumentation
@@ -34,9 +34,9 @@ import java.util.Set;
  */
 public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrument {
     /** The class to instrument */
-    private final Class<?>     base;
+    private final Class<?> base;
     /** The transformers for the constant pool */
-    private final Set<CpTransformer> transformers = new HashSet<>(); // Work on this ! TODO
+    private final Collection<CpTransformer> transformers = new HashSet<>();
     /** Reference to the constant pool wrapper */
     private final PoolRef poolRef;
 
@@ -55,7 +55,7 @@ public class Instrument implements com.gmail.woodyc40.commons.instrument.Instrum
     }
 
     @Override public PoolRef getConstantPool() {
-        return null; // TODO
+        return this.poolRef;
     }
 
     @Override public void finish() {

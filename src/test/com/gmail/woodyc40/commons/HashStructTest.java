@@ -37,7 +37,8 @@ import java.util.concurrent.TimeUnit;
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testInsertion
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 43.334 ns/op
 # Warmup Iteration   2: 47.989 ns/op
@@ -63,7 +64,8 @@ Result: 23.912 ±(99.9%) 2.661 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testInsertion
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 30.358 ns/op
 # Warmup Iteration   2: 24.502 ns/op
@@ -89,7 +91,8 @@ Result: 23.315 ±(99.9%) 1.310 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testInsertion0
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 26.014 ns/op
 # Warmup Iteration   2: 24.428 ns/op
@@ -115,7 +118,8 @@ Result: 21.900 ±(99.9%) 1.444 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testInsertion0
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 29.437 ns/op
 # Warmup Iteration   2: 23.489 ns/op
@@ -141,7 +145,8 @@ Result: 21.924 ±(99.9%) 0.547 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRAetrieval
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 28.588 ns/op
 # Warmup Iteration   2: 25.598 ns/op
@@ -167,7 +172,8 @@ Result: 19.167 ±(99.9%) 1.397 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRAetrieval
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 23.291 ns/op
 # Warmup Iteration   2: 21.755 ns/op
@@ -193,7 +199,8 @@ Result: 17.819 ±(99.9%) 1.700 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRAetrieval0
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 27.565 ns/op
 # Warmup Iteration   2: 23.332 ns/op
@@ -219,7 +226,8 @@ Result: 19.893 ±(99.9%) 0.771 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRAetrieval0
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 23.878 ns/op
 # Warmup Iteration   2: 21.642 ns/op
@@ -245,7 +253,8 @@ Result: 16.946 ±(99.9%) 0.729 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRBemoval
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 33.609 ns/op
 # Warmup Iteration   2: 29.794 ns/op
@@ -271,7 +280,8 @@ Result: 21.809 ±(99.9%) 2.170 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRBemoval
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 18.375 ns/op
 # Warmup Iteration   2: 17.151 ns/op
@@ -297,7 +307,8 @@ Result: 14.806 ±(99.9%) 1.449 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRBemoval0
 # Parameters: (entries = 10)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 27.599 ns/op
 # Warmup Iteration   2: 23.975 ns/op
@@ -323,7 +334,8 @@ Result: 21.075 ±(99.9%) 1.617 ns/op [Average]
 # Benchmark: com.gmail.woodyc40.commons.HashStructTest.testRBemoval0
 # Parameters: (entries = 1000)
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7532 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 17.351 ns/op
 # Warmup Iteration   2: 18.073 ns/op

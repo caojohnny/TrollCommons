@@ -19,11 +19,8 @@ package com.gmail.woodyc40.commons.reflection;
 import java.lang.reflect.Method;
 
 /**
- * {@code Interface} for weak access to method invocation methods
- * <p>
- * <p>Used to method and {@code return} the result the method represented by this {@code class}</p>
- * <p>
- * <p>Should be faster than conventional Reflection API</p>
+ * {@code Interface} for weak access to method invocation methods <p> <p>Used to method and {@code return} the result
+ * the method represented by this {@code class}</p> <p> <p>Should be faster than conventional Reflection API</p>
  *
  * @param <Declaring> the {@code class} type declaring the method
  * @param <T>         the type the method returns

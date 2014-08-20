@@ -17,11 +17,10 @@
 package com.gmail.woodyc40.commons.collect;
 
 /**
- * A simplified unique key mapping used to store values
- * <p>
- * <p>No removal method is defined because this cache is designed for holding values only. Removing values would defeat
- * the purpose of caching in the first place, because when the values need to be looked up, they would have existed x
- * minutes before. Therefore, the removal of values is suppressed.</p>
+ * A simplified unique key mapping used to store values <p> <p>No removal method is defined because this cache is
+ * designed for holding values only. Removing values would defeat the purpose of caching in the first place, because
+ * when the values need to be looked up, they would have existed x minutes before. Therefore, the removal of values is
+ * suppressed.</p>
  *
  * @param <K> the key type
  * @param <V> the value type

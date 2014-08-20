@@ -29,9 +29,9 @@ import java.util.concurrent.TimeUnit;
 
 @State(Scope.Benchmark)
 public class ReflectVsNormal {
-    private static ReflectVsNormal.Dummy  dummy;
-    private static Method method;
-    
+    private static ReflectVsNormal.Dummy dummy;
+    private static Method                method;
+
     public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + ReflectVsNormal.class.getSimpleName() + ".*")
@@ -44,7 +44,7 @@ public class ReflectVsNormal {
 
         new Runner(opt).run();
     }
-    
+
     @Setup public static void setup() throws NoSuchMethodException {
         ReflectVsNormal.dummy = new ReflectVsNormal.Dummy();
         ReflectVsNormal.method = ReflectVsNormal.dummy.getClass().getDeclaredMethod("doWork");

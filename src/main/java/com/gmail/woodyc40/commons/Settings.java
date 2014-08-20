@@ -43,6 +43,8 @@ public class Settings {
      */
     public static Settings forPackage() {
         Package pack = Commons.getCaller(false);
+        if (pack == null)
+            return null;
         Settings settings = Settings.SETTINGS_MAP.get(pack);
         if (settings == null) {
             settings = new Settings();
@@ -57,7 +59,7 @@ public class Settings {
      *
      * @return the setting to use reflection libraries
      */
-    public static boolean isSafeReflection() {
+    public static boolean isSafeReflection() throws SecurityException {
         return Settings.forPackage().safeReflection;
     }
 
@@ -67,6 +69,14 @@ public class Settings {
      * @param safe {@code true} to use {@link java.lang.reflect}, {@code false} to use {@link sun.reflect}
      */
     public static void setSafeReflection(boolean safe) {
-        Settings.forPackage().safeReflection = safe;
+        Settings.check().safeReflection = safe;
+    }
+
+    private static Settings check() throws SecurityException {
+        Settings settings = Settings.forPackage();
+        if (settings == null)
+            throw new SecurityException("ACCESS DENIED: Not called from main class");
+
+        return settings;
     }
 }

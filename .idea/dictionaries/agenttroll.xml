@@ -2,32 +2,63 @@
   <dictionary name="agenttroll">
     <words>
       <w>accessors</w>
+      <w>atlassian</w>
+      <w>atroll</w>
+      <w>avgt</w>
       <w>balancer</w>
       <w>bukkit</w>
+      <w>bukkitcommons</w>
       <w>bytecode</w>
+      <w>classlevel</w>
       <w>constinfo</w>
       <w>craftbukkit</w>
+      <w>debian</w>
+      <w>deserial</w>
+      <w>deserialize</w>
+      <w>deserialized</w>
+      <w>deserializing</w>
+      <w>dfile</w>
+      <w>didea</w>
+      <w>djava</w>
       <w>fieldref</w>
       <w>github</w>
       <w>gmail</w>
       <w>hasher</w>
       <w>hashtable</w>
+      <w>inits</w>
       <w>inputstream</w>
+      <w>intelli</w>
+      <w>jarfile</w>
+      <w>javadocs</w>
       <w>javassist</w>
+      <w>kernal</w>
+      <w>langreflect</w>
       <w>lgpl</w>
       <w>licensable</w>
       <w>licensor</w>
+      <w>ljava</w>
       <w>lombok</w>
       <w>methodref</w>
       <w>minecraft</w>
       <w>mozilla</w>
+      <w>msec</w>
+      <w>nanos</w>
       <w>nullable</w>
+      <w>paramaterized</w>
+      <w>parameterized</w>
+      <w>premain</w>
       <w>projectlombok</w>
       <w>recalc</w>
+      <w>reentrant</w>
+      <w>resized</w>
       <w>resizes</w>
+      <w>runnables</w>
       <w>shigeru</w>
+      <w>stdev</w>
       <w>struct</w>
       <w>vals</w>
+      <w>warmup</w>
+      <w>whoopsie</w>
       <w>woodyc</w>
       <w>yyyy</w>
     </words>

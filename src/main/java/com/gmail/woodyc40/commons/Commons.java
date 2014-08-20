@@ -18,20 +18,15 @@ package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.concurrent.JavaFork;
 import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
-import com.gmail.woodyc40.commons.instrument.experimental.Instrument;
+import com.gmail.woodyc40.commons.event.Events;
 import com.gmail.woodyc40.commons.io.Files;
 import com.gmail.woodyc40.commons.nmsobc.protocol.Protocol;
-import com.gmail.woodyc40.commons.providers.UnsafeProvider;
-import com.gmail.woodyc40.commons.reflection.FieldManager;
-import com.gmail.woodyc40.commons.reflection.ReflectionTool;
-import com.gmail.woodyc40.commons.reflection.impl.ReflectAccess;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
 import lombok.Getter;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
@@ -41,22 +36,6 @@ import java.net.URL;
  * @since 1.0
  */
 public class Commons extends JavaPlugin {
-    /** Classes that may be disabled due to availability */
-    private static final Class<?>[] CLASSES        = {
-            Instrument.class, UnsafeProvider.class, ReflectAccess.class,
-            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.ConstructorImpl"),
-            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.MethodImpl"),
-            ReflectionCache.getClass("com.gmail.woodyc40.commons.reflection.impl.FieldImpl")
-    };
-    /** Classes that need to be available for specific libraries */
-    private static final Class<?>[] UNSAFE_CLASSES = {
-            ReflectionCache.getClass("sun.misc.Unsafe"),
-            ReflectionCache.getClass("sun.reflect.MethodAccessor"),
-            ReflectionCache.getClass("sun.reflect.ConstantPool"),
-            ReflectionCache.getClass("sun.reflect.ConstructorAccessor"),
-            ReflectionCache.getClass("sun.reflect.ReflectionFactory"),
-            ReflectionCache.getClass("sun.misc.SharedSecrets")
-    };
     /** The plugin instance */
     @Getter private static Plugin plugin;
 
@@ -70,46 +49,32 @@ public class Commons extends JavaPlugin {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         for (StackTraceElement element : elements) {
             if (!element.getClassName().startsWith("java.") &&
-                (!ignore || !element.getClassName().startsWith("com.gmail.woodyc40.commons.")))
-                return ReflectionCache.getClass(element.getClassName()).getPackage();
+                (!ignore || !element.getClassName().startsWith("com.gmail.woodyc40.commons."))) {
+                Class<?> clazz = ReflectionCache.getClass(element.getClassName());
+                if (clazz.isAssignableFrom(JavaPlugin.class) || clazz.getPackage().getName()
+                                                                     .contains("com.gmail.woodyc40.commons"))
+                    return clazz.getPackage();
+            }
         }
 
         return null;
     }
 
-    /**
-     * Prevents the class loader from checking the commons jar of Google Guava
-     */
-    private static void disableClassLoaderSealing() {
-        Settings.setSafeReflection(true);
-        FieldManager<Package, URL> sealBase =
-                ReflectAccess.accessField(ReflectionTool.forField("sealBase", Package.class));
-
-        sealBase.set(Package.getPackage("com.google.commons"), null);
-        Settings.setSafeReflection(false);
-    }
-
     @Override public void onEnable() {
         Commons.plugin = this;
-        Commons.disableClassLoaderSealing();
 
-        for (Class<?> c : Commons.UNSAFE_CLASSES) {
-            if (c == null) {
-            }
-            // TODO disable CLASSES
-        }
-
-        Protocol.initiate(this);
         try {
             Files.update();
             // JavaFork.start(); TODO
         } catch (IOException x) {
             x.printStackTrace();
         }
+        Protocol.initiate(this);
     }
 
     @Override public void onDisable() {
         ThreadPoolManager.shutdown();
         JavaFork.shutdown();
+        Events.shutdown();
     }
 }

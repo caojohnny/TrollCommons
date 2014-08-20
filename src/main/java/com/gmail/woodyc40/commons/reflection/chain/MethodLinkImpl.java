@@ -53,12 +53,12 @@ public class MethodLinkImpl implements MethodLink {
         return new InvokerImpl();
     }
 
-    @Override public MethodLink method(String name, Class... args) {
+    @Override public MethodLink method(String name, Class<?>... args) {
         this.method = ReflectAccess.accessMethod(ReflectionTool.forMethod(name, this.holder, args));
         return this;
     }
 
-    @Override public MethodLink methodFuzzy(Class<Object> type, int args, int index) {
+    @Override public MethodLink methodFuzzy(Class<?> type, int args, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (method.getReturnType().equals(type) && method.getParameterTypes().length == args)
@@ -69,7 +69,7 @@ public class MethodLinkImpl implements MethodLink {
         return this;
     }
 
-    @Override public MethodLink methodFuzzy(Class<Object> type, int index) {
+    @Override public MethodLink methodFuzzy(Class<?> type, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (method.getReturnType().equals(type))
@@ -80,7 +80,7 @@ public class MethodLinkImpl implements MethodLink {
         return this;
     }
 
-    @Override public MethodLink methodFuzzy(Class[] args, int index) {
+    @Override public MethodLink methodFuzzy(Class<?>[] args, int index) {
         List<Method> methods = new ArrayList<>();
         for (Method method : this.holder.getDeclaredMethods())
             if (Arrays.equals(method.getParameterTypes(), args))

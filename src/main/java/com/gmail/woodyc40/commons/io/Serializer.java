@@ -17,8 +17,7 @@
 package com.gmail.woodyc40.commons.io;
 
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 /**
  * Serialization utility for fast conversion of an Object to bytes, and back again.
@@ -29,49 +28,38 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 public class Serializer<T> {
-    private static final long OBJ_OFF = (long) UnsafeProvider.getProvider().arrayBaseOffset(Object[].class);
+    private static final long BYTE_OFF = (long) UnsafeProvider.getProvider().arrayBaseOffset(byte[].class);
 
     private final T object;
 
-    public static Object deserialize(byte[] bytes) {
-        Serializer.Anchor anchor = new Serializer.Anchor();
+    public static <V> V deserialize(byte[] bytes, V instance) {
+        Serializer.Anchor<V> anchor = new Serializer.Anchor<>(instance);
         UnsafeProvider.getProvider().copyMemory(bytes,
                                                 0L,
                                                 anchor.getAnchor(),
                                                 Serializer.getAddress(anchor.getAnchor()),
                                                 (long) bytes.length);
 
-        return anchor.getAnchor();
+        return UnsafeProvider.castSuper(anchor.getAnchor(), instance);
     }
 
     private static long getAddress(Object object) {
         Object[] array = { object };
         long baseOffset = (long) UnsafeProvider.getProvider().arrayBaseOffset(Object[].class);
-        return UnsafeProvider.normalize(UnsafeProvider.getProvider().getLong(array, baseOffset));
+        return UnsafeProvider.getProvider().getLong(array, baseOffset);
     }
 
     public byte[] serialize() {
         long size = UnsafeProvider.sizeOf(this.object);
         byte[] bytes = new byte[(int) size];
 
-        UnsafeProvider.getProvider().copyMemory(this.object, 0L, bytes, Serializer.getAddress(bytes), size);
+        UnsafeProvider.getProvider().putObject(bytes, Serializer.BYTE_OFF, this.object);
 
         return bytes;
     }
 
-    private static class Anchor {
-        private static final  long   ANCHOR_OFF = Serializer.Anchor.getAnchorOff();
-        @Getter private final Object anchor     = new Object();
-
-        private static long getAnchorOff() {
-            try {
-                return UnsafeProvider.getProvider().objectFieldOffset(
-                        Serializer.Anchor.class.getDeclaredField("anchor"));
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            return 0L;
-        }
+    @AllArgsConstructor
+    private static class Anchor<V> {
+        @Getter private V anchor;
     }
 }

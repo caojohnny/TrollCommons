@@ -34,7 +34,7 @@ public final class Protocol {
     /**
      * Starts the protocol handling managers
      *
-     * @param plugin the plugin to intiate with
+     * @param plugin the plugin to initiate with
      */
     public static void initiate(Plugin plugin) {
         Protocol.protocol = new ProtocolHandler(plugin);
@@ -50,7 +50,7 @@ public final class Protocol {
     }
 
     /**
-     * Gets the protocl manager
+     * Gets the protocol manager
      *
      * @return the protocol manager, if initialized.
      */

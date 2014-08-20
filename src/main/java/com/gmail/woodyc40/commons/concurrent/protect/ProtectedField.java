@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.concurrent;
+package com.gmail.woodyc40.commons.concurrent.protect;
 
 import com.gmail.woodyc40.commons.misc.ParameterizedRunnable;
 
@@ -32,9 +32,8 @@ import javax.annotation.concurrent.ThreadSafe;
 @ThreadSafe
 public interface ProtectedField<T> {
     /**
-     * Performs a safe action on the field
-     * <p>
-     * <p>This is not truly thread safe unless the code in the ParamaterizedRunnable is thread safe as well.</p>
+     * Performs a safe action on the field <p> <p>This is not truly thread safe unless the code in the
+     * ParamaterizedRunnable is thread safe as well.</p>
      *
      * @param runnable {@code return null} at the end, the parameter is the injected value of the field
      */

@@ -32,7 +32,7 @@ import java.util.*;
  */
 public class HashStructMap<K, V> implements Map<K, V> {
     /** The delegating hash structure to perform base ops on */
-    @Getter private final AbstractHashStruct<K, V> delegate;
+    @Getter protected final AbstractHashStruct<K, V> delegate;
 
     /**
      * Create a new map based on {@link com.gmail.woodyc40.commons.collect.HashStructMap} with starting size of 16

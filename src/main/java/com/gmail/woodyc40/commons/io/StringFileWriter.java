@@ -19,9 +19,7 @@ package com.gmail.woodyc40.commons.io;
 import java.io.*;
 
 /**
- * Allows for the functionality to write content to a file
- * <p>
- * <p>Must be closed when finished!</p>
+ * Allows for the functionality to write content to a file <p> <p>Must be closed when finished!</p>
  *
  * @author AgentTroll
  * @version 1.0

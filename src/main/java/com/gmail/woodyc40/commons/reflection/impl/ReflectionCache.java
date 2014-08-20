@@ -117,9 +117,8 @@ public final class ReflectionCache {
     }
 
     /**
-     * Wraps a Method with the method manager with caching properties
-     * <p>
-     * <p>Uses the slower {@link java.lang.reflect} classes</p>
+     * Wraps a Method with the method manager with caching properties <p> <p>Uses the slower {@link java.lang.reflect}
+     * classes</p>
      *
      * @param method the method to wrap
      * @param <D>    the declaring class type
@@ -137,9 +136,8 @@ public final class ReflectionCache {
     }
 
     /**
-     * Wraps a field with the field manager with caching properties
-     * <p>
-     * <p>Uses the slower {@link java.lang.reflect} classes</p>
+     * Wraps a field with the field manager with caching properties <p> <p>Uses the slower {@link java.lang.reflect}
+     * classes</p>
      *
      * @param field the field to wrap
      * @param <D>   the declaring class type
@@ -157,9 +155,8 @@ public final class ReflectionCache {
     }
 
     /**
-     * Wraps a constructor using constructor manager with caching properties
-     * <p>
-     * <p>Uses the slower {@link java.lang.reflect} classes</p>
+     * Wraps a constructor using constructor manager with caching properties <p> <p>Uses the slower {@link
+     * java.lang.reflect} classes</p>
      *
      * @param constructor the constructor to wrap
      * @param <T>         the declaring class type

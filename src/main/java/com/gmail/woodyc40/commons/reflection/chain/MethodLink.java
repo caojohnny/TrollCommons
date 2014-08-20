@@ -27,8 +27,7 @@ import com.gmail.woodyc40.commons.reflection.MethodManager;
  */
 public interface MethodLink {
     /**
-     * Uses the value of a previous reflective operation to use as an instance OR params to method invocation.
-     * <p>
+     * Uses the value of a previous reflective operation to use as an instance OR params to method invocation. <p>
      * <p>The first call to this ALWAYS sets the instance</p>
      *
      * @param index the index of the object representing the instance to use or one of the parameters
@@ -58,7 +57,7 @@ public interface MethodLink {
      * @param args the method parameters
      * @return the invoker
      */
-    MethodLink method(String name, Class... args);
+    MethodLink method(String name, Class<?>... args);
 
     /**
      * Adds a method to the chain
@@ -68,7 +67,7 @@ public interface MethodLink {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink methodFuzzy(Class<Object> type, int args, int index);
+    MethodLink methodFuzzy(Class<?> type, int args, int index);
 
     /**
      * Adds a method to the chain
@@ -77,7 +76,7 @@ public interface MethodLink {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink methodFuzzy(Class<Object> type, int index);
+    MethodLink methodFuzzy(Class<?> type, int index);
 
     /**
      * Adds a method to the chain
@@ -86,7 +85,7 @@ public interface MethodLink {
      * @param index the index of the method list to link the next chain
      * @return the invoker
      */
-    MethodLink methodFuzzy(Class[] args, int index);
+    MethodLink methodFuzzy(Class<?>[] args, int index);
 
     /**
      * Adds a method to the chain

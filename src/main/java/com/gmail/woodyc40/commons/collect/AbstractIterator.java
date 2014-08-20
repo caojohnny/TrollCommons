@@ -24,9 +24,9 @@ import java.util.NoSuchElementException;
 /**
  * Base structure for building iterators on
  *
+ * @param <E> the element type that the iterator iterates over
  * @author AgentTroll
  * @version 1.0
- * @param <E> the element type that the iterator iterates over
  * @see java.util.Iterator
  * @since 1.0
  */
@@ -35,7 +35,7 @@ public abstract class AbstractIterator<E> implements Iterator<E> {
     /** The values to iterate over */
     @Getter(AccessLevel.PROTECTED) private final Object[] values = this.allVals();
     /** Maximum index of the value array */
-    @Getter(AccessLevel.PROTECTED) private final int      max    = this.allVals().length - 1;
+    @Getter(AccessLevel.PROTECTED) private final int      max    = this.allVals().length;
     /** The current index of the iterator */
     @Getter(AccessLevel.PROTECTED) private int index;
 

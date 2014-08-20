@@ -17,9 +17,8 @@
 package com.gmail.woodyc40.commons.instrument.experimental;
 
 /**
- * Thrown when the constant type cannot be determined in the constant pool
- * <p>
- * <p>Appears in the format: Could not find constant at index (CP index) in class (Class name)</p>
+ * Thrown when the constant type cannot be determined in the constant pool <p> <p>Appears in the format: Could not find
+ * constant at index (CP index) in class (Class name)</p>
  *
  * @author AgentTroll
  * @version 1.0

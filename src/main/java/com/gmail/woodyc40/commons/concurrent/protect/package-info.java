@@ -15,13 +15,7 @@
  */
 
 /**
- * Event framework used to listen and call for events that are not suited for use by using the BukkitAPI
- * {@link org.bukkit.plugin.PluginManager}.
- *
- * <p>This event framework is thread safe.</p>
- *
- * <p>Since 1.1, the event framework is handled from a single thread. All multi-threaded calls are still safe to use,
- * however, due to thread confinement, the receiver is not required to synchronize.</p>
+ * Value holding classes that wrap various concurrent libraries to provide thread-safe read and write to the field.
  */
 
-package com.gmail.woodyc40.commons.event;
+package com.gmail.woodyc40.commons.concurrent.protect;

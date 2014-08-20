@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and
- * {@link com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
+ * Used for building new {@link com.gmail.woodyc40.commons.collect.HashStructMap}s and {@link
+ * com.gmail.woodyc40.commons.collect.HashStructSet}s using properties specified
  *
  * @author AgentTroll
  * @version 1.0
@@ -29,11 +29,15 @@ import java.util.Set;
  */
 public class StructBuilder {
     /** The hash strategy */
-    private AbstractHashStruct.HashStrategy hash   = AbstractHashStruct.HashStrategy.A_TROLL;
+    private AbstractHashStruct.HashStrategy hash    = AbstractHashStruct.HashStrategy.A_TROLL;
     /** The initial size */
-    private int                             size   = 16;
+    private int                             size    = 16;
     /** The resizing threshold */
-    private int                             resize = 14;
+    private int                             resize  = 14;
+    /** Weak reference key collection configuration */
+    private boolean                         weakKey = false;
+    /** Weak reference value collection configuration */
+    private boolean                         weakVal = false;
     /** Whether or not to enable concurrency */
     private boolean concurrent; // TODO
 
@@ -70,6 +74,16 @@ public class StructBuilder {
         return this;
     }
 
+    public StructBuilder weakKeys() {
+        this.weakKey = true;
+        return this;
+    }
+
+    public StructBuilder weakValues() {
+        this.weakVal = true;
+        return this;
+    }
+
     /**
      * Whether or not to use concurrent collections
      *
@@ -103,6 +117,12 @@ public class StructBuilder {
             }
         };
 
+        if (this.weakKey && this.weakVal)
+            return new WeakStructMap<>(WeakStructMap.WeakConfiguration.BOTH);
+        if (this.weakKey)
+            return new WeakStructMap<>(WeakStructMap.WeakConfiguration.KEYS);
+        if (this.weakVal)
+            return new WeakStructMap<>(WeakStructMap.WeakConfiguration.VALUES);
         return new HashStructMap<>(hashStruct);
     }
 
@@ -127,6 +147,7 @@ public class StructBuilder {
             }
         };
 
+        // TODO weak implementations
         return new HashStructSet<>(hashStruct);
     }
 }

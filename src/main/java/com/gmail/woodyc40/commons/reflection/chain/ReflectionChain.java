@@ -81,7 +81,7 @@ public class ReflectionChain {
      *
      * @return the new constructor link associated with this chain
      */
-    public ConstructLink contruct() { return new ConstructLinkImpl(this.base, this); }
+    public ConstructLink construct() { return new ConstructLinkImpl(this.base, this); }
 
     /**
      * Custom constructor accessor that doesn't depend on the base class from the chain constructor
@@ -89,5 +89,5 @@ public class ReflectionChain {
      * @param base the class to use instead
      * @return the new constructor link associated with this chain
      */
-    public ConstructLink contruct(Class<?> base) { return new ConstructLinkImpl(base, this); }
+    public ConstructLink construct(Class<?> base) { return new ConstructLinkImpl(base, this); }
 }

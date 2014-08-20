@@ -24,13 +24,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely.
- * <p>
- * <p>Note that the starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by
- * access restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This
- * is a HotSpot directed program.</p>
- * <p>
- * <p>This class is not thread safe</p>
+ * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely. <p> <p>Note that the
+ * starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by access
+ * restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This is a
+ * HotSpot directed program.</p> <p> <p>This class is not thread safe</p>
  *
  * @author AgentTroll
  * @version 1.0
@@ -50,17 +47,14 @@ public final class UnsafeProvider {
     private UnsafeProvider() {}
 
     /**
-     * Used to acquire the instance of {@link Unsafe}.
-     * <p>
-     * <p>This is more of a "hack" than a direct method, as it uses reflection in order to obtain the stored instance of
-     * the Unsafe singleton. Unsafe cannot be accessed through its singleton {@link Unsafe#getUnsafe()} method, as it
-     * checks the calling {@code class} to make sure that the {@link ClassLoader} is {@code null}. Java {@code class}es
-     * don't use a {@link ClassLoader}, hence the reason why they can call {@link Unsafe#getUnsafe()} without {@link
-     * SecurityException}.</p>
-     * <p>
-     * <p>Being a "hack", this method will never be guaranteed to actually get an instance of Unsafe, the field that
-     * stores the instance of Unsafe <strong>is named differently on different implementations of the JVM</strong>. This
-     * specific method is designed to get Unsafe from the Java HotSpot JVM.</p>
+     * Used to acquire the instance of {@link Unsafe}. <p> <p>This is more of a "hack" than a direct method, as it uses
+     * reflection in order to obtain the stored instance of the Unsafe singleton. Unsafe cannot be accessed through its
+     * singleton {@link Unsafe#getUnsafe()} method, as it checks the calling {@code class} to make sure that the {@link
+     * ClassLoader} is {@code null}. Java {@code class}es don't use a {@link ClassLoader}, hence the reason why they can
+     * call {@link Unsafe#getUnsafe()} without {@link SecurityException}.</p> <p> <p>Being a "hack", this method will
+     * never be guaranteed to actually get an instance of Unsafe, the field that stores the instance of Unsafe
+     * <strong>is named differently on different implementations of the JVM</strong>. This specific method is designed
+     * to get Unsafe from the Java HotSpot JVM.</p>
      *
      * @return the Unsafe instance acquired from the HotSpot JVM Unsafe {@code class}
      */
@@ -76,12 +70,10 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Acquires the raw instance Unsafe "hacked" from the source.
-     * <p>
-     * <p>If an exception was thrown when this class was loaded, this method will most likely {@code return null}. JVM
-     * implementations may modify the field in which the instance of Unsafe is stored, throwing an exception when normal
-     * acquisition methods are applied.</p> <p> <p>This is guaranteed to <strong>not</strong> {@code return null} on the
-     * HotSpot JVM</p>
+     * Acquires the raw instance Unsafe "hacked" from the source. <p> <p>If an exception was thrown when this class was
+     * loaded, this method will most likely {@code return null}. JVM implementations may modify the field in which the
+     * instance of Unsafe is stored, throwing an exception when normal acquisition methods are applied.</p> <p> <p>This
+     * is guaranteed to <strong>not</strong> {@code return null} on the HotSpot JVM</p>
      *
      * @return the Unsafe instance received when this {@code class} was loaded.
      * @throws IllegalStateException if the Unsafe instance was not acquired already during load
@@ -107,9 +99,8 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Provides field offset calculations of a field in order to find its location in a {@code class}.
-     * <p>
-     * <p>The field parameter should never be {@code null}. An exception will be thrown if it is.</p>
+     * Provides field offset calculations of a field in order to find its location in a {@code class}. <p> <p>The field
+     * parameter should never be {@code null}. An exception will be thrown if it is.</p>
      *
      * @param field the field to {@code return} the offset of
      * @return the relative {@code class} location offset of the field
@@ -138,15 +129,12 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Acquires the raw field value of the specified field of a {@code class}.
-     * <p>
-     * <p>It may {@code return null}. This can happen under the following circumstances: <ul> <li>If the field value is
-     * {@code null} for the particular instance (More common).</li> <li>If one of the parameters required to be
-     * non-{@code null} is {@code null}</li> <li>Or if the field is not found or not able to be accessed. Check method
-     * call, spelling, and class source. Indicated by a thrown exception.</li> </ul> </p>
-     * <p>
-     * <p>The holder parameter may be null for static fields. In fact, it is set null for this purpose in the method
-     * itself, so it will not matter nevertheless.</p>
+     * Acquires the raw field value of the specified field of a {@code class}. <p> <p>It may {@code return null}. This
+     * can happen under the following circumstances: <ul> <li>If the field value is {@code null} for the particular
+     * instance (More common).</li> <li>If one of the parameters required to be non-{@code null} is {@code null}</li>
+     * <li>Or if the field is not found or not able to be accessed. Check method call, spelling, and class source.
+     * Indicated by a thrown exception.</li> </ul> </p> <p> <p>The holder parameter may be null for static fields. In
+     * fact, it is set null for this purpose in the method itself, so it will not matter nevertheless.</p>
      *
      * @param holder the instance of the object to acquire the value from.
      * @return the value of the acquired field from the instance of the holder parameter
@@ -161,11 +149,9 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Sets the raw field value for the given field object in the class
-     * <p>
-     * <p>This method will fail under the following circumstances: <ul> <li>If one of the parameters required to be
-     * non-{@code null} is {@code null}</li> <li>Or the field could not be found. Indicated by a thrown exception</li>
-     * </ul> </p>
+     * Sets the raw field value for the given field object in the class <p> <p>This method will fail under the following
+     * circumstances: <ul> <li>If one of the parameters required to be non-{@code null} is {@code null}</li> <li>Or the
+     * field could not be found. Indicated by a thrown exception</li> </ul> </p>
      *
      * @param field  the field to put the new value in
      * @param holder the instance of the object to set the field in
@@ -183,10 +169,8 @@ public final class UnsafeProvider {
     }
 
     /**
-     * Instantiates a {@code class} without calling the constructor of the {@code class}
-     * <p>
-     * <p><strong>This is EXTREMELY IMPORTANT - THIS METHOD WILL <u>NOT</u> CALL THE {@code CLASS}
-     * CONSTRUCTOR!</strong></p>
+     * Instantiates a {@code class} without calling the constructor of the {@code class} <p> <p><strong>This is
+     * EXTREMELY IMPORTANT - THIS METHOD WILL <u>NOT</u> CALL THE {@code CLASS} CONSTRUCTOR!</strong></p>
      *
      * @param <T> the type of {@code class} instantiated, the type returned
      * @param c   the {@code class} to make a new instance of
@@ -204,15 +188,12 @@ public final class UnsafeProvider {
     // Concurrency area
 
     /**
-     * Forces current thread to acquire or release the monitor of an object.
-     * <p>
-     * <p>This is a very low level implementation, no checks will be performed to whether the monitor is already held by
-     * the current thread before execution.</p>
-     * <p>
-     * <p>It is <strong>crucial</strong> to use this as an implementation or entry point to synchronization instead of a
-     * careless direct call. A monitor acquired with this method can only be released using: {@code
-     * UnsafeProvider.monitor(false, object);} where {@code object} is the object with its monitor held by the current
-     * thread.</p>
+     * Forces current thread to acquire or release the monitor of an object. <p> <p>This is a very low level
+     * implementation, no checks will be performed to whether the monitor is already held by the current thread before
+     * execution.</p> <p> <p>It is <strong>crucial</strong> to use this as an implementation or entry point to
+     * synchronization instead of a careless direct call. A monitor acquired with this method can only be released
+     * using: {@code UnsafeProvider.monitor(false, object);} where {@code object} is the object with its monitor held by
+     * the current thread.</p>
      *
      * @param entry {@code true} to acquire the monitor, {@code false} to release.
      * @param o     The object to acquire to release the monitor of.
@@ -226,9 +207,8 @@ public final class UnsafeProvider {
     }
 
     /**
-     * CAS operation, sets the field in an object to nw if expect is the current value.
-     * <p>
-     * <p>Note that this method performs a deep search for the field to swap.</p>
+     * CAS operation, sets the field in an object to nw if expect is the current value. <p> <p>Note that this method
+     * performs a deep search for the field to swap.</p>
      *
      * @param instance the object instance to acquire the field in
      * @param field    the field to swap the value for
@@ -243,21 +223,17 @@ public final class UnsafeProvider {
     // Misc area
 
     /**
-     * Takes the shallow size of the object.
-     * <p>
-     * <p>Equivalent Java implementation of C sizeOf</p>
-     * <p>
-     * <p>Is not an alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will not be as
-     * accurate as that method, this should only be used for programs where the EXACT size of an object in heap can have
-     * small inaccuracies.</p>
+     * Takes the shallow size of the object. <p> <p>Equivalent Java implementation of C sizeOf</p> <p> <p>Is not an
+     * alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will not be as accurate as
+     * that method, this should only be used for programs where the EXACT size of an object in heap can have small
+     * inaccuracies.</p>
      *
      * @param object the object to find the size of. Cannot be an array.
      * @return the size of the object stored in its header in the JVM
      */
     public static long sizeOf(Object object) {
-        return UnsafeProvider.PROVIDER.getLong(object,
-                                               UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(object, 4L)) +
-                                               12L);
+        return UnsafeProvider.PROVIDER.getAddress(
+                UnsafeProvider.PROVIDER.getLong(object, 4L) + 12L);
     }
 
     /**
@@ -269,9 +245,8 @@ public final class UnsafeProvider {
      * @return the result of casting main to superclass
      */
     public static <T> T castSuper(Object main, T superclass) {
-        UnsafeProvider.PROVIDER.putInt(main, 8L, UnsafeProvider.PROVIDER.getInt(superclass, 8L));
-        if (!main.equals(superclass))
-            UnsafeProvider.PROVIDER.putInt(main, 4L, UnsafeProvider.PROVIDER.getInt(superclass, 4L));
+        UnsafeProvider.PROVIDER.putAddress(UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(main, 4L)) + 36L,
+                                           UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(superclass, 4L)));
 
         return (T) main;
     }
@@ -293,8 +268,9 @@ public final class UnsafeProvider {
      *
      * @param value the {@code long} to convert
      * @return the derived unsigned {@code long} associated with the value
+     * @deprecated longs can hold unsigned values natively
      */
-    public static long normalize(long value) {
+    @Deprecated public static long normalize(long value) {
         if (value >= 0L)
             return value;
         return ~0L >>> 32 & value;

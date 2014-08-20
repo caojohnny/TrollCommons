@@ -22,10 +22,23 @@ public final class SerializerTest {
     private SerializerTest() {}
 
     public static void main(String... args) {
-        Object object = new Object();
-        Serializer<Object> serializer = new Serializer<>(object);
-        System.out.println(object.hashCode());
+        SerializerTest.Holder object = new SerializerTest.Holder();
+        object.i = 65;
+        Serializer<Object> serializer = new Serializer<>((Object) object);
+        System.out.println(object.i);
+
+        System.out.println("Serializing");
         byte[] bytes = serializer.serialize();
-        System.out.println(Serializer.deserialize(bytes).hashCode());
+        System.out.println("Serialized: " + bytes.length + " bytes");
+
+        System.out.println("Deserializing");
+        SerializerTest.Holder deserial = Serializer.deserialize(bytes, new SerializerTest.Holder());
+        System.out.println("Deserialized");
+
+        System.out.println(deserial.i);
+    }
+
+    private static class Holder {
+        public int i;
     }
 }

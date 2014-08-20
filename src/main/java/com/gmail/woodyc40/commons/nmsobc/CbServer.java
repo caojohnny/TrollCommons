@@ -30,7 +30,7 @@ import java.util.Map;
  * @version 1.0
  * @since 1.0
  */
-public class CbServer {
+public final class CbServer {
     /** All classes from the OBC package */
     @Getter private static final Map<String, Class<?>> classMap = new HashMap<>();
 
@@ -46,6 +46,8 @@ public class CbServer {
             e.printStackTrace();
         }
     }
+
+    private CbServer() {}
 
     /**
      * Acquires a cached {@link java.lang.Class} from the org.bukkit.craftbukkit package

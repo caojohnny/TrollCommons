@@ -17,8 +17,8 @@
 package com.gmail.woodyc40.commons.nmsobc.protocol;
 
 /**
- * A builder utility that can map out the packets within NMS package to reference object building that represents
- * {@link net.minecraft.server.v1_7_R4.Packet}.
+ * A builder utility that can map out the packets within NMS package to reference object building that represents {@link
+ * net.minecraft.server.v1_7_R4.Packet}.
  *
  * @author AgentTroll
  * @version 1.0

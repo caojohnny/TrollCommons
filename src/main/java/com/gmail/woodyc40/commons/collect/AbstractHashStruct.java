@@ -26,16 +26,13 @@ import java.util.Map;
 
 /**
  * This is a base utility used to build hashing data structures similar to that of {@link java.util.HashMap} and {@link
- * java.util.HashSet}.
- * 
- * <p>By default, this will have a resizing threshold of 14 items, which can be changed using {@link
- * #setResizeThresh(int)} and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect
- * .AbstractHashStruct.HashStrategy#A_TROLL}
- * that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons.collect.AbstractHashStruct.HashStrategy)}
- * </p>
- * 
- * <p>Benchmarks for all 3 hash strategies can be found <a href="https://github
- * .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark.java">here</a></p>
+ * java.util.HashSet}. <<<<<<< Updated upstream <p> ======= <p> >>>>>>> Stashed changes <p>By default, this will have a
+ * resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)} and a hashing strategy
+ * defaulted to {@link com.gmail.woodyc40.commons.collect .AbstractHashStruct.HashStrategy#A_TROLL} that can be changed
+ * using {@link #setStrategy(com.gmail.woodyc40.commons .collect.AbstractHashStruct.HashStrategy)} </p> <<<<<<< Updated
+ * upstream <p> ======= <p> >>>>>>> Stashed changes <p>Benchmarks for all 3 hash strategies can be found <a
+ * href="https://github .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark
+ * .java">here</a></p>
  *
  * @param <K> the key type
  * @param <V> the value type
@@ -139,9 +136,8 @@ public abstract class AbstractHashStruct<K, V> {
     }
 
     /**
-     * Asks the bucket array if one of the entries holds the value provided
-     * <p>
-     * <p>Note that this is an O(n) operation</p>
+     * Asks the bucket array if one of the entries holds the value provided <p> <p>Note that this is an O(n)
+     * operation</p>
      *
      * @param v the value to check for in the bucket array
      * @return {@code false} if the value is not found in the buckets, {@code true} if found
@@ -224,11 +220,10 @@ public abstract class AbstractHashStruct<K, V> {
      */
     private AbstractHashStruct<K, V>.Node search(K k, int hash) {
         // Implementation:
-        // 4 Step process
-        // Step 1: Loop through all linked nodes
-        // Step 2: Check for node key equality to provided
-        // Step 3: If it is equal, return it
-        // Step 4: If none found, return the result of create(...)
+        // 1. Find the bucket
+        // 2. Loop to the last element in the bucket
+        // 3. If the last element isn't null, return it
+        // 4. Else, create a new key and return that
 
         AbstractHashStruct<K, V>.Node head = this.buckets[hash];
         AbstractHashStruct<K, V>.Node tail = this.loop(k, head);
@@ -249,15 +244,14 @@ public abstract class AbstractHashStruct<K, V> {
         AbstractHashStruct<K, V>.Node node = new AbstractHashStruct<K, V>.Node(k, null, 0, null);
         if (previous == null) {
             this.buckets[hash] = node;
-            this.size += 1;
+            this.size++;
             this.checkSize();
             return node;
         }
 
         previous.setNext(node);
-        this.size += 1;
+        this.size++;
         this.checkSize();
-
         return node;
     }
 
@@ -274,7 +268,7 @@ public abstract class AbstractHashStruct<K, V> {
         while (tail != null) {
             if (tail.getKey().equals(k)) {
                 leading.setNext(tail.getNext());
-                this.size -= 1;
+                this.size--;
                 return;
             }
 
@@ -289,7 +283,7 @@ public abstract class AbstractHashStruct<K, V> {
         if (leading != null && leading.getKey().equals(k))
             this.buckets[leading.getBucket()] = null;
 
-        this.size -= 1;
+        this.size--;
     }
 
     //===============[ Sub-classes ] ===============//
@@ -340,8 +334,8 @@ public abstract class AbstractHashStruct<K, V> {
         A_TROLL {
             @Override public int hash(Object o, int i) {
                 long h = UnsafeProvider.normalize(o.hashCode());
-                h = (h >> 16 ^ h) * 0x301L;
-                h = (h >> 16 ^ h) * 0x301L;
+                h = (h >> 16 ^ h) * 0x33L;
+                h = (h >> 16 ^ h) * 0x33L;
                 h = h >> 16 ^ h;
 
                 return (int) (h % (long) i);
@@ -367,6 +361,7 @@ public abstract class AbstractHashStruct<K, V> {
      * @author AgentTroll
      * @version 1.0
      * @see java.util.Map.Entry
+     * @since 1.0
      */
     @Getter @AllArgsConstructor @ToString @EqualsAndHashCode
     public class Node implements Map.Entry<K, V> {
@@ -393,15 +388,19 @@ public abstract class AbstractHashStruct<K, V> {
      * @version 1.0
      * @see java.util.Iterator
      * @see com.gmail.woodyc40.commons.collect.AbstractIterator
+     * @since 1.0
      */
     protected class KeyIterator extends AbstractIterator<K> {
         @Override protected Object[] allVals() {
             int index = 0;
             Object[] vals = new Object[AbstractHashStruct.this.getSize()];
             for (AbstractHashStruct<K, V>.Node bucket : AbstractHashStruct.this.getBuckets()) {
-                for (AbstractHashStruct<K, V>.Node last = bucket; last != null; last = last.getNext())
-                    vals[index] = last.getKey();
-                index++;
+                AbstractHashStruct<K, V>.Node tail = bucket;
+                while (tail != null) {
+                    vals[index] = tail.getKey();
+                    index++;
+                    tail = tail.getNext();
+                }
             }
             return vals;
         }
@@ -418,23 +417,25 @@ public abstract class AbstractHashStruct<K, V> {
      * @version 1.0
      * @see java.util.Iterator
      * @see com.gmail.woodyc40.commons.collect.AbstractIterator
+     * @since 1.0
      */
     protected class ValueIterator extends AbstractIterator<V> {
         @Override protected Object[] allVals() {
             int index = 0;
             Object[] vals = new Object[AbstractHashStruct.this.getSize()];
             for (AbstractHashStruct<K, V>.Node bucket : AbstractHashStruct.this.getBuckets()) {
-                for (AbstractHashStruct<K, V>.Node last = bucket; last != null; last = last.getNext())
-                    vals[index] = last.getValue();
-                index++;
+                AbstractHashStruct<K, V>.Node tail = bucket;
+                while (tail != null) {
+                    vals[index] = tail.getValue();
+                    index++;
+                    tail = tail.getNext();
+                }
             }
             return vals;
         }
 
         /**
-         * {@inheritDoc}
-         * <p>
-         * <p>DOES NOT SUPPORT REMOVAL</p>
+         * {@inheritDoc} <p> <p>DOES NOT SUPPORT REMOVAL</p>
          */
         @Override protected void removeValue(V val) {
             throw new UnsupportedOperationException("You should remove with a key iterator instead");

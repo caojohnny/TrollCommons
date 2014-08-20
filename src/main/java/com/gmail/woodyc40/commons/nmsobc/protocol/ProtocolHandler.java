@@ -33,8 +33,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The packet handler that will listen for packet writes and reads, as well as listen for player join and leave to cache
@@ -61,6 +60,50 @@ public final class ProtocolHandler { // TODO server channels
         Bukkit.getServer().getPluginManager()
               .registerEvents(new ProtocolListener(), plugin);
         this.plugin = plugin;
+
+        ChannelHandler handler = new ChannelInboundHandlerAdapter() {
+            @Override
+            public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+                Channel channel = (Channel) msg;
+                channel.pipeline().addFirst(new ChannelInitializer<Channel>() {
+                    @Override
+                    protected void initChannel(Channel channel) throws Exception {
+                        channel.pipeline().addLast(new ChannelInitializer<Channel>() {
+                            @Override
+                            protected void initChannel(Channel channel) throws Exception {
+                                ProtocolHandler.this.putProxy(channel, null);
+                            }
+                        });
+                    }
+                });
+                ctx.fireChannelRead(msg);
+            }
+        };
+
+        Object connection = new ReflectionChain(McServer.getMcServer().getClass())
+                .method()
+                .methodFuzzy(McServer.getClass("ServerConnection"), 0, 0)
+                .param(McServer.getMcServer())
+                .invoker()
+                .invoke()
+                .reflect();
+
+        for (int i = 0; true; i++) {
+            Iterable<Object> list = (List<Object>) new ReflectionChain(connection.getClass())
+                    .field()
+                    .fieldFuzzy(List.class, i)
+                    .instance(connection)
+                    .getter()
+                    .get().reflect();
+            for (Object item : list) { // TODO
+                if (!ChannelFuture.class.isInstance(item))
+                    break;
+
+                Channel channel = ((ChannelFuture) item).channel();
+                channel.pipeline().addFirst(handler);
+                return;
+            }
+        }
     }
 
     public void putProxy(Channel channel, Player player) {
@@ -156,8 +199,14 @@ public final class ProtocolHandler { // TODO server channels
             Channel conn = this.CHANNEL.get(
                     new ReflectionChain(CbServer.cPlayerClass())
                             .method().method("getHandle").param(event.getPlayer()).invoker().invoke()      // 0
-                            .field(McServer.getEPlayer()).field("playerConnection").last(0).getter().get() // 1
-                            .field().field("networkManager").getter().get()                                // 2
+                            .field(McServer.getEPlayer())
+                            .field("playerConnection")
+                            .last(0)
+                            .getter().get() // 1
+                            .field(McServer.getClass("PlayerConnection"))
+                            .field("networkManager")
+                            .last(1)
+                            .getter().get()                                // 2
                             .reflect());
 
             ProtocolHandler.this.putProxy(conn, event.getPlayer());

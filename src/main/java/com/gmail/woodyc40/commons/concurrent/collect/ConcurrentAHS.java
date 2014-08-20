@@ -14,14 +14,17 @@
  * limitations under the License.
  */
 
-/**
- * Event framework used to listen and call for events that are not suited for use by using the BukkitAPI
- * {@link org.bukkit.plugin.PluginManager}.
- *
- * <p>This event framework is thread safe.</p>
- *
- * <p>Since 1.1, the event framework is handled from a single thread. All multi-threaded calls are still safe to use,
- * however, due to thread confinement, the receiver is not required to synchronize.</p>
- */
+package com.gmail.woodyc40.commons.concurrent.collect;
 
-package com.gmail.woodyc40.commons.event;
+/**
+ * Abstraction base similar to AbstractHashStruct that supports concurrency
+ *
+ * @param <K> the key type
+ * @param <V> the value type
+ * @author AgentTroll
+ * @version 1.0
+ * @since 1.1
+ */
+public class ConcurrentAHS<K, V> {
+
+}

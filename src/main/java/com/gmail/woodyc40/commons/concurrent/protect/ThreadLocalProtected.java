@@ -14,32 +14,33 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.concurrent;
+package com.gmail.woodyc40.commons.concurrent.protect;
 
 import com.gmail.woodyc40.commons.misc.ParameterizedRunnable;
 
-import javax.annotation.concurrent.ThreadSafe;
-import java.util.concurrent.atomic.AtomicReference;
-
 /**
- * Uses an {@link java.util.concurrent.atomic.AtomicReference} to protect access to the field
+ * Protects a field value by wrapping over ThreadLocal libraries
  *
- * @param <T> the type of value the field protector holds
+ * @param <T> the type of value the field holds
  * @author AgentTroll
  * @version 1.0
  * @since 1.1
  */
-@ThreadSafe class AtomicRefProtected<T> implements ProtectedField<T> {
-    /** The atomic reference to the value held by this protector */
-    private final AtomicReference<T> reference;
+public class ThreadLocalProtected<T> implements ProtectedField<T> {
+    /** The value held by the protected field. Not {@code static} since it is independent of other instances */
+    private final ThreadLocal<T> value;
 
     /**
-     * Build a new protected field using an AtomicReference to access the field
+     * Builds a new field protector using ThreadLocal to store the field value
      *
-     * @param value the initial value of the field
+     * @param value the initial value to set the field
      */
-    public AtomicRefProtected(T value) {
-        this.reference = new AtomicReference<>(value);
+    public ThreadLocalProtected(final T value) {
+        this.value = new ThreadLocal<T>() {
+            @Override public T initialValue() {
+                return value;
+            }
+        };
     }
 
     @Override public void access(ParameterizedRunnable<Void, T> runnable) {
@@ -47,10 +48,10 @@ import java.util.concurrent.atomic.AtomicReference;
     }
 
     @Override public T get() {
-        return this.reference.get();
+        return this.value.get();
     }
 
     @Override public void set(T value) {
-        this.reference.set(value);
+        this.value.set(value);
     }
 }

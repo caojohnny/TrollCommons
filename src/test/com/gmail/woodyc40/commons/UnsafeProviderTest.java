@@ -36,7 +36,8 @@ import java.util.concurrent.TimeUnit;
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.UnsafeProviderTest.getUnsafe
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 29.277 ns/op
 # Warmup Iteration   2: 29.780 ns/op
@@ -61,7 +62,8 @@ Result: 29.796 ±(99.9%) 0.834 ns/op [Average]
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.UnsafeProviderTest.getUnsafe0
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7533 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 9.172 ns/op
 # Warmup Iteration   2: 8.944 ns/op
@@ -88,6 +90,7 @@ c.g.w.c.UnsafeProviderTest.getUnsafe0     avgt         5        8.879        0.2
 @State(Scope.Benchmark)
 public class UnsafeProviderTest {
     private static Field FIELD;
+
     static {
         try {
             UnsafeProviderTest.FIELD = UnsafeProviderTest.class.getDeclaredField("FIELD");
@@ -100,7 +103,7 @@ public class UnsafeProviderTest {
         // Reflection - Prints
         // sun.misc.Unsafe
         System.out.println(UnsafeProvider.acquireField(ReflectionTool.forField("PROVIDER", UnsafeProvider.class), null)
-                .getClass().getName());
+                                         .getClass().getName());
 
         // Unsafe cast - Prints
         // 2337

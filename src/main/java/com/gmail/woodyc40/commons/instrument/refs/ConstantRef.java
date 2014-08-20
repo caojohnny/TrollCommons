@@ -49,8 +49,6 @@ public class ConstantRef {
         this.index = index;
     }
 
-    // TODO verifier
-
     /**
      * The type of constant this reference represents
      *
@@ -75,43 +73,31 @@ public class ConstantRef {
         /** Double type */
         DOUBLE(6),
         /**
-         * Class type
-         * <p>
-         * <p>value is the index of the class name, in short</p>
+         * Class type <p> <p>value is the index of the class name, in short</p>
          */
         CLASS(7),
         /**
-         * String type
-         * <p>
-         * <p>value is the index of the string, in short</p>
+         * String type <p> <p>value is the index of the string, in short</p>
          */
         STRING(8),
         /**
-         * Fieldref type
-         * <p>
-         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
-         * the Name And Type.</p>
+         * Fieldref type <p> <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the
+         * value the index of the Name And Type.</p>
          */
         FIELD(9),
         /**
-         * Methodref type
-         * <p>
-         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
-         * the Name And Type.</p>
+         * Methodref type <p> <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the
+         * value the index of the Name And Type.</p>
          */
         METHOD(10),
         /**
-         * Interface Methodref type
-         * <p>
-         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the class, the value the index of
-         * the Name And Type.</p>
+         * Interface Methodref type <p> <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the
+         * class, the value the index of the Name And Type.</p>
          */
         INTERFACE_METHOD(11),
         /**
-         * Name and type info
-         * <p>
-         * <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the member name, the value the
-         * index of the descriptor.</p>
+         * Name and type info <p> <p>Value is a Pair&lt;Integer, Integer&gt;, where the key is the index of the member
+         * name, the value the index of the descriptor.</p>
          */
         NAME_AND_TYPE(12),
 

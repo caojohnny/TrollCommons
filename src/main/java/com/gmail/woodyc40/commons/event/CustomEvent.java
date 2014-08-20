@@ -19,12 +19,9 @@ package com.gmail.woodyc40.commons.event;
 import javax.annotation.concurrent.ThreadSafe;
 
 /**
- * The standard type used to represent an Event called in the framework
- * <p>
- * <p>All implementations of this class are expected to be thread safe by design.</p>
- * <p>
- * <p>All implementations of this class are also expected to have a {@link com.gmail.woodyc40.commons.event.Handler}
- * annotation</p>
+ * The standard type used to represent an Event called in the framework <p> <p>All implementations of this class are
+ * expected to be thread safe by design.</p> <p> <p>All implementations of this class are also expected to have a {@link
+ * com.gmail.woodyc40.commons.event.Handler} annotation</p>
  *
  * @author AgentTroll
  * @version 1.0

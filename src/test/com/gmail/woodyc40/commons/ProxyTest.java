@@ -39,7 +39,8 @@ Output:
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.ProxyTest.proxy
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 110648.653 ns/op
 # Warmup Iteration   2: 20679.375 ns/op
@@ -94,7 +95,8 @@ Result: 2956.215 ±(99.9%) 124.593 ns/op [Average]
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.ProxyTest.proxy0
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7535 -Didea.launcher.bin.path=/media/A4F1-7AB7/linux/IntelliJ IDEA/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 6807.585 ns/op
 # Warmup Iteration   2: 2292.427 ns/op
@@ -178,7 +180,6 @@ public class ProxyTest {
         METHOD, SETTER, GETTER
     }
 
-
     private interface ProxyProxy {
         @ProxyTest.TrapTag(type = ProxyTest.TrapTagType.GETTER, value = "lol") Map<Object, Object> getLolMap();
     }
@@ -186,6 +187,7 @@ public class ProxyTest {
     @Retention(RetentionPolicy.RUNTIME)
     public @interface TrapTag {
         ProxyTest.TrapTagType type() default ProxyTest.TrapTagType.METHOD;
+
         String value() default "";
     }
 
@@ -222,13 +224,18 @@ public class ProxyTest {
         }
 
         public static <T> T create(Class<T> classInterface, Class objectClass, Object... constructorParams) {
-            return ProxyTest.Trap.create(classInterface, objectClass, ProxyTest.Trap.extractClasses(constructorParams), constructorParams);
+            return ProxyTest.Trap.create(classInterface,
+                                         objectClass,
+                                         ProxyTest.Trap.extractClasses(constructorParams),
+                                         constructorParams);
         }
 
         public static <T> T create(Class<T> classInterface, Class objectClass, Class[] constructorClasses,
                                    Object... constructorParams) {
             return ProxyTest.Trap.create(classInterface,
-                               ProxyTest.Trap.createObject(objectClass, constructorClasses, constructorParams));
+                                         ProxyTest.Trap.createObject(objectClass,
+                                                                     constructorClasses,
+                                                                     constructorParams));
         }
 
         public static <T> T createObject(Class<T> objectClass) {
@@ -236,7 +243,9 @@ public class ProxyTest {
         }
 
         public static <T> T createObject(Class<T> objectClass, Object... constructorParams) {
-            return ProxyTest.Trap.createObject(objectClass, ProxyTest.Trap.extractClasses(constructorParams), constructorParams);
+            return ProxyTest.Trap.createObject(objectClass,
+                                               ProxyTest.Trap.extractClasses(constructorParams),
+                                               constructorParams);
         }
 
         public static <T> T createObject(Class<T> objectClass, Class[] constructorClasses,

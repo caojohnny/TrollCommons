@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.concurrent;
+package com.gmail.woodyc40.commons.concurrent.protect;
 
 import com.gmail.woodyc40.commons.misc.ParameterizedRunnable;
+import lombok.AllArgsConstructor;
 
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.locks.Lock;
@@ -31,20 +32,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * @version 1.0
  * @since 1.0
  */
+@AllArgsConstructor
 @ThreadSafe class ReentrantLockProtected<T> implements ProtectedField<T> {
     /** The lock used ot guard the field */
     private final Lock lock = new ReentrantLock();
     /** The value of the field */
     private T value;
-
-    /**
-     * Constructs a new {@link java.util.concurrent.locks.ReentrantLock} based field protector
-     *
-     * @param value the initial value of the field
-     */
-    public ReentrantLockProtected(T value) {
-        this.set(value);
-    }
 
     @Override public void access(ParameterizedRunnable<Void, T> runnable) {
         this.lock.lock();

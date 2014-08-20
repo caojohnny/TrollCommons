@@ -69,22 +69,18 @@ public final class JavaFork {
         long current = System.currentTimeMillis();
 
         while (true) {
-            try {
-                Thread.sleep(2L);
-                long elapsed = System.currentTimeMillis() - current;
-                if (elapsed >= 50L || msec >= 50L) {
-                    JavaFork.FROM_FORK.call(new SerializableRunnable<Void>() {
-                        private static final long serialVersionUID = 3355592265139036018L;
+            long elapsed = System.currentTimeMillis() - current;
+            if (elapsed >= 50L || msec >= 50L) {
+                JavaFork.FROM_FORK.call(new SerializableRunnable<Void>() {
+                    private static final long serialVersionUID = 3355592265139036018L;
 
-                        @Override public Void run() {
-                            ThreadPoolManager.beat();
-                            return null;
-                        }
-                    });
-                    msec = 0L;
-                } else msec = elapsed;
-            } catch (Exception x) {
-            }
+                    @Override public Void run() {
+                        ThreadPoolManager.beat();
+                        return null;
+                    }
+                });
+                msec = 0L;
+            } else msec = elapsed;
         }
     }
 

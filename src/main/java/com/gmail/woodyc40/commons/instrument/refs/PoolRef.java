@@ -23,7 +23,7 @@ import sun.reflect.ConstantPool;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * The reference to the entire constant pool itself
@@ -32,9 +32,9 @@ import java.util.Set;
  * @version 1.0
  * @since 1.0
  */
-public class PoolRef { // TODO
+public class PoolRef {
     /** The reference to the constant references */
-    private final Set<ConstantRef> refs = new HashStructSet<>();
+    private final Collection<ConstantRef> refs = new HashStructSet<>();
     /** The reference to the actual Constant Pool */
     private final ConstantPool constantPool;
     /** The holder of the constant pool */

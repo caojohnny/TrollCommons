@@ -1,3 +1,19 @@
+/*
+ * Copyright 2014 AgentTroll
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.collect.AbstractHashStruct;
@@ -10,7 +26,7 @@ import java.net.URLConnection;
 import java.util.*;
 
 /*
-A_TROLL implementation
+A_TROLL implementation:
 Retrieving word list
 Reading word list
 Finished reading word list
@@ -18,8 +34,8 @@ Word count: 7999
 Starting hash process
 Finished hashing
 Mapping...
-Collisions: 50.31878984873109%
-Average hash time: 7208ns
+Collisions: 49.8812351543943%
+Average hash time: 1612ns
 Done
 
 JAVA implementation:
@@ -31,7 +47,7 @@ Starting hash process
 Finished hashing
 Mapping...
 Collisions: 71.6589573696712%
-Average hash time: 9813ns
+Average hash time: 1528ns
 Done
 
 MURMUR implementation:
@@ -43,7 +59,7 @@ Starting hash process
 Finished hashing
 Mapping...
 Collisions: 49.36867108388549%
-Average hash time: 24499ns
+Average hash time: 3428ns
 Done
  */
 public class HashFunctionMapper {

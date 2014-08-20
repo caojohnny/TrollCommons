@@ -29,7 +29,7 @@ public final class BashMap {
 
     public static void main(String... args) {
         while (true) {
-            BashMap.hashStruct.put(new Object(), new Object());
+            BashMap.hashStruct.get(new Object());
         }
     }
 }

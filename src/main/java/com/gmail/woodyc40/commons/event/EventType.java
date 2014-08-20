@@ -23,9 +23,8 @@ import lombok.Getter;
 import javax.annotation.concurrent.ThreadSafe;
 
 /**
- * Enumeration representing all of the types of event that can be called
- * <p>
- * <p>This is needed to separate different events and make sure the types are the same</p>
+ * Enumeration representing all of the types of event that can be called <p> <p>This is needed to separate different
+ * events and make sure the types are the same</p>
  *
  * @author AgentTroll
  * @version 1.0

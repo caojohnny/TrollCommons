@@ -68,10 +68,8 @@ public final class ThreadPoolManager {
     }
 
     /**
-     * Submits a task for balancing on one of the thread pools
-     * <p>
-     * <p>The task MUST be designed asynchronously - there are no guarantees for thread safety, so synchronize,
-     * synchronize, synchronize!</p>
+     * Submits a task for balancing on one of the thread pools <p> <p>The task MUST be designed asynchronously - there
+     * are no guarantees for thread safety, so synchronize, synchronize, synchronize!</p>
      *
      * @param task the task to execute concurrently
      * @param <V>  the return type of the task

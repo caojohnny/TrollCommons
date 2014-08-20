@@ -50,7 +50,7 @@ public interface FieldLink {
     FieldLink.Getter getter();
 
     /**
-     * Acquires the mananger to push the value of the field to
+     * Acquires the manager to push the value of the field to
      *
      * @return the setter of the field
      */

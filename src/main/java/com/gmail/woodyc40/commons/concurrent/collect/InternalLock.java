@@ -14,34 +14,23 @@
  * limitations under the License.
  */
 
-package com.gmail.woodyc40.commons.instrument;
-
-import com.gmail.woodyc40.commons.instrument.refs.PoolRef;
+package com.gmail.woodyc40.commons.concurrent.collect;
 
 /**
- * Instrumentation access that forms the framework layer for instrumentation utilities
+ * Required locking components for the internal locking structure mechanism
  *
  * @author AgentTroll
  * @version 1.0
- * @since 1.0
+ * @since 1.1
  */
-public interface Instrument {
+interface InternalLock {
     /**
-     * Adds a constant pool iteration check transformer
-     *
-     * @param transformer the transformer to add
+     * Acquires the monitor represented by this lock structure
      */
-    void acceptTransformer(CpTransformer transformer);
+    void lock();
 
     /**
-     * Acquires the constant pool of the class being instrumented
-     *
-     * @return the class constant pool
+     * Releases the monitor represented by this lock structure
      */
-    PoolRef getConstantPool();
-
-    /**
-     * Finish transforming the class and reload it, saving the changes.
-     */
-    void finish();
+    void unlock();
 }

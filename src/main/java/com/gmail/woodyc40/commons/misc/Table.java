@@ -53,14 +53,13 @@ public class Table {
     /**
      * Appends a line to the table
      */
-    public void appendSeperator() {
+    public void appendSeparator() {
         this.rowEntries.add(new Line());
     }
 
     /**
-     * The titles of each column on the table
-     * <p>
-     * <p>Unlimited slots are available, in fact, the amount of columns are set by this method.</p>
+     * The titles of each column on the table <p> <p>Unlimited slots are available, in fact, the amount of columns are
+     * set by this method.</p>
      *
      * @param names the titles
      */
