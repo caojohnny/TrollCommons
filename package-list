@@ -1,6 +1,8 @@
 com.gmail.woodyc40.commons
 com.gmail.woodyc40.commons.collect
 com.gmail.woodyc40.commons.concurrent
+com.gmail.woodyc40.commons.concurrent.collect
+com.gmail.woodyc40.commons.concurrent.protect
 com.gmail.woodyc40.commons.event
 com.gmail.woodyc40.commons.instrument
 com.gmail.woodyc40.commons.instrument.experimental

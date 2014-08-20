@@ -76,34 +76,32 @@
 <span class="sourceLineNo">068</span>    }<a name="line.68"></a>
 <span class="sourceLineNo">069</span><a name="line.69"></a>
 <span class="sourceLineNo">070</span>    /**<a name="line.70"></a>
-<span class="sourceLineNo">071</span>     * Submits a task for balancing on one of the thread pools<a name="line.71"></a>
-<span class="sourceLineNo">072</span>     * &lt;p&gt;<a name="line.72"></a>
-<span class="sourceLineNo">073</span>     * &lt;p&gt;The task MUST be designed asynchronously - there are no guarantees for thread safety, so synchronize,<a name="line.73"></a>
-<span class="sourceLineNo">074</span>     * synchronize, synchronize!&lt;/p&gt;<a name="line.74"></a>
-<span class="sourceLineNo">075</span>     *<a name="line.75"></a>
-<span class="sourceLineNo">076</span>     * @param task the task to execute concurrently<a name="line.76"></a>
-<span class="sourceLineNo">077</span>     * @param &lt;V&gt;  the return type of the task<a name="line.77"></a>
-<span class="sourceLineNo">078</span>     */<a name="line.78"></a>
-<span class="sourceLineNo">079</span>    public static &lt;V&gt; void submit(Callable&lt;V&gt; task) {<a name="line.79"></a>
-<span class="sourceLineNo">080</span>        Distributor&lt;V&gt; dist = new Distributor&lt;&gt;(task)<a name="line.80"></a>
-<span class="sourceLineNo">081</span>                .addExecutor(ThreadPoolManager.LOAD)<a name="line.81"></a>
-<span class="sourceLineNo">082</span>                .addExecutor(ThreadPoolManager.LOAD0)<a name="line.82"></a>
-<span class="sourceLineNo">083</span>                .setBalancer(ThreadPoolManager.BALANCER)<a name="line.83"></a>
-<span class="sourceLineNo">084</span>                .setFallback(ThreadPoolManager.FALLBACK);<a name="line.84"></a>
-<span class="sourceLineNo">085</span><a name="line.85"></a>
-<span class="sourceLineNo">086</span>        ThreadPoolManager.BALANCER.submit(dist);<a name="line.86"></a>
-<span class="sourceLineNo">087</span>    }<a name="line.87"></a>
-<span class="sourceLineNo">088</span><a name="line.88"></a>
-<span class="sourceLineNo">089</span>    /**<a name="line.89"></a>
-<span class="sourceLineNo">090</span>     * Ends the thread manager<a name="line.90"></a>
-<span class="sourceLineNo">091</span>     */<a name="line.91"></a>
-<span class="sourceLineNo">092</span>    public static void shutdown() {<a name="line.92"></a>
-<span class="sourceLineNo">093</span>        ThreadPoolManager.LOAD.shutdownNow();<a name="line.93"></a>
-<span class="sourceLineNo">094</span>        ThreadPoolManager.LOAD0.shutdownNow();<a name="line.94"></a>
-<span class="sourceLineNo">095</span>        ThreadPoolManager.BALANCER.shutdownNow();<a name="line.95"></a>
-<span class="sourceLineNo">096</span>        ThreadPoolManager.FALLBACK.shutdownNow();<a name="line.96"></a>
-<span class="sourceLineNo">097</span>    }<a name="line.97"></a>
-<span class="sourceLineNo">098</span>}<a name="line.98"></a>
+<span class="sourceLineNo">071</span>     * Submits a task for balancing on one of the thread pools &lt;p&gt; &lt;p&gt;The task MUST be designed asynchronously - there<a name="line.71"></a>
+<span class="sourceLineNo">072</span>     * are no guarantees for thread safety, so synchronize, synchronize, synchronize!&lt;/p&gt;<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     *<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * @param task the task to execute concurrently<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * @param &lt;V&gt;  the return type of the task<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     */<a name="line.76"></a>
+<span class="sourceLineNo">077</span>    public static &lt;V&gt; void submit(Callable&lt;V&gt; task) {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>        Distributor&lt;V&gt; dist = new Distributor&lt;&gt;(task)<a name="line.78"></a>
+<span class="sourceLineNo">079</span>                .addExecutor(ThreadPoolManager.LOAD)<a name="line.79"></a>
+<span class="sourceLineNo">080</span>                .addExecutor(ThreadPoolManager.LOAD0)<a name="line.80"></a>
+<span class="sourceLineNo">081</span>                .setBalancer(ThreadPoolManager.BALANCER)<a name="line.81"></a>
+<span class="sourceLineNo">082</span>                .setFallback(ThreadPoolManager.FALLBACK);<a name="line.82"></a>
+<span class="sourceLineNo">083</span><a name="line.83"></a>
+<span class="sourceLineNo">084</span>        ThreadPoolManager.BALANCER.submit(dist);<a name="line.84"></a>
+<span class="sourceLineNo">085</span>    }<a name="line.85"></a>
+<span class="sourceLineNo">086</span><a name="line.86"></a>
+<span class="sourceLineNo">087</span>    /**<a name="line.87"></a>
+<span class="sourceLineNo">088</span>     * Ends the thread manager<a name="line.88"></a>
+<span class="sourceLineNo">089</span>     */<a name="line.89"></a>
+<span class="sourceLineNo">090</span>    public static void shutdown() {<a name="line.90"></a>
+<span class="sourceLineNo">091</span>        ThreadPoolManager.LOAD.shutdownNow();<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        ThreadPoolManager.LOAD0.shutdownNow();<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        ThreadPoolManager.BALANCER.shutdownNow();<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        ThreadPoolManager.FALLBACK.shutdownNow();<a name="line.94"></a>
+<span class="sourceLineNo">095</span>    }<a name="line.95"></a>
+<span class="sourceLineNo">096</span>}<a name="line.96"></a>
 
 
 

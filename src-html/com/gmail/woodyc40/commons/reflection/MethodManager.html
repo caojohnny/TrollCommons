@@ -27,35 +27,32 @@
 <span class="sourceLineNo">019</span>import java.lang.reflect.Method;<a name="line.19"></a>
 <span class="sourceLineNo">020</span><a name="line.20"></a>
 <span class="sourceLineNo">021</span>/**<a name="line.21"></a>
-<span class="sourceLineNo">022</span> * {@code Interface} for weak access to method invocation methods<a name="line.22"></a>
-<span class="sourceLineNo">023</span> * &lt;p&gt;<a name="line.23"></a>
-<span class="sourceLineNo">024</span> * &lt;p&gt;Used to method and {@code return} the result the method represented by this {@code class}&lt;/p&gt;<a name="line.24"></a>
-<span class="sourceLineNo">025</span> * &lt;p&gt;<a name="line.25"></a>
-<span class="sourceLineNo">026</span> * &lt;p&gt;Should be faster than conventional Reflection API&lt;/p&gt;<a name="line.26"></a>
-<span class="sourceLineNo">027</span> *<a name="line.27"></a>
-<span class="sourceLineNo">028</span> * @param &lt;Declaring&gt; the {@code class} type declaring the method<a name="line.28"></a>
-<span class="sourceLineNo">029</span> * @param &lt;T&gt;         the type the method returns<a name="line.29"></a>
-<span class="sourceLineNo">030</span> * @author AgentTroll<a name="line.30"></a>
-<span class="sourceLineNo">031</span> * @version 1.0<a name="line.31"></a>
-<span class="sourceLineNo">032</span> * @since 1.0<a name="line.32"></a>
-<span class="sourceLineNo">033</span> */<a name="line.33"></a>
-<span class="sourceLineNo">034</span>public interface MethodManager&lt;Declaring, T&gt; {<a name="line.34"></a>
-<span class="sourceLineNo">035</span>    /**<a name="line.35"></a>
-<span class="sourceLineNo">036</span>     * Calls the method<a name="line.36"></a>
-<span class="sourceLineNo">037</span>     *<a name="line.37"></a>
-<span class="sourceLineNo">038</span>     * @param inst instance of the {@code class} containing the method, {@code null} for {@code static}s<a name="line.38"></a>
-<span class="sourceLineNo">039</span>     * @param args arguments the pass to the method invocation<a name="line.39"></a>
-<span class="sourceLineNo">040</span>     * @return the result of the method call<a name="line.40"></a>
-<span class="sourceLineNo">041</span>     */<a name="line.41"></a>
-<span class="sourceLineNo">042</span>    T invoke(Declaring inst, Object... args);<a name="line.42"></a>
-<span class="sourceLineNo">043</span><a name="line.43"></a>
-<span class="sourceLineNo">044</span>    /**<a name="line.44"></a>
-<span class="sourceLineNo">045</span>     * The wrapped method contained by this {@code class}<a name="line.45"></a>
-<span class="sourceLineNo">046</span>     *<a name="line.46"></a>
-<span class="sourceLineNo">047</span>     * @return the method that this {@code class} represents<a name="line.47"></a>
-<span class="sourceLineNo">048</span>     */<a name="line.48"></a>
-<span class="sourceLineNo">049</span>    Method raw();<a name="line.49"></a>
-<span class="sourceLineNo">050</span>}<a name="line.50"></a>
+<span class="sourceLineNo">022</span> * {@code Interface} for weak access to method invocation methods &lt;p&gt; &lt;p&gt;Used to method and {@code return} the result<a name="line.22"></a>
+<span class="sourceLineNo">023</span> * the method represented by this {@code class}&lt;/p&gt; &lt;p&gt; &lt;p&gt;Should be faster than conventional Reflection API&lt;/p&gt;<a name="line.23"></a>
+<span class="sourceLineNo">024</span> *<a name="line.24"></a>
+<span class="sourceLineNo">025</span> * @param &lt;Declaring&gt; the {@code class} type declaring the method<a name="line.25"></a>
+<span class="sourceLineNo">026</span> * @param &lt;T&gt;         the type the method returns<a name="line.26"></a>
+<span class="sourceLineNo">027</span> * @author AgentTroll<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * @version 1.0<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * @since 1.0<a name="line.29"></a>
+<span class="sourceLineNo">030</span> */<a name="line.30"></a>
+<span class="sourceLineNo">031</span>public interface MethodManager&lt;Declaring, T&gt; {<a name="line.31"></a>
+<span class="sourceLineNo">032</span>    /**<a name="line.32"></a>
+<span class="sourceLineNo">033</span>     * Calls the method<a name="line.33"></a>
+<span class="sourceLineNo">034</span>     *<a name="line.34"></a>
+<span class="sourceLineNo">035</span>     * @param inst instance of the {@code class} containing the method, {@code null} for {@code static}s<a name="line.35"></a>
+<span class="sourceLineNo">036</span>     * @param args arguments the pass to the method invocation<a name="line.36"></a>
+<span class="sourceLineNo">037</span>     * @return the result of the method call<a name="line.37"></a>
+<span class="sourceLineNo">038</span>     */<a name="line.38"></a>
+<span class="sourceLineNo">039</span>    T invoke(Declaring inst, Object... args);<a name="line.39"></a>
+<span class="sourceLineNo">040</span><a name="line.40"></a>
+<span class="sourceLineNo">041</span>    /**<a name="line.41"></a>
+<span class="sourceLineNo">042</span>     * The wrapped method contained by this {@code class}<a name="line.42"></a>
+<span class="sourceLineNo">043</span>     *<a name="line.43"></a>
+<span class="sourceLineNo">044</span>     * @return the method that this {@code class} represents<a name="line.44"></a>
+<span class="sourceLineNo">045</span>     */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>    Method raw();<a name="line.46"></a>
+<span class="sourceLineNo">047</span>}<a name="line.47"></a>
 
 
 

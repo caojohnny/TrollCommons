@@ -57,90 +57,76 @@
 <span class="sourceLineNo">049</span>        this.index = index;<a name="line.49"></a>
 <span class="sourceLineNo">050</span>    }<a name="line.50"></a>
 <span class="sourceLineNo">051</span><a name="line.51"></a>
-<span class="sourceLineNo">052</span>    // TODO verifier<a name="line.52"></a>
-<span class="sourceLineNo">053</span><a name="line.53"></a>
-<span class="sourceLineNo">054</span>    /**<a name="line.54"></a>
-<span class="sourceLineNo">055</span>     * The type of constant this reference represents<a name="line.55"></a>
-<span class="sourceLineNo">056</span>     *<a name="line.56"></a>
-<span class="sourceLineNo">057</span>     * @author AgentTroll<a name="line.57"></a>
-<span class="sourceLineNo">058</span>     * @version 1.0<a name="line.58"></a>
-<span class="sourceLineNo">059</span>     */<a name="line.59"></a>
-<span class="sourceLineNo">060</span>    public enum Type {<a name="line.60"></a>
-<span class="sourceLineNo">061</span>        /** Padding info after long and double */<a name="line.61"></a>
-<span class="sourceLineNo">062</span>        PADDING(0),<a name="line.62"></a>
-<span class="sourceLineNo">063</span>        /** String type in UTF8 */<a name="line.63"></a>
-<span class="sourceLineNo">064</span>        UTF8(1),<a name="line.64"></a>
-<span class="sourceLineNo">065</span><a name="line.65"></a>
-<span class="sourceLineNo">066</span>        /** Integer type */<a name="line.66"></a>
-<span class="sourceLineNo">067</span>        INTEGER(3),<a name="line.67"></a>
-<span class="sourceLineNo">068</span><a name="line.68"></a>
-<span class="sourceLineNo">069</span>        /** Float type */<a name="line.69"></a>
-<span class="sourceLineNo">070</span>        FLOAT(4),<a name="line.70"></a>
-<span class="sourceLineNo">071</span><a name="line.71"></a>
-<span class="sourceLineNo">072</span>        /** Long type */<a name="line.72"></a>
-<span class="sourceLineNo">073</span>        LONG(5),<a name="line.73"></a>
-<span class="sourceLineNo">074</span><a name="line.74"></a>
-<span class="sourceLineNo">075</span>        /** Double type */<a name="line.75"></a>
-<span class="sourceLineNo">076</span>        DOUBLE(6),<a name="line.76"></a>
-<span class="sourceLineNo">077</span>        /**<a name="line.77"></a>
-<span class="sourceLineNo">078</span>         * Class type<a name="line.78"></a>
-<span class="sourceLineNo">079</span>         * &lt;p&gt;<a name="line.79"></a>
-<span class="sourceLineNo">080</span>         * &lt;p&gt;value is the index of the class name, in short&lt;/p&gt;<a name="line.80"></a>
+<span class="sourceLineNo">052</span>    /**<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     * The type of constant this reference represents<a name="line.53"></a>
+<span class="sourceLineNo">054</span>     *<a name="line.54"></a>
+<span class="sourceLineNo">055</span>     * @author AgentTroll<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * @version 1.0<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     */<a name="line.57"></a>
+<span class="sourceLineNo">058</span>    public enum Type {<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        /** Padding info after long and double */<a name="line.59"></a>
+<span class="sourceLineNo">060</span>        PADDING(0),<a name="line.60"></a>
+<span class="sourceLineNo">061</span>        /** String type in UTF8 */<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        UTF8(1),<a name="line.62"></a>
+<span class="sourceLineNo">063</span><a name="line.63"></a>
+<span class="sourceLineNo">064</span>        /** Integer type */<a name="line.64"></a>
+<span class="sourceLineNo">065</span>        INTEGER(3),<a name="line.65"></a>
+<span class="sourceLineNo">066</span><a name="line.66"></a>
+<span class="sourceLineNo">067</span>        /** Float type */<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        FLOAT(4),<a name="line.68"></a>
+<span class="sourceLineNo">069</span><a name="line.69"></a>
+<span class="sourceLineNo">070</span>        /** Long type */<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        LONG(5),<a name="line.71"></a>
+<span class="sourceLineNo">072</span><a name="line.72"></a>
+<span class="sourceLineNo">073</span>        /** Double type */<a name="line.73"></a>
+<span class="sourceLineNo">074</span>        DOUBLE(6),<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        /**<a name="line.75"></a>
+<span class="sourceLineNo">076</span>         * Class type &lt;p&gt; &lt;p&gt;value is the index of the class name, in short&lt;/p&gt;<a name="line.76"></a>
+<span class="sourceLineNo">077</span>         */<a name="line.77"></a>
+<span class="sourceLineNo">078</span>        CLASS(7),<a name="line.78"></a>
+<span class="sourceLineNo">079</span>        /**<a name="line.79"></a>
+<span class="sourceLineNo">080</span>         * String type &lt;p&gt; &lt;p&gt;value is the index of the string, in short&lt;/p&gt;<a name="line.80"></a>
 <span class="sourceLineNo">081</span>         */<a name="line.81"></a>
-<span class="sourceLineNo">082</span>        CLASS(7),<a name="line.82"></a>
+<span class="sourceLineNo">082</span>        STRING(8),<a name="line.82"></a>
 <span class="sourceLineNo">083</span>        /**<a name="line.83"></a>
-<span class="sourceLineNo">084</span>         * String type<a name="line.84"></a>
-<span class="sourceLineNo">085</span>         * &lt;p&gt;<a name="line.85"></a>
-<span class="sourceLineNo">086</span>         * &lt;p&gt;value is the index of the string, in short&lt;/p&gt;<a name="line.86"></a>
-<span class="sourceLineNo">087</span>         */<a name="line.87"></a>
-<span class="sourceLineNo">088</span>        STRING(8),<a name="line.88"></a>
-<span class="sourceLineNo">089</span>        /**<a name="line.89"></a>
-<span class="sourceLineNo">090</span>         * Fieldref type<a name="line.90"></a>
-<span class="sourceLineNo">091</span>         * &lt;p&gt;<a name="line.91"></a>
-<span class="sourceLineNo">092</span>         * &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the class, the value the index of<a name="line.92"></a>
-<span class="sourceLineNo">093</span>         * the Name And Type.&lt;/p&gt;<a name="line.93"></a>
-<span class="sourceLineNo">094</span>         */<a name="line.94"></a>
-<span class="sourceLineNo">095</span>        FIELD(9),<a name="line.95"></a>
-<span class="sourceLineNo">096</span>        /**<a name="line.96"></a>
-<span class="sourceLineNo">097</span>         * Methodref type<a name="line.97"></a>
-<span class="sourceLineNo">098</span>         * &lt;p&gt;<a name="line.98"></a>
-<span class="sourceLineNo">099</span>         * &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the class, the value the index of<a name="line.99"></a>
-<span class="sourceLineNo">100</span>         * the Name And Type.&lt;/p&gt;<a name="line.100"></a>
+<span class="sourceLineNo">084</span>         * Fieldref type &lt;p&gt; &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the class, the<a name="line.84"></a>
+<span class="sourceLineNo">085</span>         * value the index of the Name And Type.&lt;/p&gt;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>         */<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        FIELD(9),<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        /**<a name="line.88"></a>
+<span class="sourceLineNo">089</span>         * Methodref type &lt;p&gt; &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the class, the<a name="line.89"></a>
+<span class="sourceLineNo">090</span>         * value the index of the Name And Type.&lt;/p&gt;<a name="line.90"></a>
+<span class="sourceLineNo">091</span>         */<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        METHOD(10),<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        /**<a name="line.93"></a>
+<span class="sourceLineNo">094</span>         * Interface Methodref type &lt;p&gt; &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the<a name="line.94"></a>
+<span class="sourceLineNo">095</span>         * class, the value the index of the Name And Type.&lt;/p&gt;<a name="line.95"></a>
+<span class="sourceLineNo">096</span>         */<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        INTERFACE_METHOD(11),<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        /**<a name="line.98"></a>
+<span class="sourceLineNo">099</span>         * Name and type info &lt;p&gt; &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the member<a name="line.99"></a>
+<span class="sourceLineNo">100</span>         * name, the value the index of the descriptor.&lt;/p&gt;<a name="line.100"></a>
 <span class="sourceLineNo">101</span>         */<a name="line.101"></a>
-<span class="sourceLineNo">102</span>        METHOD(10),<a name="line.102"></a>
-<span class="sourceLineNo">103</span>        /**<a name="line.103"></a>
-<span class="sourceLineNo">104</span>         * Interface Methodref type<a name="line.104"></a>
-<span class="sourceLineNo">105</span>         * &lt;p&gt;<a name="line.105"></a>
-<span class="sourceLineNo">106</span>         * &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the class, the value the index of<a name="line.106"></a>
-<span class="sourceLineNo">107</span>         * the Name And Type.&lt;/p&gt;<a name="line.107"></a>
-<span class="sourceLineNo">108</span>         */<a name="line.108"></a>
-<span class="sourceLineNo">109</span>        INTERFACE_METHOD(11),<a name="line.109"></a>
-<span class="sourceLineNo">110</span>        /**<a name="line.110"></a>
-<span class="sourceLineNo">111</span>         * Name and type info<a name="line.111"></a>
-<span class="sourceLineNo">112</span>         * &lt;p&gt;<a name="line.112"></a>
-<span class="sourceLineNo">113</span>         * &lt;p&gt;Value is a Pair&amp;lt;Integer, Integer&amp;gt;, where the key is the index of the member name, the value the<a name="line.113"></a>
-<span class="sourceLineNo">114</span>         * index of the descriptor.&lt;/p&gt;<a name="line.114"></a>
-<span class="sourceLineNo">115</span>         */<a name="line.115"></a>
-<span class="sourceLineNo">116</span>        NAME_AND_TYPE(12),<a name="line.116"></a>
-<span class="sourceLineNo">117</span><a name="line.117"></a>
-<span class="sourceLineNo">118</span>        /**<a name="line.118"></a>
-<span class="sourceLineNo">119</span>         * Member reference information. Cannot be used.<a name="line.119"></a>
-<span class="sourceLineNo">120</span>         */<a name="line.120"></a>
-<span class="sourceLineNo">121</span>        MEMBER_REF(-1);<a name="line.121"></a>
-<span class="sourceLineNo">122</span><a name="line.122"></a>
-<span class="sourceLineNo">123</span>        /** The bytecode ID number for the tag */<a name="line.123"></a>
-<span class="sourceLineNo">124</span>        @Getter int tag;<a name="line.124"></a>
-<span class="sourceLineNo">125</span><a name="line.125"></a>
-<span class="sourceLineNo">126</span>        /**<a name="line.126"></a>
-<span class="sourceLineNo">127</span>         * A new bytecode structure with the tag ID<a name="line.127"></a>
-<span class="sourceLineNo">128</span>         *<a name="line.128"></a>
-<span class="sourceLineNo">129</span>         * @param tag the ID number of the structure<a name="line.129"></a>
-<span class="sourceLineNo">130</span>         */<a name="line.130"></a>
-<span class="sourceLineNo">131</span>        Type(int tag) {<a name="line.131"></a>
-<span class="sourceLineNo">132</span>            this.tag = tag;<a name="line.132"></a>
-<span class="sourceLineNo">133</span>        }<a name="line.133"></a>
-<span class="sourceLineNo">134</span>    }<a name="line.134"></a>
-<span class="sourceLineNo">135</span>}<a name="line.135"></a>
+<span class="sourceLineNo">102</span>        NAME_AND_TYPE(12),<a name="line.102"></a>
+<span class="sourceLineNo">103</span><a name="line.103"></a>
+<span class="sourceLineNo">104</span>        /**<a name="line.104"></a>
+<span class="sourceLineNo">105</span>         * Member reference information. Cannot be used.<a name="line.105"></a>
+<span class="sourceLineNo">106</span>         */<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        MEMBER_REF(-1);<a name="line.107"></a>
+<span class="sourceLineNo">108</span><a name="line.108"></a>
+<span class="sourceLineNo">109</span>        /** The bytecode ID number for the tag */<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        @Getter int tag;<a name="line.110"></a>
+<span class="sourceLineNo">111</span><a name="line.111"></a>
+<span class="sourceLineNo">112</span>        /**<a name="line.112"></a>
+<span class="sourceLineNo">113</span>         * A new bytecode structure with the tag ID<a name="line.113"></a>
+<span class="sourceLineNo">114</span>         *<a name="line.114"></a>
+<span class="sourceLineNo">115</span>         * @param tag the ID number of the structure<a name="line.115"></a>
+<span class="sourceLineNo">116</span>         */<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        Type(int tag) {<a name="line.117"></a>
+<span class="sourceLineNo">118</span>            this.tag = tag;<a name="line.118"></a>
+<span class="sourceLineNo">119</span>        }<a name="line.119"></a>
+<span class="sourceLineNo">120</span>    }<a name="line.120"></a>
+<span class="sourceLineNo">121</span>}<a name="line.121"></a>
 
 
 

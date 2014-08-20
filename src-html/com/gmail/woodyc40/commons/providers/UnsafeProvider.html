@@ -32,291 +32,267 @@
 <span class="sourceLineNo">024</span>import java.util.Map;<a name="line.24"></a>
 <span class="sourceLineNo">025</span><a name="line.25"></a>
 <span class="sourceLineNo">026</span>/**<a name="line.26"></a>
-<span class="sourceLineNo">027</span> * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely.<a name="line.27"></a>
-<span class="sourceLineNo">028</span> * &lt;p&gt;<a name="line.28"></a>
-<span class="sourceLineNo">029</span> * &lt;p&gt;Note that the starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by<a name="line.29"></a>
-<span class="sourceLineNo">030</span> * access restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This<a name="line.30"></a>
-<span class="sourceLineNo">031</span> * is a HotSpot directed program.&lt;/p&gt;<a name="line.31"></a>
-<span class="sourceLineNo">032</span> * &lt;p&gt;<a name="line.32"></a>
-<span class="sourceLineNo">033</span> * &lt;p&gt;This class is not thread safe&lt;/p&gt;<a name="line.33"></a>
-<span class="sourceLineNo">034</span> *<a name="line.34"></a>
-<span class="sourceLineNo">035</span> * @author AgentTroll<a name="line.35"></a>
-<span class="sourceLineNo">036</span> * @version 1.0<a name="line.36"></a>
-<span class="sourceLineNo">037</span> * @see #getProvider()<a name="line.37"></a>
-<span class="sourceLineNo">038</span> * @see Unsafe#getUnsafe()<a name="line.38"></a>
-<span class="sourceLineNo">039</span> * @since 1.0<a name="line.39"></a>
-<span class="sourceLineNo">040</span> */<a name="line.40"></a>
-<span class="sourceLineNo">041</span>public final class UnsafeProvider {<a name="line.41"></a>
-<span class="sourceLineNo">042</span>    /** The Unsafe instance. */<a name="line.42"></a>
-<span class="sourceLineNo">043</span>    private static final         Unsafe           PROVIDER = UnsafeProvider.initUnsafe();<a name="line.43"></a>
-<span class="sourceLineNo">044</span>    /** Cached field offsets */<a name="line.44"></a>
-<span class="sourceLineNo">045</span>    @Getter private static final Map&lt;Field, Long&gt; offsets  = new HashMap&lt;&gt;();<a name="line.45"></a>
-<span class="sourceLineNo">046</span><a name="line.46"></a>
-<span class="sourceLineNo">047</span>    /**<a name="line.47"></a>
-<span class="sourceLineNo">048</span>     * Should not be instantiated, hence the private constructor.<a name="line.48"></a>
-<span class="sourceLineNo">049</span>     */<a name="line.49"></a>
-<span class="sourceLineNo">050</span>    private UnsafeProvider() {}<a name="line.50"></a>
-<span class="sourceLineNo">051</span><a name="line.51"></a>
-<span class="sourceLineNo">052</span>    /**<a name="line.52"></a>
-<span class="sourceLineNo">053</span>     * Used to acquire the instance of {@link Unsafe}.<a name="line.53"></a>
-<span class="sourceLineNo">054</span>     * &lt;p&gt;<a name="line.54"></a>
-<span class="sourceLineNo">055</span>     * &lt;p&gt;This is more of a "hack" than a direct method, as it uses reflection in order to obtain the stored instance of<a name="line.55"></a>
-<span class="sourceLineNo">056</span>     * the Unsafe singleton. Unsafe cannot be accessed through its singleton {@link Unsafe#getUnsafe()} method, as it<a name="line.56"></a>
-<span class="sourceLineNo">057</span>     * checks the calling {@code class} to make sure that the {@link ClassLoader} is {@code null}. Java {@code class}es<a name="line.57"></a>
-<span class="sourceLineNo">058</span>     * don't use a {@link ClassLoader}, hence the reason why they can call {@link Unsafe#getUnsafe()} without {@link<a name="line.58"></a>
-<span class="sourceLineNo">059</span>     * SecurityException}.&lt;/p&gt;<a name="line.59"></a>
-<span class="sourceLineNo">060</span>     * &lt;p&gt;<a name="line.60"></a>
-<span class="sourceLineNo">061</span>     * &lt;p&gt;Being a "hack", this method will never be guaranteed to actually get an instance of Unsafe, the field that<a name="line.61"></a>
-<span class="sourceLineNo">062</span>     * stores the instance of Unsafe &lt;strong&gt;is named differently on different implementations of the JVM&lt;/strong&gt;. This<a name="line.62"></a>
-<span class="sourceLineNo">063</span>     * specific method is designed to get Unsafe from the Java HotSpot JVM.&lt;/p&gt;<a name="line.63"></a>
-<span class="sourceLineNo">064</span>     *<a name="line.64"></a>
-<span class="sourceLineNo">065</span>     * @return the Unsafe instance acquired from the HotSpot JVM Unsafe {@code class}<a name="line.65"></a>
-<span class="sourceLineNo">066</span>     */<a name="line.66"></a>
-<span class="sourceLineNo">067</span>    private static Unsafe initUnsafe() {<a name="line.67"></a>
-<span class="sourceLineNo">068</span>        try {<a name="line.68"></a>
-<span class="sourceLineNo">069</span>            Field field = Unsafe.class.getDeclaredField("theUnsafe");<a name="line.69"></a>
-<span class="sourceLineNo">070</span>            field.setAccessible(true);<a name="line.70"></a>
-<span class="sourceLineNo">071</span>            return (Unsafe) field.get(null);<a name="line.71"></a>
-<span class="sourceLineNo">072</span>        } catch (NoSuchFieldException | IllegalAccessException x) {<a name="line.72"></a>
-<span class="sourceLineNo">073</span>            x.printStackTrace();<a name="line.73"></a>
-<span class="sourceLineNo">074</span>        }<a name="line.74"></a>
-<span class="sourceLineNo">075</span>        return null;<a name="line.75"></a>
-<span class="sourceLineNo">076</span>    }<a name="line.76"></a>
-<span class="sourceLineNo">077</span><a name="line.77"></a>
-<span class="sourceLineNo">078</span>    /**<a name="line.78"></a>
-<span class="sourceLineNo">079</span>     * Acquires the raw instance Unsafe "hacked" from the source.<a name="line.79"></a>
-<span class="sourceLineNo">080</span>     * &lt;p&gt;<a name="line.80"></a>
-<span class="sourceLineNo">081</span>     * &lt;p&gt;If an exception was thrown when this class was loaded, this method will most likely {@code return null}. JVM<a name="line.81"></a>
-<span class="sourceLineNo">082</span>     * implementations may modify the field in which the instance of Unsafe is stored, throwing an exception when normal<a name="line.82"></a>
-<span class="sourceLineNo">083</span>     * acquisition methods are applied.&lt;/p&gt; &lt;p&gt; &lt;p&gt;This is guaranteed to &lt;strong&gt;not&lt;/strong&gt; {@code return null} on the<a name="line.83"></a>
-<span class="sourceLineNo">084</span>     * HotSpot JVM&lt;/p&gt;<a name="line.84"></a>
-<span class="sourceLineNo">085</span>     *<a name="line.85"></a>
-<span class="sourceLineNo">086</span>     * @return the Unsafe instance received when this {@code class} was loaded.<a name="line.86"></a>
-<span class="sourceLineNo">087</span>     * @throws IllegalStateException if the Unsafe instance was not acquired already during load<a name="line.87"></a>
-<span class="sourceLineNo">088</span>     */<a name="line.88"></a>
-<span class="sourceLineNo">089</span>    public static Unsafe getProvider() {<a name="line.89"></a>
-<span class="sourceLineNo">090</span>        if (UnsafeProvider.PROVIDER == null)<a name="line.90"></a>
-<span class="sourceLineNo">091</span>            throw new IllegalStateException("Cannot be used, Unsafe is null");<a name="line.91"></a>
-<span class="sourceLineNo">092</span><a name="line.92"></a>
-<span class="sourceLineNo">093</span>        return UnsafeProvider.PROVIDER;<a name="line.93"></a>
-<span class="sourceLineNo">094</span>    }<a name="line.94"></a>
-<span class="sourceLineNo">095</span><a name="line.95"></a>
-<span class="sourceLineNo">096</span>    // Reflection area<a name="line.96"></a>
-<span class="sourceLineNo">097</span><a name="line.97"></a>
-<span class="sourceLineNo">098</span>    /**<a name="line.98"></a>
-<span class="sourceLineNo">099</span>     * Util method to get whether or not a field is {@code static}.<a name="line.99"></a>
-<span class="sourceLineNo">100</span>     *<a name="line.100"></a>
-<span class="sourceLineNo">101</span>     * @param field the field to check for a {@code static} modifier<a name="line.101"></a>
-<span class="sourceLineNo">102</span>     * @return {@code true} to indicate that a field is {@code static}, {@code false} if the field does not have a<a name="line.102"></a>
-<span class="sourceLineNo">103</span>     * {@code static} modifier<a name="line.103"></a>
-<span class="sourceLineNo">104</span>     */<a name="line.104"></a>
-<span class="sourceLineNo">105</span>    private static boolean fieldStatic(Member field) {<a name="line.105"></a>
-<span class="sourceLineNo">106</span>        return Modifier.isStatic(field.getModifiers());<a name="line.106"></a>
-<span class="sourceLineNo">107</span>    }<a name="line.107"></a>
-<span class="sourceLineNo">108</span><a name="line.108"></a>
-<span class="sourceLineNo">109</span>    /**<a name="line.109"></a>
-<span class="sourceLineNo">110</span>     * Provides field offset calculations of a field in order to find its location in a {@code class}.<a name="line.110"></a>
-<span class="sourceLineNo">111</span>     * &lt;p&gt;<a name="line.111"></a>
-<span class="sourceLineNo">112</span>     * &lt;p&gt;The field parameter should never be {@code null}. An exception will be thrown if it is.&lt;/p&gt;<a name="line.112"></a>
-<span class="sourceLineNo">113</span>     *<a name="line.113"></a>
-<span class="sourceLineNo">114</span>     * @param field the field to {@code return} the offset of<a name="line.114"></a>
-<span class="sourceLineNo">115</span>     * @return the relative {@code class} location offset of the field<a name="line.115"></a>
-<span class="sourceLineNo">116</span>     */<a name="line.116"></a>
-<span class="sourceLineNo">117</span>    public static long fieldOffset0(Field field) {<a name="line.117"></a>
-<span class="sourceLineNo">118</span>        if (UnsafeProvider.fieldStatic(field))<a name="line.118"></a>
-<span class="sourceLineNo">119</span>            return UnsafeProvider.PROVIDER.staticFieldOffset(field);<a name="line.119"></a>
-<span class="sourceLineNo">120</span>        return UnsafeProvider.PROVIDER.objectFieldOffset(field);<a name="line.120"></a>
-<span class="sourceLineNo">121</span>    }<a name="line.121"></a>
-<span class="sourceLineNo">122</span><a name="line.122"></a>
-<span class="sourceLineNo">123</span>    /**<a name="line.123"></a>
-<span class="sourceLineNo">124</span>     * Obtains the cached offset for the given field. This is almost 4 times faster than calculating each time at the<a name="line.124"></a>
-<span class="sourceLineNo">125</span>     * cost of memory and thread safety.<a name="line.125"></a>
-<span class="sourceLineNo">126</span>     *<a name="line.126"></a>
-<span class="sourceLineNo">127</span>     * @param field the field to {@code return} the offset of<a name="line.127"></a>
-<span class="sourceLineNo">128</span>     * @return the field offset<a name="line.128"></a>
-<span class="sourceLineNo">129</span>     */<a name="line.129"></a>
-<span class="sourceLineNo">130</span>    public static long fieldOffset(Field field) { // TODO concurrency<a name="line.130"></a>
-<span class="sourceLineNo">131</span>        Long offset = UnsafeProvider.offsets.get(field);<a name="line.131"></a>
-<span class="sourceLineNo">132</span>        if (offset == null) {<a name="line.132"></a>
-<span class="sourceLineNo">133</span>            offset = UnsafeProvider.fieldOffset0(field);<a name="line.133"></a>
-<span class="sourceLineNo">134</span>            UnsafeProvider.offsets.put(field, offset);<a name="line.134"></a>
-<span class="sourceLineNo">135</span>        }<a name="line.135"></a>
-<span class="sourceLineNo">136</span><a name="line.136"></a>
-<span class="sourceLineNo">137</span>        return offset;<a name="line.137"></a>
-<span class="sourceLineNo">138</span>    }<a name="line.138"></a>
-<span class="sourceLineNo">139</span><a name="line.139"></a>
-<span class="sourceLineNo">140</span>    /**<a name="line.140"></a>
-<span class="sourceLineNo">141</span>     * Acquires the raw field value of the specified field of a {@code class}.<a name="line.141"></a>
-<span class="sourceLineNo">142</span>     * &lt;p&gt;<a name="line.142"></a>
-<span class="sourceLineNo">143</span>     * &lt;p&gt;It may {@code return null}. This can happen under the following circumstances: &lt;ul&gt; &lt;li&gt;If the field value is<a name="line.143"></a>
-<span class="sourceLineNo">144</span>     * {@code null} for the particular instance (More common).&lt;/li&gt; &lt;li&gt;If one of the parameters required to be<a name="line.144"></a>
-<span class="sourceLineNo">145</span>     * non-{@code null} is {@code null}&lt;/li&gt; &lt;li&gt;Or if the field is not found or not able to be accessed. Check method<a name="line.145"></a>
-<span class="sourceLineNo">146</span>     * call, spelling, and class source. Indicated by a thrown exception.&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt;<a name="line.146"></a>
-<span class="sourceLineNo">147</span>     * &lt;p&gt;<a name="line.147"></a>
-<span class="sourceLineNo">148</span>     * &lt;p&gt;The holder parameter may be null for static fields. In fact, it is set null for this purpose in the method<a name="line.148"></a>
-<span class="sourceLineNo">149</span>     * itself, so it will not matter nevertheless.&lt;/p&gt;<a name="line.149"></a>
-<span class="sourceLineNo">150</span>     *<a name="line.150"></a>
-<span class="sourceLineNo">151</span>     * @param holder the instance of the object to acquire the value from.<a name="line.151"></a>
-<span class="sourceLineNo">152</span>     * @return the value of the acquired field from the instance of the holder parameter<a name="line.152"></a>
-<span class="sourceLineNo">153</span>     * @throws IllegalArgumentException if a nullable parameter is {@code null}<a name="line.153"></a>
-<span class="sourceLineNo">154</span>     */<a name="line.154"></a>
-<span class="sourceLineNo">155</span>    public static Object acquireField(Field field, Object holder) {<a name="line.155"></a>
-<span class="sourceLineNo">156</span>        long offset = UnsafeProvider.fieldOffset(field);<a name="line.156"></a>
-<span class="sourceLineNo">157</span>        if (UnsafeProvider.fieldStatic(field))<a name="line.157"></a>
-<span class="sourceLineNo">158</span>            return UnsafeProvider.PROVIDER.getObject(field.getDeclaringClass(), offset);<a name="line.158"></a>
-<span class="sourceLineNo">159</span><a name="line.159"></a>
-<span class="sourceLineNo">160</span>        return UnsafeProvider.PROVIDER.getObject(holder, offset);<a name="line.160"></a>
-<span class="sourceLineNo">161</span>    }<a name="line.161"></a>
+<span class="sourceLineNo">027</span> * This provides a wrapper for {@link Unsafe}, which allows for low-level Java operations unsafely. &lt;p&gt; &lt;p&gt;Note that the<a name="line.27"></a>
+<span class="sourceLineNo">028</span> * starting method used to acquire the instance of Unsafe may throw two reflective exceptions caused by access<a name="line.28"></a>
+<span class="sourceLineNo">029</span> * restrictions to the instance field of Unsafe. The deeper cause of that may be the JVM used to run this. This is a<a name="line.29"></a>
+<span class="sourceLineNo">030</span> * HotSpot directed program.&lt;/p&gt; &lt;p&gt; &lt;p&gt;This class is not thread safe&lt;/p&gt;<a name="line.30"></a>
+<span class="sourceLineNo">031</span> *<a name="line.31"></a>
+<span class="sourceLineNo">032</span> * @author AgentTroll<a name="line.32"></a>
+<span class="sourceLineNo">033</span> * @version 1.0<a name="line.33"></a>
+<span class="sourceLineNo">034</span> * @see #getProvider()<a name="line.34"></a>
+<span class="sourceLineNo">035</span> * @see Unsafe#getUnsafe()<a name="line.35"></a>
+<span class="sourceLineNo">036</span> * @since 1.0<a name="line.36"></a>
+<span class="sourceLineNo">037</span> */<a name="line.37"></a>
+<span class="sourceLineNo">038</span>public final class UnsafeProvider {<a name="line.38"></a>
+<span class="sourceLineNo">039</span>    /** The Unsafe instance. */<a name="line.39"></a>
+<span class="sourceLineNo">040</span>    private static final         Unsafe           PROVIDER = UnsafeProvider.initUnsafe();<a name="line.40"></a>
+<span class="sourceLineNo">041</span>    /** Cached field offsets */<a name="line.41"></a>
+<span class="sourceLineNo">042</span>    @Getter private static final Map&lt;Field, Long&gt; offsets  = new HashMap&lt;&gt;();<a name="line.42"></a>
+<span class="sourceLineNo">043</span><a name="line.43"></a>
+<span class="sourceLineNo">044</span>    /**<a name="line.44"></a>
+<span class="sourceLineNo">045</span>     * Should not be instantiated, hence the private constructor.<a name="line.45"></a>
+<span class="sourceLineNo">046</span>     */<a name="line.46"></a>
+<span class="sourceLineNo">047</span>    private UnsafeProvider() {}<a name="line.47"></a>
+<span class="sourceLineNo">048</span><a name="line.48"></a>
+<span class="sourceLineNo">049</span>    /**<a name="line.49"></a>
+<span class="sourceLineNo">050</span>     * Used to acquire the instance of {@link Unsafe}. &lt;p&gt; &lt;p&gt;This is more of a "hack" than a direct method, as it uses<a name="line.50"></a>
+<span class="sourceLineNo">051</span>     * reflection in order to obtain the stored instance of the Unsafe singleton. Unsafe cannot be accessed through its<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     * singleton {@link Unsafe#getUnsafe()} method, as it checks the calling {@code class} to make sure that the {@link<a name="line.52"></a>
+<span class="sourceLineNo">053</span>     * ClassLoader} is {@code null}. Java {@code class}es don't use a {@link ClassLoader}, hence the reason why they can<a name="line.53"></a>
+<span class="sourceLineNo">054</span>     * call {@link Unsafe#getUnsafe()} without {@link SecurityException}.&lt;/p&gt; &lt;p&gt; &lt;p&gt;Being a "hack", this method will<a name="line.54"></a>
+<span class="sourceLineNo">055</span>     * never be guaranteed to actually get an instance of Unsafe, the field that stores the instance of Unsafe<a name="line.55"></a>
+<span class="sourceLineNo">056</span>     * &lt;strong&gt;is named differently on different implementations of the JVM&lt;/strong&gt;. This specific method is designed<a name="line.56"></a>
+<span class="sourceLineNo">057</span>     * to get Unsafe from the Java HotSpot JVM.&lt;/p&gt;<a name="line.57"></a>
+<span class="sourceLineNo">058</span>     *<a name="line.58"></a>
+<span class="sourceLineNo">059</span>     * @return the Unsafe instance acquired from the HotSpot JVM Unsafe {@code class}<a name="line.59"></a>
+<span class="sourceLineNo">060</span>     */<a name="line.60"></a>
+<span class="sourceLineNo">061</span>    private static Unsafe initUnsafe() {<a name="line.61"></a>
+<span class="sourceLineNo">062</span>        try {<a name="line.62"></a>
+<span class="sourceLineNo">063</span>            Field field = Unsafe.class.getDeclaredField("theUnsafe");<a name="line.63"></a>
+<span class="sourceLineNo">064</span>            field.setAccessible(true);<a name="line.64"></a>
+<span class="sourceLineNo">065</span>            return (Unsafe) field.get(null);<a name="line.65"></a>
+<span class="sourceLineNo">066</span>        } catch (NoSuchFieldException | IllegalAccessException x) {<a name="line.66"></a>
+<span class="sourceLineNo">067</span>            x.printStackTrace();<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        }<a name="line.68"></a>
+<span class="sourceLineNo">069</span>        return null;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>    }<a name="line.70"></a>
+<span class="sourceLineNo">071</span><a name="line.71"></a>
+<span class="sourceLineNo">072</span>    /**<a name="line.72"></a>
+<span class="sourceLineNo">073</span>     * Acquires the raw instance Unsafe "hacked" from the source. &lt;p&gt; &lt;p&gt;If an exception was thrown when this class was<a name="line.73"></a>
+<span class="sourceLineNo">074</span>     * loaded, this method will most likely {@code return null}. JVM implementations may modify the field in which the<a name="line.74"></a>
+<span class="sourceLineNo">075</span>     * instance of Unsafe is stored, throwing an exception when normal acquisition methods are applied.&lt;/p&gt; &lt;p&gt; &lt;p&gt;This<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * is guaranteed to &lt;strong&gt;not&lt;/strong&gt; {@code return null} on the HotSpot JVM&lt;/p&gt;<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     *<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * @return the Unsafe instance received when this {@code class} was loaded.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     * @throws IllegalStateException if the Unsafe instance was not acquired already during load<a name="line.79"></a>
+<span class="sourceLineNo">080</span>     */<a name="line.80"></a>
+<span class="sourceLineNo">081</span>    public static Unsafe getProvider() {<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        if (UnsafeProvider.PROVIDER == null)<a name="line.82"></a>
+<span class="sourceLineNo">083</span>            throw new IllegalStateException("Cannot be used, Unsafe is null");<a name="line.83"></a>
+<span class="sourceLineNo">084</span><a name="line.84"></a>
+<span class="sourceLineNo">085</span>        return UnsafeProvider.PROVIDER;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>    }<a name="line.86"></a>
+<span class="sourceLineNo">087</span><a name="line.87"></a>
+<span class="sourceLineNo">088</span>    // Reflection area<a name="line.88"></a>
+<span class="sourceLineNo">089</span><a name="line.89"></a>
+<span class="sourceLineNo">090</span>    /**<a name="line.90"></a>
+<span class="sourceLineNo">091</span>     * Util method to get whether or not a field is {@code static}.<a name="line.91"></a>
+<span class="sourceLineNo">092</span>     *<a name="line.92"></a>
+<span class="sourceLineNo">093</span>     * @param field the field to check for a {@code static} modifier<a name="line.93"></a>
+<span class="sourceLineNo">094</span>     * @return {@code true} to indicate that a field is {@code static}, {@code false} if the field does not have a<a name="line.94"></a>
+<span class="sourceLineNo">095</span>     * {@code static} modifier<a name="line.95"></a>
+<span class="sourceLineNo">096</span>     */<a name="line.96"></a>
+<span class="sourceLineNo">097</span>    private static boolean fieldStatic(Member field) {<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        return Modifier.isStatic(field.getModifiers());<a name="line.98"></a>
+<span class="sourceLineNo">099</span>    }<a name="line.99"></a>
+<span class="sourceLineNo">100</span><a name="line.100"></a>
+<span class="sourceLineNo">101</span>    /**<a name="line.101"></a>
+<span class="sourceLineNo">102</span>     * Provides field offset calculations of a field in order to find its location in a {@code class}. &lt;p&gt; &lt;p&gt;The field<a name="line.102"></a>
+<span class="sourceLineNo">103</span>     * parameter should never be {@code null}. An exception will be thrown if it is.&lt;/p&gt;<a name="line.103"></a>
+<span class="sourceLineNo">104</span>     *<a name="line.104"></a>
+<span class="sourceLineNo">105</span>     * @param field the field to {@code return} the offset of<a name="line.105"></a>
+<span class="sourceLineNo">106</span>     * @return the relative {@code class} location offset of the field<a name="line.106"></a>
+<span class="sourceLineNo">107</span>     */<a name="line.107"></a>
+<span class="sourceLineNo">108</span>    public static long fieldOffset0(Field field) {<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        if (UnsafeProvider.fieldStatic(field))<a name="line.109"></a>
+<span class="sourceLineNo">110</span>            return UnsafeProvider.PROVIDER.staticFieldOffset(field);<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        return UnsafeProvider.PROVIDER.objectFieldOffset(field);<a name="line.111"></a>
+<span class="sourceLineNo">112</span>    }<a name="line.112"></a>
+<span class="sourceLineNo">113</span><a name="line.113"></a>
+<span class="sourceLineNo">114</span>    /**<a name="line.114"></a>
+<span class="sourceLineNo">115</span>     * Obtains the cached offset for the given field. This is almost 4 times faster than calculating each time at the<a name="line.115"></a>
+<span class="sourceLineNo">116</span>     * cost of memory and thread safety.<a name="line.116"></a>
+<span class="sourceLineNo">117</span>     *<a name="line.117"></a>
+<span class="sourceLineNo">118</span>     * @param field the field to {@code return} the offset of<a name="line.118"></a>
+<span class="sourceLineNo">119</span>     * @return the field offset<a name="line.119"></a>
+<span class="sourceLineNo">120</span>     */<a name="line.120"></a>
+<span class="sourceLineNo">121</span>    public static long fieldOffset(Field field) { // TODO concurrency<a name="line.121"></a>
+<span class="sourceLineNo">122</span>        Long offset = UnsafeProvider.offsets.get(field);<a name="line.122"></a>
+<span class="sourceLineNo">123</span>        if (offset == null) {<a name="line.123"></a>
+<span class="sourceLineNo">124</span>            offset = UnsafeProvider.fieldOffset0(field);<a name="line.124"></a>
+<span class="sourceLineNo">125</span>            UnsafeProvider.offsets.put(field, offset);<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        }<a name="line.126"></a>
+<span class="sourceLineNo">127</span><a name="line.127"></a>
+<span class="sourceLineNo">128</span>        return offset;<a name="line.128"></a>
+<span class="sourceLineNo">129</span>    }<a name="line.129"></a>
+<span class="sourceLineNo">130</span><a name="line.130"></a>
+<span class="sourceLineNo">131</span>    /**<a name="line.131"></a>
+<span class="sourceLineNo">132</span>     * Acquires the raw field value of the specified field of a {@code class}. &lt;p&gt; &lt;p&gt;It may {@code return null}. This<a name="line.132"></a>
+<span class="sourceLineNo">133</span>     * can happen under the following circumstances: &lt;ul&gt; &lt;li&gt;If the field value is {@code null} for the particular<a name="line.133"></a>
+<span class="sourceLineNo">134</span>     * instance (More common).&lt;/li&gt; &lt;li&gt;If one of the parameters required to be non-{@code null} is {@code null}&lt;/li&gt;<a name="line.134"></a>
+<span class="sourceLineNo">135</span>     * &lt;li&gt;Or if the field is not found or not able to be accessed. Check method call, spelling, and class source.<a name="line.135"></a>
+<span class="sourceLineNo">136</span>     * Indicated by a thrown exception.&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt; &lt;p&gt; &lt;p&gt;The holder parameter may be null for static fields. In<a name="line.136"></a>
+<span class="sourceLineNo">137</span>     * fact, it is set null for this purpose in the method itself, so it will not matter nevertheless.&lt;/p&gt;<a name="line.137"></a>
+<span class="sourceLineNo">138</span>     *<a name="line.138"></a>
+<span class="sourceLineNo">139</span>     * @param holder the instance of the object to acquire the value from.<a name="line.139"></a>
+<span class="sourceLineNo">140</span>     * @return the value of the acquired field from the instance of the holder parameter<a name="line.140"></a>
+<span class="sourceLineNo">141</span>     * @throws IllegalArgumentException if a nullable parameter is {@code null}<a name="line.141"></a>
+<span class="sourceLineNo">142</span>     */<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    public static Object acquireField(Field field, Object holder) {<a name="line.143"></a>
+<span class="sourceLineNo">144</span>        long offset = UnsafeProvider.fieldOffset(field);<a name="line.144"></a>
+<span class="sourceLineNo">145</span>        if (UnsafeProvider.fieldStatic(field))<a name="line.145"></a>
+<span class="sourceLineNo">146</span>            return UnsafeProvider.PROVIDER.getObject(field.getDeclaringClass(), offset);<a name="line.146"></a>
+<span class="sourceLineNo">147</span><a name="line.147"></a>
+<span class="sourceLineNo">148</span>        return UnsafeProvider.PROVIDER.getObject(holder, offset);<a name="line.148"></a>
+<span class="sourceLineNo">149</span>    }<a name="line.149"></a>
+<span class="sourceLineNo">150</span><a name="line.150"></a>
+<span class="sourceLineNo">151</span>    /**<a name="line.151"></a>
+<span class="sourceLineNo">152</span>     * Sets the raw field value for the given field object in the class &lt;p&gt; &lt;p&gt;This method will fail under the following<a name="line.152"></a>
+<span class="sourceLineNo">153</span>     * circumstances: &lt;ul&gt; &lt;li&gt;If one of the parameters required to be non-{@code null} is {@code null}&lt;/li&gt; &lt;li&gt;Or the<a name="line.153"></a>
+<span class="sourceLineNo">154</span>     * field could not be found. Indicated by a thrown exception&lt;/li&gt; &lt;/ul&gt; &lt;/p&gt;<a name="line.154"></a>
+<span class="sourceLineNo">155</span>     *<a name="line.155"></a>
+<span class="sourceLineNo">156</span>     * @param field  the field to put the new value in<a name="line.156"></a>
+<span class="sourceLineNo">157</span>     * @param holder the instance of the object to set the field in<a name="line.157"></a>
+<span class="sourceLineNo">158</span>     * @param value  the new value of the field<a name="line.158"></a>
+<span class="sourceLineNo">159</span>     */<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    public static void setField(Field field, Object holder, Object value) {<a name="line.160"></a>
+<span class="sourceLineNo">161</span>        long offset = UnsafeProvider.fieldOffset(field);<a name="line.161"></a>
 <span class="sourceLineNo">162</span><a name="line.162"></a>
-<span class="sourceLineNo">163</span>    /**<a name="line.163"></a>
-<span class="sourceLineNo">164</span>     * Sets the raw field value for the given field object in the class<a name="line.164"></a>
-<span class="sourceLineNo">165</span>     * &lt;p&gt;<a name="line.165"></a>
-<span class="sourceLineNo">166</span>     * &lt;p&gt;This method will fail under the following circumstances: &lt;ul&gt; &lt;li&gt;If one of the parameters required to be<a name="line.166"></a>
-<span class="sourceLineNo">167</span>     * non-{@code null} is {@code null}&lt;/li&gt; &lt;li&gt;Or the field could not be found. Indicated by a thrown exception&lt;/li&gt;<a name="line.167"></a>
-<span class="sourceLineNo">168</span>     * &lt;/ul&gt; &lt;/p&gt;<a name="line.168"></a>
-<span class="sourceLineNo">169</span>     *<a name="line.169"></a>
-<span class="sourceLineNo">170</span>     * @param field  the field to put the new value in<a name="line.170"></a>
-<span class="sourceLineNo">171</span>     * @param holder the instance of the object to set the field in<a name="line.171"></a>
-<span class="sourceLineNo">172</span>     * @param value  the new value of the field<a name="line.172"></a>
-<span class="sourceLineNo">173</span>     */<a name="line.173"></a>
-<span class="sourceLineNo">174</span>    public static void setField(Field field, Object holder, Object value) {<a name="line.174"></a>
-<span class="sourceLineNo">175</span>        long offset = UnsafeProvider.fieldOffset(field);<a name="line.175"></a>
-<span class="sourceLineNo">176</span><a name="line.176"></a>
-<span class="sourceLineNo">177</span>        if (UnsafeProvider.fieldStatic(field)) {<a name="line.177"></a>
-<span class="sourceLineNo">178</span>            UnsafeProvider.PROVIDER.putObject(field.getDeclaringClass(), offset, value);<a name="line.178"></a>
-<span class="sourceLineNo">179</span>            return;<a name="line.179"></a>
-<span class="sourceLineNo">180</span>        }<a name="line.180"></a>
-<span class="sourceLineNo">181</span><a name="line.181"></a>
-<span class="sourceLineNo">182</span>        UnsafeProvider.PROVIDER.putObject(holder, offset, value);<a name="line.182"></a>
-<span class="sourceLineNo">183</span>    }<a name="line.183"></a>
-<span class="sourceLineNo">184</span><a name="line.184"></a>
-<span class="sourceLineNo">185</span>    /**<a name="line.185"></a>
-<span class="sourceLineNo">186</span>     * Instantiates a {@code class} without calling the constructor of the {@code class}<a name="line.186"></a>
-<span class="sourceLineNo">187</span>     * &lt;p&gt;<a name="line.187"></a>
-<span class="sourceLineNo">188</span>     * &lt;p&gt;&lt;strong&gt;This is EXTREMELY IMPORTANT - THIS METHOD WILL &lt;u&gt;NOT&lt;/u&gt; CALL THE {@code CLASS}<a name="line.188"></a>
-<span class="sourceLineNo">189</span>     * CONSTRUCTOR!&lt;/strong&gt;&lt;/p&gt;<a name="line.189"></a>
-<span class="sourceLineNo">190</span>     *<a name="line.190"></a>
-<span class="sourceLineNo">191</span>     * @param &lt;T&gt; the type of {@code class} instantiated, the type returned<a name="line.191"></a>
-<span class="sourceLineNo">192</span>     * @param c   the {@code class} to make a new instance of<a name="line.192"></a>
-<span class="sourceLineNo">193</span>     * @return the new instance of the {@code class} passed in<a name="line.193"></a>
-<span class="sourceLineNo">194</span>     */<a name="line.194"></a>
-<span class="sourceLineNo">195</span>    public static &lt;T&gt; T initClass(Class&lt;T&gt; c) {<a name="line.195"></a>
-<span class="sourceLineNo">196</span>        try {<a name="line.196"></a>
-<span class="sourceLineNo">197</span>            return (T) UnsafeProvider.PROVIDER.allocateInstance(c);<a name="line.197"></a>
-<span class="sourceLineNo">198</span>        } catch (InstantiationException x) {<a name="line.198"></a>
-<span class="sourceLineNo">199</span>            x.printStackTrace();<a name="line.199"></a>
-<span class="sourceLineNo">200</span>        }<a name="line.200"></a>
-<span class="sourceLineNo">201</span>        return null;<a name="line.201"></a>
-<span class="sourceLineNo">202</span>    }<a name="line.202"></a>
-<span class="sourceLineNo">203</span><a name="line.203"></a>
-<span class="sourceLineNo">204</span>    // Concurrency area<a name="line.204"></a>
-<span class="sourceLineNo">205</span><a name="line.205"></a>
-<span class="sourceLineNo">206</span>    /**<a name="line.206"></a>
-<span class="sourceLineNo">207</span>     * Forces current thread to acquire or release the monitor of an object.<a name="line.207"></a>
-<span class="sourceLineNo">208</span>     * &lt;p&gt;<a name="line.208"></a>
-<span class="sourceLineNo">209</span>     * &lt;p&gt;This is a very low level implementation, no checks will be performed to whether the monitor is already held by<a name="line.209"></a>
-<span class="sourceLineNo">210</span>     * the current thread before execution.&lt;/p&gt;<a name="line.210"></a>
-<span class="sourceLineNo">211</span>     * &lt;p&gt;<a name="line.211"></a>
-<span class="sourceLineNo">212</span>     * &lt;p&gt;It is &lt;strong&gt;crucial&lt;/strong&gt; to use this as an implementation or entry point to synchronization instead of a<a name="line.212"></a>
-<span class="sourceLineNo">213</span>     * careless direct call. A monitor acquired with this method can only be released using: {@code<a name="line.213"></a>
-<span class="sourceLineNo">214</span>     * UnsafeProvider.monitor(false, object);} where {@code object} is the object with its monitor held by the current<a name="line.214"></a>
-<span class="sourceLineNo">215</span>     * thread.&lt;/p&gt;<a name="line.215"></a>
-<span class="sourceLineNo">216</span>     *<a name="line.216"></a>
-<span class="sourceLineNo">217</span>     * @param entry {@code true} to acquire the monitor, {@code false} to release.<a name="line.217"></a>
-<span class="sourceLineNo">218</span>     * @param o     The object to acquire to release the monitor of.<a name="line.218"></a>
-<span class="sourceLineNo">219</span>     */<a name="line.219"></a>
-<span class="sourceLineNo">220</span>    public static void monitor(boolean entry, Object o) {<a name="line.220"></a>
-<span class="sourceLineNo">221</span>        if (entry) {<a name="line.221"></a>
-<span class="sourceLineNo">222</span>            UnsafeProvider.PROVIDER.monitorEnter(o);<a name="line.222"></a>
-<span class="sourceLineNo">223</span>            return;<a name="line.223"></a>
-<span class="sourceLineNo">224</span>        }<a name="line.224"></a>
-<span class="sourceLineNo">225</span>        UnsafeProvider.PROVIDER.monitorExit(o);<a name="line.225"></a>
-<span class="sourceLineNo">226</span>    }<a name="line.226"></a>
-<span class="sourceLineNo">227</span><a name="line.227"></a>
-<span class="sourceLineNo">228</span>    /**<a name="line.228"></a>
-<span class="sourceLineNo">229</span>     * CAS operation, sets the field in an object to nw if expect is the current value.<a name="line.229"></a>
-<span class="sourceLineNo">230</span>     * &lt;p&gt;<a name="line.230"></a>
-<span class="sourceLineNo">231</span>     * &lt;p&gt;Note that this method performs a deep search for the field to swap.&lt;/p&gt;<a name="line.231"></a>
-<span class="sourceLineNo">232</span>     *<a name="line.232"></a>
-<span class="sourceLineNo">233</span>     * @param instance the object instance to acquire the field in<a name="line.233"></a>
-<span class="sourceLineNo">234</span>     * @param field    the field to swap the value for<a name="line.234"></a>
-<span class="sourceLineNo">235</span>     * @param expect   the expected value of the field<a name="line.235"></a>
-<span class="sourceLineNo">236</span>     * @param nw       the value to set if expect is the current field value<a name="line.236"></a>
-<span class="sourceLineNo">237</span>     */<a name="line.237"></a>
-<span class="sourceLineNo">238</span>    public static void compareAndSwap(Object instance, Field field, Object expect, Object nw) {<a name="line.238"></a>
-<span class="sourceLineNo">239</span>        while (!UnsafeProvider.PROVIDER.compareAndSwapObject(instance, UnsafeProvider.fieldOffset(field), expect, nw))<a name="line.239"></a>
-<span class="sourceLineNo">240</span>            UnsafeProvider.setField(field, instance, nw);<a name="line.240"></a>
-<span class="sourceLineNo">241</span>    }<a name="line.241"></a>
-<span class="sourceLineNo">242</span><a name="line.242"></a>
-<span class="sourceLineNo">243</span>    // Misc area<a name="line.243"></a>
-<span class="sourceLineNo">244</span><a name="line.244"></a>
-<span class="sourceLineNo">245</span>    /**<a name="line.245"></a>
-<span class="sourceLineNo">246</span>     * Takes the shallow size of the object.<a name="line.246"></a>
-<span class="sourceLineNo">247</span>     * &lt;p&gt;<a name="line.247"></a>
-<span class="sourceLineNo">248</span>     * &lt;p&gt;Equivalent Java implementation of C sizeOf&lt;/p&gt;<a name="line.248"></a>
-<span class="sourceLineNo">249</span>     * &lt;p&gt;<a name="line.249"></a>
-<span class="sourceLineNo">250</span>     * &lt;p&gt;Is not an alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will not be as<a name="line.250"></a>
-<span class="sourceLineNo">251</span>     * accurate as that method, this should only be used for programs where the EXACT size of an object in heap can have<a name="line.251"></a>
-<span class="sourceLineNo">252</span>     * small inaccuracies.&lt;/p&gt;<a name="line.252"></a>
-<span class="sourceLineNo">253</span>     *<a name="line.253"></a>
-<span class="sourceLineNo">254</span>     * @param object the object to find the size of. Cannot be an array.<a name="line.254"></a>
-<span class="sourceLineNo">255</span>     * @return the size of the object stored in its header in the JVM<a name="line.255"></a>
-<span class="sourceLineNo">256</span>     */<a name="line.256"></a>
-<span class="sourceLineNo">257</span>    public static long sizeOf(Object object) {<a name="line.257"></a>
-<span class="sourceLineNo">258</span>        return UnsafeProvider.PROVIDER.getLong(object,<a name="line.258"></a>
-<span class="sourceLineNo">259</span>                                               UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(object, 4L)) +<a name="line.259"></a>
-<span class="sourceLineNo">260</span>                                               12L);<a name="line.260"></a>
-<span class="sourceLineNo">261</span>    }<a name="line.261"></a>
-<span class="sourceLineNo">262</span><a name="line.262"></a>
-<span class="sourceLineNo">263</span>    /**<a name="line.263"></a>
-<span class="sourceLineNo">264</span>     * Makes an unsafe cast from main to a superclass without {@link java.lang.ClassCastException}.<a name="line.264"></a>
-<span class="sourceLineNo">265</span>     *<a name="line.265"></a>
-<span class="sourceLineNo">266</span>     * @param main       the {@code class} to cast<a name="line.266"></a>
-<span class="sourceLineNo">267</span>     * @param superclass the {@code class} to cast main to<a name="line.267"></a>
-<span class="sourceLineNo">268</span>     * @param &lt;T&gt;        the type of superclass to cast to<a name="line.268"></a>
-<span class="sourceLineNo">269</span>     * @return the result of casting main to superclass<a name="line.269"></a>
-<span class="sourceLineNo">270</span>     */<a name="line.270"></a>
-<span class="sourceLineNo">271</span>    public static &lt;T&gt; T castSuper(Object main, T superclass) {<a name="line.271"></a>
-<span class="sourceLineNo">272</span>        UnsafeProvider.PROVIDER.putInt(main, 8L, UnsafeProvider.PROVIDER.getInt(superclass, 8L));<a name="line.272"></a>
-<span class="sourceLineNo">273</span>        if (!main.equals(superclass))<a name="line.273"></a>
-<span class="sourceLineNo">274</span>            UnsafeProvider.PROVIDER.putInt(main, 4L, UnsafeProvider.PROVIDER.getInt(superclass, 4L));<a name="line.274"></a>
-<span class="sourceLineNo">275</span><a name="line.275"></a>
-<span class="sourceLineNo">276</span>        return (T) main;<a name="line.276"></a>
+<span class="sourceLineNo">163</span>        if (UnsafeProvider.fieldStatic(field)) {<a name="line.163"></a>
+<span class="sourceLineNo">164</span>            UnsafeProvider.PROVIDER.putObject(field.getDeclaringClass(), offset, value);<a name="line.164"></a>
+<span class="sourceLineNo">165</span>            return;<a name="line.165"></a>
+<span class="sourceLineNo">166</span>        }<a name="line.166"></a>
+<span class="sourceLineNo">167</span><a name="line.167"></a>
+<span class="sourceLineNo">168</span>        UnsafeProvider.PROVIDER.putObject(holder, offset, value);<a name="line.168"></a>
+<span class="sourceLineNo">169</span>    }<a name="line.169"></a>
+<span class="sourceLineNo">170</span><a name="line.170"></a>
+<span class="sourceLineNo">171</span>    /**<a name="line.171"></a>
+<span class="sourceLineNo">172</span>     * Instantiates a {@code class} without calling the constructor of the {@code class} &lt;p&gt; &lt;p&gt;&lt;strong&gt;This is<a name="line.172"></a>
+<span class="sourceLineNo">173</span>     * EXTREMELY IMPORTANT - THIS METHOD WILL &lt;u&gt;NOT&lt;/u&gt; CALL THE {@code CLASS} CONSTRUCTOR!&lt;/strong&gt;&lt;/p&gt;<a name="line.173"></a>
+<span class="sourceLineNo">174</span>     *<a name="line.174"></a>
+<span class="sourceLineNo">175</span>     * @param &lt;T&gt; the type of {@code class} instantiated, the type returned<a name="line.175"></a>
+<span class="sourceLineNo">176</span>     * @param c   the {@code class} to make a new instance of<a name="line.176"></a>
+<span class="sourceLineNo">177</span>     * @return the new instance of the {@code class} passed in<a name="line.177"></a>
+<span class="sourceLineNo">178</span>     */<a name="line.178"></a>
+<span class="sourceLineNo">179</span>    public static &lt;T&gt; T initClass(Class&lt;T&gt; c) {<a name="line.179"></a>
+<span class="sourceLineNo">180</span>        try {<a name="line.180"></a>
+<span class="sourceLineNo">181</span>            return (T) UnsafeProvider.PROVIDER.allocateInstance(c);<a name="line.181"></a>
+<span class="sourceLineNo">182</span>        } catch (InstantiationException x) {<a name="line.182"></a>
+<span class="sourceLineNo">183</span>            x.printStackTrace();<a name="line.183"></a>
+<span class="sourceLineNo">184</span>        }<a name="line.184"></a>
+<span class="sourceLineNo">185</span>        return null;<a name="line.185"></a>
+<span class="sourceLineNo">186</span>    }<a name="line.186"></a>
+<span class="sourceLineNo">187</span><a name="line.187"></a>
+<span class="sourceLineNo">188</span>    // Concurrency area<a name="line.188"></a>
+<span class="sourceLineNo">189</span><a name="line.189"></a>
+<span class="sourceLineNo">190</span>    /**<a name="line.190"></a>
+<span class="sourceLineNo">191</span>     * Forces current thread to acquire or release the monitor of an object. &lt;p&gt; &lt;p&gt;This is a very low level<a name="line.191"></a>
+<span class="sourceLineNo">192</span>     * implementation, no checks will be performed to whether the monitor is already held by the current thread before<a name="line.192"></a>
+<span class="sourceLineNo">193</span>     * execution.&lt;/p&gt; &lt;p&gt; &lt;p&gt;It is &lt;strong&gt;crucial&lt;/strong&gt; to use this as an implementation or entry point to<a name="line.193"></a>
+<span class="sourceLineNo">194</span>     * synchronization instead of a careless direct call. A monitor acquired with this method can only be released<a name="line.194"></a>
+<span class="sourceLineNo">195</span>     * using: {@code UnsafeProvider.monitor(false, object);} where {@code object} is the object with its monitor held by<a name="line.195"></a>
+<span class="sourceLineNo">196</span>     * the current thread.&lt;/p&gt;<a name="line.196"></a>
+<span class="sourceLineNo">197</span>     *<a name="line.197"></a>
+<span class="sourceLineNo">198</span>     * @param entry {@code true} to acquire the monitor, {@code false} to release.<a name="line.198"></a>
+<span class="sourceLineNo">199</span>     * @param o     The object to acquire to release the monitor of.<a name="line.199"></a>
+<span class="sourceLineNo">200</span>     */<a name="line.200"></a>
+<span class="sourceLineNo">201</span>    public static void monitor(boolean entry, Object o) {<a name="line.201"></a>
+<span class="sourceLineNo">202</span>        if (entry) {<a name="line.202"></a>
+<span class="sourceLineNo">203</span>            UnsafeProvider.PROVIDER.monitorEnter(o);<a name="line.203"></a>
+<span class="sourceLineNo">204</span>            return;<a name="line.204"></a>
+<span class="sourceLineNo">205</span>        }<a name="line.205"></a>
+<span class="sourceLineNo">206</span>        UnsafeProvider.PROVIDER.monitorExit(o);<a name="line.206"></a>
+<span class="sourceLineNo">207</span>    }<a name="line.207"></a>
+<span class="sourceLineNo">208</span><a name="line.208"></a>
+<span class="sourceLineNo">209</span>    /**<a name="line.209"></a>
+<span class="sourceLineNo">210</span>     * CAS operation, sets the field in an object to nw if expect is the current value. &lt;p&gt; &lt;p&gt;Note that this method<a name="line.210"></a>
+<span class="sourceLineNo">211</span>     * performs a deep search for the field to swap.&lt;/p&gt;<a name="line.211"></a>
+<span class="sourceLineNo">212</span>     *<a name="line.212"></a>
+<span class="sourceLineNo">213</span>     * @param instance the object instance to acquire the field in<a name="line.213"></a>
+<span class="sourceLineNo">214</span>     * @param field    the field to swap the value for<a name="line.214"></a>
+<span class="sourceLineNo">215</span>     * @param expect   the expected value of the field<a name="line.215"></a>
+<span class="sourceLineNo">216</span>     * @param nw       the value to set if expect is the current field value<a name="line.216"></a>
+<span class="sourceLineNo">217</span>     */<a name="line.217"></a>
+<span class="sourceLineNo">218</span>    public static void compareAndSwap(Object instance, Field field, Object expect, Object nw) {<a name="line.218"></a>
+<span class="sourceLineNo">219</span>        while (!UnsafeProvider.PROVIDER.compareAndSwapObject(instance, UnsafeProvider.fieldOffset(field), expect, nw))<a name="line.219"></a>
+<span class="sourceLineNo">220</span>            UnsafeProvider.setField(field, instance, nw);<a name="line.220"></a>
+<span class="sourceLineNo">221</span>    }<a name="line.221"></a>
+<span class="sourceLineNo">222</span><a name="line.222"></a>
+<span class="sourceLineNo">223</span>    // Misc area<a name="line.223"></a>
+<span class="sourceLineNo">224</span><a name="line.224"></a>
+<span class="sourceLineNo">225</span>    /**<a name="line.225"></a>
+<span class="sourceLineNo">226</span>     * Takes the shallow size of the object. &lt;p&gt; &lt;p&gt;Equivalent Java implementation of C sizeOf&lt;/p&gt; &lt;p&gt; &lt;p&gt;Is not an<a name="line.226"></a>
+<span class="sourceLineNo">227</span>     * alternative for {@link java.lang.instrument.Instrumentation#getObjectSize(Object)}. Will not be as accurate as<a name="line.227"></a>
+<span class="sourceLineNo">228</span>     * that method, this should only be used for programs where the EXACT size of an object in heap can have small<a name="line.228"></a>
+<span class="sourceLineNo">229</span>     * inaccuracies.&lt;/p&gt;<a name="line.229"></a>
+<span class="sourceLineNo">230</span>     *<a name="line.230"></a>
+<span class="sourceLineNo">231</span>     * @param object the object to find the size of. Cannot be an array.<a name="line.231"></a>
+<span class="sourceLineNo">232</span>     * @return the size of the object stored in its header in the JVM<a name="line.232"></a>
+<span class="sourceLineNo">233</span>     */<a name="line.233"></a>
+<span class="sourceLineNo">234</span>    public static long sizeOf(Object object) {<a name="line.234"></a>
+<span class="sourceLineNo">235</span>        return UnsafeProvider.PROVIDER.getAddress(<a name="line.235"></a>
+<span class="sourceLineNo">236</span>                UnsafeProvider.PROVIDER.getLong(object, 4L) + 12L);<a name="line.236"></a>
+<span class="sourceLineNo">237</span>    }<a name="line.237"></a>
+<span class="sourceLineNo">238</span><a name="line.238"></a>
+<span class="sourceLineNo">239</span>    /**<a name="line.239"></a>
+<span class="sourceLineNo">240</span>     * Makes an unsafe cast from main to a superclass without {@link java.lang.ClassCastException}.<a name="line.240"></a>
+<span class="sourceLineNo">241</span>     *<a name="line.241"></a>
+<span class="sourceLineNo">242</span>     * @param main       the {@code class} to cast<a name="line.242"></a>
+<span class="sourceLineNo">243</span>     * @param superclass the {@code class} to cast main to<a name="line.243"></a>
+<span class="sourceLineNo">244</span>     * @param &lt;T&gt;        the type of superclass to cast to<a name="line.244"></a>
+<span class="sourceLineNo">245</span>     * @return the result of casting main to superclass<a name="line.245"></a>
+<span class="sourceLineNo">246</span>     */<a name="line.246"></a>
+<span class="sourceLineNo">247</span>    public static &lt;T&gt; T castSuper(Object main, T superclass) {<a name="line.247"></a>
+<span class="sourceLineNo">248</span>        UnsafeProvider.PROVIDER.putAddress(UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(main, 4L)) + 36L,<a name="line.248"></a>
+<span class="sourceLineNo">249</span>                                           UnsafeProvider.normalize(UnsafeProvider.PROVIDER.getInt(superclass, 4L)));<a name="line.249"></a>
+<span class="sourceLineNo">250</span><a name="line.250"></a>
+<span class="sourceLineNo">251</span>        return (T) main;<a name="line.251"></a>
+<span class="sourceLineNo">252</span>    }<a name="line.252"></a>
+<span class="sourceLineNo">253</span><a name="line.253"></a>
+<span class="sourceLineNo">254</span>    /**<a name="line.254"></a>
+<span class="sourceLineNo">255</span>     * Converts a signed {@code int} to an unsigned {@code long}.<a name="line.255"></a>
+<span class="sourceLineNo">256</span>     *<a name="line.256"></a>
+<span class="sourceLineNo">257</span>     * @param value the {@code int} to convert<a name="line.257"></a>
+<span class="sourceLineNo">258</span>     * @return the derived unsigned {@code long} associated with the value<a name="line.258"></a>
+<span class="sourceLineNo">259</span>     */<a name="line.259"></a>
+<span class="sourceLineNo">260</span>    public static long normalize(int value) {<a name="line.260"></a>
+<span class="sourceLineNo">261</span>        if (value &gt;= 0)<a name="line.261"></a>
+<span class="sourceLineNo">262</span>            return (long) value;<a name="line.262"></a>
+<span class="sourceLineNo">263</span>        return ~0L &gt;&gt;&gt; 32 &amp; (long) value;<a name="line.263"></a>
+<span class="sourceLineNo">264</span>    }<a name="line.264"></a>
+<span class="sourceLineNo">265</span><a name="line.265"></a>
+<span class="sourceLineNo">266</span>    /**<a name="line.266"></a>
+<span class="sourceLineNo">267</span>     * Converts a signed {@code long} to unsigned {@code long}.<a name="line.267"></a>
+<span class="sourceLineNo">268</span>     *<a name="line.268"></a>
+<span class="sourceLineNo">269</span>     * @param value the {@code long} to convert<a name="line.269"></a>
+<span class="sourceLineNo">270</span>     * @return the derived unsigned {@code long} associated with the value<a name="line.270"></a>
+<span class="sourceLineNo">271</span>     * @deprecated longs can hold unsigned values natively<a name="line.271"></a>
+<span class="sourceLineNo">272</span>     */<a name="line.272"></a>
+<span class="sourceLineNo">273</span>    @Deprecated public static long normalize(long value) {<a name="line.273"></a>
+<span class="sourceLineNo">274</span>        if (value &gt;= 0L)<a name="line.274"></a>
+<span class="sourceLineNo">275</span>            return value;<a name="line.275"></a>
+<span class="sourceLineNo">276</span>        return ~0L &gt;&gt;&gt; 32 &amp; value;<a name="line.276"></a>
 <span class="sourceLineNo">277</span>    }<a name="line.277"></a>
 <span class="sourceLineNo">278</span><a name="line.278"></a>
 <span class="sourceLineNo">279</span>    /**<a name="line.279"></a>
-<span class="sourceLineNo">280</span>     * Converts a signed {@code int} to an unsigned {@code long}.<a name="line.280"></a>
+<span class="sourceLineNo">280</span>     * Throws an unchecked exception, meaning the exception should not be caught<a name="line.280"></a>
 <span class="sourceLineNo">281</span>     *<a name="line.281"></a>
-<span class="sourceLineNo">282</span>     * @param value the {@code int} to convert<a name="line.282"></a>
-<span class="sourceLineNo">283</span>     * @return the derived unsigned {@code long} associated with the value<a name="line.283"></a>
-<span class="sourceLineNo">284</span>     */<a name="line.284"></a>
-<span class="sourceLineNo">285</span>    public static long normalize(int value) {<a name="line.285"></a>
-<span class="sourceLineNo">286</span>        if (value &gt;= 0)<a name="line.286"></a>
-<span class="sourceLineNo">287</span>            return (long) value;<a name="line.287"></a>
-<span class="sourceLineNo">288</span>        return ~0L &gt;&gt;&gt; 32 &amp; (long) value;<a name="line.288"></a>
-<span class="sourceLineNo">289</span>    }<a name="line.289"></a>
-<span class="sourceLineNo">290</span><a name="line.290"></a>
-<span class="sourceLineNo">291</span>    /**<a name="line.291"></a>
-<span class="sourceLineNo">292</span>     * Converts a signed {@code long} to unsigned {@code long}.<a name="line.292"></a>
-<span class="sourceLineNo">293</span>     *<a name="line.293"></a>
-<span class="sourceLineNo">294</span>     * @param value the {@code long} to convert<a name="line.294"></a>
-<span class="sourceLineNo">295</span>     * @return the derived unsigned {@code long} associated with the value<a name="line.295"></a>
-<span class="sourceLineNo">296</span>     */<a name="line.296"></a>
-<span class="sourceLineNo">297</span>    public static long normalize(long value) {<a name="line.297"></a>
-<span class="sourceLineNo">298</span>        if (value &gt;= 0L)<a name="line.298"></a>
-<span class="sourceLineNo">299</span>            return value;<a name="line.299"></a>
-<span class="sourceLineNo">300</span>        return ~0L &gt;&gt;&gt; 32 &amp; value;<a name="line.300"></a>
-<span class="sourceLineNo">301</span>    }<a name="line.301"></a>
-<span class="sourceLineNo">302</span><a name="line.302"></a>
-<span class="sourceLineNo">303</span>    /**<a name="line.303"></a>
-<span class="sourceLineNo">304</span>     * Throws an unchecked exception, meaning the exception should not be caught<a name="line.304"></a>
-<span class="sourceLineNo">305</span>     *<a name="line.305"></a>
-<span class="sourceLineNo">306</span>     * @param x the exception to throw unchecked<a name="line.306"></a>
-<span class="sourceLineNo">307</span>     */<a name="line.307"></a>
-<span class="sourceLineNo">308</span>    public static void exception(Exception x) {<a name="line.308"></a>
-<span class="sourceLineNo">309</span>        UnsafeProvider.PROVIDER.throwException(x);<a name="line.309"></a>
-<span class="sourceLineNo">310</span>    }<a name="line.310"></a>
-<span class="sourceLineNo">311</span>}<a name="line.311"></a>
+<span class="sourceLineNo">282</span>     * @param x the exception to throw unchecked<a name="line.282"></a>
+<span class="sourceLineNo">283</span>     */<a name="line.283"></a>
+<span class="sourceLineNo">284</span>    public static void exception(Exception x) {<a name="line.284"></a>
+<span class="sourceLineNo">285</span>        UnsafeProvider.PROVIDER.throwException(x);<a name="line.285"></a>
+<span class="sourceLineNo">286</span>    }<a name="line.286"></a>
+<span class="sourceLineNo">287</span>}<a name="line.287"></a>
 
 
 

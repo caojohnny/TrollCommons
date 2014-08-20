@@ -80,17 +80,16 @@
 <span class="sourceLineNo">072</span>    }<a name="line.72"></a>
 <span class="sourceLineNo">073</span><a name="line.73"></a>
 <span class="sourceLineNo">074</span>    /**<a name="line.74"></a>
-<span class="sourceLineNo">075</span>     * Gets the instance of net.minecraft.server.MinecraftServer<a name="line.75"></a>
-<span class="sourceLineNo">076</span>     * &lt;p&gt;<a name="line.76"></a>
-<span class="sourceLineNo">077</span>     * &lt;p&gt;here are a lot of entry points and accessors in MinecraftServer, hence the inclusion in this class&lt;/p&gt;<a name="line.77"></a>
-<span class="sourceLineNo">078</span>     *<a name="line.78"></a>
-<span class="sourceLineNo">079</span>     * @return the instance of MinecraftServer<a name="line.79"></a>
-<span class="sourceLineNo">080</span>     */<a name="line.80"></a>
-<span class="sourceLineNo">081</span>    public static Object getMcServer() {<a name="line.81"></a>
-<span class="sourceLineNo">082</span>        return new ReflectionChain(CbServer.cServerClass()).method().method("getHandle").param(Bukkit.getServer())<a name="line.82"></a>
-<span class="sourceLineNo">083</span>                                                           .invoker().invoke().reflect();<a name="line.83"></a>
-<span class="sourceLineNo">084</span>    }<a name="line.84"></a>
-<span class="sourceLineNo">085</span>}<a name="line.85"></a>
+<span class="sourceLineNo">075</span>     * Gets the instance of net.minecraft.server.MinecraftServer &lt;p&gt; &lt;p&gt;here are a lot of entry points and accessors in<a name="line.75"></a>
+<span class="sourceLineNo">076</span>     * MinecraftServer, hence the inclusion in this class&lt;/p&gt;<a name="line.76"></a>
+<span class="sourceLineNo">077</span>     *<a name="line.77"></a>
+<span class="sourceLineNo">078</span>     * @return the instance of MinecraftServer<a name="line.78"></a>
+<span class="sourceLineNo">079</span>     */<a name="line.79"></a>
+<span class="sourceLineNo">080</span>    public static Object getMcServer() {<a name="line.80"></a>
+<span class="sourceLineNo">081</span>        return new ReflectionChain(CbServer.cServerClass()).method().method("getHandle").param(Bukkit.getServer())<a name="line.81"></a>
+<span class="sourceLineNo">082</span>                                                           .invoker().invoke().reflect();<a name="line.82"></a>
+<span class="sourceLineNo">083</span>    }<a name="line.83"></a>
+<span class="sourceLineNo">084</span>}<a name="line.84"></a>
 
 
 
