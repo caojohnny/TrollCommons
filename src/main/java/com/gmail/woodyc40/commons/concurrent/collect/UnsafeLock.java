@@ -61,7 +61,7 @@ public class UnsafeLock implements InternalLock {
     private static long nextOff;
 
     /** Thread node linked list head */
-    private volatile UnsafeLock.ThreadNode head = new ThreadNode(null); // Do not listen to "can make final"
+    private volatile UnsafeLock.ThreadNode head = new UnsafeLock.ThreadNode(null); // Do not listen to "can make final"
     /** Thread node linked list tail */
     private volatile UnsafeLock.ThreadNode tail = this.head;
     /** The lock state */
@@ -73,7 +73,7 @@ public class UnsafeLock implements InternalLock {
         Thread thread = Thread.currentThread();
         boolean interrupt = false;
 
-        while (!this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED) && !thread.equals(this.current.getThread())) {
+        while (this.state == UnsafeLock.LOCKED && thread != this.current.getThread()) {
             this.insert(new UnsafeLock.ThreadNode(thread));
 
             if (Thread.interrupted())
@@ -81,7 +81,8 @@ public class UnsafeLock implements InternalLock {
             UnsafeLock.UNSAFE.park(false, 0L);
         }
 
-        this.updateCurrent(this.current, new UnsafeLock.ThreadNode(thread));
+        if (this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED))
+            this.updateCurrent(this.current, new UnsafeLock.ThreadNode(thread));
 
         if (interrupt)
             thread.interrupt();
@@ -89,8 +90,9 @@ public class UnsafeLock implements InternalLock {
 
     @Override public void unlock() {
         if (this.updateState(UnsafeLock.LOCKED, UnsafeLock.UNLOCKED)) {
-            UnsafeLock.ThreadNode head = this.removeAndRead();
+            UnsafeLock.ThreadNode head = this.readAndRemove();
             if (head == null) return;
+            if (head.getThread() == null) return;
 
             UnsafeLock.UNSAFE.unpark(head.getThread());
         }
@@ -150,8 +152,8 @@ public class UnsafeLock implements InternalLock {
     }
 
     /**
-     * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on <a
-     * href="http://www.ibm.com/developerworks/library/j-jtp04186/">DevWorks</a>
+     * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on
+     * <a href="http://www.ibm.com/developerworks/library/j-jtp04186/">DevWorks</a>
      *
      * @param node the node to insert
      */
@@ -159,46 +161,38 @@ public class UnsafeLock implements InternalLock {
         while (true) {
             UnsafeLock.ThreadNode curTail = this.tail;
             UnsafeLock.ThreadNode residue = curTail.getNext();
-            if (curTail.equals(this.tail)) {
+
+            if (curTail == this.tail) {
                 if (residue == null) {
                     if (this.updateNext(curTail, null, node)) {
                         this.updateTail(curTail, node);
                         return;
                     }
-                } else {
-                    this.updateTail(curTail, residue);
-                }
+                } else this.updateTail(curTail, residue);
             }
         }
     }
 
-    private UnsafeLock.ThreadNode removeAndRead() {
+    /**
+     * Reads the head of the linked list, remove it, and return the original head. Based off of the algorithm found <a
+     * href="http://fuseyism.com/classpath/doc/java/util/concurrent/ConcurrentLinkedQueue-source.html">here</a>
+     *
+     * @return the original head of the linked list, before replacement with the next
+     */
+    private UnsafeLock.ThreadNode readAndRemove() {
         while (true) {
-            ThreadNode curHead = this.head;
-            ThreadNode curTail = this.tail;
-            ThreadNode residue = curHead.getNext();
-            if (curHead.equals(this.head)) {
-                if (curHead.equals(curTail)) {
-                    if (residue == null)
-                        return null;
-                    else
-                        this.updateTail(curTail, residue);
-                } else if (this.updateHead(curHead, residue)) {
-                    E item = residue.getItem();
-                    if (item != null) {
-                        residue.setItem(null);
-                        return item;
-                    }
-                }
+            UnsafeLock.ThreadNode curHead = this.head;
+            UnsafeLock.ThreadNode curTail = this.tail;
+            UnsafeLock.ThreadNode residue = curHead.getNext();
+
+            if (curHead == this.head) {
+                if (curHead == curTail) {
+                    if (residue == null) return null;
+                    else this.updateTail(curTail, residue);
+                } else if (this.updateHead(curHead, residue))
+                    return residue;
             }
         }
-
-        UnsafeLock.ThreadNode node = this.head;
-        if (node == null) return null;
-
-        this.updateHead(this.head, this.head.getNext());
-        if (this.head == null) this.updateTail(this.tail, null);
-        return node;
     }
 
     /**

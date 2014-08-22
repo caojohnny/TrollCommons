@@ -43,7 +43,7 @@ import java.util.*;
  * @version 1.0
  * @since 1.0
  */
-public final class ProtocolHandler { // TODO server channels
+public final class ProtocolHandler {
     /** The connection cache that holds netty channels */
     @Getter private static final Map<Player, Channel> cache = new HashMap<>();
     /** The name of the handlers */

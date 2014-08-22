@@ -17,6 +17,9 @@
 package com.gmail.woodyc40.commons.concurrent.protect;
 
 import com.gmail.woodyc40.commons.misc.ParameterizedRunnable;
+import lombok.AllArgsConstructor;
+
+import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Protects a field value by wrapping over ThreadLocal libraries
@@ -26,7 +29,8 @@ import com.gmail.woodyc40.commons.misc.ParameterizedRunnable;
  * @version 1.0
  * @since 1.1
  */
-public class ThreadLocalProtected<T> implements ProtectedField<T> {
+@AllArgsConstructor
+@ThreadSafe class ThreadLocalProtected<T> implements ProtectedField<T> {
     /** The value held by the protected field. Not {@code static} since it is independent of other instances */
     private final ThreadLocal<T> value;
 

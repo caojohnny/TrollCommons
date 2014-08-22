@@ -118,7 +118,7 @@ public final class UnsafeProvider {
      * @param field the field to {@code return} the offset of
      * @return the field offset
      */
-    public static long fieldOffset(Field field) { // TODO concurrency
+    public static long fieldOffset(Field field) {
         Long offset = UnsafeProvider.offsets.get(field);
         if (offset == null) {
             offset = UnsafeProvider.fieldOffset0(field);
