@@ -19,11 +19,11 @@ package com.gmail.woodyc40.commons.concurrent.collect;
 import com.gmail.woodyc40.commons.providers.UnsafeProvider;
 import com.gmail.woodyc40.commons.reflection.ReflectionTool;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import sun.misc.Unsafe;
 
 /**
- * Implementation of the internal lock structure <p> <p>Waiters are appended to the end of the internal linked list,
- * while the released threads are read from the head to the tail of the linked list.</p>
+ * Implementation of the internal lock structure
  *
  * @author AgentTroll
  * @version 1.0
@@ -46,8 +46,6 @@ public class UnsafeLock implements InternalLock {
 
         UnsafeLock.nextOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("next",
                                                                                          UnsafeLock.ThreadNode.class));
-        UnsafeLock.prevOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("previous",
-                                                                                         UnsafeLock.ThreadNode.class));
     }
 
     /** The tail offset */
@@ -61,15 +59,13 @@ public class UnsafeLock implements InternalLock {
 
     /** The next node offset in ThreadNode */
     private static long nextOff;
-    /** The previous node in ThreadNode */
-    private static long prevOff;
 
-    /** Thread node linked list tail */
-    private volatile UnsafeLock.ThreadNode tail; // Do not listen to "can make final"
     /** Thread node linked list head */
-    private volatile UnsafeLock.ThreadNode head;
+    private volatile UnsafeLock.ThreadNode head = new ThreadNode(null); // Do not listen to "can make final"
+    /** Thread node linked list tail */
+    private volatile UnsafeLock.ThreadNode tail = this.head;
     /** The lock state */
-    private volatile int                   state;
+    private volatile int state;
     /** The current holder of the lock */
     private volatile UnsafeLock.ThreadNode current = new UnsafeLock.ThreadNode(null);
 
@@ -93,7 +89,7 @@ public class UnsafeLock implements InternalLock {
 
     @Override public void unlock() {
         if (this.updateState(UnsafeLock.LOCKED, UnsafeLock.UNLOCKED)) {
-            UnsafeLock.ThreadNode head = this.readHead();
+            UnsafeLock.ThreadNode head = this.removeAndRead();
             if (head == null) return;
 
             UnsafeLock.UNSAFE.unpark(head.getThread());
@@ -154,27 +150,49 @@ public class UnsafeLock implements InternalLock {
     }
 
     /**
-     * Performs CAS operation to replace the previous node in the thread node
+     * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on <a
+     * href="http://www.ibm.com/developerworks/library/j-jtp04186/">DevWorks</a>
      *
-     * @param inst     the instance of ThreadNode to set the previous
-     * @param expected the expected prev node
-     * @param prev     the node to set previous
+     * @param node the node to insert
      */
-    private boolean updatePrev(UnsafeLock.ThreadNode inst, UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode prev) {
-        return UnsafeLock.UNSAFE.compareAndSwapObject(inst, UnsafeLock.prevOff, expected, prev);
-    }
-
     private void insert(UnsafeLock.ThreadNode node) {
-        UnsafeLock.ThreadNode oldLast = this.tail;
-        if (this.updateTail(null, node)) this.updateHead(null, this.tail);
-        else {
-            this.updateTail(this.tail, node);
-            this.updateNext(oldLast, oldLast.getNext(), this.tail);
+        while (true) {
+            UnsafeLock.ThreadNode curTail = this.tail;
+            UnsafeLock.ThreadNode residue = curTail.getNext();
+            if (curTail.equals(this.tail)) {
+                if (residue == null) {
+                    if (this.updateNext(curTail, null, node)) {
+                        this.updateTail(curTail, node);
+                        return;
+                    }
+                } else {
+                    this.updateTail(curTail, residue);
+                }
+            }
         }
-        this.updatePrev(this.tail, this.tail.getPrevious(), oldLast);
     }
 
-    private UnsafeLock.ThreadNode readHead() {
+    private UnsafeLock.ThreadNode removeAndRead() {
+        while (true) {
+            ThreadNode curHead = this.head;
+            ThreadNode curTail = this.tail;
+            ThreadNode residue = curHead.getNext();
+            if (curHead.equals(this.head)) {
+                if (curHead.equals(curTail)) {
+                    if (residue == null)
+                        return null;
+                    else
+                        this.updateTail(curTail, residue);
+                } else if (this.updateHead(curHead, residue)) {
+                    E item = residue.getItem();
+                    if (item != null) {
+                        residue.setItem(null);
+                        return item;
+                    }
+                }
+            }
+        }
+
         UnsafeLock.ThreadNode node = this.head;
         if (node == null) return null;
 
@@ -190,16 +208,11 @@ public class UnsafeLock implements InternalLock {
      * @version 1.0
      * @since 1.1
      */
+    @RequiredArgsConstructor
     private class ThreadNode {
         /** The thread held by the node */
         @Getter private final    Thread                thread;
-        /** The previous node in the linked list */
-        @Getter private volatile UnsafeLock.ThreadNode previous;
         /** The next node in the linked list */
         @Getter private volatile UnsafeLock.ThreadNode next;
-
-        public ThreadNode(Thread thread) {
-            this.thread = thread;
-        }
     }
 }

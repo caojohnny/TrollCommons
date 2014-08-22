@@ -22,8 +22,7 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -45,18 +44,20 @@ public class LockBenchmark {
                 .threads(10)
                 .build();
 
-        new org.openjdk.jmh.runner.Runner(opt).run();
-        LockBenchmark.test();
+        //new org.openjdk.jmh.runner.Runner(opt).run();
+        for (int i = 0; i < 100; i++) LockBenchmark.test();
+        //LockBenchmark.test0();
     }
 
     private static void test() throws InterruptedException {
         final CountDownLatch latch = new CountDownLatch(10);
-        for (int i = 0; i < 10 /*true*/; i++) {
+        for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override public void run() {
                     LockBenchmark.impl.lock();
                     try {
                         LockBenchmark.count++;
+                        System.out.println(Thread.currentThread().getName() + " incremented");
                     } finally {
                         LockBenchmark.impl.unlock();
                         latch.countDown();
@@ -67,6 +68,18 @@ public class LockBenchmark {
 
         latch.await();
         System.out.println(LockBenchmark.count);
+    }
+
+    public static void test0() {
+        Executor executor = Executors.newFixedThreadPool(20);
+        while (true) {
+            executor.execute(new Runnable() {
+                @Override public void run() {
+                    LockBenchmark.impl.lock();
+                    LockBenchmark.impl.unlock();
+                }
+            });
+        }
     }
 
     @Benchmark public void synched() {
