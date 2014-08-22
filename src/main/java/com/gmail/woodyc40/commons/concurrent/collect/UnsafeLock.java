@@ -22,13 +22,17 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import sun.misc.Unsafe;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
- * Implementation of the internal lock structure
+ * Implementation of the internal lock structure. Uses the {@link java.util.concurrent.locks.LockSupport} algorithm
+ * for locking and unlocking.
  *
  * @author AgentTroll
  * @version 1.0
  * @since 1.1
  */
+@ThreadSafe
 public class UnsafeLock implements InternalLock {
     /** Provided unsafe access to increase the throughput of concurrent ops */
     private static final Unsafe UNSAFE   = UnsafeProvider.getProvider();
@@ -41,8 +45,6 @@ public class UnsafeLock implements InternalLock {
         UnsafeLock.stateOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("state", UnsafeLock.class));
         UnsafeLock.tailOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("tail", UnsafeLock.class));
         UnsafeLock.headOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("head", UnsafeLock.class));
-        UnsafeLock.currentOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("current",
-                                                                                            UnsafeLock.class));
 
         UnsafeLock.nextOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("next",
                                                                                          UnsafeLock.ThreadNode.class));
@@ -54,8 +56,6 @@ public class UnsafeLock implements InternalLock {
     private static long headOff;
     /** The head offset */
     private static long stateOff;
-    /** The current offset */
-    private static long currentOff;
 
     /** The next node offset in ThreadNode */
     private static long nextOff;
@@ -66,35 +66,28 @@ public class UnsafeLock implements InternalLock {
     private volatile UnsafeLock.ThreadNode tail = this.head;
     /** The lock state */
     private volatile int state;
-    /** The current holder of the lock */
-    private volatile UnsafeLock.ThreadNode current = new UnsafeLock.ThreadNode(null);
 
     @Override public void lock() {
         Thread thread = Thread.currentThread();
+        this.insert(thread);
         boolean interrupt = false;
 
-        while (this.state == UnsafeLock.LOCKED && thread != this.current.getThread()) {
-            this.insert(thread);
-
+        while (this.read().getThread() != thread || !this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED)) {
+            UnsafeLock.UNSAFE.park(false, 0L);
             if (Thread.interrupted())
                 interrupt = true;
-            UnsafeLock.UNSAFE.park(false, 0L);
         }
 
-        if (this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED))
-            this.updateCurrent(this.current, new UnsafeLock.ThreadNode(thread));
-
+        this.readAndRemove();
         if (interrupt)
             thread.interrupt();
     }
 
     @Override public void unlock() {
-        if (this.updateState(UnsafeLock.LOCKED, UnsafeLock.UNLOCKED)) {
-            UnsafeLock.ThreadNode head = this.readAndRemove();
-            if (head == null) return;
-
-            UnsafeLock.UNSAFE.unpark(head.getThread());
-        }
+        this.state = UnsafeLock.UNLOCKED;
+        UnsafeLock.ThreadNode node = this.read();
+        if (node == null) return;
+        UnsafeLock.UNSAFE.unpark(node.getThread());
     }
 
     /**
@@ -106,17 +99,6 @@ public class UnsafeLock implements InternalLock {
      */
     private boolean updateState(int expected, int state) {
         return UnsafeLock.UNSAFE.compareAndSwapInt(this, UnsafeLock.stateOff, expected, state);
-    }
-
-    /**
-     * Performs a CAS operation on the current thread
-     *
-     * @param expected the expected current node
-     * @param current  the new state to be set
-     * @return {@code true} if the operation succeeds
-     */
-    private boolean updateCurrent(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode current) {
-        return UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.currentOff, expected, current);
     }
 
     /**
@@ -193,6 +175,29 @@ public class UnsafeLock implements InternalLock {
                         this.updateTail(t, first);
                 } else if (this.updateHead(h, first)) {
                     return first;
+                }
+            }
+        }
+    }
+
+    /**
+     * Reads the head of the linked list without removing the node, based off the algorithm found <a
+     * href="http://goo.gl/oUaQUT">here</a>
+     *
+     * @return the head of the linked list
+     */
+    private UnsafeLock.ThreadNode read() {
+        for (; ; ) {
+            UnsafeLock.ThreadNode h = this.head;
+            UnsafeLock.ThreadNode t = this.tail;
+            UnsafeLock.ThreadNode first = h.getNext();
+            if (h == this.head) {
+                if (h == t) {
+                    if (first == null) return null;
+                    else this.updateTail(t, first);
+                } else {
+                    if (first != null) return first;
+                    else this.updateHead(h, null);
                 }
             }
         }

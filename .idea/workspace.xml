@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Let's see how maven javadoc responds :)">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -115,13 +114,13 @@
       <file leaf-file-name="LockBenchmark.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3258" max-vertical-offset="5346">
-              <caret line="257" column="60" selection-start-line="257" selection-start-column="60" selection-end-line="257" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="5274">
+              <caret line="128" column="120" selection-start-line="128" selection-start-column="120" selection-end-line="128" selection-end-column="120" />
               <folding>
-                <element signature="e#10144#10603#0" expanded="true" />
-                <element signature="e#10588#10589#0" expanded="true" />
-                <element signature="e#10851#11041#0" expanded="true" />
-                <element signature="e#11026#11027#0" expanded="true" />
+                <element signature="e#10310#10769#0" expanded="true" />
+                <element signature="e#10754#10755#0" expanded="true" />
+                <element signature="e#11016#11206#0" expanded="true" />
+                <element signature="e#11191#11192#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,31 +129,11 @@
       <file leaf-file-name="UnsafeLock.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3321617" vertical-offset="2979" max-vertical-offset="3726">
-              <caret line="190" column="31" selection-start-line="190" selection-start-column="31" selection-end-line="190" selection-end-column="31" />
+            <state vertical-scroll-proportion="1.8969555" vertical-offset="648" max-vertical-offset="3816">
+              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="3942">
-              <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RWLockProtected.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/RWLockProtected.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="94" max-vertical-offset="882">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="11" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -172,7 +151,7 @@
       <file leaf-file-name="JavaFork.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1458" max-vertical-offset="3114">
+            <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="2520">
               <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
               <folding />
             </state>
@@ -241,9 +220,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ThreadLocalProtected.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
+        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
       </list>
     </option>
   </component>
@@ -1154,7 +1133,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32130778" sideWeight="0.5002678" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32130778" sideWeight="0.4997322" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32130778" sideWeight="0.4997322" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32581738" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20717345" sideWeight="0.4994363" order="4" side_tool="false" content_ui="tabs" />
@@ -1569,14 +1548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1666" max-vertical-offset="2520">
-          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.854801" vertical-offset="3286" max-vertical-offset="7560">
@@ -1640,6 +1611,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ThreadLocalProtected.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5672269" vertical-offset="54" max-vertical-offset="954">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1445#1569#0" expanded="false" />
+            <element signature="e#1558#1559#0" expanded="false" />
+            <element signature="e#1652#1653#0" expanded="false" />
+            <element signature="e#1692#1693#0" expanded="false" />
+            <element signature="e#1724#1725#0" expanded="false" />
+            <element signature="e#1763#1764#0" expanded="false" />
+            <element signature="e#1805#1806#0" expanded="false" />
+            <element signature="e#1842#1843#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8487395" vertical-offset="1162" max-vertical-offset="3942">
+          <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/ConcurrentAHS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
@@ -1648,57 +1645,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1666" max-vertical-offset="2520">
+          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/RWLockProtected.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="94" max-vertical-offset="882">
+        <state vertical-scroll-proportion="0.29411766" vertical-offset="94" max-vertical-offset="882">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ThreadLocalProtected.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5672269" vertical-offset="54" max-vertical-offset="954">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1445#1569#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1805#1806#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3258" max-vertical-offset="5346">
-          <caret line="257" column="60" selection-start-line="257" selection-start-column="60" selection-end-line="257" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="5274">
+          <caret line="128" column="120" selection-start-line="128" selection-start-column="120" selection-end-line="128" selection-end-column="120" />
           <folding>
-            <element signature="e#10144#10603#0" expanded="true" />
-            <element signature="e#10588#10589#0" expanded="true" />
-            <element signature="e#10851#11041#0" expanded="true" />
-            <element signature="e#11026#11027#0" expanded="true" />
+            <element signature="e#10310#10769#0" expanded="true" />
+            <element signature="e#10754#10755#0" expanded="true" />
+            <element signature="e#11016#11206#0" expanded="true" />
+            <element signature="e#11191#11192#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="3942">
-          <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321617" vertical-offset="2979" max-vertical-offset="3726">
-          <caret line="190" column="31" selection-start-line="190" selection-start-column="31" selection-end-line="190" selection-end-column="31" />
+        <state vertical-scroll-proportion="1.8969555" vertical-offset="648" max-vertical-offset="3816">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
