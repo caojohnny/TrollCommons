@@ -74,7 +74,7 @@ public class UnsafeLock implements InternalLock {
         boolean interrupt = false;
 
         while (this.state == UnsafeLock.LOCKED && thread != this.current.getThread()) {
-            this.insert(new UnsafeLock.ThreadNode(thread));
+            this.insert(thread);
 
             if (Thread.interrupted())
                 interrupt = true;
@@ -92,7 +92,6 @@ public class UnsafeLock implements InternalLock {
         if (this.updateState(UnsafeLock.LOCKED, UnsafeLock.UNLOCKED)) {
             UnsafeLock.ThreadNode head = this.readAndRemove();
             if (head == null) return;
-            if (head.getThread() == null) return;
 
             UnsafeLock.UNSAFE.unpark(head.getThread());
         }
@@ -153,44 +152,48 @@ public class UnsafeLock implements InternalLock {
 
     /**
      * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on
-     * <a href="http://www.ibm.com/developerworks/library/j-jtp04186/">DevWorks</a>
+     * <a href="http://goo.gl/oUaQUT">DevWorks</a>
      *
-     * @param node the node to insert
+     * @param thread the thread to add to the linked list
      */
-    private void insert(UnsafeLock.ThreadNode node) {
-        while (true) {
-            UnsafeLock.ThreadNode curTail = this.tail;
-            UnsafeLock.ThreadNode residue = curTail.getNext();
-
-            if (curTail == this.tail) {
-                if (residue == null) {
-                    if (this.updateNext(curTail, null, node)) {
-                        this.updateTail(curTail, node);
+    private void insert(Thread thread) {
+        UnsafeLock.ThreadNode n = new UnsafeLock.ThreadNode(thread);
+        for (; ; ) {
+            UnsafeLock.ThreadNode t = this.tail;
+            UnsafeLock.ThreadNode s = t.getNext();
+            if (t == this.tail) {
+                if (s == null) {
+                    if (this.updateNext(t, null, n)) {
+                        this.updateTail(t, n);
                         return;
                     }
-                } else this.updateTail(curTail, residue);
+                } else {
+                    this.updateTail(t, s);
+                }
             }
         }
     }
 
     /**
-     * Reads the head of the linked list, remove it, and return the original head. Based off of the algorithm found <a
-     * href="http://fuseyism.com/classpath/doc/java/util/concurrent/ConcurrentLinkedQueue-source.html">here</a>
+     * Reads the head of the linked list, remove it, and return the original head. Based off of the algorithm found
+     * <a href="http://goo.gl/oUaQUT">here</a>
      *
      * @return the original head of the linked list, before replacement with the next
      */
     private UnsafeLock.ThreadNode readAndRemove() {
-        while (true) {
-            UnsafeLock.ThreadNode curHead = this.head;
-            UnsafeLock.ThreadNode curTail = this.tail;
-            UnsafeLock.ThreadNode residue = curHead.getNext();
-
-            if (curHead == this.head) {
-                if (curHead == curTail) {
-                    if (residue == null) return null;
-                    else this.updateTail(curTail, residue);
-                } else if (this.updateHead(curHead, residue))
-                    return residue;
+        for (; ; ) {
+            UnsafeLock.ThreadNode h = this.head;
+            UnsafeLock.ThreadNode t = this.tail;
+            UnsafeLock.ThreadNode first = h.getNext();
+            if (h == this.head) {
+                if (h == t) {
+                    if (first == null)
+                        return null;
+                    else
+                        this.updateTail(t, first);
+                } else if (this.updateHead(h, first)) {
+                    return first;
+                }
             }
         }
     }

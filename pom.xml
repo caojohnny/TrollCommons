@@ -83,8 +83,9 @@
                 <configuration>
                     <linksource>true</linksource>
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
                     <destDir>gh-pages</destDir>
-                    <level>private</level>
                 </configuration>
             </plugin>
 
