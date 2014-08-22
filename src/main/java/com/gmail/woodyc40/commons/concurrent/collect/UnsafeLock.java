@@ -22,7 +22,8 @@ import lombok.Getter;
 import sun.misc.Unsafe;
 
 /**
- * Implementation of the internal lock structure
+ * Implementation of the internal lock structure <p> <p>Waiters are appended to the end of the internal linked list,
+ * while the released threads are read from the head to the tail of the linked list.</p>
  *
  * @author AgentTroll
  * @version 1.0
@@ -37,39 +38,65 @@ public class UnsafeLock implements InternalLock {
     private static final int    UNLOCKED = 0;
 
     static {
-        UnsafeLock.stateOff = UnsafeProvider.fieldOffset0(ReflectionTool.forField("state", UnsafeLock.class));
-        UnsafeLock.tailOff = UnsafeProvider.fieldOffset0(ReflectionTool.forField("tail", UnsafeLock.class));
+        UnsafeLock.stateOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("state", UnsafeLock.class));
+        UnsafeLock.tailOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("tail", UnsafeLock.class));
+        UnsafeLock.headOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("head", UnsafeLock.class));
+        UnsafeLock.currentOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("current",
+                                                                                            UnsafeLock.class));
+
+        UnsafeLock.nextOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("next",
+                                                                                         UnsafeLock.ThreadNode.class));
+        UnsafeLock.prevOff = UnsafeLock.UNSAFE.objectFieldOffset(ReflectionTool.forField("previous",
+                                                                                         UnsafeLock.ThreadNode.class));
     }
 
     /** The tail offset */
     private static long tailOff;
-    /** Offset for the lock state, used for atomic updates */
+    /** The head offset */
+    private static long headOff;
+    /** The head offset */
     private static long stateOff;
+    /** The current offset */
+    private static long currentOff;
+
+    /** The next node offset in ThreadNode */
+    private static long nextOff;
+    /** The previous node in ThreadNode */
+    private static long prevOff;
 
     /** Thread node linked list tail */
-    private volatile UnsafeLock.ThreadNode tail = new UnsafeLock.ThreadNode(null);
+    private volatile UnsafeLock.ThreadNode tail; // Do not listen to "can make final"
+    /** Thread node linked list head */
+    private volatile UnsafeLock.ThreadNode head;
     /** The lock state */
-    private volatile int state;
+    private volatile int                   state;
+    /** The current holder of the lock */
+    private volatile UnsafeLock.ThreadNode current = new UnsafeLock.ThreadNode(null);
 
     @Override public void lock() {
-        while (!this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED)) {
-            Thread thread = Thread.currentThread();
-            if (!thread.equals(this.tail.getThread())) {
-                this.updateTail(this.tail, new UnsafeLock.ThreadNode(thread));
-                UnsafeLock.UNSAFE.park(false, 0L);
-            }
+        Thread thread = Thread.currentThread();
+        boolean interrupt = false;
+
+        while (!this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED) && !thread.equals(this.current.getThread())) {
+            this.insert(new UnsafeLock.ThreadNode(thread));
+
+            if (Thread.interrupted())
+                interrupt = true;
+            UnsafeLock.UNSAFE.park(false, 0L);
         }
 
-        this.updateTail(this.tail, new UnsafeLock.ThreadNode(Thread.currentThread()));
+        this.updateCurrent(this.current, new UnsafeLock.ThreadNode(thread));
+
+        if (interrupt)
+            thread.interrupt();
     }
 
     @Override public void unlock() {
         if (this.updateState(UnsafeLock.LOCKED, UnsafeLock.UNLOCKED)) {
-            UnsafeLock.ThreadNode previous = this.tail.getPrevious();
-            if (previous == null) return;
+            UnsafeLock.ThreadNode head = this.readHead();
+            if (head == null) return;
 
-            this.updateTail(this.tail, previous);
-            UnsafeLock.UNSAFE.unpark(this.tail.getThread());
+            UnsafeLock.UNSAFE.unpark(head.getThread());
         }
     }
 
@@ -85,14 +112,75 @@ public class UnsafeLock implements InternalLock {
     }
 
     /**
+     * Performs a CAS operation on the current thread
+     *
+     * @param expected the expected current node
+     * @param current  the new state to be set
+     * @return {@code true} if the operation succeeds
+     */
+    private boolean updateCurrent(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode current) {
+        return UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.currentOff, expected, current);
+    }
+
+    /**
      * Performs CAS operation to replace the tail
      *
      * @param expected the expected tail
      * @param tail     the new tail to set
      */
-    private void updateTail(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode tail) {
-        while (!UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.tailOff, expected, tail))
-            UnsafeLock.UNSAFE.putOrderedObject(this, UnsafeLock.tailOff, tail);
+    private boolean updateTail(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode tail) {
+        return UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.tailOff, expected, tail);
+    }
+
+    /**
+     * Performs CAS operation to replace the head
+     *
+     * @param expected the expected head
+     * @param next the next node to set
+     */
+    private boolean updateHead(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode next) {
+        return UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.headOff, expected, next);
+    }
+
+    /**
+     * Performs CAS operation to replace the next node in the thread node
+     *
+     * @param inst     the instance of ThreadNode to set the next
+     * @param expected the expected next node
+     * @param next     the next node to set
+     */
+    private boolean updateNext(UnsafeLock.ThreadNode inst, UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode next) {
+        return UnsafeLock.UNSAFE.compareAndSwapObject(inst, UnsafeLock.nextOff, expected, next);
+    }
+
+    /**
+     * Performs CAS operation to replace the previous node in the thread node
+     *
+     * @param inst     the instance of ThreadNode to set the previous
+     * @param expected the expected prev node
+     * @param prev     the node to set previous
+     */
+    private boolean updatePrev(UnsafeLock.ThreadNode inst, UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode prev) {
+        return UnsafeLock.UNSAFE.compareAndSwapObject(inst, UnsafeLock.prevOff, expected, prev);
+    }
+
+    private void insert(UnsafeLock.ThreadNode node) {
+        UnsafeLock.ThreadNode oldLast = this.tail;
+        if (this.updateTail(null, node)) this.updateHead(null, this.tail);
+        else {
+            this.updateTail(this.tail, node);
+            this.updateNext(oldLast, oldLast.getNext(), this.tail);
+        }
+        this.updatePrev(this.tail, this.tail.getPrevious(), oldLast);
+    }
+
+    private UnsafeLock.ThreadNode readHead() {
+        UnsafeLock.ThreadNode node = this.head;
+        if (node == null) return null;
+
+        this.updateHead(this.head, this.head.getNext());
+        if (this.head == null) this.updateTail(this.tail, null);
+        return node;
     }
 
     /**
@@ -103,14 +191,15 @@ public class UnsafeLock implements InternalLock {
      * @since 1.1
      */
     private class ThreadNode {
-        /** The previous node in the linked list */
-        @Getter private final UnsafeLock.ThreadNode previous;
         /** The thread held by the node */
-        @Getter private final Thread                thread;
+        @Getter private final    Thread                thread;
+        /** The previous node in the linked list */
+        @Getter private volatile UnsafeLock.ThreadNode previous;
+        /** The next node in the linked list */
+        @Getter private volatile UnsafeLock.ThreadNode next;
 
         public ThreadNode(Thread thread) {
             this.thread = thread;
-            this.previous = UnsafeLock.this.tail;
         }
     }
 }

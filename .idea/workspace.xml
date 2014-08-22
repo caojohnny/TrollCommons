@@ -9,93 +9,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Testing update&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/ConcurrentAHS.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/FactoryVsCache.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/InternalLock.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/RWLockProtected.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ThreadLocalProtected.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/WeakStructMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/package-info.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$AbstractHashStruct$HashStrategy$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$AbstractHashStruct$HashStrategy$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$AbstractHashStruct$HashStrategy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$AbstractHashStruct$Node.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$AbstractHashStruct.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$HashStructMap$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$HashStructMap.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$HashStructSet$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$HashStructSet.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap$UnsafeProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/AtomicRefProtected.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/AtomicRefProtected.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/FieldProtector.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/FieldProtector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ProtectedField.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ProtectedField.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ReentrantLockProtected.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect/ReentrantLockProtected.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractIterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BukkitCommons.iml" afterPath="$PROJECT_DIR$/BukkitCommons.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/BukkitCommons_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/BukkitCommons_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/Cache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/Cache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/CbServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/ConstantNotFoundException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/ConstantRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/ConstructorManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/CountingExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/CountingExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/CustomEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Distributor.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Distributor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/EventTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/EventTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/EventType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/Events.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLink.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/FieldLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/FieldManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashFunctionMapper.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashFunctionMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/HashStructTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/Instrument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/experimental/Instrument.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/JavaFork.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Line.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_7_10_R0_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_craftbukkit_1_7_10_R0_1_SNAPSHOT.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/McServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLink.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/MethodLinkImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/MethodManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/instrument/refs/PoolRef.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/ProtocolHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ProxyTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ProxyTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectAccess.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ReflectVsNormal.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ReflectVsNormal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/impl/ReflectionCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/reflection/chain/ReflectionChain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/SerializableRunnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Serializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/Serializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SerializerTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SerializerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SetStructTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SetStructTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/io/StringFileWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/StructBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SynchronizationTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/SynchronizationTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/Table.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/ThreadPoolManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/providers/UnsafeProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/UnsafeProviderTest.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/UnsafeProviderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/agenttroll.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/agenttroll.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/event/package-info.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+    <list default="true" id="59b62971-9486-4106-a42b-699a455e4866" name="Default" comment="Lots of changes">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" afterPath="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" afterPath="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BukkitCommons.iws" />
@@ -166,8 +83,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -198,31 +115,41 @@
       <file leaf-file-name="PacketEvent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1206">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
               <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LockBenchmark.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35480094" vertical-offset="273" max-vertical-offset="1152">
-              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
               <folding>
-                <element signature="method#main#0;class#LockBenchmark#0" expanded="false" />
+                <element signature="e#0#1880#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1509#1510#0" expanded="false" />
+                <element signature="e#1546#1547#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnsafeLock.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LockBenchmark.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="1404">
+              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+              <folding>
+                <element signature="e#2000#2364#0" expanded="true" />
+                <element signature="e#2349#2350#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnsafeLock.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="828" max-vertical-offset="2178">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-0.15966387" vertical-offset="2668" max-vertical-offset="3564">
+              <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7889#7890#0" expanded="true" />
+                <element signature="e#7933#7934#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -230,7 +157,7 @@
       <file leaf-file-name="ConcurrentAHS.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/ConcurrentAHS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="630">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="378">
               <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
@@ -261,7 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/misc/PlayerCollection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/Waiter.java" />
         <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/WaiterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/protect.java" />
@@ -307,11 +233,12 @@
         <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/BashMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/package-info.java" />
-        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/ConcurrentAHS.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/InternalLock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/AQS.java" />
+        <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java" />
         <option value="$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java" />
       </list>
     </option>
   </component>
@@ -387,7 +314,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="27" />
-    <option name="width" value="1920" />
+    <option name="width" value="1919" />
     <option name="height" value="1026" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -447,6 +374,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -681,10 +609,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BukkitCommons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BukkitCommons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collect" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -711,7 +668,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -849,10 +806,16 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="BukkitCommons" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="JProfiler">
         <option name="WINDOW" value="false" />
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="JProfiler" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
@@ -1206,28 +1169,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1026" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="27" width="1919" height="1026" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Atlassian " active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39841986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39797068" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32167044" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32581738" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20717345" sideWeight="0.4994363" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18040685" sideWeight="0.4977307" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42615557" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18050349" sideWeight="0.4977307" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42615557" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="832" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20891514" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25107068" sideWeight="0.5005637" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Issues - JIRA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Byte Code Viewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="95" y="58" width="1736" height="856" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -1235,7 +1199,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32807216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32243517" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39684328" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1243,8 +1206,8 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="832" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20891514" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694477" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25107068" sideWeight="0.5005637" order="6" side_tool="true" content_ui="tabs" />
@@ -1265,8 +1228,8 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20074947" sideWeight="0.50075644" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32243517" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24919786" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20717345" sideWeight="0.4994363" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32807216" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39684328" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
@@ -1308,7 +1271,8 @@
     <MESSAGE value="Protocol DONE" />
     <MESSAGE value="Updated documentation" />
     <MESSAGE value="Testing update&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing update&#10;" />
+    <MESSAGE value="Lots of changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lots of changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1318,7 +1282,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="8" />
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="atlassian-ide-plugin-workspace">
@@ -1373,20 +1337,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/Protocol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7629482" vertical-offset="229" max-vertical-offset="828">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/ProxyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33266932" vertical-offset="2371" max-vertical-offset="5886">
-          <caret line="166" column="91" selection-start-line="166" selection-start-column="91" selection-end-line="166" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/HashStructSet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54780877" vertical-offset="1075" max-vertical-offset="2250">
@@ -1647,13 +1597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.12178" vertical-offset="3058" max-vertical-offset="7812">
-          <caret line="346" column="19" selection-start-line="346" selection-start-column="19" selection-end-line="346" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/Commons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1116">
@@ -1683,24 +1626,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5925059" vertical-offset="2842" max-vertical-offset="4302">
-          <caret line="211" column="66" selection-start-line="211" selection-start-column="66" selection-end-line="211" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/InternalLock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="854">
           <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1713,11 +1642,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java">
+    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/AtomicVsVolatile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1018" max-vertical-offset="1872">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state vertical-scroll-proportion="9.773109" vertical-offset="190" max-vertical-offset="5904">
+          <caret line="295" column="91" selection-start-line="295" selection-start-column="91" selection-end-line="295" selection-end-column="91" />
+          <folding>
+            <element signature="e#13436#13437#0" expanded="true" />
+            <element signature="e#13496#13497#0" expanded="true" />
+            <element signature="e#13537#13538#0" expanded="true" />
+            <element signature="e#13586#13587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/collect/AbstractHashStruct.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.854801" vertical-offset="3286" max-vertical-offset="7560">
+          <caret line="346" column="0" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/RemoteTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22689076" vertical-offset="0" max-vertical-offset="476">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/nmsobc/protocol/PacketEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="846">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#1880#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1509#1510#0" expanded="false" />
+            <element signature="e#1546#1547#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1731,10 +1694,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/com/gmail/woodyc40/commons/LockBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35480094" vertical-offset="273" max-vertical-offset="1152">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="1404">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
           <folding>
-            <element signature="method#main#0;class#LockBenchmark#0" expanded="false" />
+            <element signature="e#2000#2364#0" expanded="true" />
+            <element signature="e#2349#2350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gmail/woodyc40/commons/concurrent/collect/UnsafeLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.15966387" vertical-offset="2668" max-vertical-offset="3564">
+          <caret line="158" column="6" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7889#7890#0" expanded="true" />
+            <element signature="e#7933#7934#0" expanded="true" />
           </folding>
         </state>
       </provider>

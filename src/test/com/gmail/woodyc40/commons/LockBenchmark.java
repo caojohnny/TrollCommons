@@ -22,7 +22,8 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -33,7 +34,7 @@ public class LockBenchmark {
     static               int        count = 0;
     private int counter;
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String[] args) throws RunnerException, InterruptedException {
         Options opt = new OptionsBuilder()
                 .include(".*" + LockBenchmark.class.getSimpleName() + ".*")
                 .timeUnit(TimeUnit.NANOSECONDS)
@@ -44,27 +45,28 @@ public class LockBenchmark {
                 .threads(10)
                 .build();
 
-        //new org.openjdk.jmh.runner.Runner(opt).run();
+        new org.openjdk.jmh.runner.Runner(opt).run();
         LockBenchmark.test();
     }
 
-    private static void test() {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        for (int i = 0; true; i++) {
-            executor.execute(new Runnable() {
+    private static void test() throws InterruptedException {
+        final CountDownLatch latch = new CountDownLatch(10);
+        for (int i = 0; i < 10 /*true*/; i++) {
+            new Thread(new Runnable() {
                 @Override public void run() {
                     LockBenchmark.impl.lock();
                     try {
                         LockBenchmark.count++;
                     } finally {
                         LockBenchmark.impl.unlock();
+                        latch.countDown();
                     }
                 }
-            });
+            }).start();
         }
 
-        //System.out.println(LockBenchmark.count);
-        //executor.shutdownNow();
+        latch.await();
+        System.out.println(LockBenchmark.count);
     }
 
     @Benchmark public void synched() {
