@@ -126,7 +126,7 @@
 <span class="sourceLineNo">118</span>     * @param field the field to {@code return} the offset of<a name="line.118"></a>
 <span class="sourceLineNo">119</span>     * @return the field offset<a name="line.119"></a>
 <span class="sourceLineNo">120</span>     */<a name="line.120"></a>
-<span class="sourceLineNo">121</span>    public static long fieldOffset(Field field) { // TODO concurrency<a name="line.121"></a>
+<span class="sourceLineNo">121</span>    public static long fieldOffset(Field field) {<a name="line.121"></a>
 <span class="sourceLineNo">122</span>        Long offset = UnsafeProvider.offsets.get(field);<a name="line.122"></a>
 <span class="sourceLineNo">123</span>        if (offset == null) {<a name="line.123"></a>
 <span class="sourceLineNo">124</span>            offset = UnsafeProvider.fieldOffset0(field);<a name="line.124"></a>
