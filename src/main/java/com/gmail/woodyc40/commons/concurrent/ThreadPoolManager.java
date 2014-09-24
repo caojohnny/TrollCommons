@@ -16,9 +16,6 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -47,15 +44,10 @@ public final class ThreadPoolManager {
     /** The fallback (last ditch) consumer executor */
     private static final CountingExecutor FALLBACK = CountingExecutor.newCountingExecutor();
 
-    /** The remote caller */
-    @Getter(AccessLevel.PACKAGE) private static final Remotes TO_FORK   = JavaFork.getTO_FORK();
-    /** The remote receiver */
-    @Getter(AccessLevel.PACKAGE) private static final Remotes FROM_FORK = JavaFork.getFROM_FORK();
-
     private ThreadPoolManager() {}
 
     /**
-     * Checks the beat and recalculates on the 1000th beat from {@link com.gmail.woodyc40.commons.concurrent.JavaFork}
+     * Checks the beat and recalculates on the 1000th beat
      */
     static void beat() {
         if (ThreadPoolManager.beats.get() == 1000) {
@@ -63,8 +55,6 @@ public final class ThreadPoolManager {
             ThreadPoolManager.LOAD0.recalc();
             ThreadPoolManager.beats.set(0);
         }
-
-        System.out.println("BEAT");
     }
 
     /**

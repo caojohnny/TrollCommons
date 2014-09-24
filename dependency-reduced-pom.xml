@@ -75,8 +75,9 @@
                 <configuration>
                     <linksource>true</linksource>
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
                     <destDir>gh-pages</destDir>
-                    <level>private</level>
                 </configuration>
             </plugin>
             <plugin>
@@ -96,78 +97,17 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <configuration>
-                            <minimizeJar>true</minimizeJar>
-                            <filters>
-                                <filter>
-                                    <artifact>com.google.guava:guava</artifact>
-                                    <includes>
-                                        <include>com/google/common/hash/**</include>
-                                        <include>com/google/common/reflect/**</include>
-                                    </includes>
-                                    <excludes>
-                                        <exclude>com/google/common/annotations/**</exclude>
-                                        <exclude>com/google/common/base/**</exclude>
-                                        <exclude>com/google/common/cache/**</exclude>
-                                        <exclude>com/google/common/collect/**</exclude>
-                                        <exclude>com/google/common/eventbus/**</exclude>
-                                        <exclude>com/google/common/io/**</exclude>
-                                        <exclude>com/google/common/net/**</exclude>
-                                        <exclude>com/google/common/primitives/**</exclude>
-                                        <exclude>com/google/common/util/**</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                            <artifactSet>
-                                <excludes>
-                                    <exclude>org.openjdk.jmh:jmh-core</exclude>
-                                    <exclude>net.sf.jopt-simple:jopt-simple</exclude>
-                                    <exclude>org.apache.commons:commons-math3</exclude>
-                                    <exclude>org.openjdk.jmh:jmh-generator-annprocess</exclude>
-                                </excludes>
-                            </artifactSet>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public/</url>
-        </repository>
-    </repositories>
     <dependencies>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>LATEST</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>LATEST</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.14.4</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>0.9</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>0.9</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
     <distributionManagement>
