@@ -18,11 +18,7 @@ package com.gmail.woodyc40.commons;
 
 import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
 import com.gmail.woodyc40.commons.event.Events;
-import com.gmail.woodyc40.commons.io.Files;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.IOException;
 
 /**
  * The main runner representing this plugin utility
@@ -38,8 +34,7 @@ public class Commons {
             if (!element.getClassName().startsWith("java.") &&
                 (!ignore || !element.getClassName().startsWith("com.gmail.woodyc40.commons."))) {
                 Class<?> clazz = ReflectionCache.getClass(element.getClassName());
-                if (clazz.isAssignableFrom(JavaPlugin.class) || clazz.getPackage().getName()
-                                                                     .contains("com.gmail.woodyc40.commons"))
+                if (clazz.getPackage().getName().contains("com.gmail.woodyc40.commons"))
                     return clazz.getPackage();
             }
         }
@@ -47,15 +42,7 @@ public class Commons {
         return null;
     }
 
-    public void onEnable() {
-        try {
-            Files.update();
-        } catch (IOException x) {
-            x.printStackTrace();
-        }
-    }
-
-    public void onDisable() {
+    public void onDisable() { // TODO
         ThreadPoolManager.shutdown();
         Events.shutdown();
     }
