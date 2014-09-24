@@ -29,15 +29,15 @@ import java.util.Set;
  */
 public class StructBuilder {
     /** The hash strategy */
-    private AbstractHashStruct.HashStrategy hash    = AbstractHashStruct.HashStrategy.A_TROLL;
+    private AbstractHashStruct.HashStrategy hash   = AbstractHashStruct.HashStrategy.A_TROLL;
     /** The initial size */
-    private int                             size    = 16;
+    private int                             size   = 16;
     /** The resizing threshold */
-    private int                             resize  = 14;
+    private int                             resize = 14;
     /** Weak reference key collection configuration */
-    private boolean                         weakKey = false;
+    private boolean weakKey;
     /** Weak reference value collection configuration */
-    private boolean                         weakVal = false;
+    private boolean weakVal;
     /** Whether or not to enable concurrency */
     private boolean concurrent; // TODO
 

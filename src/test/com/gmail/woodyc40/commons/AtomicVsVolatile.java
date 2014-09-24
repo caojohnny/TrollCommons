@@ -315,7 +315,7 @@ public class AtomicVsVolatile {
     private static          AtomicBoolean ato      = new AtomicBoolean(true);
     private static          boolean       aBoolean = true;
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + AtomicVsVolatile.class.getSimpleName() + ".*")
                 .timeUnit(TimeUnit.NANOSECONDS)

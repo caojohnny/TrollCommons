@@ -1,7 +1,7 @@
 BukkitCommons
 =============
 
-Commons library for Bukkit utils
+*UPDATE: No longer supports Bukkit. Will port to [TridentSDK](http://github.com/TridentSDK).*
 
 Build stats: [![Build Status](https://api.shippable.com/projects/53e6844a6167b7740020551f/badge/master)](https://www.shippable.com/projects/53e6844a6167b7740020551f/builds/history)
 
@@ -12,6 +12,27 @@ Latest Build download: https://github.com/AgentTroll/BukkitCommonsBuilds/blob/ma
 Documentation/Bugs: http://bukkitcommons.atlassian.net
 
 Javadocs: http://agenttroll.github.io/BukkitCommons/
+
+Setup:
+You can download this jar directly from the link above, or you can use Maven:
+```xml
+<!-- Repository -->
+<repository>
+    <id>bc-repo</id>
+    <url>https://raw.githubusercontent.com/AgentTroll/BukkitCommonsBuilds/master/</url>
+    <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+    </snapshots>
+</repository>
+
+<!-- Dependency -->
+<dependency>
+    <groupId>com.gmail.woodyc40</groupId>
+    <artifactId>BukkitCommons</artifactId>
+    <version>1.0</version>
+</dependency>
+```
 
 This library was profiled with JProfiler. JProfiler can be downloaded at:
 http://www.ej-technologies.com/download/jprofiler/files.html

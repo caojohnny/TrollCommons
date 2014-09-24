@@ -16,9 +16,7 @@
 
 package com.gmail.woodyc40.commons;
 
-import com.gmail.woodyc40.commons.concurrent.RunnableReceiveEvent;
 import com.gmail.woodyc40.commons.event.*;
-import com.gmail.woodyc40.commons.misc.SerializableRunnable;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.runner.Runner;
@@ -109,20 +107,12 @@ c.g.w.c.EventTest.bCall         avgt        10      255.049      139.354    ns/o
  */
 public class EventTest {
     private static final EventHandler LISTENER = new EventTest.Listener();
-    private static final CustomEvent  EVENT    = new RunnableReceiveEvent(new SerializableRunnable<Object>() {
-        private static final long serialVersionUID = 6131134329231886819L;
-
-        @Override public Object run() {
-            return null;
-        }
-    });
 
     @Benchmark public static void aRegister() throws NoEventAnnotationException {
         Events.register(EventTest.LISTENER);
     }
 
     @Benchmark public static void bCall() {
-        Events.call(EventTest.EVENT);
     }
 
     public static void main(String... args) throws RunnerException, NoEventAnnotationException {
@@ -141,11 +131,10 @@ public class EventTest {
         //Events.shutdown();
     }
 
-    @Handler(EventType.RUNNABLE_RECEIVE)
     private static class Listener implements EventHandler {
         @Override public void handle(CustomEvent event) {
             event.setCancelled(true);
-            System.out.println("Event received, return value: " + ((RunnableReceiveEvent) event).getRunnable().run());
+            System.out.println("Event received, return value: ");
         }
     }
 }

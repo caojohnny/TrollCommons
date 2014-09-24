@@ -16,6 +16,7 @@
 
 package com.gmail.woodyc40.commons;
 
+import com.gmail.woodyc40.commons.concurrent.collect.InternalLock;
 import com.gmail.woodyc40.commons.concurrent.collect.UnsafeLock;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.RunnerException;
@@ -202,7 +203,8 @@ Result: 328.094 ±(99.9%) 26.967 ns/op [Average]
 # Benchmark mode: Average time, time/op
 # Benchmark: com.gmail.woodyc40.commons.LockBenchmark.synched
 # VM invoker: /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
-# VM options: -Didea.launcher.port=7537 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile.encoding=UTF-8
+# VM options: -Didea.launcher.port=7537 -Didea.launcher.bin.path=/media/A4F1-7AB7/idea-IU-135.1230/bin -Dfile
+.encoding=UTF-8
 # Fork: 1 of 1
 # Warmup Iteration   1: 430.528 ns/op
 # Warmup Iteration   2: 426.275 ns/op
@@ -234,12 +236,12 @@ c.g.w.c.LockBenchmark.synched      avgt         5      435.180       20.339    n
  */
 @State(Scope.Benchmark)
 public class LockBenchmark {
-    private static final Lock       LOCK  = new ReentrantLock();
-    private static final UnsafeLock impl  = new UnsafeLock();
-    static               int        count = 0;
+    private static final Lock         LOCK = new ReentrantLock();
+    private static final InternalLock impl = new UnsafeLock();
+    static  int count;
     private int counter;
 
-    public static void main(String[] args) throws RunnerException, InterruptedException {
+    public static void main(String... args) throws RunnerException, InterruptedException {
         Options opt = new OptionsBuilder()
                 .include(".*" + LockBenchmark.class.getSimpleName() + ".*")
                 .timeUnit(TimeUnit.NANOSECONDS)
@@ -277,11 +279,16 @@ public class LockBenchmark {
     }
 
     public static void test0() {
-        Executor executor = Executors.newFixedThreadPool(4);
+        Executor executor = Executors.newFixedThreadPool(2);
         while (true) {
             executor.execute(new Runnable() {
                 @Override public void run() {
                     LockBenchmark.impl.lock();
+                    try {
+                        Thread.sleep(100L);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     LockBenchmark.impl.unlock();
                 }
             });

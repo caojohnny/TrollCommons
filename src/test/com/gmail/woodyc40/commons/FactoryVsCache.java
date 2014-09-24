@@ -316,7 +316,7 @@ public class FactoryVsCache {
     private static final ReflectionFactory           FACTORY = ReflectionFactory.getReflectionFactory();
     private static Method method;
 
-    public static void main(String[] args) throws RunnerException {
+    public static void main(String... args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + FactoryVsCache.class.getSimpleName() + ".*")
                 .timeUnit(TimeUnit.NANOSECONDS)

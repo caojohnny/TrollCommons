@@ -25,8 +25,8 @@ import sun.misc.Unsafe;
 import javax.annotation.concurrent.ThreadSafe;
 
 /**
- * Implementation of the internal lock structure. Uses the {@link java.util.concurrent.locks.LockSupport} algorithm
- * for locking and unlocking.
+ * Implementation of the internal lock structure. Uses the {@link java.util.concurrent.locks.LockSupport} algorithm for
+ * locking and unlocking.
  *
  * @author AgentTroll
  * @version 1.0
@@ -74,13 +74,11 @@ public class UnsafeLock implements InternalLock {
 
         while (this.read().getThread() != thread || !this.updateState(UnsafeLock.UNLOCKED, UnsafeLock.LOCKED)) {
             UnsafeLock.UNSAFE.park(false, 0L);
-            if (Thread.interrupted())
-                interrupt = true;
+            if (Thread.interrupted()) interrupt = true;
         }
 
         this.readAndRemove();
-        if (interrupt)
-            thread.interrupt();
+        if (interrupt) thread.interrupt();
     }
 
     @Override public void unlock() {
@@ -115,7 +113,7 @@ public class UnsafeLock implements InternalLock {
      * Performs CAS operation to replace the head
      *
      * @param expected the expected head
-     * @param next the next node to set
+     * @param next     the next node to set
      */
     private boolean updateHead(UnsafeLock.ThreadNode expected, UnsafeLock.ThreadNode next) {
         return UnsafeLock.UNSAFE.compareAndSwapObject(this, UnsafeLock.headOff, expected, next);
@@ -133,8 +131,8 @@ public class UnsafeLock implements InternalLock {
     }
 
     /**
-     * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on
-     * <a href="http://goo.gl/oUaQUT">DevWorks</a>
+     * Inserts the node into the end of the linked list using the Michael & Scott algorithm found on <a
+     * href="http://goo.gl/oUaQUT">DevWorks</a>
      *
      * @param thread the thread to add to the linked list
      */
@@ -157,8 +155,8 @@ public class UnsafeLock implements InternalLock {
     }
 
     /**
-     * Reads the head of the linked list, remove it, and return the original head. Based off of the algorithm found
-     * <a href="http://goo.gl/oUaQUT">here</a>
+     * Reads the head of the linked list, remove it, and return the original head. Based off of the algorithm found <a
+     * href="http://goo.gl/oUaQUT">here</a>
      *
      * @return the original head of the linked list, before replacement with the next
      */

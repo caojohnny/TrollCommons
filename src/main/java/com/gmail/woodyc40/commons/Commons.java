@@ -16,35 +16,22 @@
 
 package com.gmail.woodyc40.commons;
 
-import com.gmail.woodyc40.commons.concurrent.JavaFork;
 import com.gmail.woodyc40.commons.concurrent.ThreadPoolManager;
 import com.gmail.woodyc40.commons.event.Events;
 import com.gmail.woodyc40.commons.io.Files;
-import com.gmail.woodyc40.commons.nmsobc.protocol.Protocol;
 import com.gmail.woodyc40.commons.reflection.impl.ReflectionCache;
-import lombok.Getter;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 
 /**
- * {@link org.bukkit.plugin.java.JavaPlugin} {@code class} representing this plugin utility
+ * The main runner representing this plugin utility
  *
  * @author AgentTroll
  * @version 1.0
  * @since 1.0
  */
-public class Commons extends JavaPlugin {
-    /** The plugin instance */
-    @Getter private static Plugin plugin;
-
-    /**
-     * Gets the calling package for the method
-     *
-     * @param ignore {@code true} to prevent checks on BukkitCommons
-     * @return the package the called the method
-     */
+public class Commons {
     public static Package getCaller(boolean ignore) {
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         for (StackTraceElement element : elements) {
@@ -60,21 +47,16 @@ public class Commons extends JavaPlugin {
         return null;
     }
 
-    @Override public void onEnable() {
-        Commons.plugin = this;
-
+    public void onEnable() {
         try {
             Files.update();
-            // JavaFork.start(); TODO
         } catch (IOException x) {
             x.printStackTrace();
         }
-        Protocol.initiate(this);
     }
 
-    @Override public void onDisable() {
+    public void onDisable() {
         ThreadPoolManager.shutdown();
-        JavaFork.shutdown();
         Events.shutdown();
     }
 }

@@ -26,13 +26,14 @@ import java.util.Map;
 
 /**
  * This is a base utility used to build hashing data structures similar to that of {@link java.util.HashMap} and {@link
- * java.util.HashSet}. <<<<<<< Updated upstream <p> ======= <p> >>>>>>> Stashed changes <p>By default, this will have a
- * resizing threshold of 14 items, which can be changed using {@link #setResizeThresh(int)} and a hashing strategy
- * defaulted to {@link com.gmail.woodyc40.commons.collect .AbstractHashStruct.HashStrategy#A_TROLL} that can be changed
- * using {@link #setStrategy(com.gmail.woodyc40.commons .collect.AbstractHashStruct.HashStrategy)} </p> <<<<<<< Updated
- * upstream <p> ======= <p> >>>>>>> Stashed changes <p>Benchmarks for all 3 hash strategies can be found <a
- * href="https://github .com/AgentTroll/BukkitCommons/blob/master/src/test/com/gmail/woodyc40/commons/HashBenchmark
- * .java">here</a></p>
+ * java.util.HashSet}.
+ *
+ * <p>By default, this will have a resizing threshold of 14 items, which can be changed using {@link
+ * #setResizeThresh(int)} and a hashing strategy defaulted to {@link com.gmail.woodyc40.commons.collect
+ * .AbstractHashStruct.HashStrategy#A_TROLL} that can be changed using {@link #setStrategy(com.gmail.woodyc40.commons
+ * .collect.AbstractHashStruct.HashStrategy)}</p>
+ *
+ * <p>Benchmarks for all 3 hash strategies can be found <a href="http://git.io/o4Ymyg">here</a></p>
  *
  * @param <K> the key type
  * @param <V> the value type

@@ -1,6 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: com.gmail.woodyc40.commons.concurrent.JavaFork
-Premain-Class: com.gmail.woodyc40.commons.concurrent.JavaFork
 Can-Redefine-Classes: true
 Can-Retransform-Classes: true
 

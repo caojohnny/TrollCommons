@@ -59,8 +59,7 @@ public final class FieldProtector {
     /**
      * Creates a new {@link com.gmail.woodyc40.commons.concurrent.protect.RWLockProtected} reading and writing lock
      * structure protectors <p> <p>Note that using {@link ProtectedField#access(com.gmail.woodyc40.commons.misc
-     * .ParameterizedRunnable)}
-     * </p>
+     * .ParameterizedRunnable)} </p>
      *
      * @param value the initial value. Can be {@code null}.
      * @param <T>   the type of the field that is protected

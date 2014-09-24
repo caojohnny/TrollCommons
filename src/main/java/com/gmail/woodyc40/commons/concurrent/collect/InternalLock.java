@@ -23,7 +23,7 @@ package com.gmail.woodyc40.commons.concurrent.collect;
  * @version 1.0
  * @since 1.1
  */
-interface InternalLock {
+public interface InternalLock {
     /**
      * Acquires the monitor represented by this lock structure
      */
