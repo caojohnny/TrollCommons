@@ -22,8 +22,7 @@ import com.gmail.woodyc40.commons.reflection.FieldManager;
 import java.lang.reflect.Field;
 
 /**
- * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection
- * <p>
+ * Actual implementation of {@link com.gmail.woodyc40.commons.reflection.FieldManager} used for fast reflection <p>
  * param <D> the {@code class} type declaring the field
  *
  * @param <D> the type of class declaring the field

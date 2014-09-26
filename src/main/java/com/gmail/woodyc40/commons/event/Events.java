@@ -106,6 +106,11 @@ public final class Events {
             }
         }
 
+        @Override public synchronized void start() {
+            super.start();
+            this.running = true;
+        }
+
         @Override public void run() {
             while (this.running) {
                 Runnable runnable = this.executor.poll();
@@ -117,11 +122,6 @@ public final class Events {
         @Override public void interrupt() {
             super.interrupt();
             this.running = false;
-        }
-
-        @Override public synchronized void start() {
-            super.start();
-            this.running = true;
         }
 
         /**
