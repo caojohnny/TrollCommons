@@ -20,6 +20,8 @@ import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedTransferQueue;
 
+import javax.annotation.concurrent.ThreadSafe;
+
 /**
  * Thread list to allow task execution in a shared thread scaled with removal
  *
@@ -28,6 +30,7 @@ import java.util.concurrent.LinkedTransferQueue;
  * @param <T> the assignment type, if used
  * @author AgentTroll
  */
+@ThreadSafe
 public class TaskExec<T> {
     // http://git.io/PQtiog is version of this class, copied version handed to TridentSDK BSD license
     private static final Map.Entry<?, ? extends Number> DEF_ENTRY = new AbstractMap.SimpleEntry<>(null, Long.MAX_VALUE);
