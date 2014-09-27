@@ -19,5 +19,5 @@ mvn clean javadoc:javadoc
 cd gh-pages
 git add .
 git commit -m "Auto-publishing Javadoc from Shippable CI"
-git push -fq https://AgentTroll:${PASS}@github.com/AgentTroll/BukkitCommons.git HEAD:gh-pages
+git push -fq https://AgentTroll:${PASS}@github.com/AgentTroll/TrollCommons.git HEAD:gh-pages
 echo "Published JavaDoc.\n" # Done!

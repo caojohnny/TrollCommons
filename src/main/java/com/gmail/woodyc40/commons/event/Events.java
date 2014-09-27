@@ -76,7 +76,7 @@ public final class Events {
         if (settings == null)
             throw new SecurityException("ACCESS DENIED: Not called from main class");
         if (!settings.equals(Commons.class.getPackage()))
-            throw new SecurityException("ACCESS DENIED: You are not BukkitCommons");
+            throw new SecurityException("ACCESS DENIED: You are not TrollCommons");
         Events.THREAD.interrupt();
     }
 

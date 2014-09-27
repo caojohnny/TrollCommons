@@ -16,11 +16,10 @@
 
 package com.gmail.woodyc40.commons.concurrent;
 
+import javax.annotation.concurrent.ThreadSafe;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedTransferQueue;
-
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Thread list to allow task execution in a shared thread scaled with removal
@@ -133,11 +132,13 @@ public class TaskExec<T> {
         Thread asThread();
     }
 
-    private static class InnerThread implements TaskExec.TaskExecutor {
+    private static final class InnerThread implements TaskExec.TaskExecutor {
         private final BlockingQueue<Runnable>             tasks  = new LinkedTransferQueue<>();
         private final TaskExec.InnerThread.DelegateThread thread = new TaskExec.InnerThread.DelegateThread();
         private boolean stopped;
         // Does not need to be volatile because only this thread can change it
+
+        private InnerThread() {}
 
         public static TaskExec.InnerThread createThread() {
             TaskExec.InnerThread thread = new TaskExec.InnerThread();

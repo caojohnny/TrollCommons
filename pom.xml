@@ -19,17 +19,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gmail.woodyc40</groupId>
-    <artifactId>BukkitCommons</artifactId>
+    <artifactId>TrollCommons</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>BukkitCommons</name>
+    <name>TrollCommons</name>
     <url>https://github.com/AgentTroll/BukitCommons.git</url>
 
 
     <build>
         <defaultGoal>clean install</defaultGoal>
 
-        <finalName>BukkitCommons</finalName>
+        <finalName>TrollCommons</finalName>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <resources>
             <resource>
@@ -63,7 +63,7 @@
                     <includes>
                         <include>**/*</include>
                     </includes>
-                    <repositoryName>BukkitCommonsBuilds</repositoryName>
+                    <repositoryName>TrollCommonsBuilds</repositoryName>
                     <repositoryOwner>AgentTroll</repositoryOwner>
                 </configuration>
                 <executions>
