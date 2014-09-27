@@ -32,8 +32,8 @@ public class TaskExec<T> {
     // http://git.io/PQtiog is version of this class, copied version handed to TridentSDK BSD license
     private static final Map.Entry<?, ? extends Number> DEF_ENTRY = new AbstractMap.SimpleEntry<>(null, Long.MAX_VALUE);
 
-    private final HashMap<TaskExec.InnerThread, Integer> scale       = new HashMap<>();
-    private final Map<T, TaskExec.InnerThread>           assignments = new HashMap<>();
+    private final Map<TaskExec.InnerThread, Integer> scale       = new HashMap<>();
+    private final Map<T, TaskExec.InnerThread>       assignments = new HashMap<>();
 
     /**
      * Create a new executor using the number of threads to scale
@@ -136,6 +136,12 @@ public class TaskExec<T> {
         private boolean stopped;
         // Does not need to be volatile because only this thread can change it
 
+        public static TaskExec.InnerThread createThread() {
+            TaskExec.InnerThread thread = new TaskExec.InnerThread();
+            thread.getThread().start();
+            return thread;
+        }
+
         @Override
         public void addTask(Runnable task) {
             try {
@@ -147,7 +153,7 @@ public class TaskExec<T> {
 
         @Override
         public void interrupt() {
-            this.thread.interrupt();
+            this.getThread().interrupt();
             this.addTask(new Runnable() {
                 @Override
                 public void run() {
@@ -158,6 +164,10 @@ public class TaskExec<T> {
 
         @Override
         public Thread asThread() {
+            return this.getThread();
+        }
+
+        public TaskExec.InnerThread.DelegateThread getThread() {
             return this.thread;
         }
 
