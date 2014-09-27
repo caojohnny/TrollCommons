@@ -3,7 +3,7 @@ BukkitCommons
 
 **UPDATE: No longer supports Bukkit. Will port to [TridentSDK](http://github.com/TridentSDK).**
 
-Build stats: ![Build Status](https://drone.io/github.com/AgentTroll/BukkitCommons/status.png)
+Build stats: ![Build Status](https://api.shippable.com/projects/54260b1280088cee586ce9f0/badge?branchName=master)
 
 Public CI + CI builds: https://drone.io/github.com/AgentTroll/BukkitCommons
 
