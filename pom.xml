@@ -58,8 +58,7 @@
                 <version>0.10</version>
                 <configuration>
                     <message>Added builds for ${project.version}</message>
-                    <outputDirectory>${project.build.directory}</outputDirectory>
-                    <branch>refs/heads/master</branch>
+                    <outputDirectory>${project.build.directory}</outputDirectory>                  
                     <includes>
                         <include>**/*</include>
                     </includes>
