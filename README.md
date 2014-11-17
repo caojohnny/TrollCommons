@@ -13,7 +13,8 @@ Documentation/Bugs: http://TrollCommons.atlassian.net
 
 Javadocs: http://agenttroll.github.io/TrollCommons/
 
-Setup:
+Setup
+====
 You can download this jar directly from the link above, or you can use Maven:
 ```xml
 <!-- Repository -->
